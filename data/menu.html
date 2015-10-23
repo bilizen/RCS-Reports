@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>RCS Reports - Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet">
+        <link href="../css/style4.css" rel="stylesheet">
+        <link href="../css/style5.css" rel="stylesheet">
+        <link rel="shortcut icon" href="">
+
+  <!-- Fav and touch icons -->
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/database.js"></script>
+    <script type="text/javascript" src="../js/database_report4.js"></script>
+    <script type="text/javascript" src="../js/database_report5.js"></script>
+    <!-- AmCharts-->
+    <script type="text/javascript" src="../js/amcharts.js"></script>
+    <script type="text/javascript" src="../js/serial.js"></script>
+    <!-- TAG LENGUAGES -->
+    <script type="text/javascript" src="../js/constant-es.js"></script>
+
+    <script  type="text/javascript">
+
+        $(window).load(function(){
+            onInit();    
+            deteclenguage();
+    
+        });
+
+        function addID(abc){
+            $('#show_alias').css('z-index','1030');
+            $("#txtvalue").val(abc);
+        }        
+
+        function addIDDelete(id){
+            $('#show_alias').css('z-index','1030');
+            $("#txtvaluedelete").val(id);
+        }
+
+        function ocultaMiModal(){
+            var id = $("#txtvalue").val();
+            updateStateURL(id);
+        }
+
+        function ocultaMiModalDelete(){
+            var id = $("#txtvaluedelete").val();
+            deleteServer(id);
+        }
+
+
+        function newInfoServer(){
+            window.location.href = "../index.html?variable=1";
+        }
+
+  
+        document.addEventListener('deviceready', onDeviceReady, false);
+        
+        function onDeviceReady() {
+              document.addEventListener("backbutton", onBackKeyDown, false);            
+        }
+
+       function onBackKeyDown() {
+            navigator.app.exitApp();
+       }
+    
+           
+        function openReport1(){
+              window.location.href = "report1.html";
+              return false;        
+        }
+        
+       
+        function openReport2(){
+            window.location.href = "report2.html";
+            return false;
+        }
+        function openReport3(){
+            window.location.href = "report3.html";
+            return false;
+        }
+        function openReport4(){
+
+            showDialogStore();
+            return false;
+        }
+        function passReport4(){
+            window.location.href = "report4.html";
+            return false;
+        }
+        function openReport5(){
+            showDialogStore5();
+
+            return false;
+        }
+         function passReport5(){
+            window.location.href = "report5.html";
+            return false;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="ios8_container">
+        <header>
+            <div id="top_bar_space"></div>
+            <div class="options_bar_space">
+              <div id="btn_left"><button></button></div>
+              <div id="txt_maintitle"><div class="isotipo">RCS iReports</div></div>
+              <div id="btn_right"><button onclick="mostrarModal()" class="add_server"></button></div>
+            </div>      
+        </header>    
+
+        <div id="content">
+            <div class="menu">
+                <button class="item report1" onclick="openReport1();">
+                    <span class="box">
+                        <span class="iconReport"></span>
+                        <span id="lblgvst" class="item_title">Goals vs Sales</span>
+                        <span id="lblgvsd" class="item_subtitle">Compare your Goals vs Sales in real time</span>
+                    </span>                    
+                </button>
+                <button class="item report2" onclick="openReport2();">
+                    <span class="box">
+                        <span class="iconReport"></span>
+                        <span id="lblgvst_r2" class="item_title">Store Clasification</span>
+                        <span id="lblgvsd_r2" class="item_subtitle">Custom clasification by store</span>
+                    </span>
+                </button>
+                <button class="item report3" onclick="openReport3();">
+                    <span class="box">
+                        <span class="iconReport"></span>
+                        <span id="lblgvst_r3" class="item_title">Percentage Progress</span>
+                        <span id="lblgvsd_r3" class="item_subtitle">Sales progress by store</span>
+                    </span>
+                </button>
+                <button class="item report4" onclick="openReport4();">
+                    <span class="box">
+                        <span class="iconReport"></span>
+                        <span id="lblgvst_r4" class="item_title">Advance Graphic</span>
+                        <span id="lblgvsd_r4" class="item_subtitle">See sales, goals and breakeven in Graphic by store</span>
+                    </span>
+                </button>
+                <button class="item report5" onclick="openReport5();">
+                    <span class="box">
+                        <span class="iconReport"></span>
+                        <span id="lblgvst_r5" class="item_title">Goal Scope By Clerk</span>
+                        <span id="lblgvsd_r5" class="item_subtitle">Compare the sale progress by employee</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Modal -->
+
+    <div class="modal fade" id="show_loading" >
+        <div class="modal-dialog">
+            <div class="text-center loading">
+                <div></div>
+                <div></div>
+            </div>
+            <!-- <div class="text-center"><p name="txtloading" id="txtloading"></p></div> -->
+            <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="show_alias" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">×</button>
+                    <h4 class="modal-title" id="lblchangealit">
+                        Select your Alias
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-control select-alias" id="divlistado">
+                    </div>
+                </div>
+                <div class="modal-footer add">
+                    <button type="button" class="btn btn-modal" id="add_alias" name="add_alias" onclick="newInfoServer();delTables();">Add Alias</button>
+                </div>
+                <div class="modal-footer info">
+                    <p class="text-center" id="txtStore"></p>
+                    <p class="text-center" id="txtIP" >IP: </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalConfirm" >
+    <!--<form name="frmConfirm" id="frmConfirm">-->
+    <input type="hidden" name="txtvalue" id="txtvalue" value="0">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblchangealic">
+                        Want to change Server?
+                    </h4>
+                </div>
+                <div class="modal-footer add">
+                    <button type="button" class="btn btn-modal left" id="btnsi" name="btnsi" data-dismiss="modal" aria-hidden="true" onclick="delTables();ocultaMiModal();">Yes</button>
+                    <button type="button" class="btn btn-modal right nostrong" id="btnno" name="btnno" data-dismiss="modal" aria-hidden="true">No</button>
+                </div>
+            </div>
+        </div>
+    <!-- </form>-->
+    </div>
+
+    <!--Modal Store  report_4-->
+    <div class="modal fade" id="show_modalStore">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="title_store_menu_r4" class="modal-header text-center">Choose Your Store</div>
+                <div id="list_store">Tiendas para Reporte 4</div>
+                <button onclick="passReport4();" class="btn btn-modal" id="btnStore">Ok</button> 
+            </div>
+        </div>
+    </div>
+    
+       <!--Modal Store  report_5-->
+    <div class="modal fade" id="show_modalStore5">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="title_store_menu_r5" class="modal-header text-center">Choose Your Store</div>
+                <div id="list_store5">Tiendas para Report 5</div>
+                <button onclick="passReport5();" class="btn btn-modal" id="btnStore5">Ok</button> 
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="ModalConfirmDelete" >
+    <!--<form name="frmConfirm" id="frmConfirm">-->
+    <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lbldeleteser">
+                        Want to delete server?
+                    </h4>
+                </div>
+                <div class="modal-footer add">
+                    <button type="button" class="btn btn-modal left danger" id="btnsidelete" name="btnsi" data-dismiss="modal" aria-hidden="true" onclick="ocultaMiModalDelete()">Yes</button>
+                    <button type="button" class="btn btn-modal right" id="btnnodelete" name="btnno" data-dismiss="modal" aria-hidden="true">No</button>
+                </div>
+            </div>
+        </div>
+    <!-- </form>-->
+    </div>
+
+    <div class="modal fade" id="ModalMessage" >
+    <!--<form name="frmConfirm" id="frmConfirm">-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Can't delete an active server
+                    </h4>
+                </div>
+                <div class="modal-footer add"><button type="button" class="btn btn-rcs" data-dismiss="modal" aria-hidden="true">Ok</button>
+                </div>
+            </div>
+        </div>
+    <!-- </form>-->
+    </div>
+    
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <script type="text/javascript" src="../js/scripts2.js"></script>
+
+</body>
+
+</html>

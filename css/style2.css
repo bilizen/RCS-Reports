@@ -1,0 +1,83 @@
+.clasification p,
+.clasification i,
+.clasification span{
+    display: inline-block;
+}
+.clasification i{
+    width: 20%;
+    font-size: 16px;
+    font-style: normal;
+    text-align: right;
+    color: rgb(21, 125, 251);
+}
+.clasification p{
+    width: 50%;
+    font-size: 16px;
+    text-align: left;
+}
+.clasification span{
+    width: 30%;
+    padding: 0;
+    text-align: right;
+    font-size: 16px;
+}
+#txt_title2{
+    text-align: center;
+    line-height: 44px;
+    
+}
+
+#lbldateStart ,#lbldateEnd,#lbldateToCompare{
+    display: inline-block;
+}
+
+
+/* modal */
+.clasificationRow{
+    display: block;
+    width: 100%;   
+    
+}
+
+.clasificationRow .clasName{
+    display: table-cell;
+    width: 27%;
+    font-size: 14px;
+}
+.clasificationRow .rangeMax,
+.clasificationRow .rangeMin {
+    display: table-cell;
+    width: 23%;
+    font-size: 15px;
+}
+.clasificationRow .rangeMax input,
+.clasificationRow .rangeMin input{
+    width: 32px;
+    display: inline;
+}
+
+/*Report 2*/
+#veryCritical, #veryCritical span{
+    color: #B71C1C;
+}
+#critical, #critical span{
+    color: #E53935;
+}
+#deficient, #deficient span{
+    color: #FF8A65;
+}
+#acceptable, #acceptable span{
+    color: #42A5F5;
+}
+#good, #good span{
+    color: #FFB74D;
+}
+#veryGood, #veryGood span{
+    color: #66BB6A;
+}
+
+
+
+#modalgeneral{
+    z-index: 10000;
+}

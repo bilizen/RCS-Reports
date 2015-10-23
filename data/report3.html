@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>RCS Reports</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    	
+
+        <!-- import css -->
+    	<link href="../css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../css/style.css" rel="stylesheet">
+        <link href="../css/style3.css" rel="stylesheet">
+        <link href="../css/datepicker.css" rel="stylesheet">
+        <link rel="shortcut icon" href="">
+
+      <!-- Fav and touch icons -->
+
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/database.js"></script>
+        <script type="text/javascript" src="../js/database_report3.js"></script>
+       
+         <!-- TAG LENGUAGES -->
+        <script type="text/javascript" src="../js/constant-es.js"></script>
+
+    </head>
+
+<body>
+    <div id="ios8_container">
+
+        <header>
+            <div id="top_bar_space"></div>
+            <div class="options_bar_space">
+                <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences">Return</button></div>
+                <div id="txt_title" ><span id="refresh" onclick="">% Progress By Store</span></div>
+                <div id="btn_right" class="side calendar" ><button onclick="moveToLeft(2);"></button></div>
+                <div id="btn_right" onclick="mostrarInfo();"><button>Aa</button></div>
+            </div>      
+        </header>
+
+        <div id="content">
+            <div class="section">
+                <div class="section_content"> 
+                    <div class="select-region">
+                        <div data-value="1" class="init item innerLi" onclick="moveToLeft(1);" id="filterRegion">ALL REGION</div>
+                    </div>
+                </div>                
+            </div>
+            <div class="section list" >
+                    <span></span>
+                    <div class="section_content">
+
+                        <div id="contentReport3" >
+                            <!-- llenado de tiendas por clasification -->
+                        </div>            
+                    </div>
+            </div>
+
+            <div class="section">
+                <span></span>
+                <div class="section_content region" id="divRegion">
+                    <div id="selectRegion">
+                        <!-- items de combo region-->
+                    </div>
+                </div>
+            </div>
+
+        </div>        
+
+        <nav class="store">
+            <button class="navBtn1"><span id="lblTotalAll">TM:</span><span id="totalpromedio"></span></button>
+            <button class="navBtn2"><span id="totalGoalPercentage"></span></button>
+            <button class="navBtn3"><span id="totalSalePercentage"></span></button>  
+        </nav>
+        
+    </div>
+
+    <div id="floatWindow">
+
+        <header>
+            <div id="top_bar_space"></div>
+            <div class="options_bar_space">
+                <div id="btn_left" class="arrow"><button onclick="moveToRight();refresh_back3();" id="txtBack">Back</button></div>
+                <div id="txt_Options" >Options</div>
+                <div id="btn_right"></div>
+            </div>      
+        </header>
+
+        <div id="content" class="visualization">
+            <div class="section">
+                <span>Exit to menu</span>
+                <div class="section_content">
+                    Section para salir al menu
+                </div>                
+            </div>
+        </div> 
+
+        <div id="content" class="general">
+            <div class="section">
+                <span id="txt_choose_region">Choose a region</span>
+                <div class="section_content">
+                    <div id="select-region">
+                        <!-- COMBO-->                                              
+                    </div> 
+                </div>                
+            </div>
+        </div>
+
+        <!-- calendar -->
+        <div id="content" class="date">
+            <div class="section">
+                <span id="lblChooseRange">Choose a Range</span>
+                <div class="section_content">
+                    <div class="select-calendar">
+                        <div class="item"  onclick="showCalendar(1);mostrarCalendar();">
+                            <div id="lbldateStart">Date Start</div>
+                            <div id="dateStart" class="date"></div>
+                        </div>
+                        <hr>
+                        <div class="item"  onclick="showCalendar(2);mostrarCalendar();">
+                            <div id="lbldateEnd" >Date End</div>
+                            <div id="dateEnd" class="date"></div>
+                        </div>
+                    </div> 
+                </div>                
+            </div>
+            <div class="section">
+                <span id="lblChooseCompare">Choose a Date to Compare</span>
+                <div class="section_content">
+                    <div class="select-calendar">
+                        <div class="item"  onclick="showCalendar(3);mostrarCalendar();">
+                            <div id="lbldateToCompare">Date to Compare</div>
+                            <div id="dateToCompare" class="date"></div>
+                        </div>
+                    </div> 
+                </div>                
+            </div>
+        </div>   
+
+    </div>  
+
+    <!-- Modal -->
+    <div class="modal fade" id="show_loading" >
+        <div class="modal-dialog">
+            <div class="text-center loading">
+                <div></div>
+                <div></div>
+            </div>
+            <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
+        </div>
+    </div>
+
+    <!-- Information -->
+    <div class="modal fade" id="show_info" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">×</button>
+                    <h4 class="modal-title" id="lblmodaldicc">
+                        Dictionary
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="infoReport3">
+                        <i>T:</i><span id="lblTotalMonthGoal">Total Month Goal by Store</span>
+                    </div>
+                    <div class="infoReport3">
+                        <i>TM:</i><span id="lblTotalGoalAll">Total Goal All Store</span>
+                    </div>
+                    <div class="infoReport3">
+                        <i class="colorAcumulateSale"></i><span id="lblAcumulatePercentSale">: Acumulate Percent Sale</span>
+                    </div>
+                    <div class="infoReport3">
+                        <i class="colorAcumulateGoal"></i><span id="lblAcumulatePercentGoal">: Acumulate Percent Goal</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-modal" data-dismiss="modal" aria-hidden="true"  id="txt_ok" >Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Calendar-->
+    <div class="modal fade" id="show_calendar" >
+        <input type="hidden" name="txtvalue" id="txtvalue" value="0">
+        <div class="modal-dialog">
+            <div class="modal-content" id="dinamicContent">   
+                <div class="modal-body">      
+
+                </div>
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-modal left" data-dismiss="modal" aria-hidden="true">Cancel</button>                     
+                    <button type="button" class="btn btn-modal right" onclick="updaTableCustomDate3();" data-dismiss="modal" aria-hidden="true">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+            //primero se ejecuta ready luego el load
+            $(document).ready(function(){/*** caraga elemento de la estructura html y estilos ***/
+                onInit();/**verificamos la base de datos**/
+                existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
+                existDataRegion();//llenamos la tabla de regiones
+                
+            });
+            
+            $(window).load(function(){/***asegura que la pagina ya esta cargada**/
+            
+                //var value="";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
+                //value = $(".select-clasification .init").attr('data-value');
+                setcombo();
+                deteclenguage3();  
+            });
+        </script>
+    
+    
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <script type="text/javascript" src="../js/scripts2.js"></script>
+    <script type="text/javascript" src="../js/scripts3.js"></script>
+
+</body>
+
+</html>

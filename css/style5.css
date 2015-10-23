@@ -1,0 +1,82 @@
+.dateStartSection,
+.dateEndSection{
+    position: relative;
+    width: 64px;
+    height: 43px;
+    display: inline-flex;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+#txt_title{
+    width: inherit;
+}
+#nameStore5 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#btn_right.storeIcon{
+    background-image: url(../img/iconStore.svg);
+    background-position: center;
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+}
+
+#list_store5{
+    width: 100%;
+    height: 244px;
+    overflow-y: scroll;
+    
+}
+
+#lblDateStart_r4,
+#lblDateEnd_r4{
+    font-size: 11px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    -webkit-transform: translate3D(0,-10px,0);
+    transform: translate3D(0,-10px,0);
+}
+#dateStartTitle,
+#dateEndTitle{
+    font-size: 12px;
+    -webkit-transform: translate3D(0,10px,0);
+    transform: translate3D(0,10px,0);
+}
+#lbldateStartR4,#lbldateEndR4{display: inline-block;}
+#list_store5 .loader-ios{
+	text-align: center;
+	margin-top: 112px;
+}
+thead th{
+	text-align: center;
+	font-size: 16px;
+	background-color: rgba(248, 248, 248, 0.9);
+}
+tbody tr td{
+	font-size: 14px;
+}
+tbody tr td:first-child{
+	text-align: left;
+	padding-left: 4%;
+	white-space: nowrap;
+}
+thead th:nth-child(5), tbody tr td:nth-child(5){
+	color: rgb(21, 125, 251);;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 600px) { 
+    .dateStartSection{
+        transition: all 0.2s;
+        opacity: 0;
+    }
+    .dateEndSection{
+        transition: all 0.2s;
+        opacity: 0;
+    }
+}
