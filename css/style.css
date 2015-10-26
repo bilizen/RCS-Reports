@@ -1,8 +1,3 @@
-/*@font-face {
-  font-family: 'Helvetica Neue';*/
-/*  src: url('../fonts/HelveticaNeue-Light.otf') format('opentype');*/
-/*  src: url('../fonts/HelveticaNeue-Normal.ttf') format('truetype');
-}*/
 
 html,body{
     height:100% !important;
@@ -160,14 +155,15 @@ header button:active{
     background-size: 24px 46px;
     background-repeat: no-repeat;
 }
-#txt_maintitle,#txt_title, #top_txt_title,#txt_Options{
+#txt_login,#txt_maintitle,#txt_title, #top_txt_title,#txt_Options{
     text-align: center;
-    width: 195px;
+    width: 160px;
     margin: 0 auto;
     line-height: 44px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: bold;
 }
 #txt_maintitle .isotipo {
     padding-left: 44px;
@@ -374,6 +370,9 @@ input[type="checkbox"]:checked + label:before {
     overflow-y: scroll;
     padding-top: 11px;
 }
+.menu button:nth-child(2n){
+    background-color: #f1f1f1;
+}
 .add_server{
     padding-right: 34px;
     background-image: url(../img/iconServer.svg) !important;
@@ -397,6 +396,10 @@ input[type="checkbox"]:checked + label:before {
     background-position: right center;
     background-size: 24px 44px;
     background-repeat: no-repeat;  
+}
+.menu .item{
+    margin-bottom: 0px;
+    border-bottom: none;
 }
 .item .box,.menu .box{
     display: block;
@@ -424,6 +427,7 @@ input[type="checkbox"]:checked + label:before {
     height: 42px;
     vertical-align: bottom;
     font-size: 20px;
+    font-weight: bold;
     text-align: left;
 }
 .item .box .item_subtitle,.menu .box .item_subtitle{
@@ -448,52 +452,52 @@ input[type="checkbox"]:checked + label:before {
 }
 .report1 .iconReport{
     background: rgba(136,58,209);
-    background: url('../img/iconReport1.svg') center center no-repeat, -moz-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat,  -webkit-gradient(left top, left bottom, color-stop(0%, rgba(136,65,209,1)), color-stop(100%, rgba(86,76,143,1)));
-    background: url('../img/iconReport1.svg') center center no-repeat,  -webkit-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, -o-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, -ms-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat,  linear-gradient(to bottom, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
+    background: url('../img/iconReport1.svg') center center no-repeat;
+    background: url('../img/iconReport1.svg') center center no-repeat;
+    background: url('../img/iconReport1.svg') center center no-repeat;
+    background: url('../img/iconReport1.svg') center center no-repeat;
+    background: url('../img/iconReport1.svg') center center no-repeat;
+    background: url('../img/iconReport1.svg') center center no-repeat;
     background-size: 80%, cover;
 }
 .report2 .iconReport{
     background: rgba(0,183,255,1);
-    background: url('../img/iconReport2.svg') center center no-repeat, -moz-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(58,197,207,1)), color-stop(100%, rgba(68,143,143,1)));
-    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -o-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -ms-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, linear-gradient(to bottom, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat;
+    background: url('../img/iconReport2.svg') center center no-repeat;
+    background: url('../img/iconReport2.svg') center center no-repeat;
+    background: url('../img/iconReport2.svg') center center no-repeat;
+    background: url('../img/iconReport2.svg') center center no-repeat;
+    background: url('../img/iconReport2.svg') center center no-repeat;
     background-size: 80%, cover;
 }
 .report3 .iconReport{
    background: rgba(0,183,255,1);
-    background: url('../img/iconReport3.svg') center center no-repeat, -moz-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(60,207,65,1)), color-stop(100%, rgba(102,143,68,1)));
-    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -o-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -ms-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat,  linear-gradient(to bottom, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat;
+    background: url('../img/iconReport3.svg') center center no-repeat;
+    background: url('../img/iconReport3.svg') center center no-repeat;
+    background: url('../img/iconReport3.svg') center center no-repeat;
+    background: url('../img/iconReport3.svg') center center no-repeat;
+    background: url('../img/iconReport3.svg') center center no-repeat;
     background-size: 80%, cover;
 }
 .report4 .iconReport{
    background: rgba(0,183,255,1);
-    background: url('../img/iconReport4.svg') center center no-repeat,  -moz-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(207,60,60,1)), color-stop(100%, rgba(143,68,68,1)));
-    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -o-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -ms-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, linear-gradient(to bottom, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat;
+    background: url('../img/iconReport4.svg') center center no-repeat;
+    background: url('../img/iconReport4.svg') center center no-repeat;
+    background: url('../img/iconReport4.svg') center center no-repeat;
+    background: url('../img/iconReport4.svg') center center no-repeat;
+    background: url('../img/iconReport4.svg') center center no-repeat;
     background-size: 80%, cover;
 }
 .report5 .iconReport{
     background: rgba(0,183,255,1);
-    background: url('../img/iconReport5.svg') center center no-repeat, -moz-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport5.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,183,255,1)), color-stop(100%, rgba(0,119,255,1)));
-    background: url('../img/iconReport5.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport5.svg') center center no-repeat, -o-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport5.svg') center center no-repeat, -ms-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport5.svg') center center no-repeat, linear-gradient(to bottom, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
+    background: url('../img/iconReport5.svg') center center no-repeat;
+    background: url('../img/iconReport5.svg') center center no-repeat;
+    background: url('../img/iconReport5.svg') center center no-repeat;
+    background: url('../img/iconReport5.svg') center center no-repeat;
+    background: url('../img/iconReport5.svg') center center no-repeat;
+    background: url('../img/iconReport5.svg') center center no-repeat;
     background-size: 80%, cover;
 }
 
@@ -569,6 +573,9 @@ hr {
     padding: 0 6%;
     /*height: 99px;*/
     line-height: 0.8em;
+}
+.store:nth-child(2n){
+    background-color: #e1e1e1;
 }
 .store h1{
     width: 100%;
@@ -930,13 +937,13 @@ button.delete{
 @media (-webkit-max-device-pixel-ratio: 1) {
     li, input, textarea {
         background-image: none;
-        border-bottom: 1px solid rgb(200, 199, 204);
+        border-bottom: 1px solid rgb(142, 142, 146);
     }
 }
 @media (max-device-pixel-ratio: 1) {
     li, input, textarea {
         background-image: none;
-        border-bottom: 1px solid rgb(200, 199, 204);
+        border-bottom: 1px solid rgb(142, 142, 146);
     }
 }
 
@@ -1040,6 +1047,9 @@ button.delete{
 
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
+    #txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options{
+        width: 192px;
+    }
     .item .box .item_subtitle, .menu .box .item_subtitle{
         font-size: 13pt;
         line-height: 14px;
@@ -1107,4 +1117,23 @@ button.delete{
     header button{
         font-size: 16pt;
     }
+
+    .modal-dialog{
+        width: 520px;
+    }
+    .infoReport1 i, .infoReport1 span,
+    .modal-title{
+        font-size: 18px;
+    }
+    .infoReport1 span{
+        width: 38%;
+        vertical-align: inherit; 
+    }
+    .infoReport1 i{
+        width: 11%;
+    }
+    .infoReport1 {
+        margin-bottom: 14px;
+    }
+
 }
