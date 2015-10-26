@@ -1,8 +1,8 @@
-@font-face {
-  font-family: 'Helvetica Neue';
+/*@font-face {
+  font-family: 'Helvetica Neue';*/
 /*  src: url('../fonts/HelveticaNeue-Light.otf') format('opentype');*/
-  src: url('../fonts/HelveticaNeue-Normal.ttf') format('truetype');
-}
+/*  src: url('../fonts/HelveticaNeue-Normal.ttf') format('truetype');
+}*/
 
 html,body{
     height:100% !important;
@@ -447,43 +447,43 @@ input[type="checkbox"]:checked + label:before {
     border-radius: 18px;
 }
 .report1 .iconReport{
-    background: rgba(0,183,255,1);
-    background: url('../img/iconReport1.svg') center center no-repeat, -moz-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,183,255,1)), color-stop(100%, rgba(0,119,255,1)));
-    background: url('../img/iconReport1.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, -o-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, -ms-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport1.svg') center center no-repeat, linear-gradient(to bottom, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
+    background: rgba(136,58,209);
+    background: url('../img/iconReport1.svg') center center no-repeat, -moz-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
+    background: url('../img/iconReport1.svg') center center no-repeat,  -webkit-gradient(left top, left bottom, color-stop(0%, rgba(136,65,209,1)), color-stop(100%, rgba(86,76,143,1)));
+    background: url('../img/iconReport1.svg') center center no-repeat,  -webkit-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
+    background: url('../img/iconReport1.svg') center center no-repeat, -o-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
+    background: url('../img/iconReport1.svg') center center no-repeat, -ms-linear-gradient(top, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
+    background: url('../img/iconReport1.svg') center center no-repeat,  linear-gradient(to bottom, rgba(136,65,209,1) 0%, rgba(86,76,143,1) 100%);
     background-size: 80%, cover;
 }
 .report2 .iconReport{
     background: rgba(0,183,255,1);
-    background: url('../img/iconReport2.svg') center center no-repeat, -moz-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,183,255,1)), color-stop(100%, rgba(0,119,255,1)));
-    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -o-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, -ms-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport2.svg') center center no-repeat, linear-gradient(to bottom, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat, -moz-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(58,197,207,1)), color-stop(100%, rgba(68,143,143,1)));
+    background: url('../img/iconReport2.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat, -o-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat, -ms-linear-gradient(top, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
+    background: url('../img/iconReport2.svg') center center no-repeat, linear-gradient(to bottom, rgba(58,197,207,1) 0%, rgba(68,143,143,1) 100%);
     background-size: 80%, cover;
 }
 .report3 .iconReport{
    background: rgba(0,183,255,1);
-    background: url('../img/iconReport3.svg') center center no-repeat, -moz-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,183,255,1)), color-stop(100%, rgba(0,119,255,1)));
-    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -o-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, -ms-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport3.svg') center center no-repeat, linear-gradient(to bottom, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat, -moz-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(60,207,65,1)), color-stop(100%, rgba(102,143,68,1)));
+    background: url('../img/iconReport3.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat, -o-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat, -ms-linear-gradient(top, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
+    background: url('../img/iconReport3.svg') center center no-repeat,  linear-gradient(to bottom, rgba(60,207,65,1) 0%, rgba(102,143,68,1) 100%);
     background-size: 80%, cover;
 }
 .report4 .iconReport{
    background: rgba(0,183,255,1);
-    background: url('../img/iconReport4.svg') center center no-repeat, -moz-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,183,255,1)), color-stop(100%, rgba(0,119,255,1)));
-    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -o-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, -ms-linear-gradient(top, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
-    background: url('../img/iconReport4.svg') center center no-repeat, linear-gradient(to bottom, rgba(0,183,255,1) 0%, rgba(0,119,255,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat,  -moz-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-gradient(left top, left bottom, color-stop(0%, rgba(207,60,60,1)), color-stop(100%, rgba(143,68,68,1)));
+    background: url('../img/iconReport4.svg') center center no-repeat, -webkit-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat, -o-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat, -ms-linear-gradient(top, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
+    background: url('../img/iconReport4.svg') center center no-repeat, linear-gradient(to bottom, rgba(207,60,60,1) 0%, rgba(143,68,68,1) 100%);
     background-size: 80%, cover;
 }
 .report5 .iconReport{
@@ -940,33 +940,12 @@ button.delete{
     }
 }
 
-@media only screen   
-    and (min-device-width : 375px)
-    and (max-device-width : 667px) 
-    and (width : 375px) 
-    and (height : 559px) 
-    and (orientation : portrait) 
-    and (color : 8)
-    and (device-aspect-ratio : 375/667)
-    and (aspect-ratio : 375/559)
-    and (device-pixel-ratio : 2)
-    and (-webkit-min-device-pixel-ratio : 2)
-{ 
-
-
-}
-
-
 .loader-ios {
-/*  position: absolute;
-  top: 50%;
-  left: 50%;*/
   -webkit-animation: iosIntro .6s;
           animation: iosIntro .6s;
 }
 .loader-ios svg {
-  /*fill: #868686;*/
-  fill: #eee;
+  fill: #e6e6e6;
 }
 .loader-ios svg path:nth-of-type(1) {
   -webkit-animation: pulse 1s infinite linear;
@@ -1057,4 +1036,75 @@ button.delete{
             transform: scale(1);
     opacity: 1;
   }
+}
+
+/* iPad in portrait & landscape */
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+    .item .box .item_subtitle, .menu .box .item_subtitle{
+        font-size: 13pt;
+        line-height: 14px;
+        color: #333;
+        display: block;
+    }
+    .list .item, .menu .item{
+        height: 120px;
+        background-size: 28px;
+    }
+    .item .box .item_title, .menu .box{
+        height: 44px;
+        font-size: 20pt;
+        vertical-align: middle;
+    }
+    .iconReport{
+        width: 72px;
+        height: 72px;
+    }
+    .item .box, .menu .box{
+        padding-left: 82px;
+    }
+    .add_server {
+        padding-right: 44px;
+        background-size: 34px !important;
+    }
+    #content{
+        background-size: cover;
+    }
+    .list .item, .menu .item {
+        background-color: rgba(253, 253, 253, 0.95);
+    }
+    .store{
+        line-height: 1.75em;
+    }
+    .store h1 {
+        height: 40px;
+        font-size: 21pt;
+    }
+    .actual i, .global i,
+    .actual p, .global p,
+    .actual span, .global span {
+        font-size: 18pt;
+    }
+    .actual p, .global p{
+        width: 28.5%;
+    }
+    .actual span, .global span {
+        width: 19%;
+        text-align: center;
+        color: white !important;
+    }
+    .actual span.red, .global span.red{
+        background-color: red;
+        border-radius: 8pt;
+    } 
+    .item,.innerLi>span{
+        font-size: 15pt;
+    }
+    .item.innerLi>div, .item>.date{
+        font-size: 14pt;
+        line-height: 2.3em;
+    }
+    #txt_maintitle, #txt_title, #top_txt_title, #txt_Options,
+    header button{
+        font-size: 16pt;
+    }
 }
