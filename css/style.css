@@ -136,7 +136,7 @@ header button{
     font-weight: 300;
     text-overflow: ellipsis !important;
     max-width: 88px;
-    min-width: 40px;
+    min-width: 44px;
 }
 header button:active{
     opacity: 0.3;
@@ -574,8 +574,8 @@ hr {
     /*height: 99px;*/
     line-height: 0.8em;
 }
-.store:nth-child(2n){
-    background-color: #e1e1e1;
+.store:nth-of-type(2n){
+    background-color: #f0f0f0;
 }
 .store h1{
     width: 100%;
@@ -585,7 +585,7 @@ hr {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    color: rgb(21, 125, 251);
+    color: #111;
 }
 .actual p,.global p,
 .actual i,.global i,
@@ -608,6 +608,20 @@ hr {
     padding-right: 0;
     text-align: right;
     font-size: 16px;
+    text-align: center;
+    color: white !important;
+}
+.actual span.red, .global span.red{
+    background-color: #CA1D12;
+    border-radius: 8pt;
+} 
+.actual span.green, .global span.green {
+    background-color: #55982E;
+    border-radius: 8pt;
+}
+.actual span.ambar, .global span.ambar {
+    background-color: #cfb337;
+    border-radius: 8pt;
 }
 div[class^="graphic-"]
 {
@@ -927,6 +941,10 @@ button.delete{
     margin-left: 0px !important;
 }
 
+.modal-title{
+    font-weight: bold;
+}
+
 
  #css-filter-blur:hover {
     filter: progid:DXImageTransform.Microsoft.Blur(Strength=2);
@@ -1080,7 +1098,7 @@ button.delete{
         background-size: cover;
     }
     .list .item, .menu .item {
-        background-color: rgba(253, 253, 253, 0.95);
+        background-color: rgb(253, 253, 253);
     }
     .store{
         line-height: 1.75em;
@@ -1095,17 +1113,21 @@ button.delete{
         font-size: 18pt;
     }
     .actual p, .global p{
-        width: 28.5%;
+        width: 32.5%;
+    }
+    .actual i, .global i {
+        width: 8%;
     }
     .actual span, .global span {
         width: 19%;
-        text-align: center;
-        color: white !important;
     }
-    .actual span.red, .global span.red{
-        background-color: red;
-        border-radius: 8pt;
-    } 
+    .actual span, .global span{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    input[type="checkbox"]+ label{
+        font-size: 15pt;
+    }
     .item,.innerLi>span{
         font-size: 15pt;
     }
@@ -1114,16 +1136,16 @@ button.delete{
         line-height: 2.3em;
     }
     #txt_maintitle, #txt_title, #top_txt_title, #txt_Options,
-    header button{
+    header button,.btn-modal, .btn-modal:hover{
         font-size: 16pt;
     }
 
     .modal-dialog{
-        width: 520px;
+        width: 525px;
     }
     .infoReport1 i, .infoReport1 span,
     .modal-title{
-        font-size: 18px;
+        font-size: 14pt;
     }
     .infoReport1 span{
         width: 38%;
@@ -1133,7 +1155,7 @@ button.delete{
         width: 11%;
     }
     .infoReport1 {
-        margin-bottom: 14px;
+        margin-bottom: 14pt;
     }
 
 }
