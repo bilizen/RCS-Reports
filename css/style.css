@@ -80,7 +80,7 @@ label{
 }
 #ios8_container{
     background-image: none;
-    background-color: #e6e7eb;
+    background-color: #C3C5CA;
     background-repeat: no-repeat;
 }
 .ios8_bg{
@@ -125,7 +125,7 @@ header{
     background-color: rgb(246, 246, 246);
 }
 .options_bar_space{
-    background-color: rgba(248, 248, 248, 0.9);
+    background-color: rgb(248, 248, 248);
     border-bottom: 1px solid rgb(200, 199, 204);
 }
 header button{
@@ -135,7 +135,7 @@ header button{
     padding-left: 4px;
     font-weight: 300;
     text-overflow: ellipsis !important;
-    max-width: 88px;
+    max-width: 92px;
     min-width: 44px;
 }
 header button:active{
@@ -390,12 +390,14 @@ input[type="checkbox"]:checked + label:before {
     height: 100px;
     margin-bottom: 11px;
     background-color: #FDFDFD;
-    border-bottom: 1px solid rgb(200, 199, 204);
     border-top: 1px solid rgb(200, 199, 204);
     background-image: url(../img/nextBtnSilver.svg);
     background-position: right center;
     background-size: 24px 44px;
     background-repeat: no-repeat;  
+}
+.list .item:last-of-type,.menu .item:last-of-type{
+    border-bottom: 1px solid rgb(200, 199, 204);
 }
 .menu .item{
     margin-bottom: 0px;
@@ -540,8 +542,7 @@ hr {
     padding: 0 5%;
     height: 44px;
     width: 100%;
-    line-height: 2.3em;
-    
+    line-height: 32pt;
 }
 .item.selected{    
     color: #fff;
@@ -567,20 +568,22 @@ hr {
     background-repeat: no-repeat;
     background-position: right center;
     padding-left: 6%;
-    
+    font-weight: bold;
+    font-size: 14pt;
 }
 .store{
-    padding: 0 6%;
+    padding: 4pt 6%;
     /*height: 99px;*/
     line-height: 0.8em;
 }
 .store:nth-of-type(2n){
-    background-color: #f0f0f0;
+    background-color: #eaeaeb;
 }
 .store h1{
     width: 100%;
     height: 32px;
-    font-size: 20px;    
+    font-size: 20px;
+    font-weight: bold;    
     line-height: 1.6em;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -606,6 +609,8 @@ hr {
 .actual span,.global span{
     width: 23%;
     padding-right: 0;
+    padding-top: 4pt;
+    padding-bottom: 4pt;
     text-align: right;
     font-size: 16px;
     text-align: center;
@@ -695,16 +700,18 @@ div[class^="detalle-"] span{
     padding: 0px ; 
     margin-top: 0px; 
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 14pt;
+    font-weight: bold;
     color: #000;
 }
+
 
 /* para el floatWindow */
 .mostrar{
     -webkit-animation-name: floatWindowShow; 
-    -webkit-animation-duration: .45s;
+    -webkit-animation-duration: .40s;
     animation-name: floatWindowShow;
-    animation-duration: .45s;
+    animation-duration: .40s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
      -webkit-animation-timing-function: cubic-bezier(.20, .50, .90, 1); 
@@ -736,9 +743,9 @@ div[class^="detalle-"] span{
 }
 .ocultar{
     -webkit-animation-name: floatWindowHide; 
-    -webkit-animation-duration: .45s;
+    -webkit-animation-duration: .35s;
     animation-name: floatWindowHide;
-    animation-duration: .45s;
+    animation-duration: .35s;
     -webkit-animation-fill-mode: inherit;
     animation-fill-mode: inherit;
     -webkit-animation-timing-function: cubic-bezier(.60, .80, .50, .60); 
@@ -859,6 +866,7 @@ div[class^="detalle-"] span{
 #alias-item span{
     width: 100%;
     display: block;
+    font-weight: bold;
 }
 button.delete{
     position: absolute;
@@ -878,7 +886,7 @@ button.delete{
     overflow-y:hidden;
 }
 .modal-header{
-    
+    padding: 9pt;
 }
 .modal.fade .modal-dialog {
      -webkit-transform: translate(0,-2%) scale3d(1.35,1.35,1); 
@@ -943,6 +951,10 @@ button.delete{
 
 .modal-title{
     font-weight: bold;
+    text-align: center;
+}
+ #list_store h1:nth-child(2n){
+    background-color: #e6e6e9;
 }
 
 
@@ -1066,7 +1078,7 @@ button.delete{
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
     #txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options{
-        width: 192px;
+        width: 255px;
     }
     .item .box .item_subtitle, .menu .box .item_subtitle{
         font-size: 13pt;
@@ -1101,6 +1113,7 @@ button.delete{
         background-color: rgb(253, 253, 253);
     }
     .store{
+        padding: 6pt 6%;
         line-height: 1.75em;
     }
     .store h1 {
@@ -1157,5 +1170,73 @@ button.delete{
     .infoReport1 {
         margin-bottom: 14pt;
     }
+    
+    #list_store h1, #list_store5 h1 {
+        padding: 12pt 6%;
+        font-size: 15pt;
+    }
+    .modal-header {
+        font-size: 14pt;
+    }
+    #list_store{
+        height: 320px !important;
+    }
+    .ui-datepicker-month{
+        font-size: 16pt;
+    }
+    .ui-datepicker-calendar tbody tr td {
+        text-align: center;
+        height: 53px;
+        width: 30px;
+        line-height: 53px;
+        font-size: 15pt;
+    }
+    span.ui-icon.ui-icon-circle-triangle-e,
+    span.ui-icon.ui-icon-circle-triangle-w{
+        font-size: 16pt;
+    }
+    #alias-item{
+        height: 54px;
+        line-height: 54px;
+    }
+    button.delete {
+        height: 54px;
+        width: 54px;
+        background-size: 32px;
+    }
+    #alias-item span,
+    #txtStore{
+        font-size: 16pt;
+    }
+    #divlistado{
+        height: 240px;
+    }
+    label,#ip_1, #ip_2, #ip_3, #ip_4{
+        font-size: 16pt;
+    }
+}
 
+/*iPhone 6 in portrait & landscape*/
+@media only screen and (min-width : 375px) and (max-width : 667px) { 
+    .actual span, .global span{
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 4pt;
+        width: 31%;
+    }
+    .store{
+        padding: 4pt 6%;
+    }
+    .actual i, .global i {
+        width: 11%;
+    }
+    .actual p, .global p {
+        width: 23.5%;
+    }
+    .innerLi {
+        font-size: 12pt;
+    }
+    .innerLi>span{
+        font-size: 12pt;
+    }
 }

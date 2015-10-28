@@ -25,7 +25,10 @@
     width: 100%;
     height: 244px;
     overflow-y: scroll;
-    
+        
+}
+ #list_store5 h1:nth-child(2n){
+    background-color: #e6e6e9;
 }
 
 #lblDateStart_r4,
@@ -48,21 +51,31 @@
 	text-align: center;
 	margin-top: 112px;
 }
-thead th{
-	text-align: center;
-	font-size: 16px;
-	background-color: rgba(248, 248, 248, 0.9);
+.table thead th{
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: #43B580;
+    white-space: nowrap;
 }
-tbody tr td{
+#list-empleados tr td{
 	font-size: 14px;
 }
-tbody tr td:first-child{
+#list-empleados tr td:first-child{
 	text-align: left;
 	padding-left: 4%;
 	white-space: nowrap;
 }
-thead th:nth-child(5), tbody tr td:nth-child(5){
-	color: rgb(21, 125, 251);;
+#list-empleados tr td:nth-child(5){
+	color: white;
+    background-color: #436FB5;
+    border-radius: 8pt;
+}
+#list-empleados td{
+    font-size: 12pt;
+}
+#list-empleados tr td:first-child{
+    font-weight: bold;
 }
 
 .table {
@@ -78,5 +91,36 @@ thead th:nth-child(5), tbody tr td:nth-child(5){
     .dateEndSection{
         transition: all 0.2s;
         opacity: 0;
+    }
+}
+/* iPad in portrait & landscape */
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+    #list_store5{
+        height: 320px;
+    }
+    #lblDateStart, #lblDateEnd{
+        font-size: 11pt;
+    }
+    #lblDateStart_r4, #lblDateEnd_r4{
+        font-size: 11pt;
+    }
+    #dateStartTitle, #dateEndTitle{
+        font-size: 11pt;
+        width: 100%;
+    }
+    .dateStartSection, .dateEndSection{
+        width: 90px;
+    }
+    .table thead th {
+        font-size: 16pt;
+    }
+    #list-empleados td{
+        font-size: 14pt !important;
+    }    
+}
+/*iPhone 6 in portrait & landscape*/
+@media only screen and (min-width : 375px) and (max-width : 667px) { 
+    #list-empleados tr td:nth-child(5){
+        border-radius: 4pt;
     }
 }

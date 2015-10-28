@@ -4,22 +4,25 @@
     display: inline-block;
 }
 .clasification i{
-    width: 20%;
+    width: 29%;
     font-size: 16px;
     font-style: normal;
-    text-align: right;
+    text-align: center;
     color: rgb(21, 125, 251);
 }
 .clasification p{
-    width: 50%;
+    width: 44%;
     font-size: 16px;
     text-align: left;
+    font-weight: bold;
 }
 .clasification span{
-    width: 30%;
+    width: 27%;
     padding: 0;
     text-align: right;
     font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 #txt_title2{
     text-align: center;
@@ -43,6 +46,7 @@
     display: table-cell;
     width: 27%;
     font-size: 14px;
+    font-weight: bold;
 }
 .clasificationRow .rangeMax,
 .clasificationRow .rangeMin {
@@ -57,27 +61,100 @@
 }
 
 /*Report 2*/
-#veryCritical, #veryCritical span{
+#veryCritical{
     color: #B71C1C;
 }
-#critical, #critical span{
+#veryCritical span{
+    color: white;
+    background-color: #B71C1C;
+}
+#critical{
     color: #E53935;
 }
-#deficient, #deficient span{
+#critical span{
+    color: white;
+    background-color: #E53935;
+}
+#deficient{
     color: #FF8A65;
 }
-#acceptable, #acceptable span{
+#deficient span{
+    color: white;
+    background-color: #FF8A65;
+}
+#acceptable{
     color: #42A5F5;
 }
-#good, #good span{
+#acceptable span{
+    color: white;
+    background-color: #42A5F5;
+}
+#good{
     color: #FFB74D;
 }
-#veryGood, #veryGood span{
+#good span{
+    color: white;
+    background-color: #FFB74D;
+}
+#veryGood{
     color: #66BB6A;
 }
-
-
+#veryGood span{
+    color: white;
+    background-color: #66BB6A;
+}
 
 #modalgeneral{
     z-index: 10000;
+}
+.clasification span{
+    border-radius: 8pt;
+    text-align: center;
+}
+
+/* iPad in portrait & landscape */
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+    .clasification p,
+    .clasification i,
+    .clasification span{
+        font-size: 18pt;
+    }
+    .clasification p{
+        width: 59%;
+    }
+    .clasification i{
+        width: 20%;
+    }
+    .clasification span{
+        width: 21%;
+        border-radius: 8pt;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .clasificationRow .clasName{
+        width: 57%;
+        font-size: 14pt;
+        padding-bottom: 14pt;
+    }
+    .clasificationRow .rangeMax input, .clasificationRow .rangeMin input{
+        width: 44px;
+    }
+    .clasificationRow .rangeMax, .clasificationRow .rangeMin{
+        font-size: 14pt;
+    }
+}
+/*iPhone 6 in portrait & landscape*/
+@media only screen and (min-width : 375px) and (max-width : 667px) { 
+    .clasification span{
+        width: 27%;
+        border-radius: 4pt;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .clasification i{
+        width: 22%;
+    }
+    .clasification p{
+        width: 51%;
+    }
 }

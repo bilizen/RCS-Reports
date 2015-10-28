@@ -53,7 +53,7 @@
 }
 
 .active{
-    background-color: rgb(21, 125, 251);
+    background-color: rgb(21, 125, 251) !important;
     color: white;
 }
 
@@ -84,4 +84,23 @@ text{
         transition: all 0.2s;
         opacity: 0;
     }
+}
+
+
+/* iPad in portrait & landscape */
+@media only screen and (min-width : 768px) and (max-width : 1024px)  {
+    text {
+        font-size: 9pt;
+    }
+    #lblDateStart_r4, #lblDateEnd_r4{
+        font-size: 11pt;
+    }
+    #dateStartTitle, #dateEndTitle{
+        font-size: 11pt;
+        width: 100%;
+    }
+    .dateStartSection, .dateEndSection{
+        width: 90px;
+    }
+
 }
