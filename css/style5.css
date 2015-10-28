@@ -86,6 +86,8 @@
 @media (max-width: 600px) { 
     .dateStartSection{
         transition: all 0.2s;
+        transform: rotateX(90deg);
+        -webkit-transform: rotateX(90deg);
         opacity: 0;
     }
     .dateEndSection{

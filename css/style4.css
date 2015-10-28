@@ -28,6 +28,11 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+#lbl_Options {
+    text-align: center;
+    line-height: 44px;
+    font-weight: bold;
+}
 
 #list_store{
 	position: relative;
