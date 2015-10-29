@@ -75,7 +75,7 @@ function MSG_LBL_SC_D() {
 }
 
 function MSG_LBL_PP() {
-    $("#lblgvst_r3").html("Porcentaje de Progreso");
+    $("#lblgvst_r3").html("Progreso en % por tienda");
 }
 
 function MSG_LBL_PP_D() {
@@ -425,7 +425,7 @@ function MSG_VERY_CRITICAL_2() {
 
 /**************REPORTE3***************/
 function MSG_LBL_PROGRESS_BY_STORE_3() {
-    $("#refresh").text("Progreso por Tienda");
+    $("#refresh").text("Progreso en % por Tienda");
 }
 
 function MSG_RETURN_3() {
