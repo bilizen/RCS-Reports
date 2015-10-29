@@ -1,6 +1,7 @@
 
 html,body{
     height:100% !important;
+    overflow-x: hidden;
 }
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea, header, button {
     margin: 0;
@@ -15,6 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     -webkit-touch-callout: none;
 } 
 body{
+    position: relative;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -729,7 +731,7 @@ div[class^="detalle-"] span{
         -webkit-transform: translate3d(110%,0,0) rotateY(0deg);
     }
     100%{
-        -webkit-transform: translate3d(0%,0,0) rotateY(0deg);
+        -webkit-transform: translate3d(0%,0,0) ; 
     }
 }
 
@@ -741,7 +743,7 @@ div[class^="detalle-"] span{
         transform: translate3d(110%,0,0) rotateY(0deg);
     }
     100%{
-        transform: translate3d(0%,0,0) rotateY(0deg);
+        transform: translate3d(0%,0,0); 
     }
 }
 .ocultar{
@@ -843,7 +845,7 @@ div[class^="detalle-"] span{
         -webkit-transform: translate3d(-10%,0,0)  rotateY(0deg);
     }
     100%{
-        -webkit-transform: translate3d(0%,0,0)  rotateY(0deg);
+        -webkit-transform: translate3d(0%,0,0) scale(0,0);
     }
 }
 
@@ -855,7 +857,7 @@ div[class^="detalle-"] span{
         transform: translate3d(-10%,0,0) rotateY(0deg);
     }
     100%{
-        transform: translate3d(0%,0,0) rotateY(0deg);
+        transform: translate3d(0%,0,0) scale(0,0);
     }
 }
 
