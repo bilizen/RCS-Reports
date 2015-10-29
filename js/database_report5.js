@@ -431,8 +431,8 @@ function changeLanguage5(){
 
         //head
          $('#txtReturn').text('Regresar');
-         $('#lblDateEnd').text('Fecha Fin');
-         $('#lblDateStart').text('Fecha Inicio');
+         $('#lblDateEnd').text('Fecha fin');
+         $('#lblDateStart').text('Fecha inicio');
 
         //tabla head
          $('thead th:nth-child(1)').text('Empleados');
@@ -441,17 +441,17 @@ function changeLanguage5(){
          $('thead th:nth-child(4)').text('Meta');
 
          //range date head
-         $('.date span').text('Seleccione Rango de Fechas');
+         $('.date span').text('Seleccione rango de fechas');
          $('thead th:nth-child(2)').text('Unidades Vendidas');
          $('thead th:nth-child(3)').text('Vental Total');
          $('thead th:nth-child(4)').text('Meta');
 
-         $('#lbldateEnd').text('Fecha Fin');
-         $('#lbldateStart').text('Fecha Inicio');
+         $('#lbldateEnd').text('Fecha fin');
+         $('#lbldateStart').text('Fecha inicio');
 
          $('.txt_options').text("Opciones");
          $('#txtBack').text("Retornar");
-         $('#show_modalStore5 .modal-header').text("Seleccione su Tienda");
+         $('#show_modalStore5 .modal-header').text("Seleccione su tienda");
          $('#txtOk').text("Aceptar");
          $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
          $("#title_store_R5").text("Mensaje");

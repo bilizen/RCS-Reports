@@ -15,9 +15,10 @@ function MSG_SITE() {
     $("#lblmsg4").html("Sitio: ");
 }
 
-function MSG_SITE() {
-    $("#lblmsg4").html("Sitio: ");
+function MSG_RETURN() {
+    $("#txtpreferences_index").html("Atrás");
 }
+
 
 function MSG_GO() {
     var lang = navigator.language.split("-");
@@ -36,23 +37,26 @@ function MSG_CONNECTION_FAILURE() {
 }
 
 function MSG_INVALID_IP() {
-    $("#").html("IP Invalida")
+    $("#").html("IP Invalida");
 }
 /**********************/
 
 
 /*************LOGIN*********/
 function MSG_NUMBER_PIN() {
-    $("#lbllmsg1").html("Ingrese su numero Pin de Empleado");
+    $("#lbllmsg1").html("Ingrese su número Pin de empleado");
 }
-
 function MSG_REMEMBER_PIN() {
-    $("#checktext").html("Recordar Pin");
+    $("#checktext").html("Recordar PIN");
 }
-
+function MSG_BACK_LOGIN() {
+    $("#txtback_login").html("Atrás");
+}
 function BTN_LOGIN() {
     $("#btnlogin").val("Entrar");
 }
+
+
 
 /*****************************/
 
@@ -75,11 +79,11 @@ function MSG_LBL_PP() {
 }
 
 function MSG_LBL_PP_D() {
-    $("#lblgvsd_r3").html("El progreso de Ventas por Tienda");
+    $("#lblgvsd_r3").html("El progreso de ventas por tienda");
 }
 
 function MSG_LBL_GVS_D() {
-    $("#lblgvsd").html("Compare sus Metas vs Ventas en tiempo real.");
+    $("#lblgvsd").html("Compare sus metas vs ventas en tiempo real");
 }
 function MSG_LBL_WORKING() {
     $("#lblworkd").html("Más Reportes Proximamente...");
@@ -308,11 +312,11 @@ function MSG_TODAYP_1(){
 /************REPORTE 2  *******************/
 
 function MSG_TITLE_STORE_CLASIFICATION_2() {
-    $('#refresh').text("Clasificación por Tienda");
+    $('#refresh').text("Clasificación por tienda");
 }
 
 function MSG_TITLE_OPTIONS_2() {
-    $("#txt_title").text("Clasificación por Tienda");
+    $("#txt_title").text("Clasificación por tienda");
 }
 
 function MSG_RETURN_2() {
@@ -328,23 +332,23 @@ function MSG_TITLE_ALL_REGION_2() {
 }
 
 function MSG_CHOOSE_RANGE_2() {
-    $("#lblChooseRange").text("Elegir Rango");
+    $("#lblChooseRange").text("Elegir rango");
 }
 
 function MSG_DATE_START_2() {
-    $("#lbldateStart").text("Fecha de Inicio");
+    $("#lbldateStart").text("Fecha de inicio");
 }
 
 function MSG_DATE_END_2() {
-    $("#lbldateEnd").text("Fecha de Fin");
+    $("#lbldateEnd").text("Fecha de fin");
 }
 
 function MSG_CHOOSE_DATE_COMPARE_2() {
-    $("#lblChooseCompare").text("Elegir Fecha de Comparación");
+    $("#lblChooseCompare").text("Elegir fecha de comparación");
 }
 
 function MSG_DATE_COMPARE_2() {
-    $("#lbldateToCompare").text("Fecha de Comparación");
+    $("#lbldateToCompare").text("Fecha de comparación");
 }
 
 function MSG_BACK_2() {
@@ -364,11 +368,11 @@ function MSG_ALL_CLASIFICATION_2() {
 }
 
 function MSG_VERY_GOOD_2() {
-    $("#lblVeryGood").text("Muy Bueno");
+    $("#lblVeryGood").text("Muy bueno");
 }
 
 function MSG_CALEN_VERYGOOD_2() {
-    $("#clblVeryGood").text("Muy Bueno");
+    $("#clblVeryGood").text("Muy bueno");
 }
 function MSG_CALEN_GOOD_2() {
     $("#clblGood").text("Bueno");
@@ -386,7 +390,7 @@ function MSG_CALEN_CRITICAL_2() {
 }
 
 function MSG_CALEN_VERYCRITICAL_2() {
-    $("#clblVeryCritical").text("Muy Crítico");
+    $("#clblVeryCritical").text("Muy crítico");
 }
 
 
@@ -413,7 +417,7 @@ function MSG_CRITICAL_2() {
     $("#lblCritical").text("Crítico");
 }
 function MSG_VERY_CRITICAL_2() {
-    $("#lblVeryCritical").text("Muy Crítico");
+    $("#lblVeryCritical").text("Muy crítico");
 }
 
 
@@ -434,22 +438,22 @@ function MSG_BACK_3() {
 
 
 function MSG_CHOOSE_RANGE_3() {
-    $("#lblChooseRange").text("Elegir Rango");
+    $("#lblChooseRange").text("Elegir rango");
 }
 
 function MSG_DATE_START_3() {
-    $("#lbldateStart").text("Fecha de Inicio");
+    $("#lbldateStart").text("Fecha de inicio");
 }
 function MSG_DATE_END_3() {
-    $("#lbldateEnd").text("Fecha de Fin");
+    $("#lbldateEnd").text("Fecha de fin");
 }
 
 function MSG_CHOOSE_DATE_COMPARE_3() {
-    $("#lblChooseCompare").text("Elegir Fecha de Comparación");
+    $("#lblChooseCompare").text("Elegir fecha de comparación");
 }
 
 function MSG_DATE_COMPARE_3() {
-    $("#lbldateToCompare").text("Fecha de Comparación");
+    $("#lbldateToCompare").text("Fecha de comparación");
 }
 
 function MSG_DICTIONARY_3() {
@@ -457,18 +461,18 @@ function MSG_DICTIONARY_3() {
 }
 
 function MSG_TOTALMONTHGOAL_3() {
-    $("#lblTotalMonthGoal").text("Meta Total del Mes por Tienda");
+    $("#lblTotalMonthGoal").text("Meta total del mes por tienda");
 }
 
 function MSG_TOTALGOALSTORE_3() {
-    $("#lblTotalGoalAll").text("Meta Total del Mes por Tienda");
+    $("#lblTotalGoalAll").text("Meta total del mes por tienda");
 }
 
 function MSG_TEXT_ACUMULATE_PECENT_SALE_3() {
-    $("#lblAcumulatePercentSale").text("Procentaje Acumulado de Ventas");
+    $("#lblAcumulatePercentSale").text("Procentaje acumulado de ventas");
 }
 function MSG_TEXT_ACUMULATE_PERCENT_GOAL_3() {
-    $("#lblAcumulatePercentGoal").text("Procentaje Acumulado de Metas");
+    $("#lblAcumulatePercentGoal").text("Procentaje acumulado de metas");
 }
 function MSG_TEXT_OPTIONS_3() {
     $("#txt_Options").text("Opciones");
@@ -488,15 +492,15 @@ function MSG_TEXT_CHOOSE_REGION_3() {
 /***********************OPTIONS MENU REPORT 4***************************/
 
 function MSG_LBL_TITLE_MENU_R4() {
-    $('#lblgvst_r4').html("Grafico Avanzado");
+    $('#lblgvst_r4').html("Gráfico Avanzado");
 }
 
 function MSG_LBL_TITLE_MENU_DETAIL_R4() {
-    $("#lblgvsd_r4").html("Visualiza ventas,metas y punto de equilibrio graficamente");
+    $("#lblgvsd_r4").html("Visualiza ventas, metas y punto de equilibrio graficamente");
 }
 
 function MSG_TITLE_DIALOGSTORE_R4() {
-    $("#title_store_menu_r4").html("Elija su Tienda");
+    $("#title_store_menu_r4").html("Elija su tienda");
 }
 
 function MSG_OK_R4() {
@@ -504,7 +508,7 @@ function MSG_OK_R4() {
 }
 
 function MSG_CHOOSE_RANGE_4() {
-    $("#lblChooseRange").text("Elegir Rango");
+    $("#lblChooseRange").text("Elegir rango");
 }
 function MSG_OPTIONS_4() {
     $("#lbl_Options").text("Opciones");
@@ -513,7 +517,7 @@ function MSG_BACK_4() {
     $("#lblBack").text("Atrás");
 }
 function MSG_CHOOSE_MARGEN_4(){
-    $("#lblChooseMargen").text("Elegir Margen");
+    $("#lblChooseMargen").text("Elegir margen");
 }
 function MODAL_R4(){
     $("#lblEnterMargen").text("Introduzca el Margen");
@@ -529,11 +533,11 @@ function MSG_LBL_TITLE_MENU_R5() {
 }
 
 function MSG_LBL_TITLE_MENU_DETAIL_R5() {
-    $("#lblgvsd_r5").text("Mira y compara el progreso de venta por empleado.");
+    $("#lblgvsd_r5").text("Mira y compara el progreso de venta por empleado");
 }
 
 function MSG_TITLE_DIALOGSTORE_R5() {
-    $("#title_store_menu_r5").text("Elija su Tienda");
+    $("#title_store_menu_r5").text("Elija su tienda");
 }
 
 function MSG_OK_R5() {
@@ -594,17 +598,17 @@ function MSG_TOTAL_GOAL() {
 }
 
 function MSG_TITLE_DS_R4() {
-    $("#title_store_r4").html("Elija su Tienda");
+    $("#title_store_r4").html("Elija su tienda");
 }
 function MSG_DS_OKR4() {
     $("#btn_ok_r4").html("Aceptar");
 }
 
 function MSG_DATESTART_R4() {
-    $("#lbldateStartR4").html("Fecha de Inicio");
+    $("#lbldateStartR4").html("Fecha de inicio");
 }
 function MSG_DATEEND_R4() {
-    $("#lbldateEndR4").html("Fecha de Fin");
+    $("#lbldateEndR4").html("Fecha de fin");
 }
 
 function MODAL_ORIENTATION_R4(){

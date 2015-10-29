@@ -1879,11 +1879,14 @@ function deteclenguage() {
         MSG_ALIAS();
         MSG_SITE();
         MSG_GO();
+        MSG_RETURN();
 
         //Login
         MSG_NUMBER_PIN();
         MSG_REMEMBER_PIN();
         BTN_LOGIN();
+        MSG_BACK_LOGIN();
+        
 
         //Menu
         MSG_LBL_MAINTITLE();
