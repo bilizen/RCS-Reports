@@ -67,6 +67,9 @@ $(document).ready(function() {
 		$('.clasRange6').val(changeinput);
 	});
 
+	$('#miModal4').css("margin-top", Math.max(0, ($(window).height() - 58 - $('#miModal4').find('.modal-dialog').height()) / 4));
+
+
 	// Centrado de los modelos al centro de la pantalla
 	$(function() {
 	    function reposition() {

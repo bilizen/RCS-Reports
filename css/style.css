@@ -107,8 +107,8 @@ label{
     background-image: none;
     background-color: #e6e7eb;
     box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.44);
-    -webkit-transform-origin: left center; 
-    transform-origin: left center; 
+    -webkit-transform-origin: center center; 
+    transform-origin: center center; 
     -webkit-transform: translate3D(100%,0,0) rotateY(90deg); 
     transform: translate3D(100%,0,0) rotateY(90deg);
 }
@@ -431,6 +431,7 @@ input[type="checkbox"]:checked + label:before {
     font-size: 20px;
     font-weight: bold;
     text-align: left;
+    white-space: nowrap;
 }
 .item .box .item_subtitle,.menu .box .item_subtitle{
     display: table;
@@ -712,6 +713,8 @@ div[class^="detalle-"] span{
     -webkit-animation-duration: .40s;
     animation-name: floatWindowShow;
     animation-duration: .40s;
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
      -webkit-animation-timing-function: cubic-bezier(.20, .50, .90, 1); 
@@ -746,6 +749,8 @@ div[class^="detalle-"] span{
     -webkit-animation-duration: .35s;
     animation-name: floatWindowHide;
     animation-duration: .35s;
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
     -webkit-animation-fill-mode: inherit;
     animation-fill-mode: inherit;
     -webkit-animation-timing-function: cubic-bezier(.60, .80, .50, .60); 
@@ -759,7 +764,7 @@ div[class^="detalle-"] span{
         -webkit-transform: translate3d(110%,0,0) rotateY(0deg);
     }
     100%{
-        -webkit-transform: translate3d(110%,0,0) rotateY(90deg);
+        -webkit-transform: translate3d(100%,0,0) rotateY(90deg);
     }
 }
 
@@ -771,22 +776,87 @@ div[class^="detalle-"] span{
         transform: translate3d(110%,0,0) rotateY(0deg);
     }
     100%{
-        transform: translate3d(110%,0,0) rotateY(90deg);
+        transform: translate3d(100%,0,0) rotateY(90deg);
     }
 }
 /* para el io8 window */
-.mostrar_adelante{
+/*.mostrar_adelante{
     transform: translate3D(0%,0,0);
     -webkit-transform: translate3D(0%,0,0);
     transition: all .36s cubic-bezier(.20, .50, .90, 1);
     -webkit-transition: all .36s cubic-bezier(.20, .50, .90, 1);
+}*/
+.mostrar_adelante{
+    -webkit-animation-name: WindowShow; 
+    -webkit-animation-duration: .35s;
+    animation-name: WindowShow;
+    animation-duration: .35s;
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-animation-fill-mode: inherit;
+    animation-fill-mode: inherit;
+    -webkit-animation-timing-function: cubic-bezier(.60, .80, .50, .60); 
+    animation-timing-function: cubic-bezier(.60, .80, .50, .60);
 }
-.ocultar_atras{
+@-webkit-keyframes WindowShow {
+    0% {
+        -webkit-transform: translate3d(-10%,0,0) ;
+    }
+    100% {
+        -webkit-transform: translate3d(0%,0,0) ;
+    }
+}
+
+@keyframes WindowShow {
+    0% {
+        transform: translate3d(-10%,0,0);
+    }
+    100%{
+        transform: translate3d(0%,0,0);
+    }
+}
+/*.ocultar_atras{
     transform: translate3D(-10%,0,0);
     -webkit-transform: translate3D(-10%,0,0);
     transition: all .36s cubic-bezier(.20, .50, .90, 1);
     -webkit-transition: all .36s cubic-bezier(.20, .50, .90, 1);
     opacity: 0.8;
+}*/
+.ocultar_atras{
+    -webkit-animation-name: WindowHide; 
+    -webkit-animation-duration: .35s;
+    animation-name: WindowHide;
+    animation-duration: .35s;
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-animation-fill-mode: inherit;
+    animation-fill-mode: inherit;
+    -webkit-animation-timing-function: cubic-bezier(.60, .80, .50, .60); 
+    animation-timing-function: cubic-bezier(.60, .80, .50, .60);
+    opacity: 0.8;
+}
+@-webkit-keyframes WindowHide {
+    0% {
+        -webkit-transform: translate3d(0%,0,0)  rotateY(0deg);
+    }
+    95% {
+        -webkit-transform: translate3d(-10%,0,0)  rotateY(0deg);
+    }
+    100%{
+        -webkit-transform: translate3d(0%,0,0)  rotateY(0deg);
+    }
+}
+
+@keyframes WindowHide {
+    0% {
+        transform: translate3d(0%,0,0) rotateY(0deg);
+    }
+    95% {
+        transform: translate3d(-10%,0,0) rotateY(0deg);
+    }
+    100%{
+        transform: translate3d(0%,0,0) rotateY(0deg);
+    }
 }
 
 .selected+hr{
@@ -1218,6 +1288,9 @@ button.delete{
 
 /*iPhone 6 in portrait & landscape*/
 @media only screen and (min-width : 375px) and (max-width : 667px) { 
+    .item .box .item_title,.menu .box{
+        font-size: 15pt;
+    }
     .actual span, .global span{
         padding-top: 8px;
         padding-bottom: 8px;
