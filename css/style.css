@@ -1315,3 +1315,69 @@ button.delete{
         font-size: 12pt;
     }
 }
+
+@media only screen and (min-width : 320px) and (max-width : 568px) { 
+    .item .box .item_title, .menu .box{
+        font-size: 13pt;
+    }
+    .list .item, .menu .item{
+        height: 90px;
+    }
+    .item .box, .menu .box{
+        padding-left: 60px;
+    }
+    .actual i, .global i {
+        width: 12%;
+        font-size: 11pt;
+    }
+    .actual p, .global p {
+        width: 22.5%;
+        font-size: 10pt;
+    }
+    .actual span, .global span {
+        width: 30%;
+        padding:0 4pt;
+        padding-top: 6pt;
+        padding-bottom: 6pt;
+        font-size: 11pt;
+        text-align: center;
+        border-radius: 4pt !important;
+    }
+    header button {
+        font-size: 12pt;
+        max-width: 76px;
+        min-width: 38px;
+        padding-left: 2px;
+    }
+    #btn_right.side {
+        right: 38px;
+    }
+    .innerLi,.innerLi>span,.item,#txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options,
+    #txt_maintitle .isotipo,
+    .store h1{
+        font-size: 13pt;
+    }
+    #txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options{
+        width: 145px;
+    }
+    .store h1 {
+        height: 26px;
+    }
+    #divlistado{
+        height: 112px;
+    }
+
+    .modal h1{
+        font-size: 12pt;
+    }
+    .btn-modal, .btn-modal:hover{
+        font-size: 13pt;
+    }
+    .modal-body {
+        padding: 15px;
+    }
+    span.ui-icon.ui-icon-circle-triangle-w,
+    span.ui-icon.ui-icon-circle-triangle-e {
+        font-size: 12pt;
+    }
+}

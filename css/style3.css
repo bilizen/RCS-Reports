@@ -157,3 +157,33 @@ nav .navBtn3{ width: 28%; text-align: right;}
         width: 22%;
     }
 }
+@media only screen and (min-width : 320px) and (max-device-width : 568px) { 
+    .progressByStore i.T {
+        width: 7%;
+    }
+    .progressByStore i {
+        width: 10%;
+        font-size: 11pt;
+    }
+    .progressByStore span{
+        width: 24%;
+    }
+    p.clasification:first-of-type {
+        width: 25%;
+    }
+    .progressByStore p {
+        width: 24%;
+        font-size: 11pt;
+    }
+    #PercentGoal, #totalGoalPercentage,
+    #PercentSale, #totalSalePercentage {
+        border-radius: 4pt;
+        padding: 5pt 4pt;
+    }
+    #lblTotalAll,
+    #totalpromedio,
+    #totalGoalPercentage ,
+    #totalSalePercentage{
+        font-size: 13pt;
+    }
+}
