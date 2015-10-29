@@ -180,15 +180,15 @@ nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TR
 //***************************************//
 function henry1() {
     if ($('#divRegion').css('display') == 'none')
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-date').height() - $('.select-general').height() + 20);
+        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() + 20);
     else
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-date').height() - $('.select-general').height() - 24);
+        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() - 24);
 }
 $(window).resize(function () {
     if ($('#divRegion').css('display') == 'none')
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-date').height() - $('.select-general').height() + 20);
+        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() + 20);
     else
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-date').height() - $('.select-general').height() - 24);
+        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() - 24);
 });
 //**********************************************//
 
@@ -690,7 +690,7 @@ function downloadByCompany(actual_, global_) {
             xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportCompany/POST';
             //******************* captura los datos del report1.html *************************//
             var principal = $(".select-general div:first-child()").attr("data-value");
-            var option = $(".select-date div:first-child()").attr("data-value");
+            var option = $(".select-dateP .init").attr("data-value");
             var array = {principal: principal, option: option};
 
 
@@ -926,7 +926,7 @@ function downloadByRegion(actual_, global_) {
             xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportByRegion/POST';
 
             var byRegion = $(".select-general div:first-child()").attr("data-value");
-            var option = $(".select-date div:first-child()").attr("data-value");
+            var option = $(".select-dateP .init").attr("data-value");
 
 
 
@@ -1159,7 +1159,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
     var lblGlobalSale = "";
     var lblGlobalGoal = "";
 
-    var option = $(".select-date div:first-child()").attr("data-value");
+    var option = $(".select-dateP .init").attr("data-value");
     var regionCode = $(".select-region div:first-child()").attr("data-value");
 
 

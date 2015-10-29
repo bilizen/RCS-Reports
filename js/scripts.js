@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 
 var allOptionsG = $(".select-general").children('div:not(.init)');
-var allOptions = $(".select-date").children('div:not(.init)');
+var allOptions = $(".select-date .item");
 var allOptions2 = $(".select-region").children('div:not(.init)');
 var allOptionsCla = $(".select-clasification").children('div:not(.init)');
 var allOptionsCal = $(".select-calendar .item");
@@ -116,8 +116,8 @@ $(".select-date").on("click", "div:not(.init)", function() {
     var value_date = $(this).attr("data-value");    
     allOptions.removeClass('selected');
     $(this).addClass('selected');
-    $(".select-date").children('.init').html($(this).html());
-    $(".select-date").children('.init').attr("data-value",value_date);
+    $(".select-dateP .init").html($(this).html());
+    $(".select-dateP .init").attr("data-value",value_date);
 
   if(value_global=='1'){
         $("#items").empty();
