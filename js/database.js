@@ -809,14 +809,18 @@ function downloadByCompany(actual_, global_) {
                             } else {
                                 percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;
                             }
-
-                            if (payTotal == "0.00000" || goalAmount == "0.00000") {
-                                percent = "0.00";
+                            
+                            
+                            
+                            if (payTotal == 0.00 || goalAmount == 0.00) {
+                                percent = 0.00;
                             }
 
-                            if (payTotalGlobal == "0.00000" || goalAmountGlobal == "0.00000") {
-                                percentGlobal = "0.00";
+                            if (payTotalGlobal == 0.00 || goalAmountGlobal == 0.00) {
+                                percentGlobal = 0.00;
                             }
+                            
+
 
                             if (percent < 75) {
                                 color = "red";
@@ -825,64 +829,50 @@ function downloadByCompany(actual_, global_) {
                             if (percent > 74 && percent < 100) {
                                 color = "ambar";
                             }
-
                             if (percent > 99) {
                                 color = "green";
                             }
-
-                            if (goalAmount == "0.00000" && payTotal > "0.00000") {
+                            if (goalAmount == 0.00 && payTotal > 0.00) {
                                 color = "green";
                             }
-
                             if (percentGlobal < 75) {
                                 colorGlobal = "red";
                             }
-
                             if (percentGlobal > 74 && percentGlobal < 100) {
                                 colorGlobal = "ambar";
                             }
-
                             if (percentGlobal > 99) {
                                 colorGlobal = "green";
                             }
-
-                            if (goalAmountGlobal == "0.00000" && payTotalGlobal > "0.00000") {
+                            if (goalAmountGlobal == 0.00 && payTotalGlobal > 0.00) {
                                 colorGlobal = "green";
                             }
-
                             percent = parseFloat(percent).toFixed(2);
                             percentGlobal = parseFloat(percentGlobal).toFixed(2);
 
                             if (actual == 1) {
                                 mostrar += "<div class='actual'>";
-
                                 mostrar += "<i>" + lblCurrentGoal + "</i>";
                                 mostrar += "<p>" + parseFloat(goalAmount).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</p>";
                                 mostrar += "<i>" + lblCurrentSale + "</i>";
                                 mostrar += "<p>" + parseFloat(payTotal).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</p>";
                                 mostrar += "<span class='" + color + "'>" + percent + " %</span>";
-
                                 mostrar += "</div>";
                             }
                             if (global == 1) {
-                                
                                 mostrar += "<div class='global'>";
                                 mostrar += "<i>" + lblGlobalGoal + "</i>";
                                 mostrar += "<p>" + parseFloat(goalAmountGlobal).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</p>";
                                 mostrar += "<i>" + lblGlobalSale + "</i>";
                                 mostrar += "<p>" + parseFloat(payTotalGlobal).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</p>";
                                 mostrar += "<span class='" + colorGlobal + "'>" + percentGlobal + " %</span>";
-
                                 mostrar += "</div>";
                             }
                             mostrar += "</div>";
                             mostrar += "<hr>";
                             $("#items").append(mostrar);
-
-
                         });
                         henry1();
-
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1051,12 +1041,12 @@ function downloadByRegion(actual_, global_) {
                                 percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;
                             }
 
-                            if (payTotal == "0.00000" || goalAmount == "0.00000") {
-                                percent = "0.00";
+                            if (payTotal == 0.00 || goalAmount == 0.00) {
+                                percent = 0.00;
                             }
 
-                            if (payTotalGlobal == "0.00000" || goalAmountGlobal == "0.00000") {
-                                percentGlobal = "0.00";
+                            if (payTotalGlobal == 0.00 || goalAmountGlobal == 0.00) {
+                                percentGlobal = 0.00;
                             }
 
                             if (percent < 75) {
@@ -1071,7 +1061,7 @@ function downloadByRegion(actual_, global_) {
                                 color = "green";
                             }
 
-                            if (goalAmount == "0.00000" && payTotal > "0.00000") {
+                            if (goalAmount == 0.00 && payTotal > 0.00) {
                                 color = "green";
                             }
 
@@ -1087,7 +1077,7 @@ function downloadByRegion(actual_, global_) {
                                 colorGlobal = "green";
                             }
 
-                            if (goalAmountGlobal == "0.00000" && payTotalGlobal > "0.00000") {
+                            if (goalAmountGlobal == 0.00 && payTotalGlobal > 0.00) {
                                 colorGlobal = "green";
                             }
 
@@ -1286,14 +1276,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             } else if (payTotal == 0 && goalAmount == 0.00) {
                                 percent = 0.00;
                             } else {
-                                //////////
-                                if (goalAmount == 0.00) {
-                                    percent = 0.00;
-                                } else {
                                     percent = (payTotal * 100) / goalAmount;
-                                }
-
-                                ///////////////////
                             }
                             
                                 
@@ -1302,22 +1285,16 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                                 percentGlobal = 0.00;
                             } else if(payTotalGlobal == 0.00 && goalAmountGlobal == 0.00) {
                                 percentGlobal = 0.00;
-                            } else {
-                                /////////////////////////
-                                if (goalAmountGlobal == 0.00) {
-                                    percentGlobal = 0.00;
-                                } else {
-                                    percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;
-                                }
-                                /////////////////////////
+                            }   else {
+                                    percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;  
                             }                    
 
-                            if (payTotal == "0.00000" || goalAmount == "0.00000") {
-                                percent = "0.00";
+                            if (payTotal == 0.00 || goalAmount == 0.00) {
+                                percent = 0.00;
                             }
 
-                            if (payTotalGlobal == "0.00000" || goalAmountGlobal == "0.00000") {
-                                percentGlobal = "0.00";
+                            if (payTotalGlobal == 0.00 || goalAmountGlobal == 0.00) {
+                                percentGlobal = 0.00;
                             }
 
                             if (percent < 75) {
@@ -1332,7 +1309,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                                 color = "green";
                             }
 
-                            if (goalAmount == "0.00000" && payTotal > "0.00000") {
+                            if (goalAmount == 0.00 && payTotal > 0.00) {
                                 color = "green";
                             }
 
@@ -1347,7 +1324,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                                 colorGlobal = "green";
                             }
 
-                            if (goalAmountGlobal == "0.00000" && payTotalGlobal > "0.00000") {
+                            if (goalAmountGlobal == 0.00 && payTotalGlobal > 0.00) {
                                 colorGlobal = "green";
                             }
 
