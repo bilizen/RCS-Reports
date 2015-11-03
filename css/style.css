@@ -120,14 +120,14 @@ header{
     z-index: 1029;
     width: 100%;
     height: 64px;
-    
+    background-color: rgb(248, 248, 248);
 }
 #top_bar_space{
     height: 20px;
-    background-color: rgb(246, 246, 246);
+    /*background-color: rgb(246, 246, 246);*/
 }
 .options_bar_space{
-    background-color: rgb(248, 248, 248);
+    /*background-color: rgb(248, 248, 248);*/
     border-bottom: 1px solid rgb(200, 199, 204);
 }
 header button{
@@ -371,10 +371,12 @@ input[type="checkbox"]:checked + label:before {
     /*height: 100%;*/
     overflow-y: scroll;
     padding-top: 11px;
+    background-image: url('../img/bg_menu_1024.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
 }
-.menu button:nth-child(2n){
-    background-color: #f1f1f1;
-}
+
 .add_server{
     padding-right: 34px;
     background-image: url(../img/iconServer.svg) !important;
@@ -387,11 +389,14 @@ input[type="checkbox"]:checked + label:before {
     /*height: 100%;*/
     overflow-y: scroll;
 }
+.menu button:nth-child(2n){
+    background-color: rgba(241, 241, 241, 0.92);
+}
 .list .item,.menu .item{
     width: 100%;
     height: 100px;
     margin-bottom: 11px;
-    background-color: #FDFDFD;
+    background-color: rgba(253, 253, 253, 0.92);
     border-top: 1px solid rgb(200, 199, 204);
     background-image: url(../img/nextBtnSilver.svg);
     background-position: right center;
@@ -532,7 +537,7 @@ input[type="checkbox"]:checked + label:before {
 hr {
     position: relative;
     z-index: 10;
-    margin: 0 5%;
+    margin: 0;
     border: 0;
     border-top: 1px solid rgb(200, 199, 204);
     -webkit-transform: translate3d(0,1px,0);
@@ -1152,6 +1157,9 @@ button.delete{
     #txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options{
         width: 255px;
     }
+    .menu{
+        background-image: url('../img/bg_menu_1024.jpg');
+    }
     .item .box .item_subtitle, .menu .box .item_subtitle{
         font-size: 13pt;
         line-height: 14px;
@@ -1181,7 +1189,7 @@ button.delete{
     #content{
         background-size: cover;
     }
-    .list .item, .menu .item {
+    .list .item{
         background-color: rgb(253, 253, 253);
     }
     .store{
@@ -1209,6 +1217,9 @@ button.delete{
     .actual span, .global span{
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+    .year, .quantity,div[class^="detalle-"] i, div[class^="detalle-"] span{
+        font-size: 16px;
     }
     input[type="checkbox"]+ label{
         font-size: 15pt;
@@ -1293,6 +1304,9 @@ button.delete{
     .item .box .item_title,.menu .box{
         font-size: 15pt;
     }
+    .menu{
+        background-image: url('../img/bg_menu_667.jpg');
+    }
     .actual span, .global span{
         padding-top: 8px;
         padding-bottom: 8px;
@@ -1314,11 +1328,21 @@ button.delete{
     .innerLi>span{
         font-size: 12pt;
     }
+    div[class^="detalle-"] i, div[class^="detalle-"] span{
+        height: 22px;
+    }
 }
 
 @media only screen and (min-width : 320px) and (max-width : 568px) { 
     .item .box .item_title, .menu .box{
         font-size: 13pt;
+    }
+    .item .box .item_subtitle, .menu .box .item_subtitle{
+        display: block;
+        width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .list .item, .menu .item{
         height: 90px;
@@ -1342,6 +1366,9 @@ button.delete{
         font-size: 11pt;
         text-align: center;
         border-radius: 4pt !important;
+    }
+    div[class^="detalle-"] i, div[class^="detalle-"] span{
+        height: 20px;
     }
     header button {
         font-size: 12pt;
