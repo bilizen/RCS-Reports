@@ -245,9 +245,7 @@ function checkNetConnection() {
 /************************ funcion valida IP ********************************************/
 /*esta funcion es muy importante para no tener problemas de no poder ingresar a datos de servidores*/
 function validIP(ip, port, _url, alias, use, site, variable) {
-
     var xurl = 'http://' + ip + ':' + port + '/' + site + '/Country/';
-
     $.ajax({
         type: 'get',
         timeout: 15000,

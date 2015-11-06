@@ -393,7 +393,6 @@ function MSG_CALEN_VERYCRITICAL_2() {
     $("#clblVeryCritical").text("Muy crítico");
 }
 
-
 function MSG_CANCEL_2() {
     $(".btn.btn-modal.left").text("Cancelar");
 }

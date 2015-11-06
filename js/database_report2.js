@@ -636,7 +636,6 @@ function deteclenguage2() {
         MSG_CANCEL_2();
         MSG_OK_2();
 
-
         MSG_DATE_START_2();
         MSG_DATE_END_2();
 
@@ -659,6 +658,5 @@ function deteclenguage2() {
 
         MSG_CRITICAL_2();
         MSG_VERY_CRITICAL_2();
-        MSG_LBL_SCOOPE_2();
     }
 }

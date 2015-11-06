@@ -38,17 +38,17 @@ function insert_table_Region() {
                 crossdomain: true,
                 beforeSend: function () {
                     showLoading();
-                }, complete: function () {
+                }, complete: function() {
                     hideLoading();
                 }, success: function (data, textStatus, XMLHttpRequest) {//variable docuemntacion
                     //console.log(data.quantity);//el queantity
-                    $("#select-region").empty();
+                    //$("#select-region").empty();
                     insertTableRegion("", "ALL REGION");
-                    $("#select-region").append("<div class=item onclick=refresh_report3('');>ALL REGION</div><hr>");
+                    //$("#select-region").append("<div class='item selected' onclick=refresh_report3('');>ALL REGION</div><hr>");
                     if (data.quantity == "1") {
                         $(data.data).each(function (index, value) {
                             insertTableRegion(value.regionCode, value.regionName);
-                            $("#select-region").append("<div class=item onclick=refresh_report3('" + value.regionCode + "');>" + value.regionName + "</div><hr>");
+                            //$("#select-region").append("<div class='item' onclick=refresh_report3('" + value.regionCode + "');>" + value.regionName + "</div><hr>");
                         });
                     }
                 }});
@@ -206,8 +206,9 @@ function setcombo() {
             $("#select-region").empty();
             var regionCod = "";
             var regionNam = "";
+            $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>ALL REGION</div><hr>");
             var filas = results.rows.length;
-            for (var i = 0; i < filas; i++) {
+            for (var i = 1; i < filas; i++) {
                 regionCod = results.rows.item(i).regionCode; //campo y convertir a string
                 regionNam = results.rows.item(i).regionName; //campo y convertir a string
                 mostrar += "<div class=item onclick=refresh_report3('" + regionCod + "');>" + regionNam + "</div><hr>";
