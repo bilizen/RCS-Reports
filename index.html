@@ -41,7 +41,7 @@
     var current_lang = (lang[0]);
     $("#ip_1").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_1").val();
-      if( variable>255){
+      if( variable>255 ){
         $("#ip_1").val("");
         $("#ip_1").focus();
       }else{
@@ -192,13 +192,13 @@
          <label id="lblmsg1">Enter The IP Address</label>
       </div>
       <div class="form-group text-center ip">
-         <input type="number" id="ip_1" name="ip_1"  onKeyUp="DIREC_IP1();"/>
+         <input type="number" id="ip_1" name="ip_1" />
          <span>.</span>
-         <input type="number" id="ip_2" name="ip_2"  onKeyUp="DIREC_IP2();"/>
+         <input type="number" id="ip_2" name="ip_2" />
          <span>.</span>
-         <input type="number" id="ip_3" name="ip_3"  onKeyUp="DIREC_IP3();"/>
+         <input type="number" id="ip_3" name="ip_3" />
          <span>.</span>
-         <input type="number" id="ip_4" name="ip_4"  onKeyUp="DIREC_IP4();"/>
+         <input type="number" id="ip_4" name="ip_4" />
       </div>
       <div class="form-group input_effect">          
         <input type="number" id="port" name="port"> 
