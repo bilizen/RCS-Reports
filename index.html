@@ -44,11 +44,10 @@
       if(variable>255){
         $("#ip_1").val("");
       }else{
-        if(variable.length==3){
-            $("#ip_2").prop("checked");
-            $("#ip_2").focus();
-            
-        }
+        //if(variable.length==3){
+        //    $("#ip_2").prop("checked");
+        //    $("#ip_2").focus();
+        //}
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
             arre.pop();
@@ -69,10 +68,10 @@
         $("#ip_2").val("");
         //$("#ip_2").focus();
       }else{
-        if(variable.length==3){
+        //if(variable.length==3){
         //$("#ip_3").focus();
-        $("#ip_3").prop("checked")
-        }
+        //$("#ip_3").prop("checked")
+        //}
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
             arre.pop();
@@ -92,9 +91,9 @@
         $("#ip_3").val("");
         //$("#ip_3").focus();
       }else{
-        if(variable.length==3){
+        //if(variable.length==3){
           //$("#ip_4").focus();
-        }
+        //}
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
             arre.pop();
@@ -114,9 +113,9 @@
         $("#ip_4").val("");
         //$("#ip_4").focus();
       }else{
-        if(variable.length==3){
+        //if(variable.length==3){
           //$("#port").focus();
-        }
+        //}
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
             arre.pop();
