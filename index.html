@@ -46,14 +46,17 @@
         $("#ip_1").val("");
         $("#ip_1").focus();
         $("#ip_2").focus();
+        $("#ip_2").focus();
       }else{
         if(variable.length==3){
+        $("#ip_2").focus();
         $("#ip_2").focus();
         }
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
             arre.pop();
             $("#ip_1").val(arre.join(""));
+            $("#ip_2").focus();
             $("#ip_2").focus();
         }
       }        
@@ -116,6 +119,12 @@
       }else{
         if(variable.length==3){
           $("#port").focus();
+        }
+        var arre =variable.split("");
+        if(arre[variable.length-1]=="."){
+            arre.pop();
+            $("#ip_4").val(arre.join(""));
+            $("#port").focus();
         }
       } 
     })//.keypress(function(event){
