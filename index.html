@@ -41,19 +41,26 @@
     var current_lang = (lang[0]);
     $("#ip_1").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_1").val();
-      if( variable>255 ){
+      
+      if(variable>255){
         $("#ip_1").val("");
         $("#ip_1").focus();
       }else{
         if(variable.length==3){
         $("#ip_2").focus();
         }
+        var arre =variable.split("");
+        if(arre[variable.length-1]=="."){
+            arre.pop();
+            $("#ip_1").val(arre.join(""));
+            $("#ip_2").focus();
+        }
       }        
     })//.keypress(function(event){
       //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
       //return false;
      // }
-    //});
+   // });
 
 
     $("#ip_2").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
