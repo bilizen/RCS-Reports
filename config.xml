@@ -10,7 +10,7 @@
 		Retail Custom Solutions
 		</author>
                 <preference name="StatusBarOverlaysWebView" value="false" />
-                <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+                <preference name="StatusBarBackgroundColor" value="#000000" />
 		<preference name="StatusBarStyle" value="lightcontent" />
                 <preference name="phonegap-version" value="cli-5.2.0"/>
 		<preference name="fullscreen" value="false" />
