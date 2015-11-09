@@ -1745,7 +1745,9 @@ function locationVars(vr){
     } catch (e) {
         return "-1"; //esto ocurre cuando en la url tenemos login.html nada mas , solo para el caso en la pantalla login.html  
     }
+
 }
+;
 
 function getIp_Parameter() {
     return locationVars('ip');
@@ -1768,9 +1770,13 @@ function getSite_Parameter() {
 function getVariable_Parameter() {
     return locationVars('variable');
 }
+
+
 function menu() {
     window.location.href = "menu.html";
 }
+
+
 function obtenerVariables(name) {
     var regexS = "[\\?&]" + name + "=([^&#]*)";
     var regex = new RegExp(regexS);
@@ -1783,6 +1789,8 @@ function obtenerVariables(name) {
         return results[1];
     }
 }
+
+
 function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
     var chartData = [
         {
@@ -1832,6 +1840,7 @@ function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
             }],
     });
 }
+
 
 function deteclenguage() {
     lang = navigator.language.split("-");
