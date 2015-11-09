@@ -45,6 +45,7 @@
       if(variable>255){
         $("#ip_1").val("");
         $("#ip_1").focus();
+        $("#ip_2").focus();
       }else{
         if(variable.length==3){
         $("#ip_2").focus();
@@ -60,7 +61,7 @@
       //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
       //return false;
      // }
-   // });
+    //});
 
 
     $("#ip_2").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
@@ -72,12 +73,18 @@
         if(variable.length==3){
         $("#ip_3").focus();
         }
+        var arre =variable.split("");
+        if(arre[variable.length-1]=="."){
+            arre.pop();
+            $("#ip_2").val(arre.join(""));
+            $("#ip_3").focus();
+        }
       }  
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      return false;
-      }
-    });
+    })//.keypress(function(event){
+      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      //return false;
+      //}
+    //});
 
     $("#ip_3").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_3").val();
@@ -88,12 +95,18 @@
         if(variable.length==3){
           $("#ip_4").focus();
         }
+        var arre =variable.split("");
+        if(arre[variable.length-1]=="."){
+            arre.pop();
+            $("#ip_3").val(arre.join(""));
+            $("#ip_4").focus();
+        }
       } 
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      return false;
-      }
-    });
+    })//.keypress(function(event){
+      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      //return false;
+     // }
+    //});
 
     $("#ip_4").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_4").val();
@@ -105,11 +118,11 @@
           $("#port").focus();
         }
       } 
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {
-      return false;
-      }
-    });
+    })//.keypress(function(event){
+      //if (event.keyCode < 48 || event.keyCode > 57) {
+      //return false;
+      //}
+    //});
 
     $("#port").keypress(function(event){
       if (event.keyCode < 48 || event.keyCode > 57) {
@@ -156,7 +169,7 @@
             }
           }else{
             if(current_lang=='es')
-              mostrarModalGeneral("Puerto Inválido");
+                mostrarModalGeneral("Puerto Inválido");
             else
                 mostrarModalGeneral("Invalid Port");
           }
