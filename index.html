@@ -43,10 +43,9 @@
       var variable = $("#ip_1").val();
       if(variable>255){
         $("#ip_1").val("");
-        //$("#ip_2").focus();
       }else{
-        if(variable.length==4){
-        //$("#ip_2").focus();
+        if(variable.length==3){
+            $("#ip_2").prop("checked");
         }
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
@@ -55,21 +54,22 @@
             $("#ip_2").focus();
         }
       }        
-    })//.keypress(function(event){
-      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      //return false;
-     // }
-    //});
+    }).keypress(function(event){
+      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      return false;
+      }
+    });
 
 
     $("#ip_2").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_2").val();
       if(variable>255){
         $("#ip_2").val("");
-        $("#ip_2").focus();
+        //$("#ip_2").focus();
       }else{
         if(variable.length==3){
-        $("#ip_3").focus();
+        //$("#ip_3").focus();
+        $("#ip_3").prop("checked")
         }
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
@@ -78,11 +78,11 @@
             $("#ip_3").focus();
         }
       }  
-    })//.keypress(function(event){
-      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      //return false;
-      //}
-    //});
+    }).keypress(function(event){
+      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      return false;
+      }
+    });
 
     $("#ip_3").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_3").val();
@@ -91,7 +91,7 @@
         //$("#ip_3").focus();
       }else{
         if(variable.length==3){
-          $("#ip_4").focus();
+          //$("#ip_4").focus();
         }
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
@@ -110,10 +110,10 @@
       var variable = $("#ip_4").val();
       if(variable>255){
         $("#ip_4").val("");
-        $("#ip_4").focus();
+        //$("#ip_4").focus();
       }else{
         if(variable.length==3){
-          $("#port").focus();
+          //$("#port").focus();
         }
         var arre =variable.split("");
         if(arre[variable.length-1]=="."){
