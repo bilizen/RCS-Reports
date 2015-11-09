@@ -26,8 +26,7 @@
       var variablEE = obtenerVariables("variable");
       if(checkNetConnection()==true){
         if(variablEE==-1){
-          existsData();
-        }
+          existsData();}
         else
         {
           $("#btn_left").removeAttr("hidden");
@@ -38,18 +37,16 @@
 
   $(document).ready(function(){
     /*esta funcion ocurre despues de que ya cargo toda la pagina*/
-
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
-
     $("#ip_1").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_1").val();
-      if(variable>255){
+      if( variable>255){
         $("#ip_1").val("");
-        $("#ip_2").focus();
+        $("#ip_1").focus();
       }else{
-        if(variable.length==4){
-          $("#ip_2").focus();
+        if(variable.length==3){
+        $("#ip_2").focus();
         }
       }        
     }).keypress(function(event){
@@ -63,10 +60,10 @@
       var variable = $("#ip_2").val();
       if(variable>255){
         $("#ip_2").val("");
-        $("#ip_3").focus();
+        $("#ip_2").focus();
       }else{
-        if(variable.length==4){
-          $("#ip_3").focus();
+        if(variable.length==3){
+        $("#ip_3").focus();
         }
       }  
     }).keypress(function(event){
@@ -79,9 +76,9 @@
       var variable = $("#ip_3").val();
       if(variable>255){
         $("#ip_3").val("");
-        $("#ip_4").focus();
+        $("#ip_3").focus();
       }else{
-        if(variable.length==4){
+        if(variable.length==3){
           $("#ip_4").focus();
         }
       } 
@@ -95,9 +92,9 @@
       var variable = $("#ip_4").val();
       if(variable>255){
         $("#ip_4").val("");
-        $("#port").focus();
+        $("#ip_4").focus();
       }else{
-        if(variable.length==4){
+        if(variable.length==3){
           $("#port").focus();
         }
       } 
@@ -195,13 +192,13 @@
          <label id="lblmsg1">Enter The IP Address</label>
       </div>
       <div class="form-group text-center ip">
-          <input type="number" id="ip_1" name="ip_1"/>
+         <input type="number" id="ip_1" name="ip_1"  onKeyUp="DIREC_IP1();"/>
          <span>.</span>
-         <input type="number" id="ip_2" name="ip_2"/>
+         <input type="number" id="ip_2" name="ip_2"  onKeyUp="DIREC_IP2();"/>
          <span>.</span>
-         <input type="number" id="ip_3" name="ip_3"/>
+         <input type="number" id="ip_3" name="ip_3"  onKeyUp="DIREC_IP3();"/>
          <span>.</span>
-         <input type="number" id="ip_4" name="ip_4"/>
+         <input type="number" id="ip_4" name="ip_4"  onKeyUp="DIREC_IP4();"/>
       </div>
       <div class="form-group input_effect">          
         <input type="number" id="port" name="port"> 
@@ -246,7 +243,6 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
 
