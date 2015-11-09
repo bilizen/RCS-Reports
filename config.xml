@@ -9,9 +9,9 @@
 		<author href="http://retailcs.com/" email="devmobile@realcs.com">
 		Retail Custom Solutions
 		</author>
-                <preference name="StatusBarOverlaysWebView" value="true" />
-                <preference name="StatusBarBackgroundColor" value="#000000" />
-		<preference name="StatusBarStyle" value="blackopaque" />
+                <preference name="StatusBarOverlaysWebView" value="false" />
+                <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+		<preference name="StatusBarStyle" value="lightcontent" />
                 <preference name="phonegap-version" value="cli-5.2.0"/>
 		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
