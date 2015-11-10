@@ -1034,6 +1034,10 @@ button.delete{
     background-color: #e6e6e9;
 }
 
+.transparent{
+    background: transparent;
+}
+
 
  #css-filter-blur:hover {
     filter: progid:DXImageTransform.Microsoft.Blur(Strength=2);
