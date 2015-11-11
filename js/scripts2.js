@@ -12,7 +12,7 @@ $(document).ready(function() {
 	}).keyup(function(){
 		input_val = $(this).val();
 		if(input_val == ""){
-			$(this).closest('.input_effect').removeClass('focus');
+			// $(this).closest('.input_effect').removeClass('focus');
 		}else{
 			$(this).closest('.input_effect').addClass('focus');
 		}		

@@ -87,7 +87,7 @@ label{
 }
 .ios8_bg{
     background-color: none !important;
-    background-image: url('../img/background.jpg') !important;
+    background-image: url('../img/background_1024.jpg') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     
@@ -157,6 +157,9 @@ header button:active{
     background-size: 24px 46px;
     background-repeat: no-repeat;
 }
+#btn_left.arrow.white{
+    background-image: url(../img/backBtnWhite.svg);
+}
 #txt_login,#txt_maintitle,#txt_title, #top_txt_title,#txt_Options{
     text-align: center;
     width: 160px;
@@ -208,6 +211,15 @@ header button:active{
     line-height: 44px;
     background: transparent;
     
+}
+
+.indexSection{
+    padding-top: 2pt;
+    padding-bottom: 8pt;
+    background: rgba(255,255,255,0.88);
+}
+.white{
+    color: white;
 }
 #content{
     -webkit-transform: translate3d(0,64px,0);
@@ -376,6 +388,7 @@ input[type="checkbox"]:checked + label:before {
     background-position: center top;
     background-size: cover;
 }
+
 
 .add_server{
     padding-right: 34px;
@@ -1164,6 +1177,15 @@ button.delete{
     .menu{
         background-image: url('../img/bg_menu_1024.jpg');
     }
+    .ios8_bg{
+        background-image: url('../img/background_1024.jpg') !important;    
+    }
+    .btn {
+        padding: 10px 12px;
+    }
+    input[type="text"], input[type="password"], input[type="number"], textarea {
+      padding: 8px 0;
+    }
     .item .box .item_subtitle, .menu .box .item_subtitle{
         font-size: 13pt;
         line-height: 14px;
@@ -1311,6 +1333,9 @@ button.delete{
     .menu{
         background-image: url('../img/bg_menu_667.jpg');
     }
+    .ios8_bg{
+        background-image: url('../img/background_667.jpg') !important;    
+    }
     .actual span, .global span{
         padding-top: 8px;
         padding-bottom: 8px;
@@ -1347,6 +1372,9 @@ button.delete{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .ios8_bg{
+        background-image: url('../img/background_568.jpg') !important;    
     }
     .list .item, .menu .item{
         height: 90px;
