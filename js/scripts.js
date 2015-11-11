@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 
 var allOptionsG = $(".select-general").children('div:not(.init)');
-var allOptions = $(".select-date .item");
+var allOptions = $(".select-date .item.selected");
 var allOptions2 = $(".select-region").children('div:not(.init)');
 var allOptionsCla = $(".select-clasification").children('div:not(.init)');
 var allOptionsCal = $(".select-calendar .item");
