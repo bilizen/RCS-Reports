@@ -82,8 +82,14 @@ label{
 }
 #ios8_container{
     background-image: none;
-    background-color: #C3C5CA;
+    /*background-color: #C3C5CA;*/
     background-repeat: no-repeat;
+    background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+  copy
 }
 .ios8_bg{
     background-color: none !important;
