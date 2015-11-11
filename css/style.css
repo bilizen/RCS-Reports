@@ -1,4 +1,7 @@
-
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url('../fonts/HelveticaNeue-Normal.ttf');/* relative path from the css file */
+}
 html,body{
     height:100% !important;
     overflow-x: hidden;
@@ -11,7 +14,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-weight: inherit;
     font-style: inherit;
     font-size: 100%;
-    font-family: inherit;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     vertical-align: baseline;
     -webkit-touch-callout: none;
 } 
