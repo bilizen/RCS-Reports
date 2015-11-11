@@ -1412,7 +1412,8 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
         });
     });
 }
-
+//la funcion loadComboRegions nos sirve para poder inserta un combo en el primer reporte de acuerdo a las regiones, si no hay regiones,
+//no se inerta ningun combo
 function loadComboRegions(actual_, global_) {
     var yurl = "";
     var c_ip = "";

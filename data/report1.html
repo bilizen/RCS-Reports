@@ -28,7 +28,7 @@
              deteclenguage();
              hideCombo();
              if(checkNetConnection()==true){
-                downloadByCompany("1","1");
+                loadComboRegions("1","1");
              }else{
                  mostrarModalGeneral();
              }   
@@ -89,7 +89,7 @@
             <div class="section">
                 <div class="section_content"> 
                     <div class="select-general">
-                        <div data-value="1" class="init item innerLi" onclick="moveToLeft(1);" id="filterGeneral">By Company</div>
+                        <div data-value="3" class="init item innerLi" onclick="moveToLeft(1);" id="filterGeneral">By Store</div>
                     </div>
                 </div>                
             </div>
@@ -156,11 +156,11 @@
                 <span id="section_header">Choose a filter</span>
                 <div class="section_content">
                     <div class="select-general">
-                        <div data-value="1" class="item selected" id="lbl_By_company">By Company</div>
+                        <div data-value="1" class="item" id="lbl_By_company">By Company</div>
                         <hr>
                         <div data-value="2" class="item" id="lbl_By_region">By Region</div>
                         <hr>
-                        <div data-value="3" class="item"  id="lbl_By_Store">By Store</div>
+                        <div data-value="3" class="item selected"  id="lbl_By_Store">By Store</div>
                     </div> 
                 </div>
             </div>
