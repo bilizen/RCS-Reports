@@ -198,7 +198,7 @@ function MSG_BTN_ADDALIAS() {
 /********************************************************/
 /****************** REPORTE1**************************/
 function MSG_COMPANY_1() {
-    $('#filterGeneral').text("Por Tienda");
+    $('#filterGeneral').text("Por Compañia");
 }
 function MSG_LBL_COMPANY_1() {
     $('#lbl_By_company').text("Por Compañia");
