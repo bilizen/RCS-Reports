@@ -102,14 +102,45 @@ $(".select-calendar .item").click(function() {
     $(this).addClass('selected');
 });
 
-$(".select-general").on("click", "div:not(.init)", function() {    
-    var value = $(this).attr("data-value");    
+//$(".select-general").on("click", "div:not(.init)", function() {    
+//    var value = $(this).attr("data-value");    
+//    allOptionsG.removeClass('selected');
+//    $(this).addClass('selected');
+//    $(".select-general").children('.init').html($(this).html());
+//    $(".select-general").children('.init').attr("data-value",value);  
+//    moveToRight();  
+//});
+
+
+
+$(".select-general").on("click", "div:not(.init)", function() {
+    value_global = $(this).attr("data-value");
     allOptionsG.removeClass('selected');
     $(this).addClass('selected');
     $(".select-general").children('.init').html($(this).html());
-    $(".select-general").children('.init').attr("data-value",value);  
-    moveToRight();  
+    $(".select-general").children('.init').attr("data-value",value_global);    
+    console.log(value_global);
+    moveToRight(); 
+
+    if(value_global=='1'){
+        hideCombo();
+        $("#items").empty();
+        downloadByCompany(ch_actual,ch_global);
+    }else if(value_global=='2'){
+        hideCombo();
+        $("#items").empty();
+        downloadByRegion(ch_actual,ch_global);
+    }else if(value_global =='3'){
+         showCombo();  
+         $("#items").empty();
+        loadComboRegions(ch_actual ,ch_global);
+    }
+
 });
+
+
+
+
 
 
 $(".select-date").on("click", "div:not(.init)", function() {    
@@ -440,31 +471,6 @@ function cambiarTotal(){
     }
 
 }
-
-
-$(".select-general").on("click", "div:not(.init)", function() {
-    value_global = $(this).attr("data-value");
-    allOptions.removeClass('selected');
-    $(this).addClass('selected');
-    $(".select-general").children('.init').html($(this).html());
-    $(".select-general").children('.init').attr("data-value",value_global);    
-    console.log(value_global);
-
-    if(value_global=='1'){
-        hideCombo();
-        $("#items").empty();
-        downloadByCompany(ch_actual,ch_global);
-    }else if(value_global=='2'){
-        hideCombo();
-        $("#items").empty();
-        downloadByRegion(ch_actual,ch_global);
-    }else if(value_global =='3'){
-         showCombo();  
-         $("#items").empty();
-        loadComboRegions(ch_actual ,ch_global);
-    }
-
-});
 
 
 function get_chActual(){
