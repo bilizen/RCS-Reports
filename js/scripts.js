@@ -90,11 +90,9 @@ $(".select-clasification").on("click", "div:not(.init)", function() {
     $(".select-clasification").children('.init').html($(this).html());
     $(".select-clasification").children('.init').attr("data-value",value);    
     moveToRight();
-    
     var valuep="";
     valuep = $(".select-clasification .init").attr('data-value');
     downloadStoreClasification(valuep);
-
 });
 
 $(".select-calendar .item").click(function() {    
@@ -121,7 +119,6 @@ $(".select-general").on("click", "div:not(.init)", function() {
     $(".select-general").children('.init').attr("data-value",value_global);    
     console.log(value_global);
     moveToRight(); 
-
     if(value_global=='1'){
         hideCombo();
         $("#items").empty();
@@ -131,11 +128,10 @@ $(".select-general").on("click", "div:not(.init)", function() {
         $("#items").empty();
         downloadByRegion(ch_actual,ch_global);
     }else if(value_global =='3'){
-         showCombo();  
+         //showCombo();  
          $("#items").empty();
         loadComboRegions(ch_actual ,ch_global);
     }
-
 });
 
 
@@ -143,9 +139,9 @@ $(".select-date").on("click", "div:not(.init)", function() {
     var value_date = $(this).attr("data-value");    
     allOptions.removeClass('selected');
     $(this).addClass('selected');
-    $(".select-dateP .init").html($(this).html());
-    $(".select-dateP .init").attr("data-value",value_date);
-
+    $(".select-dateP").children('.init').html($(this).html());
+    $(".select-dateP").children('.init').attr("data-value",value_date);
+    moveToRight(); 
   if(value_global=='1'){
         $("#items").empty();
         downloadByCompany(ch_actual,ch_global);
@@ -154,9 +150,8 @@ $(".select-date").on("click", "div:not(.init)", function() {
         downloadByRegion(ch_actual,ch_global);
     }else if(value_global =='3'){
         $("#items").empty();    
-        loadComboRegions(ch_actual,ch_global);
+        downloadByStore(ch_actual,ch_global);
     }
-    moveToRight();  
 });
 
 $(".select-region").on("click", "div:not(.init)", function() {   
@@ -165,9 +160,8 @@ $(".select-region").on("click", "div:not(.init)", function() {
     $(this).addClass('selected');
     $(".select-region").children('.init').html($(this).html());
     $(".select-region").children('.init').attr("data-value",regionCode);
+    moveToRight();
     downloadByStore(ch_actual,ch_global);
-    moveToRight();  
-    
 });
 
 

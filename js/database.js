@@ -1394,7 +1394,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                         mostrarIndice(indice);
                     }
 
-                    hideLoading();
+                   // hideLoading();
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
