@@ -139,10 +139,6 @@ $(".select-general").on("click", "div:not(.init)", function() {
 });
 
 
-
-
-
-
 $(".select-date").on("click", "div:not(.init)", function() {    
     var value_date = $(this).attr("data-value");    
     allOptions.removeClass('selected');
@@ -158,7 +154,7 @@ $(".select-date").on("click", "div:not(.init)", function() {
         downloadByRegion(ch_actual,ch_global);
     }else if(value_global =='3'){
         $("#items").empty();    
-        downloadByStore(ch_actual,ch_global);
+        loadComboRegions(ch_actual,ch_global);
     }
     moveToRight();  
 });
