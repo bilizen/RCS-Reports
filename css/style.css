@@ -234,6 +234,14 @@ header button:active{
 #content{
     -webkit-transform: translate3d(0,64px,0);
     transform: translate3d(0,64px,0);
+background: rgba(240,240,240,1);
+background: -moz-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(217,217,217,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,240,240,1)), color-stop(100%, rgba(217,217,217,1)));
+background: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(217,217,217,1) 100%);
+background: -o-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(217,217,217,1) 100%);
+background: -ms-linear-gradient(top, rgba(240,240,240,1) 0%, rgba(217,217,217,1) 100%);
+background: linear-gradient(to bottom, rgba(240,240,240,1) 0%, rgba(217,217,217,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#d9d9d9', GradientType=0 );
 }
 
 .logo-name{
