@@ -1245,10 +1245,11 @@ button.delete{
         font-size: 18pt;
     }
     .actual p, .global p{
-        width: 32.5%;
+        width: 31.5%;
     }
     .actual i, .global i {
-        width: 8%;
+        width: 9%;
+        white-space: nowrap;
     }
     .actual span, .global span {
         width: 19%;
