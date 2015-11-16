@@ -23,7 +23,6 @@
     $(window).load(function(){
       onInit();
       deteclenguage();
-      $("#ip_1").focus();
       var variablEE = obtenerVariables("variable");
       if(checkNetConnection()==true){
         if(variablEE==-1){
@@ -44,23 +43,22 @@
       var variable = $("#ip_1").val();
       if(variable>255){
         $("#ip_1").val("");
-        
       }else{
-          if(variable.length==3){
-              document.getElementById("ip_2").select();
-          }          
-           var arre =variable.split("");
-            if(arre[variable.length-1]=="."){
-            arre.pop();
-            $("#ip_1").val(arre.join(""));
-            document.getElementById("ip_2").select();
-        }
+          //if(variable.length==3){
+              //document.getElementById("ip_2").select();
+          //}          
+           //var arre =variable.split("");
+           //if(arre[variable.length-1]=="."){
+            //arre.pop();
+            //$("#ip_1").val(arre.join(""));
+            //document.getElementById("ip_2").select();
+        //}
       }     
-    })//.keypress(function(event){
-      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      //return false;
-      //}
-    //});
+    }).keypress(function(event){
+      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      return false;
+      }
+    });
 
 
     $("#ip_2").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
@@ -68,51 +66,51 @@
       if(variable>255){
         $("#ip_2").val("");
       }else{
-          if(variable.length==3){
-              document.getElementById("ip_3").select();
-          }          
-           var arre =variable.split("");
-            if(arre[variable.length-1]=="."){
-            arre.pop();
-            $("#ip_2").val(arre.join(""));
-            document.getElementById("ip_3").select();
-        }
+          //if(variable.length==3){
+              //document.getElementById("ip_3").select();
+          //}          
+           //var arre =variable.split("");
+            //if(arre[variable.length-1]=="."){
+            //arre.pop();
+            //$("#ip_2").val(arre.join(""));
+            //document.getElementById("ip_3").select();
+        //}
       }
-    })//.keypress(function(event){
-      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      //return false;
-      //}
-    //});
+    }).keypress(function(event){
+      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      return false;
+      }
+    });
 
     $("#ip_3").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_3").val();
       if(variable>255){
         $("#ip_3").val("");
       }else{
-          if(variable.length==3){
-              document.getElementById("ip_4").select();
-          }          
-           var arre =variable.split("");
-            if(arre[variable.length-1]=="."){
-            arre.pop();
-            $("#ip_3").val(arre.join(""));
-            document.getElementById("ip_4").select();
-        }
+          //if(variable.length==3){
+              //document.getElementById("ip_4").select();
+          //}          
+           //var arre =variable.split("");
+            //if(arre[variable.length-1]=="."){
+            //arre.pop();
+            //$("#ip_3").val(arre.join(""));
+            //document.getElementById("ip_4").select();
+        //}
       }
-    })//.keypress(function(event){
-      //if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      //return false;
-      //}
-    //});
+    }).keypress(function(event){
+      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+      return false;
+      }
+    });
 
     $("#ip_4").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
       var variable = $("#ip_4").val();
       if(variable>255){
         $("#ip_4").val("");
       }else{
-          if(variable.length==3){
-              document.getElementById("port").select();
-          }
+          //if(variable.length==3){
+              //document.getElementById("port").select();
+          //}
       }
     }).keypress(function(event){
       if (event.keyCode < 48 || event.keyCode > 57) {
