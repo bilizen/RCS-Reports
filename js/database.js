@@ -1149,10 +1149,11 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
     var option = $(".select-dateP .init").attr("data-value");
     var regionCode = $(".select-region div:first-child()").attr("data-value");
+    
 
-
-    if (regionCode == "R-1") {
+    if (regionCode == "R-1" || regionCode==null) {
         regionCode = "";
+        //alert(regionCode + "regiocode");
     }
     var array = {option: option, regionCode: regionCode, total: _ch_order_payTotal, goal: _ch_order_goalAmount};
 
