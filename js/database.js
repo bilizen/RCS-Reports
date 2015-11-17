@@ -179,16 +179,27 @@ nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TR
 
 //***************************************//
 function henry1() {
-    if ($('#divRegion').css('display') == 'none')
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() + 20);
-    else
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() - 24);
+    var windowh = $(window).height();
+    var headerh=$('header').height();
+    var regionh=$('#divRegion').height();
+    var selectdateP =$('.select-dateP').height();
+    var selectGeneral = $('.select-general').height();
+    if ($('#divRegion').css('display') == 'none'){
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
+        console.log("if");
+    }else{
+        $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
+        console.log("else");
+    }
 }
 $(window).resize(function () {
-    if ($('#divRegion').css('display') == 'none')
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() + 20);
-    else
-        $('.list').height($(window).height() - $('header').height() - $('#divRegion').height() - $('.select-dateP').height() - $('.select-general').height() - 24);
+    if ($('#divRegion').css('display') == 'none'){
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
+        console.log("if");
+    }else{
+        $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
+        console.log("else");
+    }
 });
 //**********************************************//
 
@@ -1395,7 +1406,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                         mostrarIndice(indice);
                     }
 
-                   // hideLoading();
+                   //hideLoading();
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1481,7 +1492,6 @@ function loadComboRegions(actual_, global_) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
