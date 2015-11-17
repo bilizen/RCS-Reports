@@ -329,6 +329,7 @@ function downloadReportGraphic() {
                                         });
                                         
                                     drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, dateStart);
+                                    $('#chartdiv').height($(window).height()-$('header').height());
                                     }
                                 }, error: function (xhr, ajaxOptions, thrownError) {
                                     console.log(xhr.status);
