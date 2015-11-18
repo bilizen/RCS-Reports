@@ -142,7 +142,7 @@ header{
 header button{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-size: 17px;
-    color: rgb(0, 115, 255);
+    color: #0000CD;
     padding-left: 4px;
     font-weight: 300;
     text-overflow: ellipsis !important;
@@ -589,7 +589,7 @@ hr {
 }
 .item.selected{    
     color: #fff;
-    background-color: rgb(0, 115, 255);
+    background-color: #0000CD;
     -webkit-transition: all 0.12s;
     transition: all 0.12s;
 }
@@ -641,7 +641,7 @@ hr {
     width: 12%;
     font-size: 16px;
     font-style: normal;
-    color: rgb(0, 115, 255);
+    color: #0000CD;
 }
 .actual p,.global p{
     width: 26.5%;
@@ -953,7 +953,7 @@ div[class^="detalle-"] span{
     font-size: 14px;
     display: inline-block;
 }
-.infoReport1 i{width: 15%; color: rgb(0, 115, 255);}
+.infoReport1 i{width: 15%; color: #0000CD;}
 .infoReport1 span{
     width: 28%;
     vertical-align: -webkit-baseline-middle;
@@ -1213,7 +1213,7 @@ button.delete{
     .item .box .item_subtitle, .menu .box .item_subtitle{
         font-size: 13pt;
         line-height: 14px;
-        color: #333;
+        color: #555;
         display: block;
     }
     .list .item, .menu .item{

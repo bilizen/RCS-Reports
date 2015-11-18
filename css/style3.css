@@ -7,7 +7,7 @@
     font-size: 16px;
     font-style: normal;
     text-align: center;
-    color: rgb(0, 115, 255);
+    color: #0000CD;
 }
 .progressByStore i.T{
     width: 7%;
@@ -63,7 +63,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
 
 #lblTotalAll{
 	text-align: left;
-    color: rgb(0, 115, 255);
+    color: #0000CD;
 }
 #totalpromedio{
     color: #fff;
@@ -110,7 +110,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
 	font-size: 16px;
 	border-radius: 4px;
 	display: inline-block;
-	color: rgb(0, 115, 255);
+	color: #0000CD;
 }
 
 /* iPad in portrait & landscape */
