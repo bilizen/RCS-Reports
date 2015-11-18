@@ -479,6 +479,23 @@ function existsData() {
     }
 }
 
+function Title_Company(){
+    
+    var query = "SELECT " + KEY_ALIAS + " FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (tx, results) {
+                var alias = results.rows.item(0).alias;
+                document.getElementById('txt_maintitle').innerHTML = alias;
+            });
+        });
+    }
+    catch (e) {
+        console.log("Error Title_Company " + e + ".");
+    }
+    
+}
+
 //***************************** verificamos que este lleno la tabla de URL ***********************************//
 function existsData_Login(pin, check) {
 
