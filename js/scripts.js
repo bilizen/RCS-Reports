@@ -1,4 +1,4 @@
-var value_global = "1";
+var value_global = "3";
 var ch_actual = "1";
 var ch_global = "1";
 var ch_principal ="0";
@@ -141,17 +141,20 @@ $(".select-date").on("click", "div:not(.init)", function() {
     $(this).addClass('selected');
     $(".select-dateP").children('.init').html($(this).html());
     $(".select-dateP").children('.init').attr("data-value",value_date);
-    moveToRight(); 
+    moveToRight();
   if(value_global=='1'){
         $("#items").empty();
+        //downloadByStore(ch_actual,ch_global);
         downloadByCompany(ch_actual,ch_global);
     }else if(value_global=='2'){
         $("#items").empty();
         downloadByRegion(ch_actual,ch_global);
     }else if(value_global =='3'){
-        $("#items").empty();    
+        $("#items").empty();  
+        //downloadByCompany(ch_actual,ch_global);
         downloadByStore(ch_actual,ch_global);
     }
+
 });
 
 $(".select-region").on("click", "div:not(.init)", function() {   
@@ -412,18 +415,21 @@ function updateGlobal(){
 function retornarStores(principal){
 
   if(ch_principal == 1){
-
-    downloadByCompany(ch_actual ,ch_global);
+    //downloadByStore(ch_actual ,ch_global,ch_order_payTotal,ch_order_goalAmount);
+    downloadByCompany(ch_actual ,ch_global);   
+   
    }else if(ch_principal==2){
     downloadByRegion(ch_actual,ch_global);
    }else if(ch_principal==3){
-    downloadByStore(ch_actual ,ch_global,ch_order_payTotal,ch_order_goalAmount);
+     //downloadByCompany(ch_actual ,ch_global);
+     downloadByStore(ch_actual ,ch_global,ch_order_payTotal,ch_order_goalAmount);     
    }
    else if(ch_principal==0){
     var value = $(".select-general div:first-child()").attr("data-value");
 
     if(value==3){
-      downloadByStore(ch_actual ,ch_global,ch_order_payTotal,ch_order_goalAmount);  
+       downloadByStore(ch_actual ,ch_global,ch_order_payTotal,ch_order_goalAmount);  
+      //downloadByCompany(ch_actual ,ch_global); 
     }
    }
 

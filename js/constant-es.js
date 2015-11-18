@@ -208,6 +208,7 @@ function MSG_LBL_REGION_1() {
 }
 function MSG_LBL_STORE_1() {
     $('#lbl_By_Store').text("Por Tienda");
+    $('.lbl_By_Store').text("Por Tienda");
 }
 function MSG_TXT_TITLE_1() {
     $('#top_txt_title').text("Opciones");
