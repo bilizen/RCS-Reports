@@ -311,7 +311,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', end
     display: block;
     width: 88%;
     margin: auto auto;
-    background-color: #3c81ea;
+    background-color: #0000CD;
     color: white;
 }
 .btn_only1:hover{
@@ -322,7 +322,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', end
     color:white;
 }
 .btn-modal,.btn-modal:hover{
-    color: #3c81ea;
+    color: #0000CD;
     
     font-size: 18px;
 }
