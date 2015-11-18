@@ -1856,6 +1856,7 @@ function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
 function deteclenguage() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
+    localStorage.lang =  current_lang;
 
     if (current_lang == 'es') {
 

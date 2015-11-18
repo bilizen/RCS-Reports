@@ -206,7 +206,11 @@ function setcombo() {
             $("#select-region").empty();
             var regionCod = "";
             var regionNam = "";
-            $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>ALL REGION</div><hr>");
+            if(localStorage.lang == "es"){
+                $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>Todas las Regiones</div><hr>");
+            }else{
+                $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>All Regions</div><hr>");
+            }
             var filas = results.rows.length;
             for (var i = 1; i < filas; i++) {
                 regionCod = results.rows.item(i).regionCode; //campo y convertir a string
@@ -458,6 +462,7 @@ function deteclenguage3() {
         MSG_BACK_3();
         MSG_CHOOSE_RANGE_3();
         MSG_DATE_START_3();
+        MSG_ALL_REGION();
         MSG_DATE_END_3();
         MSG_CHOOSE_DATE_COMPARE_3();
         MSG_DICTIONARY_3();

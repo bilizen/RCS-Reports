@@ -461,18 +461,18 @@ function MSG_DICTIONARY_3() {
 }
 
 function MSG_TOTALMONTHGOAL_3() {
-    $("#lblTotalMonthGoal").text("Meta total del mes por tienda");
+    $("#lblTotalMonthGoal").text("Meta mensual por tienda");
 }
 
 function MSG_TOTALGOALSTORE_3() {
-    $("#lblTotalGoalAll").text("Meta total del mes por tienda");
+    $("#lblTotalGoalAll").text("Meta total mensual de la empresa");
 }
 
 function MSG_TEXT_ACUMULATE_PECENT_SALE_3() {
-    $("#lblAcumulatePercentSale").text("Procentaje acumulado de ventas");
+    $("#lblAcumulatePercentSale").text("Porcentaje acumulado de ventas");
 }
 function MSG_TEXT_ACUMULATE_PERCENT_GOAL_3() {
-    $("#lblAcumulatePercentGoal").text("Procentaje acumulado de metas");
+    $("#lblAcumulatePercentGoal").text("Porcentaje acumulado de metas");
 }
 function MSG_TEXT_OPTIONS_3() {
     $("#txt_Options").text("Opciones");
@@ -621,4 +621,8 @@ function MODAL_ORIENTATION_R4(){
 function MSGS_TEXT_OPTIONS(){
      $(".text-checkbox.current").text("Mostral Actual");
      $(".text-checkbox.global").text("Mostrar Global");
+}
+
+function MSG_ALL_REGION(){
+    $(".filterRegion").text("Todas las Regiones");
 }
