@@ -7,7 +7,7 @@
     font-size: 16px;
     font-style: normal;
     text-align: center;
-    color: rgb(21, 125, 251);
+    color: rgb(0, 115, 255);
 }
 .progressByStore i.T{
     width: 7%;
@@ -63,7 +63,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
 
 #lblTotalAll{
 	text-align: left;
-    color: rgb(21, 125, 251);
+    color: rgb(0, 115, 255);
 }
 #totalpromedio{
     color: #fff;
@@ -75,7 +75,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
 }
 #PercentGoal,#totalGoalPercentage{
 	color: #fff;
-    background-color: #157DFB;
+    background-color: #0073FF;
     border-radius: 8pt;
     padding: 5px 4pt;
     text-align: center;
@@ -110,7 +110,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
 	font-size: 16px;
 	border-radius: 4px;
 	display: inline-block;
-	color: rgb(21, 125, 251);
+	color: rgb(0, 115, 255);
 }
 
 /* iPad in portrait & landscape */

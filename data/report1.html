@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>RCS Reports</title>
+  <title>Report 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
              deteclenguage();
              hideCombo();
              if(checkNetConnection()==true){
-                downloadByCompany("1","1");
+                downloadByStore("1","1");
              }else{
                  mostrarModalGeneral();
              }   
@@ -89,7 +89,7 @@
             <div class="section">
                 <div class="section_content"> 
                     <div class="select-general">
-                        <div data-value="1" class="init item innerLi" onclick="moveToLeft(1);" id="filterGeneral">By Company</div>
+                        <div data-value="3" class="init item innerLi" onclick="moveToLeft(1);" id="lbl_By_Store">By Store</div>
                     </div>
                 </div>                
             </div>
@@ -156,11 +156,11 @@
                 <span id="section_header">Choose a filter</span>
                 <div class="section_content">
                     <div class="select-general">
-                        <div data-value="1" class="item selected" id="lbl_By_company">By Company</div>
+                        <div data-value="1" class="item " id="lbl_By_company">By Company</div>
                         <hr>
                         <div data-value="2" class="item" id="lbl_By_region">By Region</div>
                         <hr>
-                        <div data-value="3" class="item"  id="lbl_By_Store">By Store</div>
+                        <div data-value="3" class="item selected"  id="lbl_By_Store">By Store</div>
                     </div> 
                 </div>
             </div>

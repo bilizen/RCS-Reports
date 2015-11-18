@@ -1961,5 +1961,7 @@ function deteclenguage() {
         
         MSG_LBL_DET_DIC_1();
         /***************************************/ 
+
+        MSGS_TEXT_OPTIONS();
     }
 }

@@ -142,7 +142,7 @@ header{
 header button{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-size: 17px;
-    color: rgb(21, 125, 251);
+    color: rgb(0, 115, 255);
     padding-left: 4px;
     font-weight: 300;
     text-overflow: ellipsis !important;
@@ -589,7 +589,7 @@ hr {
 }
 .item.selected{    
     color: #fff;
-    background-color: rgb(21, 125, 251);
+    background-color: rgb(0, 115, 255);
     -webkit-transition: all 0.12s;
     transition: all 0.12s;
 }
@@ -616,11 +616,10 @@ hr {
 }
 .store{
     padding: 4pt 6%;
-    /*height: 99px;*/
     line-height: 0.8em;
 }
 .store:nth-of-type(2n){
-    background-color: #eaeaeb;
+    background-color: rgba(234,234,235,0.85);
 }
 .store h1{
     width: 100%;
@@ -642,7 +641,7 @@ hr {
     width: 12%;
     font-size: 16px;
     font-style: normal;
-    color: rgb(21, 125, 251);
+    color: rgb(0, 115, 255);
 }
 .actual p,.global p{
     width: 26.5%;
@@ -660,7 +659,7 @@ hr {
     color: white !important;
 }
 .actual span.red, .global span.red{
-    background-color: #CA1D12;
+    background-color: #CE291E;
     border-radius: 8pt;
 } 
 .actual span.green, .global span.green {
@@ -668,7 +667,7 @@ hr {
     border-radius: 8pt;
 }
 .actual span.ambar, .global span.ambar {
-    background-color: #cfb337;
+    background-color: #FF8C00;
     border-radius: 8pt;
 }
 div[class^="graphic-"]
@@ -954,7 +953,7 @@ div[class^="detalle-"] span{
     font-size: 14px;
     display: inline-block;
 }
-.infoReport1 i{width: 15%; color: rgb(21, 125, 251);}
+.infoReport1 i{width: 15%; color: rgb(0, 115, 255);}
 .infoReport1 span{
     width: 28%;
     vertical-align: -webkit-baseline-middle;
@@ -1293,7 +1292,7 @@ button.delete{
     }
     .infoReport1 i, .infoReport1 span,
     .modal-title{
-        font-size: 14pt;
+        font-size: 15pt;
     }
     .infoReport1 span{
         width: 38%;

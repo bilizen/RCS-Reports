@@ -615,3 +615,9 @@ function MODAL_ORIENTATION_R4(){
      $("#title_store_R4").text("Mensaje");
 }
 /****************************************************/
+
+// Opciones de Actual Global
+function MSGS_TEXT_OPTIONS(){
+     $(".text-checkbox.current").text("Mostral Actual");
+     $(".text-checkbox.global").text("Mostrar Global");
+}
