@@ -186,19 +186,20 @@ function henry1() {
     var selectGeneral = $('.select-general').height();
     if ($('#divRegion').css('display') == 'none'){
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
-        console.log("if");
     }else{
         $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
-        console.log("else");
     }
 }
 $(window).resize(function () {
+    var windowh = $(window).height();
+    var headerh=$('header').height();
+    var regionh=$('#divRegion').height();
+    var selectdateP =$('.select-dateP').height();
+    var selectGeneral = $('.select-general').height();
     if ($('#divRegion').css('display') == 'none'){
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
-        console.log("if");
     }else{
         $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
-        console.log("else");
     }
 });
 //**********************************************//

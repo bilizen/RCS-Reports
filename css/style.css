@@ -179,14 +179,6 @@ header button:active{
     overflow: hidden;
     font-weight: bold;
 }
-#txt_maintitle .isotipo {
-    padding-left: 44px;
-    display: inline-block;
-    background-image: url(../img/isotipoCompany.svg);
-    background-position: 0px 2px;
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-}
 #btn_right{
     position: absolute;
     bottom: 0;
@@ -220,6 +212,12 @@ header button:active{
     line-height: 44px;
     background: transparent;
     
+}
+.img_logotitle {
+    background-image: url(../img/iconReport.png) !important;
+    background-position: 2px 4px !important;
+    background-size: 33px !important;
+    background-repeat: no-repeat !important;
 }
 
 .indexSection{
@@ -1347,6 +1345,10 @@ button.delete{
     }
     label,#ip_1, #ip_2, #ip_3, #ip_4{
         font-size: 16pt;
+    }
+    .img_logotitle {
+        background-position: 2px 4px !important;
+        background-size: 36px !important;
     }
 }
 
