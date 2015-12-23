@@ -80,7 +80,7 @@
         <header>
             <div id="top_bar_space"></div>
             <div class="options_bar_space">
-                <div id="btn_left" class="arrow"><button onclick="moveToRight();refresh_back3();" id="txtBack">Back</button></div>
+                <div id="btn_left" class="arrow"><button onclick="moveToRight();butttonBack3();" id="txtBack">Back</button></div>
                 <div id="txt_Options" >Options</div>
                 <div id="btn_right"></div>
             </div>      
@@ -98,7 +98,7 @@
         <div id="content" class="general">
             <div class="section">
                 <span id="txt_choose_region">Choose a region</span>
-                <div class="section_content">
+                <div class="section_content heightSection">
                     <div id="select-region">
                         <!-- COMBO-->                                              
                     </div> 
@@ -203,15 +203,16 @@
             $(document).ready(function(){/*** caraga elemento de la estructura html y estilos ***/
                 onInit();/**verificamos la base de datos**/
                 existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
-                existDataRegion();//llenamos la tabla de regiones
-                henry3();
+                //existDataRegion();//llenamos la tabla de regiones
+                combo();
+        henry3();
             });
             
             $(window).load(function(){/***asegura que la pagina ya esta cargada**/
             
                 //var value="";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
                 //value = $(".select-clasification .init").attr('data-value');
-                setcombo();
+                //setcombo();
                 deteclenguage3();  
             });
         </script>
