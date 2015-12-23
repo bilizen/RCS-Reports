@@ -1,21 +1,4 @@
-
-function existDataRegion() {
-    localDB.transaction(function (transaction) {
-        var query1 = "SELECT count(*)AS cant FROM REGION";
-        transaction.executeSql(query1, [], function (tx, results) {
-            var cant = results.rows.item(0).cant;
-            if (cant === 0) {
-                console.log("va insertar datos, uso del metodo existDataRegion");
-                insert_table_Region();
-            } else {
-            }
-        });
-    });
-}
-
-
-function insert_table_Region() {
-    
+function combo() {
     var xurl = "";
     var ip = "";
     var port = "";
@@ -38,38 +21,30 @@ function insert_table_Region() {
                 crossdomain: true,
                 beforeSend: function () {
                     showLoading();
-                }, complete: function() {
+                }, complete: function () {
                     hideLoading();
                 }, success: function (data, textStatus, XMLHttpRequest) {//variable docuemntacion
-                    //console.log(data.quantity);//el queantity
-                    //$("#select-region").empty();
-                    insertTableRegion("", "ALL REGION");
-                    //$("#select-region").append("<div class='item selected' onclick=refresh_report3('');>ALL REGION</div><hr>");
+                    $("#select-region").empty();
+                    var vacio = "";
+                    if (localStorage.lang == "es") {
+                        $("#select-region").append("<div class='item selected' value='" + vacio + "' onclick=refresh_report3('');>Todas las Regiones</div><hr>");
+                    } else {
+                        $("#select-region").append("<div class='item selected' value='" + vacio + "'  onclick=refresh_report3('');>All Regions</div><hr>");
+                    }
+                    var mostrar = "";
                     if (data.quantity == "1") {
                         $(data.data).each(function (index, value) {
-                            insertTableRegion(value.regionCode, value.regionName);
-                            //$("#select-region").append("<div class='item' onclick=refresh_report3('" + value.regionCode + "');>" + value.regionName + "</div><hr>");
+                            mostrar += "<div class=item  value='" + value.regionCode + "'  onclick=refresh_report3('" + value.regionCode + "');>" + value.regionName + "</div><hr>";
                         });
                     }
+                    $("#select-region").append(mostrar);
+
                 }});
         });
     });
+
+
 }
-
-
-/*funcion que sirve para insertar data a la tabla region */
-function insertTableRegion(regionCode, regionName){
-    var query = "INSERT INTO REGION(regionCode,regionName )VALUES (?,?)";
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [regionCode, regionName], function (transaction, results) {
-            }, errorHandler);
-        });
-    } catch (e) {
-        console.log("Error insertar table" + e + ".");
-    }
-}
-
 
 ///cambiar tamaño de la barra de desplazamiento
 function henry3() {
@@ -77,8 +52,15 @@ function henry3() {
     $(window).resize(function () {
         $('.section.list').height($(window).height() - ($('header').height() + $('.select-region').height() + $('nav').height()) - 2);
     });
+
+    $('.heightSection').height($(window).height() - ($('header').height() + $('.section_content').height()));
+    $(window).resize(function () {
+        $('.heightSection').height($(window).height() - ($('header').height() + $('.section_content').height()));
+    });
+
 }
-//////////////////////////////////////
+
+
 //***************** funcion muestra los datos en el campo principal    ***************//
 function refresh_report3(regionCode) {
     var xurl = "";
@@ -177,50 +159,17 @@ function refresh_report3(regionCode) {
     });
 }
 
+
 /*********muestra los datos en el campo principal despues hacer click en el boton back*********/
-function refresh_back3() {
-    var cregionName="";
+function butttonBack3() {
     try {
-        cregionName = document.getElementById('filterRegion').innerHTML;
-        cregionName=cregionName.replace(/\s+/g,'');
-        localDB.transaction(function (tx) {
-            tx.executeSql("SELECT *  FROM REGION ", [], function (tx, results) {
-                for(var i=0;i<results.rows.length;i++){
-                    var regionName=(results.rows.item(i).regionName).replace(/\s+/g,'');
-                    if(cregionName==regionName){
-                        refresh_report3(results.rows.item(i).regionCode);
-                    }
-                }
-            });
-        });
+        var regionCod = $('.item.selected').attr('value').toString();
+        refresh_report3(regionCod);
     } catch (e) {
         console.log("Error: " + e);
     }
 }
 
-function setcombo() {
-    var query2 = 'SELECT regionCode,regionName FROM REGION';
-    localDB.transaction(function (tx) {
-        tx.executeSql(query2, [], function (tx, results) {
-            var mostrar = "";
-            $("#select-region").empty();
-            var regionCod = "";
-            var regionNam = "";
-            if(localStorage.lang == "es"){
-                $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>Todas las Regiones</div><hr>");
-            }else{
-                $("#select-region").append("<div class='item selected' onclick=refresh_report3('');>All Regions</div><hr>");
-            }
-            var filas = results.rows.length;
-            for (var i = 1; i < filas; i++) {
-                regionCod = results.rows.item(i).regionCode; //campo y convertir a string
-                regionNam = results.rows.item(i).regionName; //campo y convertir a string
-                mostrar += "<div class=item onclick=refresh_report3('" + regionCod + "');>" + regionNam + "</div><hr>";
-            }
-            $("#select-region").append(mostrar);
-        }, errorHandler);
-    });
-}
 
 function existDataDate_report3() {
     var count = 0;
@@ -418,28 +367,13 @@ function existDataDate_report3() {
                         console.log("Error: " + error.code + "<br>Mensage: " + error.message);
                     });
                 });
-            }
-            catch (e) {
+            } catch (e) {
                 console.log("Error existsData " + e + ".");
             }
         });
     });
 }
 
-/*****************insertar_fecha***************************/
-function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
-
-    var query = "INSERT INTO " + TABLE_CUSTOM_DATE_RANGE +
-            "(" + KEY_DATE_START + ", " + KEY_DATE_END + ", " + KEY_DATE_CHOOSED + ") VALUES (?,?,?)";
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [dateStart, dateEnd, dateUntil], function (transaction, results) {
-            }, errorHandler);
-        });
-    } catch (e) {
-        console.log("Error addData " + e + ".");
-    }
-}
 
 /*****************actualizar_fecha*******************************/
 function updaTableCustomDate3() {
@@ -451,7 +385,6 @@ function updaTableCustomDate3() {
                 + "' , " + KEY_DATE_END + "='" + dateEnd + "' , " + KEY_DATE_CHOOSED + "='" + dateToCompare + "'");
     });
 }
-
 
 function deteclenguage3() {
     lang = navigator.language.split("-");

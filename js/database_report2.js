@@ -29,8 +29,6 @@ $(window).resize(function () {
 });
 
 
-
-
 function existDataClasification() {/**Check if exists data , but yes or yes this function fills the table clasification***/
 
     var url = 0;
@@ -315,8 +313,6 @@ function downloadRefresh() {
 
     var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
     value = $(".select-clasification .init").attr('data-value');
-
-
     downloadStoreClasification(value);
 }
 
@@ -328,7 +324,6 @@ function downloadStoreClasification(_valueSelected) {
     var alias = "";
     var site = "";
     var state_clasification = _valueSelected;
-
 
     /*********variables*******/
     var muy_buena = 0;
@@ -342,19 +337,12 @@ function downloadStoreClasification(_valueSelected) {
     var sup_critico = 0;
     var muy_critico = 0;
 
-
     /***Dates***/
     var dateStart = "";
     var dateEnd = "";
     var dateUntil = "";
     var array;
     /****get****date****/
-
-
-
-
-
-
     /***get range date ***/
     /***date of today ***/
     var obj_date = new Date();

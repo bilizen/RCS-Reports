@@ -2,18 +2,18 @@ function showDialogStore5() {
     $("#show_modalStore5").modal();
     existDataStore_report5();
 }
-/////////////// funcion para disminuir o aumentar la barra desplazamiendo
-function henry5(){
-    $('.list').height($(window).height()-$('header').height());
+// funcion para disminuir o aumentar la barra desplazamiendo
+function henry5() {
+    $('.list').height($(window).height() - $('header').height());
 }
-$(window).resize(function(){
-    $('.list').height($(window).height()-$('header').height());
+$(window).resize(function () {
+    $('.list').height($(window).height() - $('header').height());
 });
-////////////////
+
+
 
 function existDataStore_report5() {
     try {
-
         var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], function (transaction, results) {
@@ -21,8 +21,8 @@ function existDataStore_report5() {
                 if (store > 0) {
 
                     localDB.transaction(function (tx) {
-                        tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + " = 1", [], function (tx, results) {
-                            var storeNoInUsed = results.rows.item(0).StoreNo;
+                        tx.executeSql('SELECT * FROM ' + TABLE_STORE , [], function (tx, results) {
+                          
 
                             localDB.transaction(function (tx) {
                                 tx.executeSql('SELECT * FROM ' + TABLE_STORE, [], function (tx, results) {
@@ -31,7 +31,6 @@ function existDataStore_report5() {
                                     var StoreName = "";
                                     var StoreNo = "";
                                     var show = "";
-
 
                                     for (var i = 0; i < results.rows.length; i++) {
                                         StoreName = results.rows.item(i).StoreName;
@@ -42,7 +41,6 @@ function existDataStore_report5() {
                                         } else {
                                             show += "<h1 class='storeName-" + StoreNo + "' onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</div>";
                                         }
-
                                     }
 
                                     $('#list_store5').append(show);
@@ -50,10 +48,7 @@ function existDataStore_report5() {
                             });
                         });
                     });
-
-
                 } else {
-                    $("#list_store5").empty();
                     downloadAllStore5();
                 }
             });
@@ -67,41 +62,27 @@ function existDataStore_report5() {
 
 function showLoading5() {
     $('#show_modalStore5 #list_store5').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
-    $('#show_modalStore5 #list_store5').css('background','rgba(0,0,0,0.23)');
-    $('#show_modalStore5 #btnStore').attr('disabled','disabled');
+    $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0.23)');
+    $('#show_modalStore5 #btnStore').attr('disabled', 'disabled');
 }
 
 function hideLoading5() {
-    
-    setTimeout(function(){ 
-       $('#show_modalStore5 .loader-ios').remove();
-       $('#show_modalStore5 #list_store5').css('background','rgba(0,0,0,0)');
-       $('#show_modalStore5 #list_store5 h1').removeClass('hide');
-   }, 3200);  
+    setTimeout(function () {
+        $('#show_modalStore5 .loader-ios').remove();
+        $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0)');
+        $('#show_modalStore5 #list_store5 h1').removeClass('hide');
+    }, 3200);
 }
 
 function downloadAllStore5() {
-    var xurl="";
-    var ip="";
-    var port="";
-    var alias="";
-    var site="";
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
     var array;
-    
-    
-    localDB.transaction(function(tx){
-        tx.executeSql('SELECT * FROM '+TABLE_URL+' WHERE '+KEY_USE+' = 1' ,[],function(tx,results){
-            ip = results.rows.item(0).ip;
-            port= results.rows.item(0).port;
-            alias = results.rows.item(0).alias;
-            site=results.rows.item(0).site;
-            
-       xurl = "http://"+ip+":"+port+"/"+site+"/ReportStore/";
-    
-    
-    
-    
-    
+
+    xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
     //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
     $.ajax({
         url: xurl,
@@ -111,69 +92,41 @@ function downloadAllStore5() {
         timeout: 15000,
         crossdomain: true,
         async: true,
-        beforeSend: function () { 
+        beforeSend: function () {
             showLoading5();
         },
         complete: function () {
-
+            hideLoading5();
         },
-        success: function (data, textStatus, XMLHttpRequest) {
+        success: function (data) {
 
             if (data.successful > 0) {
                 var StoreName;
                 var StoreNo;
                 var use = 1;
                 var show = "";
+                $("#list_store5").empty();
 
                 $(data.report).each(function (index, value) {
                     StoreName = value.StoreName;
                     StoreNo = value.StoreNo;
-                    
-                    if (StoreNo == 1) {
-                        show += "<h1 class='storeName-" + StoreNo + " active hide' onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
-                    
-                    } else {
-                        show += "<h1 class='storeName-" + StoreNo + " hide' onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
-                    }
-
-
-                    insertTableStore5(StoreNo, StoreName, use);
-                    
-                    if(use==1){
-                        var queryUpdate = "UPDATE " + TABLE_STORE +" SET "+ KEY_USEDSTORE+"=1 WHERE "+KEY_IDSTORE+" = "+1;
-                        try {
-                             localDB.transaction(function (transaction) {
-                             transaction.executeSql(queryUpdate, [], function (transaction, results) {
-                         }, errorHandler);
-                             });
-                    } catch (e) {
-                    console.log("Error addData " + e + ".");
-                     }  
-                    }
-                    
-                    use = 0;
-
+                    show += "<h1 class='storeName-" + StoreNo + " hide' onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
                 });
-                
                 $('#list_store5').append(show);
-            }
-            hideLoading5();
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
 
-            mostrarModalGeneral("asasas");
+            }
+        }, error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status);
             console.log(xhr.statusText);
             console.log(xhr.responseText);
-            hideLoading();
+            hideLoading5();
             if (current_lang == 'es')
                 mostrarModalGeneral("Error de Conexión");
             else
                 mostrarModalGeneral("No Connection");
 
+
         }
-    });
-    });
     });
 }
 
@@ -201,15 +154,14 @@ function setStoreNo5(storeNo, storeName) {
 }
 
 function updateStoreUsedTableStore5(storeNo) {
-    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = 1 WHERE " + KEY_STORENO + " = " + storeNo;
+    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = 1.0 WHERE " + KEY_STORENO + " = " + storeNo;
 
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(queryStore, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -229,8 +181,7 @@ function updateAllStoreUsedToZero5() {
             transaction.executeSql(queryUpdate, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -300,161 +251,152 @@ function insertFirstTimeDate_report5(dateStart, dateEnd, dateUntil) {
 }
 
 function downloadAllcustomers() {
-     var xurl="";
-    var ip="";
-    var port="";
-    var alias="";
-    var site="";
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
     var array;
-    
-    
-    localDB.transaction(function(tx){
-        tx.executeSql('SELECT * FROM '+TABLE_URL+' WHERE '+KEY_USE+' = 1' ,[],function(tx,results){
+
+
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
-            port= results.rows.item(0).port;
+            port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
-            site=results.rows.item(0).site;
-            
-       xurl = "http://"+ip+":"+port+"/"+site+"/ReportScopeClerk/POST";
-    
-    
-    
-    
-    var query="SELECT * FROM "+TABLE_CUSTOM_DATE_RANGE;
-    localDB.transaction(function(tx){
-        tx.executeSql(query,[],function(tx,results){
-            var dateStar=results.rows.item(0).dateStart;
-            var dateEnd=results.rows.item(0).dateEnd;
-            
-            document.getElementById('dateStartTitle').innerHTML = dateStar;
-            document.getElementById('dateEndTitle').innerHTML = dateEnd;
-            
-            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore=1";
-        
+            site = results.rows.item(0).site;
+
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportScopeClerk/POST";
+
+
+
+
+            var query = "SELECT * FROM " + TABLE_CUSTOM_DATE_RANGE;
             localDB.transaction(function (tx) {
-            tx.executeSql(query1, [], function (tx, results) {
-  
-                var StoreNo = results.rows.item(0).StoreNo;
-                var StoreName = results.rows.item(0).StoreName;
-                
-                document.getElementById('nameStore5').innerHTML = StoreName;
-                        
+                tx.executeSql(query, [], function (tx, results) {
+                    var dateStar = results.rows.item(0).dateStart;
+                    var dateEnd = results.rows.item(0).dateEnd;
 
-                //var xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportScopeClerk/POST";
-                 array = {DateStart:dateStar, DateEnd:dateEnd, StoreNo: StoreNo};
-                $.ajax({
-                    url: xurl,
-                    type: 'POST',
-                    data: JSON.stringify(array),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    async: true,
-                    crossdomain: true,
-                    beforeSend: function () {
-                        showLoading();
-                    }, complete: function () {
-                        hideLoading();
-                    }, success: function (data) {
-                        
-                        $("#list-empleados").empty();
-                        if (data.successful > 0) {
-                            
-                            var show = "";
-                            $(data.report).each(function (index, value) {
-                                var FirstName = value.FirstName;
-                                var Qty = parseFloat(value.Qty);
-                                var ExtRetailPriceWTax = parseFloat(value.ExtRetailPriceWTax);
-                                var TotalGoal = parseFloat(value.TotalGoal);
-                                var PercentSale = parseFloat(value.PercentSale);
-                                
-                                
-                                
-                                
-                                show += "<tr>";
-                                show += "<td>" + FirstName + "</td>";
-                                show += "<td>" + Qty.toFixed(2) + "</td>";
-                                show += "<td>" + ExtRetailPriceWTax.toFixed(2) + "</td>";
-                                show += "<td>" + TotalGoal.toFixed(2) + "</td>";
-                                show += "<td>" + PercentSale.toFixed(2) + "</td>";
-                                show += "</tr>";
+                    document.getElementById('dateStartTitle').innerHTML = dateStar;
+                    document.getElementById('dateEndTitle').innerHTML = dateEnd;
+
+                    var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore=1.0";
+
+                    localDB.transaction(function (tx) {
+                        tx.executeSql(query1, [], function (tx, results) {
+
+                            var StoreNo = results.rows.item(0).StoreNo;
+                            var StoreName = results.rows.item(0).StoreName;
+
+                            document.getElementById('nameStore5').innerHTML = StoreName;
+
+
+                            //var xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportScopeClerk/POST";
+                            array = {DateStart: dateStar, DateEnd: dateEnd, StoreNo: StoreNo};
+                            $.ajax({
+                                url: xurl,
+                                type: 'POST',
+                                data: JSON.stringify(array),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                crossdomain: true,
+                                beforeSend: function () {
+                                    showLoading();
+                                }, complete: function () {
+                                    hideLoading();
+                                }, success: function (data) {
+
+                                    $("#list-empleados").empty();
+                                    if (data.successful > 0) {
+
+                                        var show = "";
+                                        $(data.report).each(function (index, value) {
+                                            var FirstName = value.FirstName;
+                                            var Qty = parseFloat(value.Qty);
+                                            var ExtRetailPriceWTax = parseFloat(value.ExtRetailPriceWTax);
+                                            var TotalGoal = parseFloat(value.TotalGoal);
+                                            var PercentSale = parseFloat(value.PercentSale);
+
+
+
+
+                                            show += "<tr>";
+                                            show += "<td>" + FirstName + "</td>";
+                                            show += "<td>" + Qty.toFixed(2) + "</td>";
+                                            show += "<td>" + ExtRetailPriceWTax.toFixed(2) + "</td>";
+                                            show += "<td>" + TotalGoal.toFixed(2) + "</td>";
+                                            show += "<td>" + PercentSale.toFixed(2) + "</td>";
+                                            show += "</tr>";
+                                        });
+                                        $("#list-empleados").append(show);
+                                        henry5();
+
+                                    } else {
+
+                                    }
+                                }, error: function (xhr, ajaxOptions, thrownError) {
+                                    console.log(xhr.status);
+                                    console.log(xhr.statusText);
+                                    console.log(xhr.responseText);
+                                    hideLoading();
+                                    if (current_lang == 'es')
+                                        mostrarModalGeneral("Error de Conexión");
+                                    else
+                                        mostrarModalGeneral("No Connection");
+                                }
                             });
-                            $("#list-empleados").append(show);
-                            henry5();
-
-                        }else{
-                            
-                        }
-                    }, error: function (xhr, ajaxOptions, thrownError) {
-                        console.log(xhr.status);
-                        console.log(xhr.statusText);
-                        console.log(xhr.responseText);
-                        hideLoading();
-                        if (current_lang == 'es')
-                            mostrarModalGeneral("Error de Conexión");
-                        else
-                            mostrarModalGeneral("No Connection");
-                    }
+                        });
+                    });
                 });
             });
         });
-            
-            
-        
-        
-        });
-        
     });
-    
- });
-            });
-
-    
-    
 }
 
 function updaTableCustomDate5() {
     var dateStar = document.getElementById('dateStart').innerHTML;
     var dateEnd = document.getElementById('dateEnd').innerHTML;
-    localDB.transaction(function (tx){
-        tx.executeSql("UPDATE "+TABLE_CUSTOM_DATE_RANGE+" SET "+KEY_DATE_START+"='"+dateStar
-                +"' , "+KEY_DATE_END+"='"+dateEnd+"' , "+KEY_DATE_CHOOSED+"='"+dateEnd+"'");
-        
+    localDB.transaction(function (tx) {
+        tx.executeSql("UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET " + KEY_DATE_START + "='" + dateStar
+                + "' , " + KEY_DATE_END + "='" + dateEnd + "' , " + KEY_DATE_CHOOSED + "='" + dateEnd + "'");
+
     });
 
 }
 /***********************Language**********************************/
-function changeLanguage5(){
+function changeLanguage5() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
 
     if (current_lang == 'es') {
 
         //head
-         $('#txtReturn').text('Regresar');
-         $('#lblDateEnd').text('Fecha fin');
-         $('#lblDateStart').text('Fecha inicio');
+        $('#txtReturn').text('Regresar');
+        $('#lblDateEnd').text('Fecha fin');
+        $('#lblDateStart').text('Fecha inicio');
 
         //tabla head
-         $('thead th:nth-child(1)').text('Empleados');
-         $('thead th:nth-child(2)').text('Unidades Vendidas');
-         $('thead th:nth-child(3)').text('Vental Total');
-         $('thead th:nth-child(4)').text('Meta');
+        $('thead th:nth-child(1)').text('Empleados');
+        $('thead th:nth-child(2)').text('Unidades Vendidas');
+        $('thead th:nth-child(3)').text('Vental Total');
+        $('thead th:nth-child(4)').text('Meta');
 
-         //range date head
-         $('.date span').text('Seleccione rango de fechas');
-         $('thead th:nth-child(2)').text('Unidades Vendidas');
-         $('thead th:nth-child(3)').text('Vental Total');
-         $('thead th:nth-child(4)').text('Meta');
+        //range date head
+        $('.date span').text('Seleccione rango de fechas');
+        $('thead th:nth-child(2)').text('Unidades Vendidas');
+        $('thead th:nth-child(3)').text('Vental Total');
+        $('thead th:nth-child(4)').text('Meta');
 
-         $('#lbldateEnd').text('Fecha fin');
-         $('#lbldateStart').text('Fecha inicio');
+        $('#lbldateEnd').text('Fecha fin');
+        $('#lbldateStart').text('Fecha inicio');
 
-         $('.txt_options').text("Opciones");
-         $('#txtBack').text("Retornar");
-         $('#show_modalStore5 .modal-header').text("Seleccione su tienda");
-         $('#txtOk').text("Aceptar");
-         $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
-         $("#title_store_R5").text("Mensaje");
-         
+        $('.txt_options').text("Opciones");
+        $('#txtBack').text("Retornar");
+        $('#show_modalStore5 .modal-header').text("Seleccione su tienda");
+        $('#txtOk').text("Aceptar");
+        $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
+        $("#title_store_R5").text("Mensaje");
+
     }
 }

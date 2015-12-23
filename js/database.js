@@ -210,10 +210,10 @@ $(window).resize(function () {
 //***limpiar tablas a la hora de cambiar o entrar a otro servidor**//
 function delTables(){
     try {
-        var queryDelete = "DELETE FROM " + TABLE_STORE;
+        var queryDelete1 = "DELETE FROM " + TABLE_STORE;
         localDB.transaction(function (transaction) {
 
-            transaction.executeSql(queryDelete, [], function (transaction, results) {
+            transaction.executeSql(queryDelete1, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 }
@@ -227,8 +227,10 @@ function delTables(){
     }
 
     try {
+        var queryDelete2="DELETE FROM REGION";
         localDB.transaction(function (transaction) {
-            transaction.executeSql("DELETE FROM REGION", [], function (transaction, results) {
+            transaction.executeSql(queryDelete2, [], function (transaction, results) {
+                alert("borro");
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 }
@@ -481,7 +483,6 @@ function existsData() {
 }
 
 function Title_Company(){
-    
     var query = "SELECT " + KEY_ALIAS + " FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
     try {
         localDB.transaction(function (transaction) {
@@ -494,12 +495,10 @@ function Title_Company(){
     catch (e) {
         console.log("Error Title_Company " + e + ".");
     }
-    
 }
 
 //***************************** verificamos que este lleno la tabla de URL ***********************************//
 function existsData_Login(pin, check) {
-
     var url = "";
     var query = "SELECT COUNT(" + KEY_URLBASE + ") AS urlBase FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
     try {
@@ -565,12 +564,7 @@ function existsData_Login(pin, check) {
                         });
 
                     });
-
-
-
                 } else {//NO TENEMOS NADA EN LA BASE DE DATOS,PRIMERA VEZ QUE INSERTAMOS NUESTRO SERVIDOR CHAPAMOS VALORES DE LA URL
-
-
                     var ip = getIp_Parameter();
                     var port = getPort_Parameter();
                     var site = getSite_Parameter();
@@ -615,10 +609,6 @@ function existsData_Login(pin, check) {
                                 mostrarModalGeneral("No Connection");
                         }
                     });
-
-
-
-
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
@@ -631,7 +621,6 @@ function existsData_Login(pin, check) {
 }
 
 function getConfiguration(url) {
-
     var config = "";
     var query = "SELECT " + KEY_REMEMBER + " AS cantidad FROM " + TABLE_CONFIGURATION;
     try {

@@ -10,7 +10,7 @@ function existDataStore() {
                 if (url > 0) {
                     console.log(" Tiendas cargadas...");
                     localDB.transaction(function (tx) {
-                        tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + " = 1", [], function (tx, results) {
+                        tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + " = 1.0", [], function (tx, results) {
                             storeNoInUsed = results.rows.item(0).StoreNo;
 
                             var url = 0;
@@ -80,7 +80,7 @@ function updateAllStoreUsedToZero() {
 }
 
 function updateStoreUsedTableStore(storeNo) {
-    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = 1 WHERE " + KEY_STORENO + " = " + storeNo;
+    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = 1.0 WHERE " + KEY_STORENO + " = " + storeNo;
 
     try {
         localDB.transaction(function (transaction) {
@@ -226,8 +226,6 @@ function insertTableStore(StoreNo, StoreName, use) {
 }
 
 
-
-
 function downloadReportGraphic() {
     /***Dates***/
     var storeName = "";
@@ -256,7 +254,7 @@ function downloadReportGraphic() {
             /*****OBTENEMOS EL VALOR DE STORENO DE LA BASE DE DATOS PARA LA TIENDA USADA***/
 
             localDB.transaction(function (tx) {
-                tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "=" + 1, [], function (tx, results) {
+                tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= 1.0", [], function (tx, results) {
 
 
                     storeName = results.rows.item(0).StoreName;
