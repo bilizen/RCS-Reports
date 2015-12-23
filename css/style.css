@@ -615,6 +615,7 @@ hr {
 .store{
     padding: 4pt 6%;
     line-height: 0.8em;
+    white-space: nowrap;
 }
 .store:nth-of-type(2n){
     background-color: rgba(234,234,235,0.85);
@@ -700,7 +701,8 @@ div[class^="detalle-"]{
     font-size: 12px;
 }
 .year , div[class^="detalle-"] i {float: left; width: 40%;}
-.quantity, div[class^="detalle-"] span{float: right; width: 60%}
+.quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}
+.quantity{ text-align: center;}
 div[class^="detalle-"] i,
 div[class^="detalle-"] span{
     font-size: 12px;
@@ -1074,12 +1076,18 @@ button.delete{
 }
 
 
- #css-filter-blur:hover {
-    filter: progid:DXImageTransform.Microsoft.Blur(Strength=2);
-    position: relative;
-    left: -2px;
-    top: -2px;
-    }
+#css-filter-blur:hover {
+  filter: progid:DXImageTransform.Microsoft.Blur(Strength=2);
+  position: relative;
+  left: -2px;
+  top: -2px;
+}
+
+.lastConexion {
+    font-size: 100%;
+    text-align: right;
+}
+
 @media (-webkit-max-device-pixel-ratio: 1) {
     li, input, textarea {
         background-image: none;
@@ -1350,6 +1358,11 @@ button.delete{
         background-position: 2px 4px !important;
         background-size: 36px !important;
     }
+    .lastConexion {
+        font-size: 15pt;
+        text-align: right;
+        height: 19px;
+    }
 }
 
 /*iPhone 6 in portrait & landscape*/
@@ -1387,6 +1400,11 @@ button.delete{
     div[class^="detalle-"] i, div[class^="detalle-"] span{
         height: 22px;
     }
+    .lastConexion {
+        font-size: 10pt;
+        text-align: right;
+        height: 13px;
+    }
 }
 
 @media only screen and (min-width : 320px) and (max-width : 568px) { 
@@ -1410,15 +1428,15 @@ button.delete{
         padding-left: 60px;
     }
     .actual i, .global i {
-        width: 12%;
+        width: 13%;
         font-size: 11pt;
     }
     .actual p, .global p {
-        width: 22.5%;
+        width: 26.5%;
         font-size: 10pt;
     }
     .actual span, .global span {
-        width: 30%;
+        width: 21%;
         padding:0 4pt;
         padding-top: 6pt;
         padding-bottom: 6pt;
@@ -1465,5 +1483,10 @@ button.delete{
     span.ui-icon.ui-icon-circle-triangle-w,
     span.ui-icon.ui-icon-circle-triangle-e {
         font-size: 12pt;
+    }
+    .lastConexion {
+        font-size: 9pt;
+        text-align: right;
+        height: 12px;
     }
 }
