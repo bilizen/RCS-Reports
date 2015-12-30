@@ -170,7 +170,6 @@ function butttonBack3() {
     }
 }
 
-
 function existDataDate_report3() {
     var count = 0;
     var xurl = "";
@@ -232,7 +231,6 @@ function existDataDate_report3() {
                                                     sumTotalGoal += MonthGoalStore;
                                                     sumPercentGoal += AcumulateGoal;
                                                     sumPercentSale += AcumulateSale;
-                                                    //console.log(StoreName+" "+PercentGoal+" "+PercentSale+" "+MonthGoalStore);
                                                     show += "<div class='store progressByStore'>";
                                                     show += "<h1>" + StoreName + "</h1>";
                                                     show += "<i class='T'>T:</i>";

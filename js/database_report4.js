@@ -1,50 +1,20 @@
+function showDialogStore() {
+    $("#show_modalStore").modal();
+    existDataStore();
+}
+
 function existDataStore() {
-
-    var storeNoInUsed = "";
-
+    
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], function (transaction, results) {
                 url = results.rows.item(0).urlBase;
                 if (url > 0) {
-                    console.log(" Tiendas cargadas...");
-                    localDB.transaction(function (tx) {
-                        tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + " = 1.0", [], function (tx, results) {
-                            storeNoInUsed = results.rows.item(0).StoreNo;
-
-                            var url = 0;
-                            var checkData = 0;
-
-
-                            localDB.transaction(function (tx) {
-                                tx.executeSql('SELECT * FROM ' + TABLE_STORE, [], function (tx, results) {
-
-                                    $("#list_store").empty();
-                                    var StoreName;
-                                    var StoreNo;
-                                    var show = "";
-
-                                    for (var i = 0; i < results.rows.length; i++) {
-                                        StoreName = results.rows.item(i).StoreName;
-                                        StoreNo = results.rows.item(i).StoreNo;
-
-                                        if (storeNoInUsed === StoreNo) {
-                                            show += "<h1 class='storeName-" + StoreNo + " active' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</div>";
-                                        } else {
-                                            show += "<h1 class='storeName-" + StoreNo + "' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</div>";
-                                        }
-
-                                    }
-                                    $('#list_store').append(show);
-                                });
-                            });
-                        });
-                    });
-
+                    downloadAllStore2();
+                    
                 } else {
-                    console.log("Tiendas no encontradas - Cargando Tiendas...");
-                    $("#list_store").empty();
+
                     downloadAllStore();
 
                 }
@@ -52,8 +22,7 @@ function existDataStore() {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 }
@@ -67,8 +36,7 @@ function updateAllStoreUsedToZero() {
             transaction.executeSql(queryUpdate, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -87,8 +55,7 @@ function updateStoreUsedTableStore(storeNo) {
             transaction.executeSql(queryStore, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -99,10 +66,81 @@ function updateStoreUsedTableStore(storeNo) {
 
 }
 
-function showDialogStore() {
-    $("#show_modalStore").modal();
-    existDataStore();
+
+
+function downloadAllStore2(){
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading2();
+                        },
+                        complete: function () {
+                            hideLoading2();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $("#list_store").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " hide active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + " hide' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('#list_store').append(show);
+                            }
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            hideLoading2();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+            });
+        });
+    });
+    
 }
+
 
 function downloadAllStore() {
     var xurl = "";
@@ -116,10 +154,7 @@ function downloadAllStore() {
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-
             xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-
-
 
             //xurl="http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
             $.ajax({
@@ -130,10 +165,11 @@ function downloadAllStore() {
                 timeout: 15000,
                 crossdomain: true,
                 async: true,
-                beforeSend: function () { 
+                beforeSend: function () {
                     showLoading2();
                 },
                 complete: function () {
+                     hideLoading2();
                 },
                 success: function (data, textStatus, XMLHttpRequest) {
                     if (data.successful > 0) {
@@ -141,32 +177,21 @@ function downloadAllStore() {
                         var StoreNo;
                         var use = 1;
                         var show = "";
-
+                        $("#list_store").empty();
                         $(data.report).each(function (index, value) {
                             StoreName = value.StoreName;
                             StoreNo = value.StoreNo;
-                            if (StoreNo == 1)
-                                show += "<h1 class='storeName-" + StoreNo + " active hide' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            else
-                                show += "<h1 class='storeName-" + StoreNo + " hide' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            insertTableStore(StoreNo, StoreName, use);
-                            use = 0;
+                            if (index ==0){
+                                insertTableStore(StoreNo, StoreName,'1');
+                                show += "<h1 class='storeName-" + StoreNo + " active hide' data-value='"+ StoreName +"' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }else{
+                                show += "<h1 class='storeName-" + StoreNo + " hide' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
 
                         });
-
-
-                        var queryUpdate = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + "=1 WHERE " + KEY_IDSTORE + " = " + 1;
-                        try {
-                            localDB.transaction(function (transaction) {
-                                transaction.executeSql(queryUpdate, [], function (transaction, results) {
-                                }, errorHandler);
-                            });
-                        } catch (e) {
-                            console.log("Error addData " + e + ".");
-                        }
                         $('#list_store').append(show);
                     }
-                    hideLoading2();
+                   
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
 
@@ -174,7 +199,7 @@ function downloadAllStore() {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    hideLoading2();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -191,24 +216,45 @@ function downloadAllStore() {
 function showLoading2() {
     $('#show_modalStore #list_store').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
     $('#show_modalStore #list_store').css('background', 'rgba(0,0,0,0.23)');
-    $('#show_modalStore #btnStore').attr('disabled', 'disabled');
+    $('#show_modalStore #btnStore').hide();
 }
 function hideLoading2() {
-    setTimeout(function () {
+//    setTimeout(function () {
         $('#show_modalStore .loader-ios').remove();
         $('#show_modalStore #list_store').css('background', 'rgba(0,0,0,0)');
         $('#show_modalStore #list_store h1').removeClass('hide');
-    }, 3200);
+        $('#show_modalStore #btnStore').show();
+//    }, 3200);
 }
 
-function setStoreNo(storeNo, storeName) {
-    updateAllStoreUsedToZero();
+function setStoreNo(storeNo) {  
     $('#list_store h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
-    $('#show_modalStore #btnStore').removeAttr('disabled');
-    updateStoreUsedTableStore(storeNo);
+    var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
+    updateStore4(storeNo, StoreName);
+    $('#show_modalStore #btnStore').show();
 
 }
+
+function updateStore4(storeNo, StoreName) {
+    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_STORENO + " ='" + storeNo + "' ," + KEY_STORENAME + " = '" + StoreName + "'  WHERE " + KEY_USEDSTORE + " ='1'";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(queryStore, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
+}
+
+
 
 
 function insertTableStore(StoreNo, StoreName, use) {
@@ -254,7 +300,7 @@ function downloadReportGraphic() {
             /*****OBTENEMOS EL VALOR DE STORENO DE LA BASE DE DATOS PARA LA TIENDA USADA***/
 
             localDB.transaction(function (tx) {
-                tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= 1.0", [], function (tx, results) {
+                tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
 
 
                     storeName = results.rows.item(0).StoreName;
@@ -297,18 +343,18 @@ function downloadReportGraphic() {
                                         var arrayTotalGoal = [];
                                         var dateStart;
                                         var dateEnd;
-                                        var FixedCost= 0.00;
-                                        
-                                    
-                                    //captura valor de punto de equilibrio
-                                    var MargenValue = $('#MargenValue').val();   
-                                    if(MargenValue==0){
-                                        MargenValue=0.5;
-                                    }else{
-                                        MargenValue=MargenValue/100; 
-                                    }
+                                        var FixedCost = 0.00;
+
+
+                                        //captura valor de punto de equilibrio
+                                        var MargenValue = $('#MargenValue').val();
+                                        if (MargenValue == 0) {
+                                            MargenValue = 0.5;
+                                        } else {
+                                            MargenValue = MargenValue / 100;
+                                        }
                                         $(data.report).each(function (index, value) {
-                                            
+
                                             var AcumulateSale = 0.00;
                                             var AcumulateGoal = 0.00;
                                             var MonthGoalStore = 0.00;
@@ -316,18 +362,18 @@ function downloadReportGraphic() {
                                             AcumulateSale = parseFloat(value.AcumulateSale);
                                             AcumulateGoal = parseFloat(value.AcumulateGoal);
                                             MonthGoalStore = parseFloat(value.MonthGoalStore);
-                                            FixedCost=(parseFloat(value.FixedCost)/MargenValue);
+                                            FixedCost = (parseFloat(value.FixedCost) / MargenValue);
                                             dateStart = value.dateStart;
                                             dateEnd = value.dateEnd;
-                                            
+
                                             arraySale[index] = AcumulateSale.toFixed(2);/**sale*/
                                             arrayGoal[index] = AcumulateGoal.toFixed(2);/**goal**/
                                             arrayBreakEven[index] = FixedCost;/**breakeven**/
                                             arrayTotalGoal[index] = MonthGoalStore.toFixed(2);/**totalgoal**/
                                         });
-                                        
-                                    drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, dateStart);
-                                    $('#chartdiv').height($(window).height()-$('header').height());
+
+                                        drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, dateStart);
+                                        $('#chartdiv').height($(window).height() - $('header').height());
                                     }
                                 }, error: function (xhr, ajaxOptions, thrownError) {
                                     console.log(xhr.status);
@@ -390,14 +436,13 @@ function existDataDate() {
 
 
                     insertFirstTimeDate(dateStartMonth, dateOfToday, dateOfToday);
-                    
+
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 
@@ -435,8 +480,7 @@ function updaTableCustomDate() {
             transaction.executeSql(query, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -447,40 +491,40 @@ function updaTableCustomDate() {
 }
 
 //*  nueva funcion *//
-function updatePointBalance(){
-    try{
+function updatePointBalance() {
+    try {
         var principal = $('#MargenValue').val();
-        if(principal>0){
+        if (principal > 0) {
             $('#lblMargenNumber').empty();
-            $('#lblMargenNumber').append(principal+"%");
-        }else{
-            principal=50;
+            $('#lblMargenNumber').append(principal + "%");
+        } else {
+            principal = 50;
             $('#lblMargenNumber').empty();
-            $('#lblMargenNumber').append(principal+"%"); 
+            $('#lblMargenNumber').append(principal + "%");
         }
-        
-    }catch (e){
-        console.log("e: "+e);
+
+    } catch (e) {
+        console.log("e: " + e);
     }
 }
 
-function deteclenguage_R4(){
+function deteclenguage_R4() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
     if (current_lang == 'es') {
-      MSG_LBL_RETURN_R4();
-      MSG_DATE_START_R4();
-      MSG_DATE_END_R4();
-      MSG_TITLE_DS_R4();
-      MSG_DS_OKR4();
-      MSG_CHOOSE_RANGE_4();
-      MSG_DATESTART_R4();
-      MSG_DATEEND_R4();
-      MSG_OPTIONS_4();
-      MSG_BACK_4();
-      MSG_CHOOSE_MARGEN_4();
-      MODAL_R4();
-      MODAL_ORIENTATION_R4();
+        MSG_LBL_RETURN_R4();
+        MSG_DATE_START_R4();
+        MSG_DATE_END_R4();
+        MSG_TITLE_DS_R4();
+        MSG_DS_OKR4();
+        MSG_CHOOSE_RANGE_4();
+        MSG_DATESTART_R4();
+        MSG_DATEEND_R4();
+        MSG_OPTIONS_4();
+        MSG_BACK_4();
+        MSG_CHOOSE_MARGEN_4();
+        MODAL_R4();
+        MODAL_ORIENTATION_R4();
     }
-}    
-    
+}
+

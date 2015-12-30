@@ -50,8 +50,7 @@ function existDataClasification() {/**Check if exists data , but yes or yes this
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 }
@@ -146,25 +145,24 @@ function existDataDate() {
                     });
 
                 } else {
-
                     /***asignamos fecha por defecto la primera vez***/
                     /***date of today ***/
+
                     var obj_date = new Date();
                     var monthToday = obj_date.getMonth() + 1;
                     var dayToday = obj_date.getDate();
 
-                    var dateOfToday = obj_date.getFullYear() + '-' +
-                            (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' +
-                            (('' + dayToday).length < 2 ? '0' : '') + dayToday;
+                    var dateOfToday = (('' + dayToday).length < 2 ? '0' : '') + dayToday + '-' +
+                            (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' + obj_date.getFullYear();
 
 
                     /*** dateStart of Month ***/
                     var obj_date2 = new Date();
                     var month = obj_date2.getMonth() + 1;
                     var firstDayMonth = new Date(obj_date2.getFullYear(), obj_date2.getMonth(), 1);/**only day**/
-                    var dateStartMonth = obj_date2.getFullYear() + '-' +
-                            (('' + month).length < 2 ? '0' : '') + month + '-' +
-                            (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
+                    var dateStartMonth =
+                            (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate() + '-' +
+                            (('' + month).length < 2 ? '0' : '') + month + '-' + obj_date2.getFullYear();
 
 
                     insertFirstTimeDate(dateStartMonth, dateOfToday, dateOfToday);
@@ -177,8 +175,7 @@ function existDataDate() {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 
@@ -216,17 +213,16 @@ function updaTableCustomDate() {
 
 
     var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
-            + KEY_DATE_START + " = '" + arrayDateStart[0] + "-" + arrayDateStart[1] + "-" + arrayDateStart[2] + "', "
-            + KEY_DATE_END + " = '" + arrayDateEnd[0] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[2] + "', "
-            + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[0] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[2] + "'";
+            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+            + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
 
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -288,8 +284,7 @@ function updateClasification() {
                     transaction.executeSql(query, [], function (transaction, results) {
                         if (!results.rowsAffected) {
                             console.log("Error updateState");
-                        }
-                        else {
+                        } else {
                             console.log("Update realizado:" + results.rowsAffected);
                             var value = "";
                             value = $(".select-clasification .init").attr('data-value');
@@ -314,6 +309,7 @@ function downloadRefresh() {
     var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
     value = $(".select-clasification .init").attr('data-value');
     downloadStoreClasification(value);
+
 }
 
 
@@ -324,7 +320,6 @@ function downloadStoreClasification(_valueSelected) {
     var alias = "";
     var site = "";
     var state_clasification = _valueSelected;
-
     /*********variables*******/
     var muy_buena = 0;
     var inf_buena = 0;
@@ -402,7 +397,6 @@ function downloadStoreClasification(_valueSelected) {
                     dateStart = results.rows.item(0).dateStart.toString();
                     dateEnd = results.rows.item(0).dateEnd.toString();
                     dateUntil = results.rows.item(0).dateChoosed.toString();
-//                       
 
                     //array = {DateStart:"2015-08-01",DateEnd:"2015-09-11",DateUntil:"2015-09-11",RegionCode:""};
                     array = {DateStart: dateStart, DateEnd: dateEnd, DateUntil: dateUntil, RegionCode: ""};
@@ -425,26 +419,27 @@ function downloadStoreClasification(_valueSelected) {
                             if (data.successful > 0) {
                                 var show = "";
                                 show += "<div id='divClasification'>";
-                                var cont = 0;
+
                                 $(data.report).each(function (index, value) {
 
                                     var StoreName = value.StoreName;
                                     var AcumulateSale = value.AcumulateSale;
                                     var AcumulateGoal = value.AcumulateGoal;
 
+
                                     /**convert data to Float to resolve**/
                                     var d_AcumulateGoal = parseFloat(AcumulateGoal);
                                     var d_AcumulateSale = parseFloat(AcumulateSale);
+
 
                                     /****/
 
                                     var alcance_objetivo = 100 - (d_AcumulateGoal - d_AcumulateSale);//100-(A-B)
 
-
-
                                     if (state_clasification == "1") {
                                         var s_clasification = "";
                                         var color = "";
+
                                         if (alcance_objetivo > muy_buena) {
                                             s_clasification = "Very Good";
                                             color = "veryGood";
@@ -458,7 +453,7 @@ function downloadStoreClasification(_valueSelected) {
                                             color = "acceptable";
                                         }
                                         if (alcance_objetivo > inf_deficiente && alcance_objetivo <= sup_deficiente) {
-                                            s_clasification = "Deficiente";
+                                            s_clasification = "Deficient";
                                             color = "deficient";
                                         }
                                         if (alcance_objetivo > inf_critico && alcance_objetivo <= sup_critico) {
@@ -469,10 +464,12 @@ function downloadStoreClasification(_valueSelected) {
                                             s_clasification = "Very Critical";
                                             color = "veryCritical";
                                         }
-                                        show += "<div class='store clasification' id='" + color + "' >";
+
+
+                                        show += "<div class='store clasification " + color + "' >";
                                         show += "<h1>" + StoreName + "</h1>";
-                                        show += "<p id='" + color + index + "' >" + s_clasification + "</p>";
-                                        show += "<i class='lblScope" + index + "' >Scope:</i>";
+                                        show += "<p class='lbl" + color + "' >" + s_clasification + "</p>";
+                                        show += "<i class='lblScope' >Scope:</i>";
                                         show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                         show += "</div>";
                                         show += "<hr>";
@@ -482,10 +479,10 @@ function downloadStoreClasification(_valueSelected) {
                                     } else if (state_clasification == "2") {
 
                                         if (alcance_objetivo > muy_buena) {
-                                            show += "<div class='store clasification' id='veryGood'>";
+                                            show += "<div class='store clasification veryGood'>";
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='veryGood" + index + "'>Very Good</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lblveryGood'>Very Good</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
@@ -496,10 +493,10 @@ function downloadStoreClasification(_valueSelected) {
                                     } else if (state_clasification == "3") {
                                         if (alcance_objetivo > inf_buena && alcance_objetivo <= sup_buena) {
 
-                                            show += "<div class='store clasification' id='good'>";
+                                            show += "<div class='store clasification good'>";
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='good" + index + "'>Good</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lblgood'>Good</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
@@ -507,10 +504,10 @@ function downloadStoreClasification(_valueSelected) {
 
                                     } else if (state_clasification == "4") {
                                         if (alcance_objetivo > inf_aceptable && alcance_objetivo <= sup_aceptable) {
-                                            show += "<div class='store clasification' id='acceptable' >"
+                                            show += "<div class='store clasification acceptable' >"
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='acceptable" + index + "'>Acceptable</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lblacceptable'>Acceptable</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
@@ -518,10 +515,10 @@ function downloadStoreClasification(_valueSelected) {
 
                                     } else if (state_clasification == "5") {
                                         if (alcance_objetivo > inf_deficiente && alcance_objetivo <= sup_deficiente) {
-                                            show += "<div class='store clasification'  id='deficient'>";
+                                            show += "<div class='store clasification deficient'>";
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='deficient" + index + "'>Deficient</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lbldeficient'>Deficient</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
@@ -529,10 +526,10 @@ function downloadStoreClasification(_valueSelected) {
 
                                     } else if (state_clasification == "6") {
                                         if (alcance_objetivo > inf_critico && alcance_objetivo <= sup_critico) {
-                                            show += "<div class='store clasification'   id='critical' >";
+                                            show += "<div class='store clasification critical' >";
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='critical" + index + "'>Critical</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lblcritical'>Critical</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
@@ -540,37 +537,33 @@ function downloadStoreClasification(_valueSelected) {
 
                                     } else if (state_clasification == "7") {
                                         if (alcance_objetivo <= muy_critico) {
-                                            show += "<div class='store clasification'  id='veryCritical'>";
+                                            show += "<div class='store clasification veryCritical'>";
                                             show += "<h1>" + StoreName + "</h1>";
-                                            show += "<p id='veryCritical" + index + "'>Very Critical</p>";
-                                            show += "<i class='lblScope" + index + "'>Scope:</i>";
+                                            show += "<p class='lblveryCritical'>Very Critical</p>";
+                                            show += "<i class='lblScope'>Scope:</i>";
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
 
                                         }
                                     }
-                                    cont = index;
                                 });
-
                                 show += "</div>";
                                 $('#contentReport').append(show);
 
-                                for (var i = 0; i <= cont; i++) {
-                                    lang = navigator.language.split("-");
-                                    current_lang = (lang[0]);
 
-                                    if (current_lang == 'es') {
 
-                                        $("#veryGood" + i).text("Muy bueno");
-                                        $("#good" + i).text("Bueno");
-                                        $("#acceptable" + i).text("Aceptable");
-                                        $("#deficient" + i).text("Deficiente");
-                                        $("#critical" + i).text("Critico");
-                                        $("#veryCritical" + i).text("Muy Critico");
-                                        $(".lblScope" + i).text("Alcance:");
-                                    }
+                                if (current_lang == 'es') {
+                                    $('.lblveryGood').text('Muy bueno');
+                                    $('.lblgood').text('Bueno');
+                                    $('.lblacceptable').text('Aceptable');
+                                    $('.lbldeficient').text('Deficiente');
+                                    $('.lblcritical').text('Critico');
+                                    $('.lblveryCritical').text('Muy Critico');
+                                    $('.lblScope').text('Alcance');
                                 }
+
+
                                 henry2();
 
 
@@ -604,6 +597,13 @@ function deteclenguage2() {
     current_lang = (lang[0]);
 
     if (current_lang == 'es') {
+        $('.veryGood').text('Muy bueno:');
+        $('.good').text('Bueno:');
+        $('.acceptable').text('Aceptable:');
+        $('.deficient').text('Deficiente:');
+        $('.critical').text('Critico:');
+        $('.veryCritical').text('Muy Critico:');
+        $('.lblScope').text('Alcance:');
 
         MSG_TITLE_STORE_CLASIFICATION_2();
         MSG_TITLE_ALL_REGION_2();

@@ -230,7 +230,6 @@ function delTables(){
         var queryDelete2="DELETE FROM REGION";
         localDB.transaction(function (transaction) {
             transaction.executeSql(queryDelete2, [], function (transaction, results) {
-                alert("borro");
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 }
