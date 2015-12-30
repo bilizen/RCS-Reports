@@ -188,7 +188,7 @@ function showCalendar(valor){
 			defaultDate: "+1w",
 			changeMonth: false,
 			numberOfMonths: 1,	
-			dateFormat: "yy-mm-dd",
+			dateFormat: "dd-mm-yy",
 			onSelect: function(dateText, inst) {
 				$("#dateStart").text(dateText);
 		    },
@@ -204,7 +204,7 @@ function showCalendar(valor){
 				defaultDate: "+1w",
 				changeMonth: false,
 				numberOfMonths: 1,
-				dateFormat: "yy-mm-dd",
+				dateFormat: "dd-mm-yy",
 				onSelect: function(dateText, inst) {
 					$("#dateEnd").text(dateText);
 			    },
@@ -220,7 +220,7 @@ function showCalendar(valor){
 					defaultDate: "+1w",
 					changeMonth: false,
 					numberOfMonths: 1,
-					dateFormat: "yy-mm-dd",
+					dateFormat: "dd-mm-yy",
 					onSelect: function(dateText, inst) {
 						$("#dateToCompare").text(dateText);
 				    },
