@@ -113,6 +113,10 @@ nav .navBtn3{ width: 28%; text-align: right;}
 	color: #0000CD;
 }
 
+.heightSection{
+    overflow: auto;
+}
+
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
     .progressByStore i,

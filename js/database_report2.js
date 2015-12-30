@@ -30,9 +30,7 @@ $(window).resize(function () {
 
 
 function existDataClasification() {/**Check if exists data , but yes or yes this function fills the table clasification***/
-
     var url = 0;
-    var checkData = 0;
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_CLASIFICATION;
     try {
         localDB.transaction(function (transaction) {
@@ -131,9 +129,15 @@ function existDataDate() {
                     localDB.transaction(function (tx) {
                         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
-                            var dateStart = results.rows.item(0).dateStart.toString();
-                            var dateEnd = results.rows.item(0).dateEnd.toString();
-                            var dateUntil = results.rows.item(0).dateChoosed.toString();
+                            var dateStart =results.rows.item(0).dateStart.toString();
+                            var dateEnd =results.rows.item(0).dateEnd.toString();
+                            var dateUntil =results.rows.item(0).dateChoosed.toString();
+                            var arrayDateStart = dateStart.split("-");
+                            var arraydateEnd = dateEnd.split("-");
+                            var arrayDateUntil = dateUntil.split("-");
+                            dateStart = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                            dateEnd= arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0] ;
+                            dateUntil= arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] ;
 
 
                             document.getElementById('dateStart').innerHTML = dateStart;
@@ -147,22 +151,22 @@ function existDataDate() {
                 } else {
                     /***asignamos fecha por defecto la primera vez***/
                     /***date of today ***/
-
                     var obj_date = new Date();
                     var monthToday = obj_date.getMonth() + 1;
                     var dayToday = obj_date.getDate();
 
-                    var dateOfToday = (('' + dayToday).length < 2 ? '0' : '') + dayToday + '-' +
-                            (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' + obj_date.getFullYear();
+                    var dateOfToday = obj_date.getFullYear() + '-' +
+                            (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' +
+                            (('' + dayToday).length < 2 ? '0' : '') + dayToday;
 
 
                     /*** dateStart of Month ***/
                     var obj_date2 = new Date();
                     var month = obj_date2.getMonth() + 1;
                     var firstDayMonth = new Date(obj_date2.getFullYear(), obj_date2.getMonth(), 1);/**only day**/
-                    var dateStartMonth =
-                            (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate() + '-' +
-                            (('' + month).length < 2 ? '0' : '') + month + '-' + obj_date2.getFullYear();
+                    var dateStartMonth = obj_date2.getFullYear() + '-' +
+                            (('' + month).length < 2 ? '0' : '') + month + '-' +
+                            (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
 
 
                     insertFirstTimeDate(dateStartMonth, dateOfToday, dateOfToday);
@@ -209,8 +213,6 @@ function updaTableCustomDate() {
     var arrayDateEnd = dateEnd.split("-");
 
     var arrayDateUntil = dateUntil.split("-");
-
-
 
     var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
             + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
@@ -340,23 +342,10 @@ function downloadStoreClasification(_valueSelected) {
     /****get****date****/
     /***get range date ***/
     /***date of today ***/
-    var obj_date = new Date();
-    var monthToday = obj_date.getMonth() + 1;
-    var dayToday = obj_date.getDate();
-
-    var dateOfToday = obj_date.getFullYear() + '-' +
-            (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' +
-            (('' + dayToday).length < 2 ? '0' : '') + dayToday;
+   
 
 
-    /*** dateStart of Month ***/
-    var obj_date2 = new Date();
-    var month = obj_date2.getMonth() + 1;
-    var firstDayMonth = new Date(obj_date2.getFullYear(), obj_date2.getMonth(), 1);/**only day**/
-    var dateStartMonth = obj_date2.getFullYear() + '-' +
-            (('' + month).length < 2 ? '0' : '') + month + '-' +
-            (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
-
+   
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -550,7 +539,6 @@ function downloadStoreClasification(_valueSelected) {
                                 });
                                 show += "</div>";
                                 $('#contentReport').append(show);
-
 
 
                                 if (current_lang == 'es') {

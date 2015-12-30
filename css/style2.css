@@ -61,45 +61,45 @@
 }
 
 /*Report 2*/
-#veryCritical{
+.veryCritical{
     color: #B71C1C;
 }
-#veryCritical span{
+.veryCritical span{
     color: white;
     background-color: #B71C1C;
 }
-#critical{
+.critical{
     color: #E53935;
 }
-#critical span{
+.critical span{
     color: white;
     background-color: #E53935;
 }
-#deficient{
+.deficient{
     color: #FF8A65;
 }
-#deficient span{
+.deficient span{
     color: white;
     background-color: #FF8A65;
 }
-#acceptable{
+.acceptable{
     color: #42A5F5;
 }
-#acceptable span{
+.acceptable span{
     color: white;
     background-color: #42A5F5;
 }
-#good{
+.good{
     color: #FFB74D;
 }
-#good span{
+.good span{
     color: white;
     background-color: #FFB74D;
 }
-#veryGood{
+.veryGood{
     color: #66BB6A;
 }
-#veryGood span{
+.veryGood span{
     color: white;
     background-color: #66BB6A;
 }
