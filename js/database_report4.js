@@ -190,6 +190,7 @@ function downloadAllStore() {
 
                         });
                         $('#list_store').append(show);
+                        
                     }
                    
                 },
@@ -224,6 +225,9 @@ function hideLoading2() {
         $('#show_modalStore #list_store').css('background', 'rgba(0,0,0,0)');
         $('#show_modalStore #list_store h1').removeClass('hide');
         $('#show_modalStore #btnStore').show();
+        
+        setTimeout(function(){ focusToactiveStore(); }, 500);
+        
 //    }, 3200);
 }
 
@@ -528,3 +532,11 @@ function deteclenguage_R4() {
     }
 }
 
+function focusToactiveStore(){
+
+    var list = $('#list_store');
+
+    list.animate({
+        scrollTop: $('.active').offset().top - list.offset().top + list.scrollTop()
+    });
+}

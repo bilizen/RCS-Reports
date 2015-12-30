@@ -42,6 +42,9 @@ function hideLoading5() {
         $('#show_modalStore5 .loader-ios').remove();
         $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0)');
         $('#show_modalStore5 #list_store5 h1').removeClass('hide');
+
+        setTimeout(function(){ focusToactiveStore5(); }, 500);
+
 //    }, 3200);
 }
 
@@ -462,4 +465,13 @@ function changeLanguage5() {
         $("#title_store_R5").text("Mensaje");
 
     }
+}
+
+function focusToactiveStore5(){
+
+    var list5 = $('#list_store5');
+
+    list5.animate({
+        scrollTop: $('.active').offset().top - list5.offset().top + list5.scrollTop()
+    });
 }
