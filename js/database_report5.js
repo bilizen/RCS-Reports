@@ -281,9 +281,10 @@ function existDataDate_report5() {
         localDB.transaction(function (tx) {
             tx.executeSql(query1, [], function (tx, results) {
                 if (results.rows.length > 0) {
+                    
+                    //pinta la fecha de los calendarios al entrar por primera vez
                     var dateStart = results.rows.item(0).dateStart;
                     var dateEnd = results.rows.item(0).dateEnd;
-
                     var arrayDateStart = dateStart.split("-");
                     var arraydateEnd = dateEnd.split("-");
                     document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
@@ -310,6 +311,11 @@ function existDataDate_report5() {
                             (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
 
                     insertFirstTimeDate_report5(dateStartMonth, dateOfToday, dateOfToday);
+                    //pinta la fecha de los calendarios al entrar por primera vez
+                    var arrayDateStart = dateStartMonth.split("-");
+                    var arraydateEnd = dateOfToday.split("-");
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
                     
                     
                     
@@ -361,8 +367,8 @@ function downloadAllcustomers() {
                     var arrayDateStart = dateStar.split("-");
                     var arraydateEnd = dateEnd.split("-");
 
-                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                    document.getElementById('dateStartTitle').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
 
                     var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
 

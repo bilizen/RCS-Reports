@@ -4,7 +4,7 @@ function showDialogStore() {
 }
 
 function existDataStore() {
-    
+
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
     try {
         localDB.transaction(function (transaction) {
@@ -12,7 +12,7 @@ function existDataStore() {
                 url = results.rows.item(0).urlBase;
                 if (url > 0) {
                     downloadAllStore2();
-                    
+
                 } else {
 
                     downloadAllStore();
@@ -68,7 +68,7 @@ function updateStoreUsedTableStore(storeNo) {
 
 
 
-function downloadAllStore2(){
+function downloadAllStore2() {
     var xurl = "";
     var ip = "";
     var port = "";
@@ -138,7 +138,7 @@ function downloadAllStore2(){
             });
         });
     });
-    
+
 }
 
 
@@ -169,7 +169,7 @@ function downloadAllStore() {
                     showLoading2();
                 },
                 complete: function () {
-                     hideLoading2();
+                    hideLoading2();
                 },
                 success: function (data, textStatus, XMLHttpRequest) {
                     if (data.successful > 0) {
@@ -181,18 +181,18 @@ function downloadAllStore() {
                         $(data.report).each(function (index, value) {
                             StoreName = value.StoreName;
                             StoreNo = value.StoreNo;
-                            if (index ==0){
-                                insertTableStore(StoreNo, StoreName,'1');
-                                show += "<h1 class='storeName-" + StoreNo + " active hide' data-value='"+ StoreName +"' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            }else{
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active hide' data-value='" + StoreName + "' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
                                 show += "<h1 class='storeName-" + StoreNo + " hide' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                             }
 
                         });
                         $('#list_store').append(show);
-                        
+
                     }
-                   
+
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
 
@@ -221,17 +221,19 @@ function showLoading2() {
 }
 function hideLoading2() {
 //    setTimeout(function () {
-        $('#show_modalStore .loader-ios').remove();
-        $('#show_modalStore #list_store').css('background', 'rgba(0,0,0,0)');
-        $('#show_modalStore #list_store h1').removeClass('hide');
-        $('#show_modalStore #btnStore').show();
-        
-        setTimeout(function(){ focusToactiveStore(); }, 500);
-        
+    $('#show_modalStore .loader-ios').remove();
+    $('#show_modalStore #list_store').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore #list_store h1').removeClass('hide');
+    $('#show_modalStore #btnStore').show();
+
+    setTimeout(function () {
+        focusToactiveStore();
+    }, 500);
+
 //    }, 3200);
 }
 
-function setStoreNo(storeNo) {  
+function setStoreNo(storeNo) {
     $('#list_store h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
@@ -318,12 +320,12 @@ function downloadReportGraphic() {
 
                             dateStart = results.rows.item(0).dateStart.toString();
                             dateEnd = results.rows.item(0).dateEnd.toString();
-                            
+
                             var arrayDateStart = dateStart.split("-");
                             var arraydateEnd = dateEnd.split("-");
-  
+
                             document.getElementById('dateStartTitle').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                            document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0] ;
+                            document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
 
                             //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportGraphicStore/POST";
                             //array = {"DateStart":"2015-08-01","DateEnd":"2015-08-20","StoreNo":3};
@@ -414,13 +416,13 @@ function existDataDate() {
                     localDB.transaction(function (tx) {
                         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
+                            //pinta la fecha de los calendarios al entrar por primera vez
                             var dateStart = results.rows.item(0).dateStart.toString();
                             var dateEnd = results.rows.item(0).dateEnd.toString();
                             var arrayDateStart = dateStart.split("-");
                             var arraydateEnd = dateEnd.split("-");
-                           
-                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0]
-                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0] ;
+                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
                         });
                     });
                 } else {
@@ -446,6 +448,11 @@ function existDataDate() {
 
 
                     insertFirstTimeDate(dateStartMonth, dateOfToday, dateOfToday);
+                    //pinta la fecha de los calendarios al entrar por primera vez
+                    var arrayDateStart = dateStartMonth.split("-");
+                    var arraydateEnd = dateOfToday.split("-");
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
 
                 }
             }, function (transaction, error) {
@@ -538,7 +545,7 @@ function deteclenguage_R4() {
     }
 }
 
-function focusToactiveStore(){
+function focusToactiveStore() {
 
     var list = $('#list_store');
 
