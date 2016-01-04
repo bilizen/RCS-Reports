@@ -114,12 +114,12 @@
                     <div class="select-calendar">
                         <div class="item"  onclick="showCalendar(1);mostrarCalendar();">
                             <div id="lbldateStart">Date Start</div>
-                            <div class="dateStart date"></div>
+                            <div id="dateStart" class="date"></div>
                         </div>
                         <hr>
                         <div class="item"  onclick="showCalendar(2);mostrarCalendar();">
                             <div id="lbldateEnd" >Date End</div>
-                            <div class="dateEnd date"></div>
+                            <div id="dateEnd" class="date"></div>
                         </div>
                     </div> 
                 </div>                
@@ -130,7 +130,7 @@
                     <div class="select-calendar">
                         <div class="item"  onclick="showCalendar(3);mostrarCalendar();">
                             <div id="lbldateToCompare">Date to Compare</div>
-                            <div class="dateToCompare date"></div>
+                            <div id="dateToCompare" class="date"></div>
                         </div>
                     </div> 
                 </div>                
@@ -190,7 +190,7 @@
 
                 </div>
                 <div class="modal-footer">  
-                    <button type="button" class="btn btn-modal left" data-dismiss="modal" aria-hidden="true">Cancel</button>                     
+                    <button type="button" class="btn btn-modal left" onclick="BtnCancel3();" data-dismiss="modal" aria-hidden="true">Cancel</button>                     
                     <button type="button" class="btn btn-modal right" onclick="updaTableCustomDate3();" data-dismiss="modal" aria-hidden="true">Ok</button>
                 </div>
             </div>
@@ -203,16 +203,10 @@
             $(document).ready(function(){/*** caraga elemento de la estructura html y estilos ***/
                 onInit();/**verificamos la base de datos**/
                 existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
-                //existDataRegion();//llenamos la tabla de regiones
-                //combo();
                 henry3();
             });
             
             $(window).load(function(){/***asegura que la pagina ya esta cargada**/
-            
-                //var value="";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
-                //value = $(".select-clasification .init").attr('data-value');
-                
                 deteclenguage3();  
             });
         </script>

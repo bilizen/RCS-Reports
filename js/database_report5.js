@@ -439,32 +439,66 @@ function downloadAllcustomers() {
 }
 
 function updaTableCustomDate5() {
-    var dateStar = document.getElementById('dateStart').innerHTML;
-    var dateEnd = document.getElementById('dateEnd').innerHTML;
-    
-    var arrayDateStart = dateStar.split("-");
-    var arrayDateEnd = dateEnd.split("-");
-
-    var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
-            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
-            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
-            + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "'";
-
     try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (transaction, results) {
-                if (!results.rowsAffected) {
-                    console.log("Error updateState");
-                } else {
-                    console.log("Update realizado:" + results.rowsAffected);
-                }
-            }, errorHandler);
-        });
+        var dateStar = document.getElementById('dateStart').innerHTML;
+        var dateEnd = document.getElementById('dateEnd').innerHTML;
+        if (Date.parse(dateStar) <= Date.parse(dateEnd) && Date.parse(dateToCompare) <= Date.parse(dateEnd)) {
+
+            var arrayDateStart = dateStar.split("-");
+            var arrayDateEnd = dateEnd.split("-");
+
+            var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
+                    + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+                    + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+                    + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1]  + "-" + arrayDateEnd[0] + "'";
+            localDB.transaction(function (transaction) {
+                transaction.executeSql(query, [], function (transaction, results) {
+                    if (!results.rowsAffected) {
+                        console.log("Error updateState");
+                    } else {
+                        console.log("Update realizado:" + results.rowsAffected);
+                    }
+                }, errorHandler);
+            });
+        } else {
+
+            localDB.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
+
+                    var DateS = results.rows.item(0).dateStart.toString();
+                    var DateE = results.rows.item(0).dateEnd.toString();
+                    var arrayDateStart = DateS.split("-");
+                    var arraydateEnd = DateE.split("-");
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                    
+                });
+            });
+        }
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
+    
 
 }
+
+function BtnCancel5() {
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
+
+            var DateS = results.rows.item(0).dateStart.toString();
+            var DateE = results.rows.item(0).dateEnd.toString();
+            var arrayDateStart = DateS.split("-");
+            var arraydateEnd = DateE.split("-");
+            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+        });
+    });
+
+}
+
+
+
 /***********************Language**********************************/
 function changeLanguage5() {
     lang = navigator.language.split("-");
