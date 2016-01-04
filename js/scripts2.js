@@ -133,7 +133,6 @@ $(document).ready(function () {
 
 
 function moveToLeft(valor) {
-
     if (valor == 1) {
         $('.visualization').hide();
         $('.general').show();
@@ -178,80 +177,67 @@ function moveToRight() {
 
 var modalInfo = $('#dinamicContent .modal-body').html();
 
+
 function showCalendar(valor) {
-    var dateStart = "";
-    var dateEnd = "";
-    var dateUntil = "";
+    var dateStart = $('#dateStart').text();
+    var dateEnd = $('#dateEnd').text();
+    var dateToCompare = $('#dateToCompare').text();
+    $('#dinamicContent .modal-body').empty();
+    if (valor == 1) {
+        $('#dinamicContent .modal-body').html('<div id="calendarDateStart"></div>');
+        $("#calendarDateStart").datepicker({
+            defaultDate: dateStart,
+            changeMonth: false,
+            numberOfMonths: 1,
+            dateFormat: "dd-mm-yy",
+            onSelect: function (dateText, inst) {
+               $('#dateStart').text(dateText);
+            },
+            onClose: function (selectedDate) {
+                $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
+            }
+        });
+    } else {
+        if (valor == 2) {
+            $('#dinamicContent .modal-body').html('<div id="calendarDateEnd"></div>');
 
-    localDB.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
+            $("#calendarDateEnd").datepicker({
+                defaultDate: dateEnd,
+                changeMonth: false,
+                numberOfMonths: 1,
+                dateFormat: "dd-mm-yy",
+                onSelect: function (dateText, inst) {
+                   $('#dateEnd').text(dateText);
+                },
+                onClose: function (selectedDate) {
+                    $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);
+                }
 
-            dateStart = results.rows.item(0).dateStart.toString();
-            dateEnd = results.rows.item(0).dateEnd.toString();
-            dateUntil = results.rows.item(0).dateChoosed.toString();
-            var arrayDateStart = dateStart.split("-");
-            var arraydateEnd = dateEnd.split("-");
-            var arrayDateUntil = dateUntil.split("-");
-            dateStart = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-            dateEnd = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-            dateUntil = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+            });
 
-            $('#dinamicContent .modal-body').empty();
-            if (valor == 1) {
-                $('#dinamicContent .modal-body').html('<div id="calendarDateStart"></div>');
-                $("#calendarDateStart").datepicker({
-                    defaultDate: dateStart,
+        } else {
+            if (valor == 3) {
+                $('#dinamicContent .modal-body').html('<div id="calendarDateToCompare"></div>');
+
+                $("#calendarDateToCompare").datepicker({
+                    defaultDate: dateToCompare,
                     changeMonth: false,
                     numberOfMonths: 1,
                     dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
-                        $("#dateStart").text(dateText);
-                    },
-                    onClose: function (selectedDate) {
-                        $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
+                        $('#dateToCompare').text(dateText);
                     }
                 });
             } else {
-                if (valor == 2) {
-                    $('#dinamicContent .modal-body').html('<div id="calendarDateEnd"></div>');
-
-                    $("#calendarDateEnd").datepicker({
-                        defaultDate: dateEnd,
-                        changeMonth: false,
-                        numberOfMonths: 1,
-                        dateFormat: "dd-mm-yy",
-                        onSelect: function (dateText, inst) {
-                            $("#dateEnd").text(dateText);
-                        },
-                        onClose: function (selectedDate) {
-                            $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);
-                        }
-                    });
-                } else {
-                    if (valor == 3) {
-                        $('#dinamicContent .modal-body').html('<div id="calendarDateToCompare"></div>');
-
-                        $("#calendarDateToCompare").datepicker({
-                            defaultDate: dateUntil,
-                            changeMonth: false,
-                            numberOfMonths: 1,
-                            dateFormat: "dd-mm-yy",
-                            onSelect: function (dateText, inst) {
-                                $("#dateToCompare").text(dateText);
-                            }
-                        });
-                    } else {
-                        $('#dinamicContent .modal-body').html(modalInfo);
-                    }
-                }
+                $('#dinamicContent .modal-body').html(modalInfo);
             }
-        });
-
-    });
-
-
+        }
+    }
     return false;
 }
+
+
+
 
 
 //Go to Menu
