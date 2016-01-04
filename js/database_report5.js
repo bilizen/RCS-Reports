@@ -39,11 +39,13 @@ function showLoading5() {
 
 function hideLoading5() {
 //    setTimeout(function () {
-        $('#show_modalStore5 .loader-ios').remove();
-        $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0)');
-        $('#show_modalStore5 #list_store5 h1').removeClass('hide');
+    $('#show_modalStore5 .loader-ios').remove();
+    $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore5 #list_store5 h1').removeClass('hide');
 
-        setTimeout(function(){ focusToactiveStore5(); }, 500);
+    setTimeout(function () {
+        focusToactiveStore5();
+    }, 500);
 
 //    }, 3200);
 }
@@ -281,8 +283,14 @@ function existDataDate_report5() {
                 if (results.rows.length > 0) {
                     var dateStart = results.rows.item(0).dateStart;
                     var dateEnd = results.rows.item(0).dateEnd;
-                    document.getElementById('dateStart').innerHTML = dateStart;
-                    document.getElementById('dateEnd').innerHTML = dateEnd;
+
+                    var arrayDateStart = dateStart.split("-");
+                    var arraydateEnd = dateEnd.split("-");
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+
+
+
                 } else {
                     var obj_date = new Date();
                     var monthToday = obj_date.getMonth() + 1;
@@ -302,8 +310,9 @@ function existDataDate_report5() {
                             (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
 
                     insertFirstTimeDate_report5(dateStartMonth, dateOfToday, dateOfToday);
-                    document.getElementById('dateStart').innerHTML = dateStartMonth;
-                    document.getElementById('dateEnd').innerHTML = dateOfToday;
+                    
+                    
+                    
                 }
             });
 
@@ -349,8 +358,11 @@ function downloadAllcustomers() {
                     var dateStar = results.rows.item(0).dateStart;
                     var dateEnd = results.rows.item(0).dateEnd;
 
-                    document.getElementById('dateStartTitle').innerHTML = dateStar;
-                    document.getElementById('dateEndTitle').innerHTML = dateEnd;
+                    var arrayDateStart = dateStar.split("-");
+                    var arraydateEnd = dateEnd.split("-");
+
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
 
                     var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
 
@@ -386,12 +398,12 @@ function downloadAllcustomers() {
                                             var ExtRetailPriceWTax = parseFloat(value.ExtRetailPriceWTax);
                                             var TotalGoal = parseFloat(value.TotalGoal);
                                             var PercentSale = parseFloat(value.PercentSale);
-                                            
+
                                             show += "<tr>";
                                             show += "<td>" + FirstName + "</td>";
                                             show += "<td>" + Qty + "</td>";
-                                            show += "<td>" + ExtRetailPriceWTax+ "</td>";
-                                            show += "<td>" + TotalGoal+ "</td>";
+                                            show += "<td>" + ExtRetailPriceWTax + "</td>";
+                                            show += "<td>" + TotalGoal + "</td>";
                                             show += "<td>" + PercentSale + "</td>";
                                             show += "</tr>";
                                         });
@@ -423,11 +435,28 @@ function downloadAllcustomers() {
 function updaTableCustomDate5() {
     var dateStar = document.getElementById('dateStart').innerHTML;
     var dateEnd = document.getElementById('dateEnd').innerHTML;
-    localDB.transaction(function (tx) {
-        tx.executeSql("UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET " + KEY_DATE_START + "='" + dateStar
-                + "' , " + KEY_DATE_END + "='" + dateEnd + "' , " + KEY_DATE_CHOOSED + "='" + dateEnd + "'");
+    
+    var arrayDateStart = dateStar.split("-");
+    var arrayDateEnd = dateEnd.split("-");
 
-    });
+    var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
+            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+            + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "'";
+
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
 
 }
 /***********************Language**********************************/
@@ -467,7 +496,7 @@ function changeLanguage5() {
     }
 }
 
-function focusToactiveStore5(){
+function focusToactiveStore5() {
 
     var list5 = $('#list_store5');
 

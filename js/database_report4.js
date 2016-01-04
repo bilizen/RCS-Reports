@@ -318,9 +318,12 @@ function downloadReportGraphic() {
 
                             dateStart = results.rows.item(0).dateStart.toString();
                             dateEnd = results.rows.item(0).dateEnd.toString();
-
-                            document.getElementById('dateStartTitle').innerHTML = dateStart;
-                            document.getElementById('dateEndTitle').innerHTML = dateEnd;
+                            
+                            var arrayDateStart = dateStart.split("-");
+                            var arraydateEnd = dateEnd.split("-");
+  
+                            document.getElementById('dateStartTitle').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                            document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0] ;
 
                             //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportGraphicStore/POST";
                             //array = {"DateStart":"2015-08-01","DateEnd":"2015-08-20","StoreNo":3};
@@ -413,8 +416,11 @@ function existDataDate() {
 
                             var dateStart = results.rows.item(0).dateStart.toString();
                             var dateEnd = results.rows.item(0).dateEnd.toString();
-                            document.getElementById('dateStart').innerHTML = dateStart;
-                            document.getElementById('dateEnd').innerHTML = dateEnd;
+                            var arrayDateStart = dateStart.split("-");
+                            var arraydateEnd = dateEnd.split("-");
+                           
+                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0]
+                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0] ;
                         });
                     });
                 } else {
@@ -476,8 +482,8 @@ function updaTableCustomDate() {
 
 
     var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
-            + KEY_DATE_START + " = '" + arrayDateStart[0] + "-" + arrayDateStart[1] + "-" + arrayDateStart[2] + "', "
-            + KEY_DATE_END + " = '" + arrayDateEnd[0] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[2] + "'";
+            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "'";
 
     try {
         localDB.transaction(function (transaction) {
