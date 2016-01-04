@@ -20,9 +20,7 @@ function combo() {
                 async: true,
                 crossdomain: true,
                 beforeSend: function () {
-                    showLoading();
                 }, complete: function () {
-                    hideLoading();
                 }, success: function (data, textStatus, XMLHttpRequest) {//variable docuemntacion
                     $("#select-region").empty();
                     var vacio = "";
@@ -39,6 +37,15 @@ function combo() {
                     }
                     $("#select-region").append(mostrar);
 
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    if (current_lang == 'es') {
+                        mostrarModalGeneral("Error de Conexión");
+                    } else {
+                        mostrarModalGeneral("No Connection");
+                    }
                 }});
         });
     });
@@ -88,6 +95,8 @@ function refresh_report3(regionCode) {
                     dateStart = results.rows.item(0).dateStart;
                     dateEnd = results.rows.item(0).dateEnd;
                     dateUntil = results.rows.item(0).dateChoosed;
+
+
                     array = {DateStart: dateStart, DateEnd: dateEnd, DateUntil: dateUntil, RegionCode: regionCode};
                     $.ajax({
                         url: xurl,
@@ -196,9 +205,13 @@ function existDataDate_report3() {
                                     var dateStart = results.rows.item(0).dateStart.toString();
                                     var dateEnd = results.rows.item(0).dateEnd.toString();
                                     var dateUntil = results.rows.item(0).dateChoosed.toString();
-                                    document.getElementById('dateStart').innerHTML = dateStart;
-                                    document.getElementById('dateEnd').innerHTML = dateEnd;
-                                    document.getElementById('dateToCompare').innerHTML = dateUntil;
+                                    var arrayDateStart = dateStart.split("-");
+                                    var arraydateEnd = dateEnd.split("-");
+                                    var arrayDateUntil = dateUntil.split("-");
+                                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                                    document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                                    ;
                                     ////////////////////////////////// insertar data primera vez  
                                     var sumTotalGoal = 0;
                                     var sumPercentGoal = 0;
@@ -255,6 +268,7 @@ function existDataDate_report3() {
                                             $('#totalGoalPercentage').append(sumPercentGoal + "%");
                                             $('#totalSalePercentage').empty();
                                             $('#totalSalePercentage').append(sumPercentSale + '%');
+                                            combo();
                                         }, error: function (xhr, ajaxOptions, thrownError) {
                                             console.log(xhr.status);
                                             console.log(xhr.statusText);
@@ -285,16 +299,22 @@ function existDataDate_report3() {
                             var dateStartMonth = obj_date2.getFullYear() + '-' +
                                     (('' + month).length < 2 ? '0' : '') + month + '-' +
                                     (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
+
                             insertFirstTimeDate_report3(dateStartMonth, dateOfToday, dateOfToday);
-                            document.getElementById('dateStart').innerHTML = dateStartMonth;
-                            document.getElementById('dateEnd').innerHTML = dateOfToday;
-                            document.getElementById('dateToCompare').innerHTML = dateOfToday;
+
+                            var arrayDateStart = dateStartMonth.split("-");
+                            var arraydateEnd = dateOfToday.split("-");
+                            var arrayDateUntil = dateOfToday.split("-");
+
+                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                            document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
                             /////////////////////////////////////insertar data primera vez    
 
                             var sumTotalGoal = 0;
                             var sumPercentGoal = 0;
                             var sumPercentSale = 0;
-                            //var xurl="http://190.12.74.148:8000/WCFSERVICE/ReportClasification/POST"; 
+                            //var xurl="http://190.12.74.148:8000/WCFSERVICE/ReportClasification/POST";
                             var array = {DateStart: dateStartMonth, DateEnd: dateOfToday, DateUntil: dateOfToday, RegionCode: ""};
                             $.ajax({
                                 url: xurl,
@@ -347,6 +367,8 @@ function existDataDate_report3() {
                                     $('#totalGoalPercentage').append(sumPercentGoal + "%");
                                     $('#totalSalePercentage').empty();
                                     $('#totalSalePercentage').append(sumPercentSale + "%");
+
+                                    combo();
                                 }, error: function (xhr, ajaxOptions, thrownError) {
                                     console.log(xhr.status);
                                     console.log(xhr.statusText);
@@ -378,11 +400,49 @@ function updaTableCustomDate3() {
     var dateStar = document.getElementById('dateStart').innerHTML;
     var dateEnd = document.getElementById('dateEnd').innerHTML;
     var dateToCompare = document.getElementById('dateToCompare').innerHTML;
-    localDB.transaction(function (tx) {
-        tx.executeSql("UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET " + KEY_DATE_START + "='" + dateStar
-                + "' , " + KEY_DATE_END + "='" + dateEnd + "' , " + KEY_DATE_CHOOSED + "='" + dateToCompare + "'");
-    });
+
+    var arrayDateStart = dateStar.split("-");
+
+    var arrayDateEnd = dateEnd.split("-");
+
+    var arrayDateUntil = dateToCompare.split("-");
+
+    var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
+            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+            + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
+
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
 }
+function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
+
+    var query = "INSERT INTO " + TABLE_CUSTOM_DATE_RANGE +
+            "(" + KEY_DATE_START + ", " + KEY_DATE_END + ", " + KEY_DATE_CHOOSED + ") VALUES (?,?,?)";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [dateStart, dateEnd, dateUntil], function (transaction, results) {
+
+            }, errorHandler);
+
+        });
+    } catch (e) {
+        console.log("Error addData " + e + ".");
+    }
+}
+
 
 function deteclenguage3() {
     lang = navigator.language.split("-");
