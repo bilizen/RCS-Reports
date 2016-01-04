@@ -178,14 +178,14 @@ function moveToRight(){
 
 var modalInfo = $('#dinamicContent .modal-body').html();
 
-function showCalendar(valor){
+function showCalendar(valor,f1,f2,f3){
 
 	$('#dinamicContent .modal-body').empty();
 
 	if(valor == 1){
 		$('#dinamicContent .modal-body').html('<div id="calendarDateStart"></div>');
 		$( "#calendarDateStart" ).datepicker({
-			defaultDate: "+1w",
+			defaultDate: "7-11-2011",
 			changeMonth: false,
 			numberOfMonths: 1,	
 			dateFormat: "dd-mm-yy",
@@ -201,7 +201,7 @@ function showCalendar(valor){
 			$('#dinamicContent .modal-body').html('<div id="calendarDateEnd"></div>');
 
 			$( "#calendarDateEnd" ).datepicker({
-				defaultDate: "+1w",
+				defaultDate: "7-11-2011",
 				changeMonth: false,
 				numberOfMonths: 1,
 				dateFormat: "dd-mm-yy",
@@ -217,7 +217,7 @@ function showCalendar(valor){
 				$('#dinamicContent .modal-body').html('<div id="calendarDateToCompare"></div>');
 
 				$( "#calendarDateToCompare" ).datepicker({
-					defaultDate: "+1w",
+					defaultDate: "7/11/2011",
 					changeMonth: false,
 					numberOfMonths: 1,
 					dateFormat: "dd-mm-yy",
