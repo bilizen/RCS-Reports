@@ -789,7 +789,7 @@ function downloadByCompany(actual_, global_) {
                         mostrar += "<div id='divByCompany'>";
                         mostrar += "<div class='store'>";
                         mostrar += "<h1>" + c_alias + '</h1>';
-                        mostrar += "<div class='lastConexion'>" + "Dec 25, 16:13" + "</div>";
+                        //mostrar += "<div class='lastConexion'>" + lastConexion + "</div>";
                         $(data.report).each(function (index, value) {
 
 
@@ -1102,7 +1102,7 @@ function downloadByRegion(actual_, global_) {
 
                             mostrar += "<div class='store'>";
                             mostrar += "<h1>" + regionName + "</h1>";
-                            mostrar += "<div class='lastConexion'>" + "Dec 25, 16:13" + "</div>";
+                            //mostrar += "<div class='lastConexion'>" + "Dec 25, 16:13" + "</div>";
                             if (actual == 1) {
                                 mostrar += "<div class='actual'>";
 
@@ -1274,6 +1274,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             var goalAmountGlobal = value.goalAmountGlobal;
                             var payTotal = value.payTotal;
                             var payTotalGlobal = value.payTotalGlobal;
+                            var lastConexion=value.ReportOrder;
                             var percent = 0.00;
                             var percentGlobal = 0.00;
 
@@ -1352,7 +1353,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
                             mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store'>";
                             mostrar += "<h1>" + storeName + "</h1>";
-                            mostrar += "<div class='lastConexion'>" + "Dec 25, 16:13" + "</div>";
+                            mostrar += "<div class='lastConexion'>" +lastConexion + "</div>";
                             // mostrar += "<div>";
 
                             if (actual == 1) {
