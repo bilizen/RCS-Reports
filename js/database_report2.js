@@ -207,6 +207,7 @@ function updaTableCustomDate2() {
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
+        alert(dateToCompare+dateEnd);
         if (Date.parse(dateStar) <= Date.parse(dateEnd) && Date.parse(dateToCompare) <= Date.parse(dateEnd)) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
