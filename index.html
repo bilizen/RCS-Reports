@@ -1,243 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>RCS Reports</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-	
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="shortcut icon" href="">
-  <!-- Fav and touch icons -->
-  
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/scripts.js"></script>
-  <script type="text/javascript" src="js/scripts2.js"></script>
-  <script type="text/javascript" src="js/database.js" ></script>
+    <head>
+        <meta charset="utf-8">
+        <title>RCS Reports</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-  <!-- TAG LENGUAGES -->
-  <script type="text/javascript" src="js/constant-es.js"></script>
-  <script  type="text/javascript">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="">
+        <!-- Fav and touch icons -->
 
-    $(window).load(function(){
-      onInit();
-      deteclenguage();
-      var variablEE = obtenerVariables("variable");
-      if(checkNetConnection()==true){
-        if(variablEE==-1){
-          existsData();}
-        else
-        {
-          $("#btn_left").removeAttr("hidden");
-        }
-      }
-    });
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="js/scripts2.js"></script>
+        <script type="text/javascript" src="js/database.js" ></script>
 
+        <!-- TAG LENGUAGES -->
+        <script type="text/javascript" src="js/constant-es.js"></script>
+        <script  type="text/javascript">
 
-  $(document).ready(function(){
-    /*esta funcion ocurre despues de que ya cargo toda la pagina*/
-    var lang = navigator.language.split("-");
-    var current_lang = (lang[0]);
-    $("#ip_1").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
-      var variable = $("#ip_1").val();
-      if(variable>255){
-        $("#ip_1").val("");
-      }else{
-          //if(variable.length==3){
-              //document.getElementById("ip_2").select();
-          //}          
-           //var arre =variable.split("");
-           //if(arre[variable.length-1]=="."){
-            //arre.pop();
-            //$("#ip_1").val(arre.join(""));
-            //document.getElementById("ip_2").select();
-        //}
-      }     
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      return false;
-      }
-    });
+            $(window).load(function () {
+                onInit();
+                deteclenguage();
+                var variablEE = obtenerVariables("variable");
+                if (checkNetConnection() == true) {
+                    if (variablEE == -1) {
+                        existsData();
+                    } else
+                    {
+                        $("#btn_left").removeAttr("hidden");
+                    }
+                }
+            });
+            $(document).ready(function () {
+                /*esta funcion ocurre despues de que ya cargo toda la pagina*/
+                var lang = navigator.language.split("-");
+                var current_lang = (lang[0]);
+                $("#ip_1").keyup(function (event) {/*mientras estoy escrbiendo el numero*/
+                    var variable = $("#ip_1").val();
+                    if (variable > 255) {
+                        $("#ip_1").val("");
+                    } else {
+                        if (variable.length == 3) {
+                            document.getElementById("ip_2").select();
+                        }
+                        var arre = variable.split("");
+                        if (arre[variable.length-1] == ".") {
+                            arre.pop();
+                            $("#ip_1").val(arre.join(""));
+                            document.getElementById("ip_2").select();
+                        }
+                    }
+                });
 
 
-    $("#ip_2").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
-      var variable = $("#ip_2").val();
-      if(variable>255){
-        $("#ip_2").val("");
-      }else{
-          
-      }
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      return false;
-      }
-    });
+                $("#ip_2").keyup(function (event) {/*mientras estoy escrbiendo el numero*/
+                    var variable = $("#ip_2").val();
+                    if (variable > 255) {
+                        $("#ip_2").val("");
+                    } else {
+                        if (variable.length == 3) {
+                            document.getElementById("ip_3").select();
+                        }
+                        var arre = variable.split("");
+                        if (arre[variable.length - 1] == ".") {
+                            arre.pop();
+                            $("#ip_2").val(arre.join(""));
+                            document.getElementById("ip_3").select();
+                        }
+                    }
+                });
 
-    $("#ip_3").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
-      var variable = $("#ip_3").val();
-      if(variable>255){
-        $("#ip_3").val("");
-      }else{
-          
-      }
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
-      return false;
-      }
-    });
+                $("#ip_3").keyup(function (event) {/*mientras estoy escrbiendo el numero*/
+                    var variable = $("#ip_3").val();
+                    if (variable > 255) {
+                        $("#ip_3").val("");
+                    } else {
+                        if (variable.length == 3) {
+                            document.getElementById("ip_4").select();
+                        }
+                        var arre = variable.split("");
+                        if (arre[variable.length - 1] == ".") {
+                            arre.pop();
+                            $("#ip_3").val(arre.join(""));
+                            document.getElementById("ip_4").select();
+                        }
+                    }
+                });
 
-    $("#ip_4").keyup(function(event) {/*mientras estoy escrbiendo el numero*/
-      var variable = $("#ip_4").val();
-      if(variable>255){
-        $("#ip_4").val("");
-      }else{
-          
-      }
-    }).keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {
-      return false;
-      }
-    });
+                $("#ip_4").keyup(function (event) {/*mientras estoy escrbiendo el numero*/
+                    var variable = $("#ip_4").val();
+                    if (variable > 255) {
+                        $("#ip_4").val("");
+                    } else {
+                        if (variable.length == 3) {
+                            document.getElementById("ip_4").select();
+                        }
+                        var arre = variable.split("");
+                        if (arre[variable.length - 1] == ".") {
+                            arre.pop();
+                            $("#ip_4").val(arre.join(""));
+                            document.getElementById("port").select();
+                        }
+                    }
+                });
 
-    $("#port").keypress(function(event){
-      if (event.keyCode < 48 || event.keyCode > 57) {
-      return false;
-      }
-    });
+                $("#port").keypress(function (event) {
+                    if (event.keyCode < 48 || event.keyCode > 57) {
+                        return false;
+                    }
+                });
 
-      $("#btnenter").click(function(){ 
+                $("#btnenter").click(function () {
 
-        var ip_1 = $("#ip_1").val();
-        var ip_2 = $("#ip_2").val();
-        var ip_3 = $("#ip_3").val();
-        var ip_4 = $("#ip_4").val();
-        var port = $("#port").val();
-        var alias = $("#aliastext").val();
-        var site = $("#sitetext").val();
+                    var ip_1 = $("#ip_1").val();
+                    var ip_2 = $("#ip_2").val();
+                    var ip_3 = $("#ip_3").val();
+                    var ip_4 = $("#ip_4").val();
+                    var port = $("#port").val();
+                    var alias = $("#aliastext").val();
+                    var site = $("#sitetext").val();
 
-        if(ip_1.length>0 && ip_2.length>0 && ip_3.length>0 && ip_4.length>0){
-          if(port.length>0){
-            if(alias.length>0){
-              if(site.length>0){
-                 var ip = ip_1+"."+ip_2+"."+ip_3+"."+ip_4;
-                 var urlBase = "http://"+ip+":"+port+"/"+site;
-                 var variablEE = obtenerVariables("variable");
-                 if(variablEE==-1){
-                    validIP(ip, port, urlBase, alias, "1", site,variablEE);
-                 }else{
-               
-                    capture_variable(variablEE);
-                    validIP(ip, port, urlBase, alias, "1", site , variablEE);
-                 }
-                 
-              }else{
-                if(current_lang=='es')
-                  mostrarModalGeneral("Sitio Inválido");
-                else
-                  mostrarModalGeneral("Invalid site");
-              }
-            }else{
-              if(current_lang=='es')
-                mostrarModalGeneral("Alias Inválido");
-              else
-                mostrarModalGeneral("Invalid alias");
-            }
-          }else{
-            if(current_lang=='es')
-                mostrarModalGeneral("Puerto Inválido");
-            else
-                mostrarModalGeneral("Invalid Port");
-          }
-        }else{
-          if(current_lang=='es')
-            mostrarModalGeneral("IP Inválido");
-          else
-            mostrarModalGeneral("Insert IP");
-        }
+                    if (ip_1.length > 0 && ip_2.length > 0 && ip_3.length > 0 && ip_4.length > 0) {
+                        if (port.length > 0) {
+                            if (alias.length > 0) {
+                                if (site.length > 0) {
+                                    var ip = ip_1 + "." + ip_2 + "." + ip_3 + "." + ip_4;
+                                    var urlBase = "http://" + ip + ":" + port + "/" + site;
+                                    var variablEE = obtenerVariables("variable");
+                                    if (variablEE == -1) {
+                                        validIP(ip, port, urlBase, alias, "1", site, variablEE);
+                                    } else {
 
-       });
-  });  
+                                        capture_variable(variablEE);
+                                        validIP(ip, port, urlBase, alias, "1", site, variablEE);
+                                    }
 
-  </script>
+                                } else {
+                                    if (current_lang == 'es')
+                                        mostrarModalGeneral("Sitio Inválido");
+                                    else
+                                        mostrarModalGeneral("Invalid site");
+                                }
+                            } else {
+                                if (current_lang == 'es')
+                                    mostrarModalGeneral("Alias Inválido");
+                                else
+                                    mostrarModalGeneral("Invalid alias");
+                            }
+                        } else {
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Puerto Inválido");
+                            else
+                                mostrarModalGeneral("Invalid Port");
+                        }
+                    } else {
+                        if (current_lang == 'es')
+                            mostrarModalGeneral("IP Inválido");
+                        else
+                            mostrarModalGeneral("Insert IP");
+                    }
 
-  <script> 
-    $.support.cors = true;
-  </script>
+                });
+            });
 
-</head>
+        </script>
 
-<body>
-<div id="ios8_container" class="ios8_bg">
-  <header class="transparent">
-      <div id="top_bar_space"></div>
-      <div class="options_bar_space">
-        <div id="txt_title"></div>
-        <div id="btn_right"><button></button></div>
+        <script>
+            $.support.cors = true;
+        </script>
 
-      </div>  
-      <div id="btn_left" hidden="true" class="arrow white"><button onclick="window.location = 'data/menu.html';" id="txtpreferences_index" class="white">Return</button></div>
-  </header>
+    </head>
 
-  <div id="content" class="indexSection">
-  
-    <div class="logo-name"><img src="img/iconLogo.svg"/></div>
-    <p class="welcome">Welcome</p>
-    <form action="#">
-      <div class="form-group text-center">
-         <label id="lblmsg1">Enter The IP Address</label>
-      </div>
-      <div class="form-group text-center ip">
-         <input type="number" id="ip_1" name="ip_1" />
-         <span>.</span>
-         <input type="number" id="ip_2" name="ip_2" />
-         <span>.</span>
-         <input type="number" id="ip_3" name="ip_3" />
-         <span>.</span>
-         <input type="number" id="ip_4" name="ip_4" />
-      </div>
-      <div class="form-group input_effect">          
-        <input type="number" id="port" name="port"> 
-        <label id="lblmsg2">Port</label>                    
-      </div>
-      <div class="form-group input_effect">          
-        <input type="text" id="aliastext" name="aliastext">  
-        <label id="lblmsg3">Alias</label>                 
-      </div>
-      <div class="form-group input_effect">          
-        <input type="text" id="sitetext" name="sitetext"> 
-        <label id="lblmsg4">Site</label>           
-      </div>
-      <div class="form-group input_effect">
-        <input type="button" name="btnenter" id="btnenter" value="Ok" class="btn btn_only1"/>
-      </div>
-    </form>
-  </div>
-</div>
+    <body>
+        <div id="ios8_container" class="ios8_bg">
+            <header class="transparent">
+                <div id="top_bar_space"></div>
+                <div class="options_bar_space">
+                    <div id="txt_title"></div>
+                    <div id="btn_right"><button></button></div>
 
-<div class="modal fade" id="show_loading" >
-    <div class="modal-dialog">
-        <div class="text-center loading">
-            <div></div>
-            <div></div>
-        </div>
-        <!-- <div class="text-center"><p name="txtloading" id="txtloading"></p></div> -->
-        <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
-    </div>
-</div>
+                </div>  
+                <div id="btn_left" hidden="true" class="arrow white"><button onclick="window.location = 'data/menu.html';" id="txtpreferences_index" class="white">Return</button></div>
+            </header>
 
-<div class="modal fade" id="modalgeneral">
-    <div class="modal-dialog">
-        <div class="modal-content">                              
-            <div class="modal-body text-center">     
-                <p class="title-alert">Message</p>                 
-                <p id="textgeneral" class="text-center"></p>              
-            </div>
-            <div class="modal-footer info">
-                <button type="button" class="btn btn-modal" id="btngeneral" name="btngeneral"  data-dismiss="modal" aria-hidden="true"></button>
+            <div id="content" class="indexSection">
+
+                <div class="logo-name"><img src="img/iconLogo.svg"/></div>
+                <p class="welcome">Welcome</p>
+                <form action="#">
+                    <div class="form-group text-center">
+                        <label id="lblmsg1">Enter The IP Address</label>
+                    </div>
+                    <div class="form-group text-center ip">
+                        <input type="text" id="ip_1" name="ip_1" />
+                        <span>.</span>
+                        <input type="text" id="ip_2" name="ip_2" />
+                        <span>.</span>
+                        <input type="text" id="ip_3" name="ip_3" />
+                        <span>.</span>
+                        <input type="text" id="ip_4" name="ip_4" />
+                    </div>
+                    <div class="form-group input_effect">          
+                        <input type="number" id="port" name="port"> 
+                        <label id="lblmsg2">Port</label>                    
+                    </div>
+                    <div class="form-group input_effect">          
+                        <input type="text" id="aliastext" name="aliastext">  
+                        <label id="lblmsg3">Alias</label>                 
+                    </div>
+                    <div class="form-group input_effect">          
+                        <input type="text" id="sitetext" name="sitetext"> 
+                        <label id="lblmsg4">Site</label>           
+                    </div>
+                    <div class="form-group input_effect">
+                        <input type="button" name="btnenter" id="btnenter" value="Ok" class="btn btn_only1"/>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</div>
-</body>
+
+        <div class="modal fade" id="show_loading" >
+            <div class="modal-dialog">
+                <div class="text-center loading">
+                    <div></div>
+                    <div></div>
+                </div>
+                <!-- <div class="text-center"><p name="txtloading" id="txtloading"></p></div> -->
+                <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalgeneral">
+            <div class="modal-dialog">
+                <div class="modal-content">                              
+                    <div class="modal-body text-center">     
+                        <p class="title-alert">Message</p>                 
+                        <p id="textgeneral" class="text-center"></p>              
+                    </div>
+                    <div class="modal-footer info">
+                        <button type="button" class="btn btn-modal" id="btngeneral" name="btngeneral"  data-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1274,7 +1274,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             var goalAmountGlobal = value.goalAmountGlobal;
                             var payTotal = value.payTotal;
                             var payTotalGlobal = value.payTotalGlobal;
-                            var lastConexion=value.ReportOrder;
+                            var lastConexion=value.regionName;
                             var percent = 0.00;
                             var percentGlobal = 0.00;
 
