@@ -208,10 +208,10 @@ function updaTableCustomDate2() {
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
         if (Date.parse(dateStar) <= Date.parse(dateEnd) && Date.parse(dateToCompare) <= Date.parse(dateEnd)) {
-
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
             var arrayDateUntil = dateToCompare.split("-");
+            alert(dateToCompare+dateEnd);
 
             var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
                     + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
