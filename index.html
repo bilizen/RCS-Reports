@@ -45,12 +45,10 @@
                         if (variable.length == 3) {
                             document.getElementById("ip_2").select();
                         }
-                        var arre = variable.split("");
-                        if (arre[variable.length-1] == ".") {
-                            arre.pop();
-                            $("#ip_1").val(arre.join(""));
-                            document.getElementById("ip_2").select();
-                        }
+                    }
+                }).keypress(function (event) {
+                    if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+                        return false;
                     }
                 });
 
@@ -63,12 +61,10 @@
                         if (variable.length == 3) {
                             document.getElementById("ip_3").select();
                         }
-                        var arre = variable.split("");
-                        if (arre[variable.length - 1] == ".") {
-                            arre.pop();
-                            $("#ip_2").val(arre.join(""));
-                            document.getElementById("ip_3").select();
-                        }
+                    }
+                }).keypress(function (event) {
+                    if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+                        return false;
                     }
                 });
 
@@ -80,12 +76,10 @@
                         if (variable.length == 3) {
                             document.getElementById("ip_4").select();
                         }
-                        var arre = variable.split("");
-                        if (arre[variable.length - 1] == ".") {
-                            arre.pop();
-                            $("#ip_3").val(arre.join(""));
-                            document.getElementById("ip_4").select();
-                        }
+                    }
+                }).keypress(function (event) {
+                    if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+                        return false;
                     }
                 });
 
@@ -95,14 +89,12 @@
                         $("#ip_4").val("");
                     } else {
                         if (variable.length == 3) {
-                            document.getElementById("ip_4").select();
-                        }
-                        var arre = variable.split("");
-                        if (arre[variable.length - 1] == ".") {
-                            arre.pop();
-                            $("#ip_4").val(arre.join(""));
                             document.getElementById("port").select();
                         }
+                    }
+                }).keypress(function (event) {
+                    if (event.keyCode < 48 || event.keyCode > 57) {/*valores del 0 - 9 segun el tabal ascii*/
+                        return false;
                     }
                 });
 
@@ -194,13 +186,13 @@
                         <label id="lblmsg1">Enter The IP Address</label>
                     </div>
                     <div class="form-group text-center ip">
-                        <input type="text" id="ip_1" name="ip_1" />
+                        <input type="number" id="ip_1" name="ip_1" />
                         <span>.</span>
-                        <input type="text" id="ip_2" name="ip_2" />
+                        <input type="number" id="ip_2" name="ip_2" />
                         <span>.</span>
-                        <input type="text" id="ip_3" name="ip_3" />
+                        <input type="number" id="ip_3" name="ip_3" />
                         <span>.</span>
-                        <input type="text" id="ip_4" name="ip_4" />
+                        <input type="number" id="ip_4" name="ip_4" />
                     </div>
                     <div class="form-group input_effect">          
                         <input type="number" id="port" name="port"> 
