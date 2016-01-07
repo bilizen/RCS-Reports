@@ -402,7 +402,13 @@ function updaTableCustomDate3() {
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
-        if (Date.parse(dateStar) <= Date.parse(dateEnd) && Date.parse(dateToCompare) <= Date.parse(dateEnd)) {
+        var date1 = new Date(dateStar);
+        var date2 = new Date(dateEnd);
+        var date3 = new Date(dateToCompare);
+
+
+
+        if (date1 <= date2 && date3 <= date2) {
 
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
