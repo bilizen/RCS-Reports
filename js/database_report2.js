@@ -204,19 +204,20 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
 
 function updaTableCustomDate2() {
     try {
-        
+
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
-        var date1= new Date(dateStar);
+       
+        var date1 = new Date(dateStar);
         var date2 = new Date(dateEnd);
-        var date3= new Date(dateToCompare);
-        
-        if ( date1<= date2 && date3 <= date2){
+        if (date1 <= date2){
+            var date3 = new Date(dateToCompare);
+             if(date3 <= date2) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
             var arrayDateUntil = dateToCompare.split("-");
-            
+
             var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
                     + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
                     + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
@@ -247,8 +248,9 @@ function updaTableCustomDate2() {
                 });
             });
         }
-
-
+            
+        }
+       
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
