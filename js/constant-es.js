@@ -626,3 +626,8 @@ function MSGS_TEXT_OPTIONS(){
 function MSG_ALL_REGION(){
     $(".filterRegion").text("Todas las Regiones");
 }
+
+// last connection
+function LBL_LAST_CONNECTION(){
+    $(".lblLastConexion").text("Ult. Vta.");
+}
