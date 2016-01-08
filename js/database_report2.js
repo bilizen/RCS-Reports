@@ -39,10 +39,8 @@ function existDataClasification() {/**Check if exists data , but yes or yes this
                 if (url > 0) {
 
                 } else {
-
                     addDataClasificationFirstTime();
                     getDataClasification();
-
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
@@ -201,6 +199,51 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
     }
 }
 
+function valDate(dateStar, dateEnd) {
+    var arrayDateStart = dateStar.split("-");
+    var arrayDateEnd = dateEnd.split("-");
+    var dateStarDay = arrayDateStart[0];
+    var dateStarMonth = arrayDateStart[1];
+    var dateStarYear = arrayDateStart[2];
+    var dateEndDay = arrayDateEnd[0];
+    var dateEndMonth = arrayDateEnd[1];
+    var dateEndYear = arrayDateEnd[2];
+
+//    if(dateStar==dateEnd){
+//        return true;
+//    }else{
+//        
+//    }
+//    
+
+    if (parseInt(dateStarYear) < parseInt(dateEndYear)) {
+        return true;
+    } else {
+        if (parseInt(dateStarYear) == parseInt(dateEndYear)) {
+            if (parseInt(dateStarMonth) < parseInt(dateEndMonth)) {
+                if (parseInt(dateEndDay) <= parseInt(dateStarDay)) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else {
+                if (parseInt(dateStarMonth) == parseInt(dateEndMonth)) {
+                    if (parseInt(dateEndDay) <= parseInt(dateStarDay)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+}
 
 function updaTableCustomDate2() {
     try {
@@ -209,45 +252,68 @@ function updaTableCustomDate2() {
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
 
-        var date1 = new Date(dateStar);
-        var date2 = new Date(dateEnd);
-        if (date1 <= date2) {
-            var date3 = new Date(dateToCompare);
-            if (date3 <= date2) {
-                var arrayDateStart = dateStar.split("-");
-                var arrayDateEnd = dateEnd.split("-");
-                var arrayDateUntil = dateToCompare.split("-");
+        if (valDate(dateStar, dateEnd) && valDate(dateToCompare, dateEnd)) {
+            var arrayDateStart = dateStar.split("-");
+            var arrayDateEnd = dateEnd.split("-");
+            var arrayDateUntil = dateToCompare.split("-");
 
-                var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
-                        + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
-                        + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
-                        + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
-                localDB.transaction(function (transaction) {
-                    transaction.executeSql(query, [], function (transaction, results) {
-                        if (!results.rowsAffected) {
-                            console.log("Error updateState");
-                        } else {
-                            console.log("Update realizado:" + results.rowsAffected);
-                        }
-                    }, errorHandler);
-                });
+            var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
+                    + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+                    + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+                    + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
+            localDB.transaction(function (transaction) {
+                transaction.executeSql(query, [], function (transaction, results) {
+                    if (!results.rowsAffected) {
+                        console.log("Error updateState");
+                    } else {
+                        console.log("Update realizado:" + results.rowsAffected);
+                    }
+                }, errorHandler);
+            });
 
-                localDB.transaction(function (tx) {
-                    tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
-
-                        var DateS = results.rows.item(0).dateStart.toString();
-                        var DateE = results.rows.item(0).dateEnd.toString();
-                        var dateU = results.rows.item(0).dateChoosed.toString();
-                        var arrayDateStart = DateS.split("-");
-                        var arraydateEnd = DateE.split("-");
-                        var arrayDateUntil = dateU.split("-");
-                        document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                        document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                        document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
-                    });
-                });
-            } 
         }
+
+
+
+
+
+
+//            if (valDate(dateStar, dateEnd)) {
+//                if (valDate(dateToCompare, dateEnd)) {
+//                    var arrayDateStart = dateStar.split("-");
+//                    var arrayDateEnd = dateEnd.split("-");
+//                    var arrayDateUntil = dateToCompare.split("-");
+//
+//                    var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
+//                            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
+//                            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
+//                            + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
+//                    localDB.transaction(function (transaction) {
+//                        transaction.executeSql(query, [], function (transaction, results) {
+//                            if (!results.rowsAffected) {
+//                                console.log("Error updateState");
+//                            } else {
+//                                console.log("Update realizado:" + results.rowsAffected);
+//                            }
+//                        }, errorHandler);
+//                    });
+//                }
+//            }
+
+        localDB.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
+
+                var DateS = results.rows.item(0).dateStart.toString();
+                var DateE = results.rows.item(0).dateEnd.toString();
+                var dateU = results.rows.item(0).dateChoosed.toString();
+                var arrayDateStart = DateS.split("-");
+                var arraydateEnd = DateE.split("-");
+                var arrayDateUntil = dateU.split("-");
+                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+            });
+        });
 
     } catch (e) {
         console.log("Error updateState " + e + ".");
