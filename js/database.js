@@ -1378,9 +1378,9 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             mostrar += "<div class='detalle-" + indice + "'>";
 
                             mostrar += "<div class='year'>Año</div><div class='quantity'>Cantidad</div>";
-                            mostrar += "<i>" + array_description[0] + "</i><span>" + parseFloat(array_total[0]).toFixed() + "</span>";
-                            mostrar += "<i>" + array_description[1] + "</i><span>" + parseFloat(array_total[1]).toFixed() + "</span>";
-                            mostrar += "<i>" + array_description[2] + "</i><span>" + parseFloat(array_total[2]).toFixed() + "</span>";
+                            mostrar += "<i>" + array_description[0] + "</i><span>" + parseFloat(array_total[0]).toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</span>";
+                            mostrar += "<i>" + array_description[1] + "</i><span>" + parseFloat(array_total[1]).toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</span>";
+                            mostrar += "<i>" + array_description[2] + "</i><span>" + parseFloat(array_total[2]).toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "</span>";
 
                             mostrar += "</div></div>";
                             mostrar += "</div>";
