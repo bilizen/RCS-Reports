@@ -1334,7 +1334,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
 
                             mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store'>";
-                            mostrar += "<h1>" + storeName + "</h1>";
+                            mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
                             mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.</div>" + lastConexion + "</div>";
                             // mostrar += "<div>";
 
@@ -1423,7 +1423,6 @@ function loadComboRegions(actual_, global_) {
     var c_ip = "";
     var c_port = "";
     var c_site = "";
-
     var selectRegion = "ALL REGION";
 
     localDB.transaction(function (tx) {
