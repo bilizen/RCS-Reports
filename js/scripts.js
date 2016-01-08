@@ -42,11 +42,11 @@ $(document).ready(function () {
             año;
 
     /* */
-    
+
     /* Week to Date */
     var d3 = new Date();
     var o_month = ('01' + '/' +
-            (('' + d3.getMonth()+1).length < 2 ? '0' : '') +  (d3.getMonth()+1) + '/' + d3.getFullYear());
+            ((((d3.getMonth() + 1).toString()).length) < 2 ? '0' : '') + (d3.getMonth() + 1).toString() + '/' + d3.getFullYear());
 
     /* Year */
     var o_year = '01/' + '01/' + d1.getFullYear();

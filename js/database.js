@@ -83,8 +83,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableURL, [], nullDataHandler, errorHandler);
             console.log("Tabla URL status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla URL " + e + ".");
         return;
     }
@@ -94,8 +93,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableConfiguration, [], nullDataHandler, errorHandler);
             console.log("Tabla CONFIGURATION status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla CONFIGURATION " + e + ".");
         return;
     }
@@ -105,8 +103,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableClasification, [], nullDataHandler, errorHandler);
             console.log("Tabla CLASIFICATION status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla CLASIFICATION " + e + ".");
         return;
     }
@@ -116,8 +113,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableCDateRange, [], nullDataHandler, errorHandler);
             console.log("Tabla CRANGEDATE status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla CRANGEDATE " + e + ".");
         return;
     }
@@ -127,8 +123,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableStore, [], nullDataHandler, errorHandler);
             console.log("Tabla STORE status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla STORE " + e + ".");
         return;
     }
@@ -139,8 +134,7 @@ function createTables() {//creo mis 4 tablas
             transaction.executeSql(tableRegion, [], nullDataHandler, errorHandler);
             console.log("Tabla URL status: OK.");
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error creando Tabla URL " + e + ".");
         return;
     }
@@ -151,17 +145,14 @@ function onInit() {
     try {
         if (!window.openDatabase) {
             console.log("No soporta BD");
-        }
-        else {
+        } else {
             initDB();
             createTables();
         }
-    }
-    catch (e) {
+    } catch (e) {
         if (e == 2) {
             console.log("Versión de base de datos invalida");
-        }
-        else {
+        } else {
             console.log("Error de desconexión: " + e + ".");
         }
         return;
@@ -180,26 +171,26 @@ nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TR
 //***************************************//
 function henry1() {
     var windowh = $(window).height();
-    var headerh=$('header').height();
-    var regionh=$('#divRegion').height();
-    var selectdateP =$('.select-dateP').height();
+    var headerh = $('header').height();
+    var regionh = $('#divRegion').height();
+    var selectdateP = $('.select-dateP').height();
     var selectGeneral = $('.select-general').height();
-    if ($('#divRegion').css('display') == 'none'){
+    if ($('#divRegion').css('display') == 'none') {
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
-    }else{
-        $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
+    } else {
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 68);
     }
 }
 $(window).resize(function () {
     var windowh = $(window).height();
-    var headerh=$('header').height();
-    var regionh=$('#divRegion').height();
-    var selectdateP =$('.select-dateP').height();
+    var headerh = $('header').height();
+    var regionh = $('#divRegion').height();
+    var selectdateP = $('.select-dateP').height();
     var selectGeneral = $('.select-general').height();
-    if ($('#divRegion').css('display') == 'none'){
+    if ($('#divRegion').css('display') == 'none') {
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
-    }else{
-        $('.list').height(windowh - headerh  - selectdateP - selectGeneral - 68);
+    } else {
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 68);
     }
 });
 //**********************************************//
@@ -208,7 +199,7 @@ $(window).resize(function () {
 
 
 //***limpiar tablas a la hora de cambiar o entrar a otro servidor**//
-function delTables(){
+function delTables() {
     try {
         var queryDelete1 = "DELETE FROM " + TABLE_STORE;
         localDB.transaction(function (transaction) {
@@ -216,8 +207,7 @@ function delTables(){
             transaction.executeSql(queryDelete1, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -227,13 +217,12 @@ function delTables(){
     }
 
     try {
-        var queryDelete2="DELETE FROM REGION";
+        var queryDelete2 = "DELETE FROM REGION";
         localDB.transaction(function (transaction) {
             transaction.executeSql(queryDelete2, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -453,8 +442,7 @@ function getExistData_Carlos(check) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 }
@@ -475,13 +463,12 @@ function existsData() {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 }
 
-function Title_Company(){
+function Title_Company() {
     var query = "SELECT " + KEY_ALIAS + " FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
     try {
         localDB.transaction(function (transaction) {
@@ -490,8 +477,7 @@ function Title_Company(){
                 document.getElementById('txt_maintitle').innerHTML = alias;
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error Title_Company " + e + ".");
     }
 }
@@ -613,8 +599,7 @@ function existsData_Login(pin, check) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error existsData " + e + ".");
     }
 }
@@ -638,8 +623,7 @@ function getConfiguration(url) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error getConfiguration " + e + ".");
     }
 
@@ -824,9 +808,9 @@ function downloadByCompany(actual_, global_) {
                             } else {
                                 percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;
                             }
-                            
-                            
-                            
+
+
+
                             if (payTotal == 0.00 || goalAmount == 0.00) {
                                 percent = 0.00;
                             }
@@ -834,7 +818,7 @@ function downloadByCompany(actual_, global_) {
                             if (payTotalGlobal == 0.00 || goalAmountGlobal == 0.00) {
                                 percentGlobal = 0.00;
                             }
-                            
+
 
 
                             if (percent < 75) {
@@ -936,10 +920,10 @@ function downloadByRegion(actual_, global_) {
 
 
             var array = {byRegion: byRegion, option: option};
-            
+
             var actual = actual_;
             var global = global_;
-            
+
             $.ajax({
                 url: xurl,
                 type: 'POST',
@@ -1126,7 +1110,7 @@ function downloadByRegion(actual_, global_) {
                             mostrar += "</div>";
                             mostrar += "</div><hr>";
                             $("#items").append(mostrar);
-                            
+
                             mostrar = "";
 
                         });
@@ -1166,9 +1150,9 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
     var option = $(".select-dateP .init").attr("data-value");
     var regionCode = $(".select-region div:first-child()").attr("data-value");
-    
 
-    if (regionCode == "R-1" || regionCode==null) {
+
+    if (regionCode == "R-1" || regionCode == null) {
         regionCode = "";
         //alert(regionCode + "regiocode");
     }
@@ -1235,7 +1219,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                                 lblGlobalSale = "VAH:";
                             }
                         } else {
-                            if(option == 1) {
+                            if (option == 1) {
                                 lblCurrentGoal = "TG:";
                                 lblCurrentSale = "TS:";
                                 lblGlobalGoal = "WG:";
@@ -1272,11 +1256,11 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             var goalAmountGlobal = value.goalAmountGlobal;
                             var payTotal = value.payTotal;
                             var payTotalGlobal = value.payTotalGlobal;
-                            var lastConexion=value.regionName;
+                            var lastConexion = value.regionName;
                             var percent = 0.00;
                             var percentGlobal = 0.00;
 
-                            
+
                             goalAmount = goalAmount.replace(",", ".");
                             goalAmountGlobal = goalAmountGlobal.replace(",", ".");
                             payTotal = payTotal.replace(",", ".");
@@ -1286,25 +1270,25 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             var colorGlobal = "";
 
 
-                            
+
                             //calculo de percent
                             if (payTotal > 0 && goalAmount == 0.00) {
                                 percent = 0.00;
                             } else if (payTotal == 0 && goalAmount == 0.00) {
                                 percent = 0.00;
                             } else {
-                                    percent = (payTotal * 100) / goalAmount;
+                                percent = (payTotal * 100) / goalAmount;
                             }
-                            
-                                
+
+
                             //calculo de percentglobal
                             if (payTotalGlobal > 0.00 && goalAmountGlobal == 0.00) {
                                 percentGlobal = 0.00;
-                            } else if(payTotalGlobal == 0.00 && goalAmountGlobal == 0.00) {
+                            } else if (payTotalGlobal == 0.00 && goalAmountGlobal == 0.00) {
                                 percentGlobal = 0.00;
-                            }   else {
-                                    percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;  
-                            }                    
+                            } else {
+                                percentGlobal = (payTotalGlobal * 100) / goalAmountGlobal;
+                            }
 
                             if (payTotal == 0.00 || goalAmount == 0.00) {
                                 percent = 0.00;
@@ -1351,7 +1335,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
                             mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store'>";
                             mostrar += "<h1>" + storeName + "</h1>";
-                            mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.</div>" +lastConexion + "</div>";
+                            mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.</div>" + lastConexion + "</div>";
                             // mostrar += "<div>";
 
                             if (actual == 1) {
@@ -1415,7 +1399,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                         deteclenguage();
                     }
 
-                   //hideLoading();
+                    //hideLoading();
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1466,21 +1450,21 @@ function loadComboRegions(actual_, global_) {
                 success: function (data, textStatus, XMLHttpRequest) {
                     $("#selectRegion").empty();
                     $('.region .section_content .select-region').empty();
-                    
+
                     if (data.quantity == 1) { //este objeto data es el object que devuelve el webservice(2 atributos (1jsonarray y el otro un entero))
 
                         if (current_lang == 'es')
                             selectRegion = "TODAS LAS REGIONES";
-                        
-                        $("#selectRegion").append("<div data-value='R-1' class='init item innerLi' onclick='moveToLeft(4);'>"+selectRegion+"</div>");
-                        
+
+                        $("#selectRegion").append("<div data-value='R-1' class='init item innerLi' onclick='moveToLeft(4);'>" + selectRegion + "</div>");
+
                         $('.region .section_content .select-region').append("<div class='item selected' data-value='R-1'>" + selectRegion + "</div>");
-                        
+
                         $(data.data).each(function (index, value) {
                             var regionCode = value.regionCode;
                             var regionName = value.regionName;
                             $('.region .section_content .select-region')
-                                    .append($("<div class='item' id=" + regionCode +">" + regionName +"</div>")
+                                    .append($("<div class='item' id=" + regionCode + ">" + regionName + "</div>")
                                             .attr("data-value", regionCode)
                                             .text(regionName));
                         });
@@ -1528,14 +1512,12 @@ function deleteConfiguration() {
             transaction.executeSql(query, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error delete configuration.");
-                }
-                else {
+                } else {
                     console.log("Realizado deleteConfiguration");
                 }
             }, errorHandler);
         });
-    }
-    catch (e) {
+    } catch (e) {
         updateStatus("No se realizo deleteConfiguration " + e + ".");
     }
 }
@@ -1549,8 +1531,7 @@ function updateState() {
             transaction.executeSql(query, ["0"], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -1604,8 +1585,7 @@ function getAllData() {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error getAllData " + e + ".");
     }
 }
@@ -1619,8 +1599,7 @@ function updateStateURL(id) {
             transaction.executeSql(query, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -1637,8 +1616,7 @@ function updateStateURL(id) {
             transaction.executeSql(query2, [id], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
-                }
-                else {
+                } else {
                     console.log("Update realizado:" + results.rowsAffected);
                     location.reload();
                 }
@@ -1666,8 +1644,7 @@ function deleteServer(id) {
                             transaction.executeSql(query2, [id], function (transaction, results) {
                                 if (!results.rowsAffected) {
                                     console.log("Error eliminar servidor");
-                                }
-                                else {
+                                } else {
                                     console.log("deleteServer realizado:" + results.rowsAffected);
                                     getDataInUse();
                                     getAllData();
@@ -1701,12 +1678,51 @@ function getDataInUse() {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
-    }
-    catch (e) {
+    } catch (e) {
         console.log("Error getDataInUse " + e + ".");
     }
 }
 
+
+
+/********************Validate Data Bill********************************/
+
+function valDate(dateStar, dateEnd) {
+    var arrayDateStart = dateStar.split("-");
+    var arrayDateEnd = dateEnd.split("-");
+    var dateStarDay = arrayDateStart[0];
+    var dateStarMonth = arrayDateStart[1];
+    var dateStarYear = arrayDateStart[2];
+    var dateEndDay = arrayDateEnd[0];
+    var dateEndMonth = arrayDateEnd[1];
+    var dateEndYear = arrayDateEnd[2];
+
+    if (dateStar == dateEnd) {
+        return true;
+    } else {
+        if (parseInt(dateStarYear) < parseInt(dateEndYear)) {
+            return true;
+        } else if (parseInt(dateStarYear) > parseInt(dateEndYear)) {
+            return false;
+        } else if (parseInt(dateStarYear) == parseInt(dateEndYear)) {
+            if (parseInt(dateStarMonth) < parseInt(dateEndMonth)) {
+                return true;
+            } else if (parseInt(dateStarMonth) > parseInt(dateEndMonth)) {
+                return false;
+            } else if (parseInt(dateStarMonth) == parseInt(dateEndMonth)) {
+                if (parseInt(dateStarDay) > parseInt(dateEndDay)) {
+                    return false;
+                } else if (parseInt(dateStarDay) < parseInt(dateEndDay)) {
+                    return true;
+                } else if (parseInt(dateStarDay) == parseInt(dateEndDay)) {
+                    return true;
+                }
+
+            }
+
+        }
+    }
+}
 
 /*******ocultar y mostrar lineas principal y global*******/
 function refresh() {
@@ -1747,7 +1763,7 @@ function captureParameters() {
     ;
 }
 
-function locationVars(vr){
+function locationVars(vr) {
     try {
         var src = String(window.location.href).split('?')[1];
         var vrs = src.split('&');
@@ -1865,7 +1881,7 @@ function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
 function deteclenguage() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
-    localStorage.lang =  current_lang;
+    localStorage.lang = current_lang;
 
     if (current_lang == 'es') {
 
@@ -1882,7 +1898,7 @@ function deteclenguage() {
         MSG_REMEMBER_PIN();
         BTN_LOGIN();
         MSG_BACK_LOGIN();
-        
+
 
         //Menu
         MSG_LBL_MAINTITLE();
@@ -1968,9 +1984,9 @@ function deteclenguage() {
         MSG_SHOWCURRENT_1();
         MSG_SHOWGLOBAL_1();
         MSG_TODAYP_1();
-        
+
         MSG_LBL_DET_DIC_1();
-        /***************************************/ 
+        /***************************************/
 
         MSGS_TEXT_OPTIONS();
 

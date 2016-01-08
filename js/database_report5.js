@@ -281,7 +281,7 @@ function existDataDate_report5() {
         localDB.transaction(function (tx) {
             tx.executeSql(query1, [], function (tx, results) {
                 if (results.rows.length > 0) {
-                    
+
                     //pinta la fecha de los calendarios al entrar por primera vez
                     var dateStart = results.rows.item(0).dateStart;
                     var dateEnd = results.rows.item(0).dateEnd;
@@ -316,9 +316,9 @@ function existDataDate_report5() {
                     var arraydateEnd = dateOfToday.split("-");
                     document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
                     document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                    
-                    
-                    
+
+
+
                 }
             });
 
@@ -442,17 +442,15 @@ function updaTableCustomDate5() {
     try {
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
-        var date1 = new Date(dateStar);
-        var date2 = new Date(dateEnd);
-        if (date1<= date2) {
 
+        if (valDate(dateStar, dateEnd)) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
 
             var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
                     + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
                     + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
-                    + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1]  + "-" + arrayDateEnd[0] + "'";
+                    + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "'";
             localDB.transaction(function (transaction) {
                 transaction.executeSql(query, [], function (transaction, results) {
                     if (!results.rowsAffected) {
@@ -473,14 +471,14 @@ function updaTableCustomDate5() {
                     var arraydateEnd = DateE.split("-");
                     document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
                     document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                    
+
                 });
             });
         }
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
-    
+
 
 }
 

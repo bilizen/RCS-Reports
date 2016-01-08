@@ -485,9 +485,8 @@ function updaTableCustomDate4() {
      try {
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
-        var date1 = new Date(dateStar);
-        var date2 = new Date(dateEnd);
-        if (date1<= date2) {
+        
+        if (valDate(dateStar, dateEnd)) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
 

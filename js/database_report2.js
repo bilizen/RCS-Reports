@@ -199,43 +199,6 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
     }
 }
 
-function valDate(dateStar, dateEnd) {
-    var arrayDateStart = dateStar.split("-");
-    var arrayDateEnd = dateEnd.split("-");
-    var dateStarDay = arrayDateStart[0];
-    var dateStarMonth = arrayDateStart[1];
-    var dateStarYear = arrayDateStart[2];
-    var dateEndDay = arrayDateEnd[0];
-    var dateEndMonth = arrayDateEnd[1];
-    var dateEndYear = arrayDateEnd[2];
-
-    if (dateStar == dateEnd) {
-        return true;
-    } else {
-        if (parseInt(dateStarYear) < parseInt(dateEndYear)) {
-            return true;
-        } else if(parseInt(dateStarYear) > parseInt(dateEndYear)){
-            return false;
-        }else if(parseInt(dateStarYear) == parseInt(dateEndYear)){
-            if(parseInt(dateStarMonth) < parseInt(dateEndMonth)){
-                return true;
-            }else if(parseInt(dateStarMonth) > parseInt(dateEndMonth)){
-                return false;
-            }else if(parseInt(dateStarMonth) == parseInt(dateEndMonth)){
-                if(parseInt(dateStarDay) > parseInt(dateEndDay)){
-                    return false;
-                }else if(parseInt(dateStarDay) < parseInt(dateEndDay)){
-                    return true;
-                }else if(parseInt(dateStarDay)== parseInt(dateEndDay)){
-                    return true;
-                }
-                
-            }
-            
-        }
-    }
-}
-
 function updaTableCustomDate2() {
     try {
 
