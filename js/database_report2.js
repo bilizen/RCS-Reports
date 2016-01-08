@@ -209,38 +209,29 @@ function valDate(dateStar, dateEnd) {
     var dateEndMonth = arrayDateEnd[1];
     var dateEndYear = arrayDateEnd[2];
 
-//    if(dateStar==dateEnd){
-//        return true;
-//    }else{
-//        
-//    }
-//    
-
-    if (parseInt(dateStarYear) < parseInt(dateEndYear)) {
+    if (dateStar == dateEnd) {
         return true;
     } else {
-        if (parseInt(dateStarYear) == parseInt(dateEndYear)) {
-            if (parseInt(dateStarMonth) < parseInt(dateEndMonth)) {
-                if (parseInt(dateEndDay) <= parseInt(dateStarDay)) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            } else {
-                if (parseInt(dateStarMonth) == parseInt(dateEndMonth)) {
-                    if (parseInt(dateEndDay) <= parseInt(dateStarDay)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return false;
-
-                }
-            }
-        } else {
+        if (parseInt(dateStarYear) < parseInt(dateEndYear)) {
+            return true;
+        } else if(parseInt(dateStarYear) > parseInt(dateEndYear)){
             return false;
+        }else if(parseInt(dateStarYear) == parseInt(dateEndYear)){
+            if(parseInt(dateStarMonth) < parseInt(dateEndMonth)){
+                return true;
+            }else if(parseInt(dateStarMonth) > parseInt(dateEndMonth)){
+                return false;
+            }else if(parseInt(dateStarMonth) == parseInt(dateEndMonth)){
+                if(parseInt(dateStarDay) > parseInt(dateEndDay)){
+                    return false;
+                }else if(parseInt(dateStarDay) < parseInt(dateEndDay)){
+                    return true;
+                }else if(parseInt(dateStarDay)== parseInt(dateEndDay)){
+                    return true;
+                }
+                
+            }
+            
         }
     }
 }
@@ -252,7 +243,7 @@ function updaTableCustomDate2() {
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
 
-        if (valDate(dateStar, dateEnd) && valDate(dateToCompare, dateEnd)) {
+        if (valDate(dateStar, dateToCompare) && valDate(dateToCompare, dateEnd)) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
             var arrayDateUntil = dateToCompare.split("-");
