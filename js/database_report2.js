@@ -28,8 +28,8 @@ $(window).resize(function () {
     $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height());
 });
 
-
-function existDataClasification() {/**Check if exists data , but yes or yes this function fills the table clasification***/
+//Check if exists data , but yes or yes this function fills the table clasification
+function existDataClasification() {
     var url = 0;
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_CLASIFICATION;
     try {
@@ -198,6 +198,7 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
         console.log("Error addData " + e + ".");
     }
 }
+
 
 function updaTableCustomDate2() {
     try {

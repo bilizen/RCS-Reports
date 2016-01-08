@@ -1685,7 +1685,7 @@ function getDataInUse() {
 
 
 
-/********************Validate Data Bill********************************/
+/********************Validate Data Bill  meotdo para comparar fechas********************************/
 
 function valDate(dateStar, dateEnd) {
     var arrayDateStart = dateStar.split("-");
