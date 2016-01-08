@@ -1335,7 +1335,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
                             mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store'>";
                             mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
-                            mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.</div>" + lastConexion + "</div>";
+                            mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
                             // mostrar += "<div>";
 
                             if (actual == 1) {

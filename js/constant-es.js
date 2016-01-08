@@ -629,5 +629,5 @@ function MSG_ALL_REGION(){
 
 // last connection
 function LBL_LAST_CONNECTION(){
-    $(".lblLastConexion").text("Ult. Vta.");
+    $(".lblLastConexion").text("Ult. Vta.: ");
 }

@@ -633,6 +633,7 @@ hr {
 .store h1.storeNameR1{
     width: 77%;
     display: inline-block;
+    padding-right: 10pt;
 }
 .lastConexion {
     display: inline-block;
@@ -642,7 +643,15 @@ hr {
     line-height: 14pt;
     height: 32px;
     position: relative;
+    vertical-align: top;
     color: #CE291E;
+}
+.lblLastConexion{
+    padding-right: 3pt;
+}
+.lblLastConexion,.dataLastConexion{
+    line-height: 24pt;
+    display: inline-block;
 }
 .actual p,.global p,
 .actual i,.global i,
@@ -1376,6 +1385,9 @@ button.delete{
         line-height: 15pt;
         height: 40px;
     }
+    .lblLastConexion,.dataLastConexion{
+        line-height: 32pt;
+    }
 }
 
 /*iPhone 6 in portrait & landscape*/
@@ -1421,6 +1433,9 @@ button.delete{
         font-size: 11pt;
         line-height: 14pt;
         height: 32px;
+    }
+    .lblLastConexion {
+        padding-right: 2pt;
     }
 }
 
@@ -1502,12 +1517,15 @@ button.delete{
         font-size: 12pt;
     }
     .store h1.storeNameR1 {
-        width: 80%;
+        width: 72%;
     }
     .lastConexion {
-        width: 20%;
+        width: 33%;
         font-size: 9pt;
         line-height: 11pt;
         height: 26px;
+    }
+    .lblLastConexion {
+        padding-right: 2pt;
     }
 }
