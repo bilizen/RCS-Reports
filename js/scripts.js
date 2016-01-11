@@ -204,8 +204,7 @@ function mostrarModal() {
         $("#show_alias").remove();
     });
 
-    $("#show_alias").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
-        "backdrop": "static",
+    $("#show_alias").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo        
         "keyboard": true,
         "show": true                     // garantizar el modal se muestra inmediatamente
     });
