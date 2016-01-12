@@ -37,9 +37,17 @@ $(document).ready(function () {
     });
 
     $('#clasRange1').keyup(function () {
-        var changeinput = $(this).val();
-        console.log(changeinput);
-        $('.clasRange1').val(changeinput);
+        var clasRange1 = $('#clasRange1').val();
+        if (clasRange1 >= 99) {
+            $('#clasRange1').val(99);
+            var changeinput = $(this).val();
+            console.log(changeinput);
+            $('.clasRange1').val(changeinput);
+        }else{
+            var changeinput = $(this).val();
+            console.log(changeinput);
+            $('.clasRange1').val(changeinput);
+        }
     });
     $('#clasRange2').keyup(function () {
         var changeinput = $(this).val();
@@ -57,19 +65,24 @@ $(document).ready(function () {
         $('.clasRange4').val(changeinput);
     });
     $('#clasRange5').keyup(function () {
-        var changeinput = $(this).val();
-        console.log(changeinput);
-        $('.clasRange5').val(changeinput);
+        var clasRange1 = $('#clasRange5').val();
+        if (clasRange1 <0) {
+            $('#clasRange5').val(0);
+            var changeinput = $(this).val();
+            console.log(changeinput);
+            $('.clasRange5').val(changeinput);
+        }else{
+            var changeinput = $(this).val();
+            console.log(changeinput);
+            $('.clasRange5').val(changeinput);
+        }                 
     });
     $('#clasRange6').keyup(function () {
         var changeinput = $(this).val();
         console.log(changeinput);
-        $('.clasRange6').val(changeinput);
+        $('.clasRange6').val(changeinput);        
     });
-
     $('#miModal4').css("margin-top", Math.max(0, ($(window).height() - 58 - $('#miModal4').find('.modal-dialog').height()) / 4));
-
-
     // Centrado de los modelos al centro de la pantalla
     $(function () {
         function reposition() {
@@ -85,10 +98,7 @@ $(document).ready(function () {
             $('.modal:visible').each(reposition);
         });
     });
-
-
     //topBar: verificar que salga en todas las pantallas excepto el index
-
     var html = document.location.pathname.match(/[^\/]+$/)[0];
 
     if (html == "index.html") {
@@ -102,35 +112,26 @@ $(document).ready(function () {
     $('.general').hide();
     $('.date').hide();
     $('.region').hide();
-
-
     $('#btnno').click(function () {
         $('#show_alias').css('z-index', '1031');
     });
-
     $('#btnnodelete').click(function () {
         $('#show_alias').css('z-index', '1031');
     });
-
     $('#btnsidelete').click(function () {
         $('#show_alias').css('z-index', '1031');
     });
-
-
     //Responsive menu
     $('.menu').height($(window).height() - $('header').height());
     $(window).resize(function () {
         $('.menu').height($(window).height() - $('header').height());
     });
-
     //Responsive  Report 4
     $('#chartdiv').height($(window).height() - $('header').height());
     $(window).resize(function () {
         $('#chartdiv').height($(window).height() - $('header').height());
     });
-
 });
-
 
 function moveToLeft(valor) {
     if (valor == 1) {
@@ -191,7 +192,7 @@ function showCalendar(valor) {
             numberOfMonths: 1,
             dateFormat: "dd-mm-yy",
             onSelect: function (dateText, inst) {
-               $('#dateStart').text(dateText);
+                $('#dateStart').text(dateText);
             },
             onClose: function (selectedDate) {
                 $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
@@ -207,7 +208,7 @@ function showCalendar(valor) {
                 numberOfMonths: 1,
                 dateFormat: "dd-mm-yy",
                 onSelect: function (dateText, inst) {
-                   $('#dateEnd').text(dateText);
+                    $('#dateEnd').text(dateText);
                 },
                 onClose: function (selectedDate) {
                     $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);

@@ -37,7 +37,6 @@ function existDataClasification() {
             transaction.executeSql(query, [], function (transaction, results) {
                 url = results.rows.item(0).urlBase;
                 if (url > 0) {
-
                 } else {
                     addDataClasificationFirstTime();
                     getDataClasification();
@@ -62,10 +61,8 @@ function getDataClasification() {
     var inf_critico = "";
     var sup_critico = "";
     var muy_critico = "";
-
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_CLASIFICATION, [], function (tx, results) {
-
             muy_buena = results.rows.item(0).MUYBUENA;
             inf_buena = results.rows.item(0).INF_BUENA;
             sup_buena = results.rows.item(0).SUP_BUENA;
@@ -76,19 +73,14 @@ function getDataClasification() {
             inf_critico = results.rows.item(0).INF_CRITICO;
             sup_critico = results.rows.item(0).SUP_CRITICO;
             muy_critico = results.rows.item(0).MUYCRITICO;
-
             $('.clasRange1').val(sup_buena);
             $('#clasRange1').val(sup_buena);
-
             $('.clasRange2').val(sup_aceptable);
             $('#clasRange2').val(sup_aceptable);
-
             $('.clasRange3').val(sup_deficiente);
             $('#clasRange3').val(sup_deficiente);
-
             $('.clasRange4').val(sup_critico);
             $('#clasRange4').val(sup_critico);
-
             $('.clasRange5').val(muy_critico);
             $('#clasRange5').val(muy_critico);
         });
@@ -106,16 +98,12 @@ function getDataClasification22() {
     var inf_critico = "";
     var sup_critico = "";
     var muy_critico = "";
-
-
 }
 
 /*************All methods and function for TABLE DATE*************/
 
 function existDataDate() {
-
     var count = 0;
-
     var query = "SELECT COUNT(*) AS countRDate FROM " + TABLE_CUSTOM_DATE_RANGE;
     try {
         localDB.transaction(function (transaction) {
@@ -156,8 +144,6 @@ function existDataDate() {
                     var dateOfToday = obj_date.getFullYear() + '-' +
                             (('' + monthToday).length < 2 ? '0' : '') + monthToday + '-' +
                             (('' + dayToday).length < 2 ? '0' : '') + dayToday;
-
-
                     /*** dateStart of Month ***/
                     var obj_date2 = new Date();
                     var month = obj_date2.getMonth() + 1;
@@ -165,13 +151,7 @@ function existDataDate() {
                     var dateStartMonth = obj_date2.getFullYear() + '-' +
                             (('' + month).length < 2 ? '0' : '') + month + '-' +
                             (('' + firstDayMonth.getDate()).length < 2 ? '0' : '') + firstDayMonth.getDate();
-
-
                     insertFirstTimeDate(dateStartMonth, dateOfToday, dateOfToday);
-
-
-
-
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
@@ -202,7 +182,6 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
 
 function updaTableCustomDate2() {
     try {
-
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
@@ -225,36 +204,7 @@ function updaTableCustomDate2() {
                     }
                 }, errorHandler);
             });
-
         }
-
-
-
-
-
-
-//            if (valDate(dateStar, dateEnd)) {
-//                if (valDate(dateToCompare, dateEnd)) {
-//                    var arrayDateStart = dateStar.split("-");
-//                    var arrayDateEnd = dateEnd.split("-");
-//                    var arrayDateUntil = dateToCompare.split("-");
-//
-//                    var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
-//                            + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
-//                            + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
-//                            + KEY_DATE_CHOOSED + " = '" + arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0] + "'";
-//                    localDB.transaction(function (transaction) {
-//                        transaction.executeSql(query, [], function (transaction, results) {
-//                            if (!results.rowsAffected) {
-//                                console.log("Error updateState");
-//                            } else {
-//                                console.log("Update realizado:" + results.rowsAffected);
-//                            }
-//                        }, errorHandler);
-//                    });
-//                }
-//            }
-
         localDB.transaction(function (tx) {
             tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
@@ -278,7 +228,6 @@ function updaTableCustomDate2() {
 function BtnCancel2() {
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
-
             var DateS = results.rows.item(0).dateStart.toString();
             var DateE = results.rows.item(0).dateEnd.toString();
             var dateU = results.rows.item(0).dateChoosed.toString();
@@ -294,17 +243,11 @@ function BtnCancel2() {
 
 }
 
-
-
 /**Call when you touch to see dialog clasification**/
 function addDataClasification() {
-
     getDataClasification();
     mostrarInfo();
-
 }
-
-
 function updateClasification() {
 
     var sup_buena = document.getElementById("clasRange1").value;
@@ -364,7 +307,6 @@ function updateClasification() {
         }
     }
 }
-
 function downloadRefresh() {
 
     var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
@@ -372,8 +314,6 @@ function downloadRefresh() {
     downloadStoreClasification(value);
 
 }
-
-
 function downloadStoreClasification(_valueSelected) {
     var xurl = "";
     var ip = "";
@@ -392,7 +332,6 @@ function downloadStoreClasification(_valueSelected) {
     var inf_critico = 0;
     var sup_critico = 0;
     var muy_critico = 0;
-
     /***Dates***/
     var dateStart = "";
     var dateEnd = "";
@@ -401,25 +340,14 @@ function downloadStoreClasification(_valueSelected) {
     /****get****date****/
     /***get range date ***/
     /***date of today ***/
-
-
-
-
-
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-
             xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
-
-
             /*******************   Verificamos si    ***************************/
-
-            /******************************************/
-
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CLASIFICATION, [], function (tx, results) {
 
@@ -436,8 +364,6 @@ function downloadStoreClasification(_valueSelected) {
 
                 });
             });
-
-            /*********************************************/
             /**********OBTENEMOS LAS FECHAS DE LA BASE DE DATOS**************/
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
@@ -473,15 +399,10 @@ function downloadStoreClasification(_valueSelected) {
                                     var StoreName = value.StoreName;
                                     var AcumulateSale = value.AcumulateSale;
                                     var AcumulateGoal = value.AcumulateGoal;
-
-
                                     /**convert data to Float to resolve**/
                                     var d_AcumulateGoal = parseFloat(AcumulateGoal);
                                     var d_AcumulateSale = parseFloat(AcumulateSale);
-
-
                                     /****/
-
                                     var alcance_objetivo = 100 - (d_AcumulateGoal - d_AcumulateSale);//100-(A-B)
 
                                     if (state_clasification == "1") {
@@ -491,6 +412,9 @@ function downloadStoreClasification(_valueSelected) {
                                         if (alcance_objetivo > muy_buena) {
                                             s_clasification = "Very Good";
                                             color = "veryGood";
+                                            if(alcance_objetivo>100){
+                                                alcance_objetivo=100;
+                                            }
                                         }
                                         if (alcance_objetivo > inf_buena && alcance_objetivo <= sup_buena) {
                                             s_clasification = "Good";
@@ -511,21 +435,18 @@ function downloadStoreClasification(_valueSelected) {
                                         if (alcance_objetivo <= muy_critico) {
                                             s_clasification = "Very Critical";
                                             color = "veryCritical";
+                                            if(alcance_objetivo<0){
+                                                alcance_objetivo=0;
+                                            }
                                         }
-
-
                                         show += "<div class='store clasification " + color + "' >";
                                         show += "<h1>" + StoreName + "</h1>";
-                                        show += "<p class='lbl" + color + "' >" + s_clasification + "</p>";
+                                        show += "<p class='lbl" + color + "' >" + s_clasification+ "</p>";
                                         show += "<i class='lblScope' >Scope:</i>";
                                         show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                         show += "</div>";
                                         show += "<hr>";
-
-
-
                                     } else if (state_clasification == "2") {
-
                                         if (alcance_objetivo > muy_buena) {
                                             show += "<div class='store clasification veryGood'>";
                                             show += "<h1>" + StoreName + "</h1>";
@@ -536,8 +457,6 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "<hr>";
 
                                         }
-
-
                                     } else if (state_clasification == "3") {
                                         if (alcance_objetivo > inf_buena && alcance_objetivo <= sup_buena) {
 
@@ -549,7 +468,6 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "</div>";
                                             show += "<hr>";
                                         }
-
                                     } else if (state_clasification == "4") {
                                         if (alcance_objetivo > inf_aceptable && alcance_objetivo <= sup_aceptable) {
                                             show += "<div class='store clasification acceptable' >"
@@ -560,7 +478,6 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "</div>";
                                             show += "<hr>";
                                         }
-
                                     } else if (state_clasification == "5") {
                                         if (alcance_objetivo > inf_deficiente && alcance_objetivo <= sup_deficiente) {
                                             show += "<div class='store clasification deficient'>";
@@ -571,7 +488,6 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "</div>";
                                             show += "<hr>";
                                         }
-
                                     } else if (state_clasification == "6") {
                                         if (alcance_objetivo > inf_critico && alcance_objetivo <= sup_critico) {
                                             show += "<div class='store clasification critical' >";
@@ -582,7 +498,6 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "</div>";
                                             show += "<hr>";
                                         }
-
                                     } else if (state_clasification == "7") {
                                         if (alcance_objetivo <= muy_critico) {
                                             show += "<div class='store clasification veryCritical'>";
@@ -592,14 +507,11 @@ function downloadStoreClasification(_valueSelected) {
                                             show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                             show += "</div>";
                                             show += "<hr>";
-
                                         }
                                     }
                                 });
                                 show += "</div>";
                                 $('#contentReport').append(show);
-
-
                                 if (current_lang == 'es') {
                                     $('.lblveryGood').text('Muy bueno');
                                     $('.lblgood').text('Bueno');
@@ -607,13 +519,9 @@ function downloadStoreClasification(_valueSelected) {
                                     $('.lbldeficient').text('Deficiente');
                                     $('.lblcritical').text('Critico');
                                     $('.lblveryCritical').text('Muy Critico');
-                                    $('.lblScope').text('Alcance');
+                                    $('.lblScope').text('Alcance:');
                                 }
-
-
                                 henry2();
-
-
                             }
 
                         }, error: function (xhr, ajaxOptions, thrownError) {
@@ -626,71 +534,44 @@ function downloadStoreClasification(_valueSelected) {
                             else
                                 mostrarModalGeneral("No Connection");
                         }
-
                     });
-
                 });
             });
-
-
-
         });
     });
     /*******************************/
 }
-
 function deteclenguage2() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
-
     if (current_lang == 'es') {
-        $('.veryGood').text('Muy bueno:');
-        $('.good').text('Bueno:');
-        $('.acceptable').text('Aceptable:');
-        $('.deficient').text('Deficiente:');
-        $('.critical').text('Critico:');
-        $('.veryCritical').text('Muy Critico:');
-        $('.lblScope').text('Alcance:');
-
+        
         MSG_TITLE_STORE_CLASIFICATION_2();
         MSG_TITLE_ALL_REGION_2();
         MSG_RETURN_2();
-
         MSG_TITLE_OPTIONS_2();
-
         MSG_TITLE_OPTIONS_22();
         MSG_CHOOSE_RANGE_2();
-
         MSG_CALEN_VERYGOOD_2();
         MSG_CALEN_GOOD_2();
         MSG_CALEN_ACCEPTABLE_2();
         MSG_CALEN_DEFICIENT_2();
         MSG_CALEN_CRITICAL_2();
         MSG_CALEN_VERYCRITICAL_2();
-
         MSG_CANCEL_2();
         MSG_OK_2();
-
         MSG_DATE_START_2();
         MSG_DATE_END_2();
-
         MSG_CHOOSE_DATE_COMPARE_2();
-
         MSG_DATE_COMPARE_2();
-
         MSG_BACK_2();
-
         MSG_INFORMATION_2();
         MSG_CHOOSE_CLASIFICATION_2();
         MSG_ALL_CLASIFICATION_2();
         MSG_VERY_GOOD_2();
-
         MSG_GOOD_2();
-
         MSG_ACCEPTABLE_2();
-
         MSG_DEFICIENT_2();
-
         MSG_CRITICAL_2();
         MSG_VERY_CRITICAL_2();
     }

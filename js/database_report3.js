@@ -52,7 +52,6 @@ function combo() {
 
 
 }
-
 ///cambiar tamaño de la barra de desplazamiento
 function henry3() {
     $('.section.list').height($(window).height() - ($('header').height() + $('.select-region').height() + $('nav').height()) - 2);
@@ -66,7 +65,6 @@ function henry3() {
     });
 
 }
-
 
 //***************** funcion muestra los datos en el campo principal    ***************//
 function refresh_report3(regionCode) {
@@ -90,13 +88,10 @@ function refresh_report3(regionCode) {
             site = results.rows.item(0).site;
             xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
             localDB.transaction(function (tx) {
-
                 tx.executeSql('SELECT * FROM CRANGEDATE', [], function (tx, results) {
                     dateStart = results.rows.item(0).dateStart;
                     dateEnd = results.rows.item(0).dateEnd;
                     dateUntil = results.rows.item(0).dateChoosed;
-
-
                     array = {DateStart: dateStart, DateEnd: dateEnd, DateUntil: dateUntil, RegionCode: regionCode};
                     $.ajax({
                         url: xurl,
@@ -211,7 +206,7 @@ function existDataDate_report3() {
                                     document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
                                     document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
                                     document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
-                                    ;
+                                    
                                     ////////////////////////////////// insertar data primera vez  
                                     var sumTotalGoal = 0;
                                     var sumPercentGoal = 0;
@@ -393,16 +388,12 @@ function existDataDate_report3() {
         });
     });
 }
-
-
 /*****************actualizar_fecha*******************************/
 function updaTableCustomDate3() {
-
     try {
         var dateStar = document.getElementById('dateStart').innerHTML;
         var dateEnd = document.getElementById('dateEnd').innerHTML;
         var dateToCompare = document.getElementById('dateToCompare').innerHTML;
-
         if (valDate(dateStar, dateToCompare) && valDate(dateToCompare, dateEnd)) {
             var arrayDateStart = dateStar.split("-");
             var arrayDateEnd = dateEnd.split("-");
@@ -422,7 +413,6 @@ function updaTableCustomDate3() {
                 }, errorHandler);
             });
         } else {
-
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
@@ -438,12 +428,9 @@ function updaTableCustomDate3() {
                 });
             });
         }
-
-
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
-
 }
 
 function BtnCancel3() {
@@ -464,9 +451,7 @@ function BtnCancel3() {
 
 }
 
-
 function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
-
     var query = "INSERT INTO " + TABLE_CUSTOM_DATE_RANGE +
             "(" + KEY_DATE_START + ", " + KEY_DATE_END + ", " + KEY_DATE_CHOOSED + ") VALUES (?,?,?)";
     try {
@@ -480,7 +465,6 @@ function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
         console.log("Error addData " + e + ".");
     }
 }
-
 
 function deteclenguage3() {
     lang = navigator.language.split("-");
