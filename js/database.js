@@ -1877,6 +1877,15 @@ function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
 }
 
 
+
+function updateHideReports(){
+    $('.item').each(function(){
+        //agregar una clase hide  $(this).addClass('hide') a cada elemento que se se haya cambiado el check
+    });
+    
+}
+
+
 function deteclenguage() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);

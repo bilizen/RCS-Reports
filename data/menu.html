@@ -111,7 +111,10 @@
             <div class="options_bar_space">
               <div id="btn_left"><button class="img_logotitle"></button></div>
               <div id="txt_maintitle"></div>
-              <div id="btn_right"><button onclick="mostrarModal()" class="add_server"></button></div>
+              <div id="btn_right">
+                <button onclick="showReports()" class="hide_reports"></button>
+                <button onclick="mostrarModal()" class="add_server"></button>
+              </div>
             </div>      
         </header>    
 
@@ -260,7 +263,6 @@
     </div>
 
     <div class="modal fade" id="ModalMessage" >
-    <!--<form name="frmConfirm" id="frmConfirm">-->
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -272,7 +274,27 @@
                 </div>
             </div>
         </div>
-    <!-- </form>-->
+    </div>
+
+    <!-- modal Option Hide Reports -->
+    <div class="modal fade" id="ModalReportsOption" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title" id="lblchangealit">
+                        Hide Reports
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-control select-alias divlistadoReports">
+                      <div id="list_reports"></div>
+                    </div>
+                </div>
+                <div class="modal-footer add">
+                    <button onclick="buttonOkReports()" class="btn btn-modal" id="btnStore">Ok</button> 
+                </div>                
+            </div>
+        </div>
     </div>
     
     <script type="text/javascript" src="../js/scripts.js"></script>

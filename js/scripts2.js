@@ -121,6 +121,7 @@ $(document).ready(function () {
     $('#btnsidelete').click(function () {
         $('#show_alias').css('z-index', '1031');
     });
+
     //Responsive menu
     $('.menu').height($(window).height() - $('header').height());
     $(window).resize(function () {
@@ -131,7 +132,9 @@ $(document).ready(function () {
     $(window).resize(function () {
         $('#chartdiv').height($(window).height() - $('header').height());
     });
+    
 });
+
 
 function moveToLeft(valor) {
     if (valor == 1) {
@@ -238,9 +241,6 @@ function showCalendar(valor) {
 }
 
 
-
-
-
 //Go to Menu
 function goBack() {
     window.location.href = "menu.html";
@@ -282,3 +282,35 @@ jQuery.fn.center = function (parent) {
     });
     return this;
 }
+
+function showReports(){
+  $('#ModalReportsOption').modal('show');
+  
+  var number = 1;
+
+  $('.item_title').each(function(){
+
+    $('#list_reports').append(
+
+      "<input type='checkbox' class='check_report"+number+"' checked>"+
+      "<label class='text-report'>"+$(this).text()+"</label>"+
+      "<hr>"
+
+    )
+
+    number++;
+
+  });
+}
+
+
+//when the modal is close
+$('#ModalReportsOption').on('hidden.bs.modal', function () {
+  $('#list_reports').empty();
+  updateHideReports();
+})
+
+function buttonOkReports(){  
+  $('#ModalReportsOption').modal('hide');
+  // Si deseas añadir funciones hazlo en el  $('#ModalReportsOption').on('hidden.bs.modal'
+}        

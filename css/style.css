@@ -412,6 +412,15 @@ input[type="checkbox"]:checked + label:before {
     background-size: 28px 28px !important;
     background-repeat: no-repeat !important;
 }
+ /*hide reports button*/
+.hide_reports{
+    padding-right: 34px;
+    background-image: url(../img/iconHideReports.svg) !important;
+    background-position: center 8px !important;
+    background-size: 28px 28px !important;
+    background-repeat: no-repeat !important;
+}
+
 .list{
     width: 100%;
     /*height: 100%;*/
@@ -985,7 +994,12 @@ div[class^="detalle-"] span{
 #divlistado {
     height: 144px;
     padding: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+.divlistadoReports{
+    height: 220px;
+    padding: 0;
+    overflow-y: auto;
 }
 #alias-item {
     position: relative;
@@ -1260,6 +1274,10 @@ button.delete{
         padding-right: 44px;
         background-size: 34px !important;
     }
+    .hide_reports {
+        padding-right: 44px;
+        background-size: 34px !important;
+    }
     #content{
         background-size: cover;
     }
@@ -1528,4 +1546,11 @@ button.delete{
     .lblLastConexion {
         padding-right: 2pt;
     }
+    input + label.text-report
+    {
+        font-size: 12pt;
+        line-height: 16px;
+        padding-right: 60px;
+    }
+    
 }
