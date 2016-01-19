@@ -51,7 +51,7 @@
 .clasificationRow .rangeMax,
 .clasificationRow .rangeMin {
     display: table-cell;
-    width: 23%;
+    width: 25%;
     font-size: 15px;
 }
 .clasificationRow .rangeMax input,
@@ -132,7 +132,7 @@
         padding-bottom: 5px;
     }
     .clasificationRow .clasName{
-        width: 57%;
+        width: 54%;
         font-size: 14pt;
         padding-bottom: 14pt;
     }
