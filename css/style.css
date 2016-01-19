@@ -459,7 +459,7 @@ input[type="checkbox"]:checked + label:before {
     width: 100%;
     color: #000;
 
-    opacity: 0;
+    /*opacity: 0;*/
     -webkit-transform: translate3d(-15px,0,0);
     transform: translate3d(-15px,0,0);
 }
