@@ -47,6 +47,15 @@ var KEY_STORENO = "StoreNo";
 var KEY_STORENAME = "StoreName";
 var KEY_USEDSTORE = "UsedStore";
 //************************************//
+//*****Table Reports********//
+var TABLE_REPORTS = "REPORTS";
+var KEY_REPORT = "report";
+var KEY_REPORTINF = "info";
+var KEY_ACTIVO = "activo";
+
+
+//**************************//
+
 
 
 function initDB() {
@@ -57,7 +66,7 @@ function initDB() {
     localDB = window.openDatabase(shortName, version, displayName, maxSize);
 }
 
-function createTables() {//creo mis 4 tablas
+function createTables() {
 
     var tableURL = "CREATE TABLE " + TABLE_URL + " ( "
             + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_IP + " TEXT, " + KEY_PORT + " TEXT, " + KEY_URLBASE + " TEXT, "
@@ -77,6 +86,8 @@ function createTables() {//creo mis 4 tablas
             + KEY_USEDSTORE + " TEXT)";
 
     var tableRegion = "CREATE TABLE REGION( regionCode TEXT, regionName TEXT)";
+    var tableReports = "CREATE TABLE " + TABLE_REPORTS + "(" + KEY_REPORT + " TEXT ," + KEY_REPORTINF + " TEXT, " + KEY_ACTIVO + " TEXT)";
+
 
     try {
         localDB.transaction(function (transaction) {
@@ -136,6 +147,16 @@ function createTables() {//creo mis 4 tablas
         });
     } catch (e) {
         console.log("Error creando Tabla URL " + e + ".");
+        return;
+    }
+
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(tableReports, [], nullDataHandler, errorHandler);
+            console.log("Tabla URL status: OK.");
+        });
+    } catch (e) {
+        console.log("Error creando Tabla REPORTS " + e + ".");
         return;
     }
 
@@ -1782,7 +1803,7 @@ function locationVars(vr) {
     }
 
 }
-;
+
 
 function getIp_Parameter() {
     return locationVars('ip');
@@ -1878,11 +1899,142 @@ function drawGraphic(year1, year2, year3, sales1, sales2, sales3, option) {
 
 
 
-function updateHideReports(){
-    $('.item').each(function(){
-        //agregar una clase hide  $(this).addClass('hide') a cada elemento que se se haya cambiado el check
-    });
-    
+
+function insertarTableReports(NameReport, Information, Activo) {
+    try {
+        var query1 = "INSERT INTO " + TABLE_REPORTS + " ( " + KEY_REPORT + ", " + KEY_REPORTINF + ", " + KEY_ACTIVO + " ) VALUES(?,?,?); ";
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [NameReport, Information, Activo], function (transaction, results) {
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("error:" + e);
+    }
+}
+
+
+function updateHideReports() {
+    try {
+        var query1 = "SELECT COUNT(*) AS CANT FROM " + TABLE_REPORTS;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [], function (transaction, results) {
+                var cant = results.rows.item(0).CANT;
+
+                if (cant == 0) {
+                    insertarTableReports("Goal VS Sales", "Compare your Goals vs Sales in real time", "");
+                    insertarTableReports("Store Clasification", "Custom clasification by store", "");
+                    insertarTableReports("% Progress By Store", "Sales progress by store", "");
+                    insertarTableReports("Advance Graphic", "See sales, goals and breakeven in Graphic by store", "");
+                    insertarTableReports("Goal Scope By Clerk", "Compare the sale progress by employee", "");
+                }
+                var query2 = "SELECT " + KEY_REPORT + "," + KEY_REPORTINF + "," + KEY_ACTIVO + "  FROM " + TABLE_REPORTS;
+                try {
+                    localDB.transaction(function (transaction) {
+                        transaction.executeSql(query2, [], function (transaction, results) {
+                            var report = "";
+                            var info = "";
+                            var save = "";
+                            $('.menu').empty();
+                            for (var i = 0; i < results.rows.length; i++) {
+                                report = results.rows.item(i).report;
+                                info = results.rows.item(i).info;
+                                save = results.rows.item(i).activo;
+                                $('.menu').append(
+                                        "<button class ='item report" + (i + 1) + " " + save + "' onclick ='openReport" + (i + 1) + "();'>" +
+                                        "<span class ='box' >" +
+                                        "<span class ='iconReport'> </span>" +
+                                        "<span id ='lblgvst' class ='item_title'>" + report + "</span>" +
+                                        "<span id ='lblgvsd'  class ='item_subtitle'> " + info + " </span>" +
+                                        "</span>" +
+                                        "</button>"
+                                        );
+                            }
+                        });
+                    });
+
+                } catch (e) {
+                    console.log(e);
+                }
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("e");
+    }
+}
+
+
+function showReports() {
+    $('#ModalReportsOption').modal('show');
+    try {
+        var query1 = "SELECT * FROM " + TABLE_REPORTS;
+        var report = "";
+        var check="";
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [], function (transaction, results) {
+                $('#list_reports').empty();
+                for (var i = 0; i < results.rows.length; i++) {
+                    report=results.rows.item(i).report;
+                    check=results.rows.item(i).activo;
+                    if(check=="hide"){
+                        check="";
+                    }else{
+                        check="checked";
+                    }
+                    $('#list_reports').append(
+                            "<input type='checkbox' class='check_report"+(i+1)+"' "+check+">" +
+                            "<label class='text-report'>"+report+"</label>" +
+                            "<hr>");
+                }
+            });
+        });
+    } catch (e) {
+        console.log("error: " + e);
+    }
+
+}
+
+function buttonOkReports() {
+    $('#ModalReportsOption').modal('hide');
+    if ($('.check_report1').is(':checked')) {
+        updateCheckModalReports("1", "");
+    } else {
+        updateCheckModalReports("1", "hide");
+    }
+    if ($('.check_report2').is(':checked')) {
+        updateCheckModalReports("2", "");
+    } else {
+        updateCheckModalReports("2", "hide");
+    }
+    if ($('.check_report3').is(':checked')) {
+        updateCheckModalReports("3", "");
+    } else {
+        updateCheckModalReports("3", "hide");
+    }
+    if ($('.check_report4').is(':checked')) {
+        updateCheckModalReports("4", "");
+    } else {
+        updateCheckModalReports("4", "hide");
+    }
+    if ($('.check_report5').is(':checked')) {
+        updateCheckModalReports("5", "");
+    } else {
+        updateCheckModalReports("5", "hide");
+    }
+    updateHideReports();
+}
+
+function updateCheckModalReports(order, check) {
+    var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "= '" + check + "' WHERE rowid=" + order;
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [], function (transaction, results) {
+            });
+        }, errorHandler);
+    } catch (e) {
+        console.log("error: " + e);
+    }
 }
 
 
@@ -1890,7 +2042,6 @@ function deteclenguage() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
     localStorage.lang = current_lang;
-
     if (current_lang == 'es') {
 
         //Index        
@@ -1992,12 +2143,9 @@ function deteclenguage() {
         MSG_SHOWCURRENT_1();
         MSG_SHOWGLOBAL_1();
         MSG_TODAYP_1();
-
         MSG_LBL_DET_DIC_1();
         /***************************************/
-
         MSGS_TEXT_OPTIONS();
-
         // Last Connection
         LBL_LAST_CONNECTION();
     }

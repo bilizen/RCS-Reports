@@ -43,7 +43,7 @@ $(document).ready(function () {
             var changeinput = $(this).val();
             console.log(changeinput);
             $('.clasRange1').val(changeinput);
-        }else{
+        } else {
             var changeinput = $(this).val();
             console.log(changeinput);
             $('.clasRange1').val(changeinput);
@@ -66,21 +66,21 @@ $(document).ready(function () {
     });
     $('#clasRange5').keyup(function () {
         var clasRange1 = $('#clasRange5').val();
-        if (clasRange1 <0) {
+        if (clasRange1 < 0) {
             $('#clasRange5').val(0);
             var changeinput = $(this).val();
             console.log(changeinput);
             $('.clasRange5').val(changeinput);
-        }else{
+        } else {
             var changeinput = $(this).val();
             console.log(changeinput);
             $('.clasRange5').val(changeinput);
-        }                 
+        }
     });
     $('#clasRange6').keyup(function () {
         var changeinput = $(this).val();
         console.log(changeinput);
-        $('.clasRange6').val(changeinput);        
+        $('.clasRange6').val(changeinput);
     });
     $('#miModal4').css("margin-top", Math.max(0, ($(window).height() - 58 - $('#miModal4').find('.modal-dialog').height()) / 4));
     // Centrado de los modelos al centro de la pantalla
@@ -132,7 +132,7 @@ $(document).ready(function () {
     $(window).resize(function () {
         $('#chartdiv').height($(window).height() - $('header').height());
     });
-    
+
 });
 
 
@@ -282,35 +282,3 @@ jQuery.fn.center = function (parent) {
     });
     return this;
 }
-
-function showReports(){
-  $('#ModalReportsOption').modal('show');
-  
-  var number = 1;
-
-  $('.item_title').each(function(){
-
-    $('#list_reports').append(
-
-      "<input type='checkbox' class='check_report"+number+"' checked>"+
-      "<label class='text-report'>"+$(this).text()+"</label>"+
-      "<hr>"
-
-    )
-
-    number++;
-
-  });
-}
-
-
-//when the modal is close
-$('#ModalReportsOption').on('hidden.bs.modal', function () {
-  $('#list_reports').empty();
-  updateHideReports();
-})
-
-function buttonOkReports(){  
-  $('#ModalReportsOption').modal('hide');
-  // Si deseas añadir funciones hazlo en el  $('#ModalReportsOption').on('hidden.bs.modal'
-}        

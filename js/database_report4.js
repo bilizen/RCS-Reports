@@ -4,7 +4,6 @@ function showDialogStore() {
 }
 
 function existDataStore() {
-
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
     try {
         localDB.transaction(function (transaction) {
@@ -12,11 +11,8 @@ function existDataStore() {
                 url = results.rows.item(0).urlBase;
                 if (url > 0) {
                     downloadAllStore2();
-
                 } else {
-
                     downloadAllStore();
-
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
@@ -28,7 +24,6 @@ function existDataStore() {
 }
 
 function updateAllStoreUsedToZero() {
-
     var queryUpdate = " UPDATE " + TABLE_STORE + " SET "
             + KEY_USEDSTORE + " = 0";
     try {
@@ -44,12 +39,10 @@ function updateAllStoreUsedToZero() {
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
-
 }
 
 function updateStoreUsedTableStore(storeNo) {
     var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = 1.0 WHERE " + KEY_STORENO + " = " + storeNo;
-
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(queryStore, [], function (transaction, results) {
@@ -63,7 +56,6 @@ function updateStoreUsedTableStore(storeNo) {
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
-
 }
 
 

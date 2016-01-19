@@ -457,7 +457,6 @@ function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [dateStart, dateEnd, dateUntil], function (transaction, results) {
-
             }, errorHandler);
 
         });
