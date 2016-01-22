@@ -444,6 +444,12 @@ input[type="checkbox"]:checked + label:before {
     background-size: 24px 44px;
     background-repeat: no-repeat;  
 }
+/*.menu button.hide + button:nth-child(n){
+    background-color: rgba(253, 253, 253, 0.92);
+}
+.menu button.hide + button:nth-child(2n){
+    background-color: rgba(241, 241, 241, 0.92);
+}*/
 .list .item:last-of-type,.menu .item:last-of-type{
     border-bottom: 1px solid rgb(200, 199, 204);
 }
@@ -657,10 +663,16 @@ hr {
 }
 .lblLastConexion{
     padding-right: 3pt;
+    width: 53%;
+}
+.dataLastConexion{
+    width: 47%;
 }
 .lblLastConexion,.dataLastConexion{
     line-height: 24pt;
     display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .actual p,.global p,
 .actual i,.global i,
