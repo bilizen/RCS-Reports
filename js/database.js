@@ -1949,6 +1949,7 @@ function updateHideReports() {
                                         "</button>"
                                         );
                             }
+                            highlightButtons();
                         });
                     });
 

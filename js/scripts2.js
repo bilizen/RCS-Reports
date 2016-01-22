@@ -282,3 +282,13 @@ jQuery.fn.center = function (parent) {
     });
     return this;
 }
+
+function highlightButtons(){
+    var count = 0; 
+    $(".menu button:not('.hide')").each(function(i, el){
+        if (i%2 == 0)
+            $(this).addClass('highlight_one'); 
+        else
+            $(this).addClass('highlight_two'); 
+    });
+}
