@@ -16,9 +16,9 @@ $(document).ready(function () {
             d1.getFullYear();
 
     /* Yesterday */
-    var d2 = new Date();
+    var d2 = new Date((new Date().valueOf()-(24*60*60*1000)));
     var month2 = d2.getMonth() + 1;
-    var day2 = d2.getDate() - 1;
+    var day2 = d2.getDate();
     var o_yesterday = (('' + day2).length < 2 ? '0' : '') + day2 + '/' +
             (('' + month2).length < 2 ? '0' : '') + month2 + '/' +
             d2.getFullYear();
@@ -30,8 +30,7 @@ $(document).ready(function () {
 
     var d = new Date('' + o_today2);
     var day = d.getDay(),
-            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-
+            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday       
     var ASU = new Date(d.setDate(diff));
     var convertido = ASU;
     var dia = ASU.getDate();
@@ -41,8 +40,6 @@ $(document).ready(function () {
             (('' + mes).length < 2 ? '0' : '') + mes + '/' +
             año;
 
-    /* */
-
     /* Week to Date */
     var d3 = new Date();
     var o_month = ('01' + '/' +
@@ -50,8 +47,7 @@ $(document).ready(function () {
 
     /* Year */
     var o_year = '01/' + '01/' + d1.getFullYear();
-
-
+    
     $('#time').text(o_today);
     $('#today').text(o_today);
     $('#yesterday').text(o_yesterday);
@@ -138,7 +134,6 @@ $(".select-date").on("click", "div:not(.init)", function () {
         //downloadByCompany(ch_actual,ch_global);
         downloadByStore(ch_actual, ch_global);
     }
-
 });
 
 $(".select-region").on("click", "div:not(.init)", function () {
