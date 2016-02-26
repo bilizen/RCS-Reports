@@ -13,7 +13,7 @@ function addDataClasificationFirstTime() {//aqui se hace uin insert
 
     try {
         localDB.transaction(function (transaction) {
-            transaction.executeSql(query, ["100", "99", "100", "95", "99", "90", "95", "85", "90", "85"], function (transaction, results) {
+            transaction.executeSql(query, ["99", "98", "99", "95", "98", "90", "95", "85", "90", "85"], function (transaction, results) {
             }, errorHandler);
         });
     } catch (e) {

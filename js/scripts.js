@@ -124,15 +124,15 @@ $(".select-general").on("click", "div:not(.init)", function () {
     moveToRight();
     if (value_global == '1') {
         hideCombo();
-        $("#items").empty();
+        //$("#items").empty();
         downloadByCompany(ch_actual, ch_global);
     } else if (value_global == '2') {
         hideCombo();
-        $("#items").empty();
+        //$("#items").empty();
         downloadByRegion(ch_actual, ch_global);
     } else if (value_global == '3') {
         //showCombo();  
-        $("#items").empty();
+        //$("#items").empty();
         loadComboRegions(ch_actual, ch_global);
     }
 });
