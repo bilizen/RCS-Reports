@@ -36,7 +36,6 @@ function combo() {
                         });
                     }
                     $("#select-region").append(mostrar);
-
                 }, error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
@@ -203,10 +202,21 @@ function existDataDate_report3() {
                                     var arrayDateStart = dateStart.split("-");
                                     var arraydateEnd = dateEnd.split("-");
                                     var arrayDateUntil = dateUntil.split("-");
-                                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                                    document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
-                                    
+
+
+                                    //change of date ES->EN
+                                    var lang = navigator.language.split("-");
+                                    current_lang = (lang[0]);
+                                    if (current_lang == 'en') {
+                                        document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                                        document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                                        document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+                                    } else {
+                                        document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                        document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                                        document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                                    }
+
                                     ////////////////////////////////// insertar data primera vez  
                                     var sumTotalGoal = 0;
                                     var sumPercentGoal = 0;
@@ -301,11 +311,20 @@ function existDataDate_report3() {
                             var arraydateEnd = dateOfToday.split("-");
                             var arrayDateUntil = dateOfToday.split("-");
 
-                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                            document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
-                            /////////////////////////////////////insertar data primera vez    
+                            //change of date ES->EN
+                            var lang = navigator.language.split("-");
+                            current_lang = (lang[0]);
+                            if (current_lang == 'en') {
+                                document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+                            } else {
+                                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                            }
 
+                            /////////////////////////////////////insertar data primera vez    
                             var sumTotalGoal = 0;
                             var sumPercentGoal = 0;
                             var sumPercentSale = 0;
@@ -391,11 +410,29 @@ function existDataDate_report3() {
 /*****************actualizar_fecha*******************************/
 function updaTableCustomDate3() {
     try {
-        var dateStar = document.getElementById('dateStart').innerHTML;
-        var dateEnd = document.getElementById('dateEnd').innerHTML;
-        var dateToCompare = document.getElementById('dateToCompare').innerHTML;
-        if (valDate(dateStar, dateToCompare) && valDate(dateToCompare, dateEnd)) {
-            var arrayDateStart = dateStar.split("-");
+        var dateStart = "";
+        var dateEnd = "";
+        var dateToCompare = "";
+
+        //change of date ES->EN
+        var lang = navigator.language.split("-");
+        current_lang = (lang[0]);
+        if (current_lang == 'en') {
+            var c_dateStar = (document.getElementById('dateStart').innerHTML).split("-");
+            var c_dateEnd = (document.getElementById('dateEnd').innerHTML).split("-");
+            var c_dateToCompare = (document.getElementById('dateToCompare').innerHTML).split("-");
+            dateStart = c_dateStar[1] + "-" + c_dateStar[0] + "-" + c_dateStar[2];
+            dateEnd = c_dateEnd[1] + "-" + c_dateEnd[0] + "-" + c_dateEnd[2];
+            dateToCompare = c_dateToCompare[1] + "-" + c_dateToCompare[0] + "-" + c_dateToCompare[2];
+        } else {
+            dateStart = document.getElementById('dateStart').innerHTML;
+            dateEnd = document.getElementById('dateEnd').innerHTML;
+            dateToCompare = document.getElementById('dateToCompare').innerHTML;
+        }
+
+
+        if (valDate(dateStart, dateToCompare) && valDate(dateToCompare, dateEnd)) {
+            var arrayDateStart = dateStart.split("-");
             var arrayDateEnd = dateEnd.split("-");
             var arrayDateUntil = dateToCompare.split("-");
 
@@ -422,9 +459,19 @@ function updaTableCustomDate3() {
                     var arrayDateStart = DateS.split("-");
                     var arraydateEnd = DateE.split("-");
                     var arrayDateUntil = dateU.split("-");
-                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                    document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+
+                    //change of date ES->EN
+                    var lang = navigator.language.split("-");
+                    current_lang = (lang[0]);
+                    if (current_lang == 'en') {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                        document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+                    } else {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                        document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                    }
                 });
             });
         }
@@ -443,9 +490,20 @@ function BtnCancel3() {
             var arrayDateStart = DateS.split("-");
             var arraydateEnd = DateE.split("-");
             var arrayDateUntil = dateU.split("-");
-            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-            document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+
+            //change of date ES->EN
+            var lang = navigator.language.split("-");
+            current_lang = (lang[0]);
+            if (current_lang == 'en') {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+
+            } else {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+            }
         });
     });
 
@@ -458,7 +516,6 @@ function insertFirstTimeDate_report3(dateStart, dateEnd, dateUntil) {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [dateStart, dateEnd, dateUntil], function (transaction, results) {
             }, errorHandler);
-
         });
     } catch (e) {
         console.log("Error addData " + e + ".");

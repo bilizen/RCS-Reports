@@ -114,26 +114,34 @@ function existDataDate() {
 
                     localDB.transaction(function (tx) {
                         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
-
                             var dateStart = results.rows.item(0).dateStart.toString();
                             var dateEnd = results.rows.item(0).dateEnd.toString();
                             var dateUntil = results.rows.item(0).dateChoosed.toString();
                             var arrayDateStart = dateStart.split("-");
                             var arraydateEnd = dateEnd.split("-");
                             var arrayDateUntil = dateUntil.split("-");
-                            dateStart = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                            dateEnd = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                            dateUntil = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
 
-
-                            document.getElementById('dateStart').innerHTML = dateStart;
-                            document.getElementById('dateEnd').innerHTML = dateEnd;
-                            document.getElementById('dateToCompare').innerHTML = dateUntil;
-
+                            //change of date ES->EN
+                            var lang = navigator.language.split("-");
+                            current_lang = (lang[0]);
+                            if (current_lang == 'en') {
+                                dateStart = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                                dateEnd = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                                dateUntil = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+                                document.getElementById('dateStart').innerHTML = dateStart;
+                                document.getElementById('dateEnd').innerHTML = dateEnd;
+                                document.getElementById('dateToCompare').innerHTML = dateUntil;
+                            } else {
+                                dateStart = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                dateEnd = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                                dateUntil = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                                document.getElementById('dateStart').innerHTML = dateStart;
+                                document.getElementById('dateEnd').innerHTML = dateEnd;
+                                document.getElementById('dateToCompare').innerHTML = dateUntil;
+                            }
                         });
 
                     });
-
                 } else {
                     /***asignamos fecha por defecto la primera vez***/
                     /***date of today ***/
@@ -182,12 +190,29 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
 
 function updaTableCustomDate2() {
     try {
-        var dateStar = document.getElementById('dateStart').innerHTML;
-        var dateEnd = document.getElementById('dateEnd').innerHTML;
-        var dateToCompare = document.getElementById('dateToCompare').innerHTML;
+        var dateStart = "";
+        var dateEnd = "";
+        var dateToCompare = "";
 
-        if (valDate(dateStar, dateToCompare) && valDate(dateToCompare, dateEnd)) {
-            var arrayDateStart = dateStar.split("-");
+        //change of date ES->EN
+        var lang = navigator.language.split("-");
+        current_lang = (lang[0]);
+        if (current_lang == 'en') {
+            var c_dateStar = (document.getElementById('dateStart').innerHTML).split("-");
+            var c_dateEnd = (document.getElementById('dateEnd').innerHTML).split("-");
+            var c_dateToCompare = (document.getElementById('dateToCompare').innerHTML).split("-");
+            dateStart = c_dateStar[1] + "-" + c_dateStar[0] + "-" + c_dateStar[2];
+            dateEnd = c_dateEnd[1] + "-" + c_dateEnd[0] + "-" + c_dateEnd[2];
+            dateToCompare = c_dateToCompare[1] + "-" + c_dateToCompare[0] + "-" + c_dateToCompare[2];
+        } else {
+            dateStart = document.getElementById('dateStart').innerHTML;
+            dateEnd = document.getElementById('dateEnd').innerHTML;
+            dateToCompare = document.getElementById('dateToCompare').innerHTML;
+
+        }
+
+        if (valDate(dateStart, dateToCompare) && valDate(dateToCompare, dateEnd)) {
+            var arrayDateStart = dateStart.split("-");
             var arrayDateEnd = dateEnd.split("-");
             var arrayDateUntil = dateToCompare.split("-");
 
@@ -214,9 +239,19 @@ function updaTableCustomDate2() {
                 var arrayDateStart = DateS.split("-");
                 var arraydateEnd = DateE.split("-");
                 var arrayDateUntil = dateU.split("-");
-                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+
+                //change of date ES->EN
+                var lang = navigator.language.split("-");
+                current_lang = (lang[0]);
+                if (current_lang == 'en') {
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                    document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+                } else {
+                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                    document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+                }
             });
         });
 
@@ -234,9 +269,20 @@ function BtnCancel2() {
             var arrayDateStart = DateS.split("-");
             var arraydateEnd = DateE.split("-");
             var arrayDateUntil = dateU.split("-");
-            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-            document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+
+            //change of date ES->EN
+            var lang = navigator.language.split("-");
+            current_lang = (lang[0]);
+            if (current_lang == 'en') {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[1] + "-" + arrayDateUntil[2] + "-" + arrayDateUntil[0];
+            } else {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                document.getElementById('dateToCompare').innerHTML = arrayDateUntil[2] + "-" + arrayDateUntil[1] + "-" + arrayDateUntil[0];
+            }
+
         });
     });
 
@@ -412,8 +458,8 @@ function downloadStoreClasification(_valueSelected) {
                                         if (alcance_objetivo > muy_buena) {
                                             s_clasification = "Very Good";
                                             color = "veryGood";
-                                            if(alcance_objetivo>100){
-                                                alcance_objetivo=100;
+                                            if (alcance_objetivo > 100) {
+                                                alcance_objetivo = 100;
                                             }
                                         }
                                         if (alcance_objetivo > inf_buena && alcance_objetivo <= sup_buena) {
@@ -435,13 +481,13 @@ function downloadStoreClasification(_valueSelected) {
                                         if (alcance_objetivo <= muy_critico) {
                                             s_clasification = "Very Critical";
                                             color = "veryCritical";
-                                            if(alcance_objetivo<0){
-                                                alcance_objetivo=0;
+                                            if (alcance_objetivo < 0) {
+                                                alcance_objetivo = 0;
                                             }
                                         }
                                         show += "<div class='store clasification " + color + "' >";
                                         show += "<h1>" + StoreName + "</h1>";
-                                        show += "<p class='lbl" + color + "' >" + s_clasification+ "</p>";
+                                        show += "<p class='lbl" + color + "' >" + s_clasification + "</p>";
                                         show += "<i class='lblScope' >Scope:</i>";
                                         show += "<span class='percentage'>" + alcance_objetivo.toFixed(2) + "%</span>";
                                         show += "</div>";
@@ -542,10 +588,10 @@ function downloadStoreClasification(_valueSelected) {
     /*******************************/
 }
 function deteclenguage2() {
-    lang = navigator.language.split("-");
+    var lang = navigator.language.split("-");
     current_lang = (lang[0]);
     if (current_lang == 'es') {
-        
+
         MSG_TITLE_STORE_CLASIFICATION_2();
         MSG_TITLE_ALL_REGION_2();
         MSG_RETURN_2();

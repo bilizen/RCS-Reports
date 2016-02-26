@@ -7,7 +7,6 @@ $(document).ready(function () {
         input_val = $(this).val();
         if (input_val == "") {
             $(this).closest('.input_effect').addClass('focus');
-            // alert("1");
         }
     }).keyup(function () {
         input_val = $(this).val();
@@ -189,49 +188,113 @@ function showCalendar(valor) {
     $('#dinamicContent .modal-body').empty();
     if (valor == 1) {
         $('#dinamicContent .modal-body').html('<div id="calendarDateStart"></div>');
-        $("#calendarDateStart").datepicker({
-            defaultDate: dateStart,
-            changeMonth: false,
-            numberOfMonths: 1,
-            dateFormat: "dd-mm-yy",
-            onSelect: function (dateText, inst) {
-                $('#dateStart').text(dateText);
-            },
-            onClose: function (selectedDate) {
-                $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
-            }
-        });
-    } else {
-        if (valor == 2) {
-            $('#dinamicContent .modal-body').html('<div id="calendarDateEnd"></div>');
 
-            $("#calendarDateEnd").datepicker({
-                defaultDate: dateEnd,
+        //change of date ES->EN
+        var lang = navigator.language.split("-");
+        current_lang = (lang[0]);
+        if (current_lang == 'en') {
+
+            $("#calendarDateStart").datepicker({
+                defaultDate: dateStart,
+                changeMonth: false,
+                numberOfMonths: 1,
+                dateFormat: "mm-dd-yy",
+                onSelect: function (dateText, inst) {
+                    $('#dateStart').text(dateText);
+                },
+                onClose: function (selectedDate) {
+                    $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
+                }
+            });
+
+        } else {
+            $("#calendarDateStart").datepicker({
+                defaultDate: dateStart,
                 changeMonth: false,
                 numberOfMonths: 1,
                 dateFormat: "dd-mm-yy",
                 onSelect: function (dateText, inst) {
-                    $('#dateEnd').text(dateText);
+                    $('#dateStart').text(dateText);
                 },
                 onClose: function (selectedDate) {
-                    $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);
+                    $("#calendarDateEnd").datepicker("option", "minDate", selectedDate);
                 }
-
             });
 
-        } else {
-            if (valor == 3) {
-                $('#dinamicContent .modal-body').html('<div id="calendarDateToCompare"></div>');
+        }
 
-                $("#calendarDateToCompare").datepicker({
-                    defaultDate: dateToCompare,
+    } else {
+        if (valor == 2) {
+            $('#dinamicContent .modal-body').html('<div id="calendarDateEnd"></div>');
+
+            //change of date ES->EN
+            var lang = navigator.language.split("-");
+            current_lang = (lang[0]);
+            if (current_lang == 'en') {
+                $("#calendarDateEnd").datepicker({
+                    defaultDate: dateEnd,
+                    changeMonth: false,
+                    numberOfMonths: 1,
+                    dateFormat: "mm-dd-yy",
+                    onSelect: function (dateText, inst) {
+                        $('#dateEnd').text(dateText);
+                    },
+                    onClose: function (selectedDate) {
+                        $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);
+                    }
+
+                });
+
+            } else {
+                $("#calendarDateEnd").datepicker({
+                    defaultDate: dateEnd,
                     changeMonth: false,
                     numberOfMonths: 1,
                     dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
-                        $('#dateToCompare').text(dateText);
+                        $('#dateEnd').text(dateText);
+                    },
+                    onClose: function (selectedDate) {
+                        $("#calendarDateStart").datepicker("option", "maxDate", selectedDate);
                     }
+
                 });
+
+            }
+
+
+        } else {
+            if (valor == 3) {
+
+                $('#dinamicContent .modal-body').html('<div id="calendarDateToCompare"></div>');
+
+                //change of date ES->EN
+                var lang = navigator.language.split("-");
+                current_lang = (lang[0]);
+                if (current_lang == 'en') {
+                    $("#calendarDateToCompare").datepicker({
+                        defaultDate: dateToCompare,
+                        changeMonth: false,
+                        numberOfMonths: 1,
+                        dateFormat: "mm-dd-yy",
+                        onSelect: function (dateText, inst) {
+                            $('#dateToCompare').text(dateText);
+                        }
+                    });
+
+                } else {
+                    $("#calendarDateToCompare").datepicker({
+                        defaultDate: dateToCompare,
+                        changeMonth: false,
+                        numberOfMonths: 1,
+                        dateFormat: "dd-mm-yy",
+                        onSelect: function (dateText, inst) {
+                            $('#dateToCompare').text(dateText);
+                        }
+                    });
+
+                }
+
             } else {
                 $('#dinamicContent .modal-body').html(modalInfo);
             }
@@ -283,12 +346,12 @@ jQuery.fn.center = function (parent) {
     return this;
 }
 
-function highlightButtons(){
-    var count = 0; 
-    $(".menu button:not('.hide')").each(function(i, el){
-        if (i%2 == 0)
-            $(this).addClass('highlight_one'); 
+function highlightButtons() {
+    var count = 0;
+    $(".menu button:not('.hide')").each(function (i, el) {
+        if (i % 2 == 0)
+            $(this).addClass('highlight_one');
         else
-            $(this).addClass('highlight_two'); 
+            $(this).addClass('highlight_two');
     });
 }

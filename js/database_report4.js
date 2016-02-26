@@ -316,8 +316,16 @@ function downloadReportGraphic() {
                             var arrayDateStart = dateStart.split("-");
                             var arraydateEnd = dateEnd.split("-");
 
-                            document.getElementById('dateStartTitle').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                            document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                            //change of date ES->EN
+                            var lang = navigator.language.split("-");
+                            current_lang = (lang[0]);
+                            if (current_lang == 'en') {
+                                document.getElementById('dateStartTitle').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEndTitle').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                            } else {
+                                document.getElementById('dateStartTitle').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEndTitle').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                            }
 
                             //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportGraphicStore/POST";
                             //array = {"DateStart":"2015-08-01","DateEnd":"2015-08-20","StoreNo":3};
@@ -413,8 +421,20 @@ function existDataDate() {
                             var dateEnd = results.rows.item(0).dateEnd.toString();
                             var arrayDateStart = dateStart.split("-");
                             var arraydateEnd = dateEnd.split("-");
-                            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+
+                            //change of date ES->EN
+                            var lang = navigator.language.split("-");
+                            current_lang = (lang[0]);
+                            if (current_lang == 'en') {
+                                document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+
+                            } else {
+                                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+
+                            }
+
                         });
                     });
                 } else {
@@ -443,8 +463,17 @@ function existDataDate() {
                     //pinta la fecha de los calendarios al entrar por primera vez
                     var arrayDateStart = dateStartMonth.split("-");
                     var arraydateEnd = dateOfToday.split("-");
-                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+
+                    //change of date ES->EN
+                    var lang = navigator.language.split("-");
+                    current_lang = (lang[0]);
+                    if (current_lang == 'en') {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+                    } else {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                    }
 
                 }
             }, function (transaction, error) {
@@ -474,18 +503,31 @@ function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
 }
 
 function updaTableCustomDate4() {
-     try {
-        var dateStar = document.getElementById('dateStart').innerHTML;
-        var dateEnd = document.getElementById('dateEnd').innerHTML;
-        
-        if (valDate(dateStar, dateEnd)) {
-            var arrayDateStart = dateStar.split("-");
+    try {
+        var dateStart = "";
+        var dateEnd = "";
+
+        //change of date ES->EN
+        var lang = navigator.language.split("-");
+        current_lang = (lang[0]);
+        if (current_lang == 'en') {
+            var c_dateStart = (document.getElementById('dateStart').innerHTML).split("-");
+            var c_dateEnd = (document.getElementById('dateEnd').innerHTML).split("-");
+            dateStart = c_dateStart[1] + "-" + c_dateStart[0] + "-" + c_dateStart[2];
+            dateEnd = c_dateEnd[1] + "-" + c_dateEnd[0] + "-" + c_dateEnd[2];
+        } else {
+            dateStart = document.getElementById('dateStart').innerHTML;
+            dateEnd = document.getElementById('dateEnd').innerHTML;
+        }
+
+        if (valDate(dateStart, dateEnd)) {
+            var arrayDateStart = dateStart.split("-");
             var arrayDateEnd = dateEnd.split("-");
 
             var query = "UPDATE " + TABLE_CUSTOM_DATE_RANGE + " SET "
                     + KEY_DATE_START + " = '" + arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0] + "', "
                     + KEY_DATE_END + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "', "
-                    + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1]  + "-" + arrayDateEnd[0] + "'";
+                    + KEY_DATE_CHOOSED + " = '" + arrayDateEnd[2] + "-" + arrayDateEnd[1] + "-" + arrayDateEnd[0] + "'";
             localDB.transaction(function (transaction) {
                 transaction.executeSql(query, [], function (transaction, results) {
                     if (!results.rowsAffected) {
@@ -496,7 +538,6 @@ function updaTableCustomDate4() {
                 }, errorHandler);
             });
         } else {
-
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
@@ -504,14 +545,21 @@ function updaTableCustomDate4() {
                     var DateE = results.rows.item(0).dateEnd.toString();
                     var arrayDateStart = DateS.split("-");
                     var arraydateEnd = DateE.split("-");
-                    document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-                    document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-                    
+
+                    //change of date ES->EN
+                    var lang = navigator.language.split("-");
+                    current_lang = (lang[0]);
+                    if (current_lang == 'en') {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+
+                    } else {
+                        document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                        document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+                    }
                 });
             });
         }
-
-
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
@@ -527,8 +575,17 @@ function BtnCancel4() {
             var DateE = results.rows.item(0).dateEnd.toString();
             var arrayDateStart = DateS.split("-");
             var arraydateEnd = DateE.split("-");
-            document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
-            document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+
+            //change of date ES->EN
+            var lang = navigator.language.split("-");
+            current_lang = (lang[0]);
+            if (current_lang == 'en') {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
+            } else {
+                document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
+                document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
+            }
         });
     });
 

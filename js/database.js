@@ -74,7 +74,6 @@ function createTables() {
 
     var tableConfiguration = "CREATE TABLE " + TABLE_CONFIGURATION + " (" + KEY_REMEMBER + " TEXT)";
 
-
     var tableClasification = "CREATE TABLE " + TABLE_CLASIFICATION + " ( " +
             KEY_MUY_BUENA + " TEXT, " + KEY_LIMIT_INF_BUENA + " TEXT, " + KEY_LIMIT_SUP_BUENA + " TEXT, " + KEY_LIMIT_INF_ACEPTABLE + " TEXT, " +
             KEY_LIMIT_SUP_ACEPTABLE + " TEXT, " + KEY_LIMIT_INF_DEFICIENTE + " TEXT, " + KEY_LIMIT_SUP_DEFICIENTE + " TEXT, " + KEY_LIMIT_INF_CRITICO + " TEXT, " +
@@ -224,7 +223,6 @@ function delTables() {
     try {
         var queryDelete1 = "DELETE FROM " + TABLE_STORE;
         localDB.transaction(function (transaction) {
-
             transaction.executeSql(queryDelete1, [], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
@@ -248,12 +246,9 @@ function delTables() {
                 }
             }, errorHandler);
         });
-
     } catch (e) {
         console.log("error: " + e);
     }
-
-
 }
 
 function checkNetConnection() {
@@ -270,10 +265,10 @@ function checkNetConnection() {
 function validIP(ip, port, _url, alias, use, site, variable) {
     var xurl = 'http://' + ip + ':' + port + '/' + site + '/Country/';
     $.ajax({
-        type: 'get',
+        type: 'GET',
         timeout: 15000,
         url: xurl,
-        contentType: 'application/json; charset=utf-8',
+        //contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
         crossdomain: true,
@@ -358,7 +353,6 @@ function validData(pin, check) {
     var array = {Pin: pin};
 
     if (variable_ == "1") {//si es que es un servidor nuevo y estamos en la pantalla de login
-
         $.ajax({
             url: yurl,
             timeout: 15000,
@@ -378,7 +372,6 @@ function validData(pin, check) {
 
                 if (data.successful == 1) {
                     getExistData_Carlos(check);
-
                 } else {
                     if (current_lang == 'es')
                         mostrarModalGeneral("PIN Invalido");
@@ -387,7 +380,6 @@ function validData(pin, check) {
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-
                 console.log(xhr.status);
                 console.log(xhr.statusText);
                 console.log(xhr.responseText);
@@ -407,7 +399,6 @@ function validData(pin, check) {
 
 //*funcion solo para cuando ingresamos por primera vez nuestros datos*//
 function getExistData_Carlos(check) {
-
     var url = "";
     var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_URL;
     try {
@@ -425,9 +416,7 @@ function getExistData_Carlos(check) {
                         addConfiguration(check);
 
                     } else {
-
                         var varrrrrrrr = getVariable_Parameter();
-
                         if (varrrrrrrr == 1) {
                             var ip = getIp_Parameter();
                             var port = getPort_Parameter();
@@ -439,13 +428,9 @@ function getExistData_Carlos(check) {
                             updateState();
                             addData(ip, port, urlbase, alias, activo, site);
                         }
-
                         deleteConfiguration();
                         addConfiguration(check);
-
                     }
-
-
                 } else {
                     var ip = getIp_Parameter();
                     var port = getPort_Parameter();
@@ -712,7 +697,6 @@ function downloadByCompany(actual_, global_) {
             var principal = $(".select-general div:first-child()").attr("data-value");
             var option = $(".select-dateP .init").attr("data-value");
             var array = {principal: principal, option: option};
-
 
             var actual = actual_;
             var global = global_;
@@ -1175,8 +1159,8 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
 
     if (regionCode == "R-1" || regionCode == null) {
         regionCode = "";
-        //alert(regionCode + "regiocode");
     }
+
     var array = {option: option, regionCode: regionCode, total: _ch_order_payTotal, goal: _ch_order_goalAmount};
 
     var actual = actual_;
@@ -1445,7 +1429,6 @@ function loadComboRegions(actual_, global_) {
     var c_port = "";
     var c_site = "";
     var selectRegion = "ALL REGION";
-
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
             c_ip = results.rows.item(0).ip;
@@ -1971,21 +1954,21 @@ function showReports() {
     try {
         var query1 = "SELECT * FROM " + TABLE_REPORTS;
         var report = "";
-        var check="";
+        var check = "";
         localDB.transaction(function (transaction) {
             transaction.executeSql(query1, [], function (transaction, results) {
                 $('#list_reports').empty();
                 for (var i = 0; i < results.rows.length; i++) {
-                    report=results.rows.item(i).report;
-                    check=results.rows.item(i).activo;
-                    if(check=="hide"){
-                        check="";
-                    }else{
-                        check="checked";
+                    report = results.rows.item(i).report;
+                    check = results.rows.item(i).activo;
+                    if (check == "hide") {
+                        check = "";
+                    } else {
+                        check = "checked";
                     }
                     $('#list_reports').append(
-                            "<input type='checkbox' class='check_report"+(i+1)+"' "+check+">" +
-                            "<label class='text-report'>"+report+"</label>" +
+                            "<input type='checkbox' class='check_report" + (i + 1) + "' " + check + ">" +
+                            "<label class='text-report'>" + report + "</label>" +
                             "<hr>");
                 }
             });

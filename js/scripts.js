@@ -48,12 +48,35 @@ $(document).ready(function () {
     /* Year */
     var o_year = '01/' + '01/' + d1.getFullYear();
     
-    $('#time').text(o_today);
-    $('#today').text(o_today);
-    $('#yesterday').text(o_yesterday);
-    $('#week').text(porfin);
-    $('#month').text(o_month);
-    $('#year').text(o_year);
+    //change of date ES->EN
+    var lang = navigator.language.split("-");
+    current_lang = (lang[0]);
+    if (current_lang == 'en') {
+        var today=o_today.split("/");
+        $('#time').text(today[1]+"/"+today[0]+"/"+today[2]);
+        $('#today').text(today[1]+"/"+today[0]+"/"+today[2]);
+        
+        var yesterday=o_yesterday.split("/");
+        $('#yesterday').text(yesterday[1]+"/"+yesterday[0]+"/"+yesterday[2]);
+        
+        var por_fin=porfin.split("/");
+        $('#week').text(por_fin[1]+"/"+por_fin[0]+"/"+por_fin[2]);
+        
+        var month=o_month.split("/");
+        $('#month').text(month[1]+"/"+month[0]+"/"+month[2]);
+        
+        var year=o_year.split("/");
+        $('#year').text(year[1]+"/"+year[0]+"/"+year[2]);   
+        
+    }else{
+        $('#time').text(o_today);
+        $('#today').text(o_today);
+        $('#yesterday').text(o_yesterday);
+        $('#week').text(porfin);
+        $('#month').text(o_month);
+        $('#year').text(o_year);
+    }
+    
 });
 
 
