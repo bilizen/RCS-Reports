@@ -161,7 +161,7 @@ nav .navBtn3{ width: 28%; text-align: right;}
         width: 22%;
     }
 }
-@media only screen and (min-width : 320px) and (max-device-width : 568px) { 
+@media only screen and (min-width : 280px) and (max-device-width : 568px) { 
     .progressByStore i.T {
         width: 7%;
     }
@@ -170,13 +170,13 @@ nav .navBtn3{ width: 28%; text-align: right;}
         font-size: 11pt;
     }
     .progressByStore span{
-        width: 24%;
+        width: 26%;
     }
     p.clasification:first-of-type {
-        width: 25%;
+        width: 21%;
     }
     .progressByStore p {
-        width: 24%;
+        width: 26%;
         font-size: 11pt;
     }
     #PercentGoal, #totalGoalPercentage,
