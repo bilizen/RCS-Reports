@@ -131,6 +131,11 @@ $(document).ready(function () {
     $(window).resize(function () {
         $('#chartdiv').height($(window).height() - $('header').height());
     });
+    //Responsive  Report 6
+    $('#chartdiv6').height($(window).height() - $('header').height() -$('.selectDate').height()-9);
+    $(window).resize(function () {
+        $('#chartdiv6').height($(window).height() - $('header').height() -$('.selectDate').height()-9);
+    });
 
 });
 

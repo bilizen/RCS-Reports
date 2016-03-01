@@ -566,7 +566,7 @@ input[type="checkbox"]:checked + label:before {
 
 /*report1*/
 .section{
-
+    background-color: #E6E7EB;
 }
 .section span{
     font-size: 14px;
