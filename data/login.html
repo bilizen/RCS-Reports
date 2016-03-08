@@ -29,10 +29,7 @@
         $(document).ready(function(){
 
          $("#btnlogin").click(function(){
-            
-            
             /******Borramos la informacion de la tabla Store porque es un nuevo servidor******/
-            
             var queryDelete= "DELETE FROM " +TABLE_STORE;
             try {
                 localDB.transaction(function(transaction){
@@ -48,8 +45,6 @@
             }catch (e) {
                 console.log("Error updateState " + e + ".");
             } 
-            
-            
             
             
             var pin = $("#pin").val();

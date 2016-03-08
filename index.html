@@ -118,6 +118,7 @@
                         if (port.length > 0) {
                             if (alias.length > 0) {
                                 if (site.length > 0) {
+                                    site=site+"/Service1.svc";
                                     var ip = ip_1 + "." + ip_2 + "." + ip_3 + "." + ip_4;
                                     var urlBase = "http://" + ip + ":" + port + "/" + site;
                                     var variablEE = obtenerVariables("variable");

@@ -227,7 +227,7 @@ function delTables() {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
-                    console.log("Update realizado:" + results.rowsAffected);
+                    console.log("DELETE FROM TABLE STORE :" + results.rowsAffected);
                 }
             }, errorHandler);
         });
@@ -242,15 +242,33 @@ function delTables() {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
-                    console.log("Update realizado:" + results.rowsAffected);
+                    console.log("DELETE FROM TABLE REGION:" + results.rowsAffected);
                 }
             }, errorHandler);
         });
     } catch (e) {
         console.log("error: " + e);
     }
+    
+  
+    
 }
-
+function delTable_Reports(){
+        try {
+        var queryDelete1 = "DELETE FROM " + TABLE_REPORTS;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(queryDelete1, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("DELETE FROM TABLE REPORTS :" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+}
 function checkNetConnection() {
     var status = navigator.onLine;
     if (status) {
@@ -268,7 +286,7 @@ function validIP(ip, port, _url, alias, use, site, variable) {
         type: 'GET',
         timeout: 15000,
         url: xurl,
-        //contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
         crossdomain: true,
@@ -343,6 +361,7 @@ function obtenerVariables(name) {/*esta funcion obtiene los valores de las varia
     }
 }
 
+//apretas el boton entrar
 function validData(pin, check) {
     var ip = getIp_Parameter();
     var port = getPort_Parameter();
@@ -369,8 +388,35 @@ function validData(pin, check) {
                 hideLoading();
             },
             success: function (data, textStatus, XMLHttpRequest) {
-
+                //verifica que el pin es correcto
                 if (data.successful == 1) {
+                    //borramos las tablas
+                    delTable_Reports();
+                    // restringir reportes
+                    for (var i = 0; i < (data.report).length; i++) {
+                        if (data.report[i] == 2402) {
+                            insertarTableReports("Goal VS Sales", "Compare your Goals vs Sales in real time", "");
+                        }
+                        if (data.report[i] == 2403) {
+                            insertarTableReports("Store Clasification", "Custom clasification by store", "");
+
+                        }
+                        if (data.report[i] == 2404) {
+                            insertarTableReports("% Progress By Store", "Sales progress by store", "");
+
+                        }
+                        if (data.report[i] == 2405) {
+
+                            insertarTableReports("Advance Graphic", "See sales, goals and breakeven in Graphic by store", "");
+
+                        }
+                        if (data.report[i] == 2406) {
+
+                            insertarTableReports("Goal Scope By Clerk", "Compare the sale progress by employee", "");
+                        }
+                    }
+
+
                     getExistData_Carlos(check);
                 } else {
                     if (current_lang == 'es')
@@ -396,6 +442,184 @@ function validData(pin, check) {
     }
 }
 
+//***************************** verificamos que este lleno la tabla de URL ***********************************//
+function existsData_Login(pin, check) {
+    var url = "";
+    var query = "SELECT COUNT(" + KEY_URLBASE + ") AS urlBase FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                url = results.rows.item(0).urlBase;
+                if (url > 0) {//AQUI TENEMOS YA EN NUESTRA BASE DE DATOS ,solo tenemos nuestro primer servidor y nos manda a menu y no añade nada al base de datos
+
+                    var yurl = "";
+                    var c_ip = "";
+                    var c_port = "";
+                    var c_site = "";
+
+                    localDB.transaction(function (tx) {
+                        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
+
+
+                            c_ip = results.rows.item(0).ip;
+                            c_port = results.rows.item(0).port;
+                            c_site = results.rows.item(0).site;
+                            yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
+
+                            var array = {Pin: pin};
+                            $.ajax({
+                                url: yurl,
+                                timeout: 15000,
+                                type: 'POST',
+                                data: JSON.stringify(array),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                crossdomain: true,
+                                beforeSend: function () {
+                                    showLoading();
+                                },
+                                complete: function () {
+                                    hideLoading();
+                                },
+                                success: function (data, textStatus, XMLHttpRequest) {
+
+                                    if (data.successful == 1) {
+                                        //borramos las tablas Reports
+                                        delTable_Reports();
+
+
+                                        // restringir reportes , insertamos los reports en la tabla REPORTS
+                                        for (var i = 0; i < (data.report).length; i++) {
+                                            if (data.report[i] == 2402) {
+                                                insertarTableReports("Goal VS Sales", "Compare your Goals vs Sales in real time", "");
+                                            }
+                                            if (data.report[i] == 2403) {
+                                                insertarTableReports("Store Clasification", "Custom clasification by store", "");
+
+                                            }
+                                            if (data.report[i] == 2404) {
+                                                insertarTableReports("% Progress By Store", "Sales progress by store", "");
+
+                                            }
+                                            if (data.report[i] == 2405) {
+
+                                                insertarTableReports("Advance Graphic", "See sales, goals and breakeven in Graphic by store", "");
+
+                                            }
+                                            if (data.report[i] == 2406) {
+
+                                                insertarTableReports("Goal Scope By Clerk", "Compare the sale progress by employee", "");
+                                            }
+                                        }
+
+
+
+                                        getExistData_Carlos(check);
+
+                                    } else {
+                                        if (current_lang == 'es')
+                                            mostrarModalGeneral("PIN Invalido");
+                                        else
+                                            mostrarModalGeneral("Invalid PIN");
+                                    }
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    console.log(xhr.status);
+                                    console.log(xhr.statusText);
+                                    console.log(xhr.responseText);
+                                    hideLoading();
+                                    if (current_lang == 'es')
+                                        mostrarModalGeneral("Error de Conexión");
+                                    else
+                                        mostrarModalGeneral("No Connection");
+                                }
+                            });
+
+                        });
+
+                    });
+                } else {//NO TENEMOS NADA EN LA BASE DE DATOS,PRIMERA VEZ QUE INSERTAMOS NUESTRO SERVIDOR CHAPAMOS VALORES DE LA URL
+                    var ip = getIp_Parameter();
+                    var port = getPort_Parameter();
+                    var site = getSite_Parameter();
+                    var yurl = 'http://' + ip + ':' + port + '/' + site + '/login/session/post';
+
+                    var array = {Pin: pin};
+                    $.ajax({
+                        url: yurl,
+                        timeout: 15000,
+                        type: 'POST',
+                        data: JSON.stringify(array),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: true,
+                        crossdomain: true,
+                        beforeSend: function () {
+                            showLoading();
+                        },
+                        complete: function () {
+                            hideLoading();
+                        },
+                        success: function (data, textStatus, XMLHttpRequest) {
+
+                            if (data.successful == 1) {
+
+                                //borramos las tablas reports
+                                delTable_Reports();
+                                // restringir reportes
+                                for (var i = 0; i < (data.report).length; i++) {
+                                    if (data.report[i] == 2402) {
+                                        insertarTableReports("Goal VS Sales", "Compare your Goals vs Sales in real time", "");
+                                    }
+                                    if (data.report[i] == 2403) {
+                                        insertarTableReports("Store Clasification", "Custom clasification by store", "");
+
+                                    }
+                                    if (data.report[i] == 2404) {
+                                        insertarTableReports("% Progress By Store", "Sales progress by store", "");
+
+                                    }
+                                    if (data.report[i] == 2405) {
+
+                                        insertarTableReports("Advance Graphic", "See sales, goals and breakeven in Graphic by store", "");
+
+                                    }
+                                    if (data.report[i] == 2406) {
+
+                                        insertarTableReports("Goal Scope By Clerk", "Compare the sale progress by employee", "");
+                                    }
+                                }
+                                getExistData_Carlos(check);
+                            } else {
+                                if (current_lang == 'es')
+                                    mostrarModalGeneral("PIN Invalido");
+                                else
+                                    mostrarModalGeneral("Invalid PIN");
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                }
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("Error existsData " + e + ".");
+    }
+}
+
+
 
 //*funcion solo para cuando ingresamos por primera vez nuestros datos*//
 function getExistData_Carlos(check) {
@@ -405,8 +629,6 @@ function getExistData_Carlos(check) {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], function (transaction, results) {
                 url = results.rows.item(0).urlBase;
-
-
                 if (url > 0) {
 
                     var ob = obtenerVariables("variable");
@@ -488,127 +710,6 @@ function Title_Company() {
     }
 }
 
-//***************************** verificamos que este lleno la tabla de URL ***********************************//
-function existsData_Login(pin, check) {
-    var url = "";
-    var query = "SELECT COUNT(" + KEY_URLBASE + ") AS urlBase FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1';";
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (transaction, results) {
-                url = results.rows.item(0).urlBase;
-                if (url > 0) {//AQUI TENEMOS YA EN NUESTRA BASE DE DATOS ,solo tenemos nuestro primer servidor y nos manda a menu y no añade nada al base de datos
-
-                    var yurl = "";
-                    var c_ip = "";
-                    var c_port = "";
-                    var c_site = "";
-
-                    localDB.transaction(function (tx) {
-                        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
-
-
-                            c_ip = results.rows.item(0).ip;
-                            c_port = results.rows.item(0).port;
-                            c_site = results.rows.item(0).site;
-                            yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
-
-                            var array = {Pin: pin};
-                            $.ajax({
-                                url: yurl,
-                                timeout: 15000,
-                                type: 'POST',
-                                data: JSON.stringify(array),
-                                contentType: 'application/json; charset=utf-8',
-                                dataType: 'json',
-                                async: true,
-                                crossdomain: true,
-                                beforeSend: function () {
-                                    showLoading();
-                                },
-                                complete: function () {
-                                    hideLoading();
-                                },
-                                success: function (data, textStatus, XMLHttpRequest) {
-
-                                    if (data.successful == 1) {
-                                        getExistData_Carlos(check);
-
-                                    } else {
-                                        if (current_lang == 'es')
-                                            mostrarModalGeneral("PIN Invalido");
-                                        else
-                                            mostrarModalGeneral("Invalid PIN");
-                                    }
-                                },
-                                error: function (xhr, ajaxOptions, thrownError) {
-                                    console.log(xhr.status);
-                                    console.log(xhr.statusText);
-                                    console.log(xhr.responseText);
-                                    hideLoading();
-                                    if (current_lang == 'es')
-                                        mostrarModalGeneral("Error de Conexión");
-                                    else
-                                        mostrarModalGeneral("No Connection");
-                                }
-                            });
-
-                        });
-
-                    });
-                } else {//NO TENEMOS NADA EN LA BASE DE DATOS,PRIMERA VEZ QUE INSERTAMOS NUESTRO SERVIDOR CHAPAMOS VALORES DE LA URL
-                    var ip = getIp_Parameter();
-                    var port = getPort_Parameter();
-                    var site = getSite_Parameter();
-                    var yurl = 'http://' + ip + ':' + port + '/' + site + '/login/session/post';
-
-                    var array = {Pin: pin};
-                    $.ajax({
-                        url: yurl,
-                        timeout: 15000,
-                        type: 'POST',
-                        data: JSON.stringify(array),
-                        contentType: 'application/json; charset=utf-8',
-                        dataType: 'json',
-                        async: true,
-                        crossdomain: true,
-                        beforeSend: function () {
-                            showLoading();
-                        },
-                        complete: function () {
-                            hideLoading();
-                        },
-                        success: function (data, textStatus, XMLHttpRequest) {
-
-                            if (data.successful == 1) {
-                                getExistData_Carlos(check);
-
-                            } else {
-                                if (current_lang == 'es')
-                                    mostrarModalGeneral("PIN Invalido");
-                                else
-                                    mostrarModalGeneral("Invalid PIN");
-                            }
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            console.log(xhr.status);
-                            console.log(xhr.statusText);
-                            console.log(xhr.responseText);
-                            hideLoading();
-                            if (current_lang == 'es')
-                                mostrarModalGeneral("Error de Conexión");
-                            else
-                                mostrarModalGeneral("No Connection");
-                        }
-                    });
-                }
-            }, function (transaction, error) {
-                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
-            });
-        });
-    } catch (e) {
-        console.log("Error existsData " + e + ".");
-    }
-}
 
 function getConfiguration(url) {
     var config = "";
@@ -1403,9 +1504,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                         mostrarIndice(indice);
                         deteclenguage();
                     }
-
                     //hideLoading();
-
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -1478,8 +1577,6 @@ function loadComboRegions(actual_, global_) {
                     } else {
 
                         downloadByStore(actual_, global_);
-
-
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1492,13 +1589,9 @@ function loadComboRegions(actual_, global_) {
                         mostrarModalGeneral("Error de Conexión");
                     else
                         mostrarModalGeneral("No Connection");
-
                 }
             });
-
-
         });
-
     });
 }
 
@@ -1636,8 +1729,6 @@ function deleteServer(id) {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query1, [id], function (transaction, results) {
                 var total = results.rows.item(0).use;
-
-
                 if (total == 1) {
                     mostrarModalMessage();
                 } else {
@@ -1897,19 +1988,6 @@ function insertarTableReports(NameReport, Information, Activo) {
 
 
 function updateHideReports() {
-    try {
-        var query1 = "SELECT COUNT(*) AS CANT FROM " + TABLE_REPORTS;
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query1, [], function (transaction, results) {
-                var cant = results.rows.item(0).CANT;
-
-                if (cant == 0) {
-                    insertarTableReports("Goal VS Sales", "Compare your Goals vs Sales in real time", "");
-                    insertarTableReports("Store Clasification", "Custom clasification by store", "");
-                    insertarTableReports("% Progress By Store", "Sales progress by store", "");
-                    insertarTableReports("Advance Graphic", "See sales, goals and breakeven in Graphic by store", "");
-                    insertarTableReports("Goal Scope By Clerk", "Compare the sale progress by employee", "");
-                }
                 var query2 = "SELECT " + KEY_REPORT + "," + KEY_REPORTINF + "," + KEY_ACTIVO + "  FROM " + TABLE_REPORTS;
                 try {
                     localDB.transaction(function (transaction) {
@@ -1938,18 +2016,11 @@ function updateHideReports() {
 
                 } catch (e) {
                     console.log(e);
-                }
-            }, function (transaction, error) {
-                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
-            });
-        });
-    } catch (e) {
-        console.log("e");
-    }
+                }               
 }
 
 
-function showReports() {
+function showReportsj() {
     $('#ModalReportsOption').modal('show');
     try {
         var query1 = "SELECT * FROM " + TABLE_REPORTS;
