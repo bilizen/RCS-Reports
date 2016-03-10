@@ -2020,7 +2020,7 @@ function updateHideReports() {
 }
 
 
-function showReportsj() {
+function showReports() {
     $('#ModalReportsOption').modal('show');
     try {
         var query1 = "SELECT * FROM " + TABLE_REPORTS;
