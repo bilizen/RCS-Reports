@@ -199,12 +199,14 @@
                     <div class="form-control select-alias" id="divlistado">
                     </div>
                 </div>
-                <div class="modal-footer add">
-                    <button type="button" class="btn btn-modal" id="add_alias" name="add_alias" onclick="newInfoServer();delTables();">Add Alias</button>
-                </div>
+                
                 <div class="modal-footer info">
                     <p class="text-center" id="txtStore"></p>
                     <p class="text-center" id="txtIP" >IP: </p>
+                </div>
+                <div class="modal-footer add">                    
+                    <button type="button" class="btn btn-modal left" id="add_alias" name="add_alias" onclick="newInfoServer();delTables();">Add Alias</button>       
+                    <button type="button" class="btn btn-modal right danger" id="btnSignOut">Sign out</button>             
                 </div>
             </div>
         </div>
@@ -254,8 +256,8 @@
     
     
     <div class="modal fade" id="ModalConfirmDelete" >
-    <!--<form name="frmConfirm" id="frmConfirm">-->
-    <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
+      <!--Confirm modal to Delete Server-->
+      <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -266,6 +268,25 @@
                 <div class="modal-footer add">
                     <button type="button" class="btn btn-modal left danger" id="btnsidelete" name="btnsi" data-dismiss="modal" aria-hidden="true" onclick="ocultaMiModalDelete()">Yes</button>
                     <button type="button" class="btn btn-modal right" id="btnnodelete" name="btnno" data-dismiss="modal" aria-hidden="true">No</button>
+                </div>
+            </div>
+        </div>
+    <!-- </form>-->
+    </div>
+
+    <div class="modal fade" id="ModalConfirmSignOut" >
+      <!--Confirm modal Sign out-->
+      <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblSignOut">
+                        Are you sure want to sign out?
+                    </h4>
+                </div>
+                <div class="modal-footer add">
+                    <button type="button" class="btn btn-modal left danger" id="btnYesSignOut" name="btnYesSignOut" data-dismiss="modal" aria-hidden="true" onclick="confirmSignOut()">Yes</button>
+                    <button type="button" class="btn btn-modal right" id="btnnoSignOut" name="btnno" data-dismiss="modal" aria-hidden="true">No</button>
                 </div>
             </div>
         </div>

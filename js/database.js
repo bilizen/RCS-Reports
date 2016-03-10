@@ -2129,6 +2129,8 @@ function deteclenguage() {
         MSG_LBL_TITLE_MENU_R5();
         MSG_LBL_TITLE_MENU_DETAIL_R5();
 
+        MSGS_SIGNOUT();
+
 
         //Modal Menu
         MSG_LBL_CHANGE_ALIAS_T();

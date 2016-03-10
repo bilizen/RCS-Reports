@@ -631,3 +631,10 @@ function MSG_ALL_REGION(){
 function LBL_LAST_CONNECTION(){
     $(".lblLastConexion").text("Ult. Vta.: ");
 }
+
+//Sign out
+function MSGS_SIGNOUT(){
+    $('#btnSignOut').text("Cerrar sesión");
+    $('#lblSignOut').text("¿Está seguro que quiere cerrar sesión?");
+    $('#btnYesSignOut').text("Si");
+}

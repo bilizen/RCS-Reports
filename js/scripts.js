@@ -76,6 +76,16 @@ $(document).ready(function () {
         $('#month').text(o_month);
         $('#year').text(o_year);
     }
+
+
+    //modal to confirm Sign out
+    $('#btnSignOut').click(function(){
+        $('#ModalConfirmSignOut').modal('show');
+        $('#show_alias').css('z-index','1030');
+    });
+    $('#btnnoSignOut').click(function(){
+        $('#show_alias').css('z-index','1040');
+    });
     
 });
 
@@ -102,16 +112,6 @@ $(".select-calendar .item").click(function () {
     allOptionsCal.removeClass('selected');
     $(this).addClass('selected');
 });
-
-//$(".select-general").on("click", "div:not(.init)", function() {    
-//    var value = $(this).attr("data-value");    
-//    allOptionsG.removeClass('selected');
-//    $(this).addClass('selected');
-//    $(".select-general").children('.init').html($(this).html());
-//    $(".select-general").children('.init').attr("data-value",value);  
-//    moveToRight();  
-//});
-
 
 
 $(".select-general").on("click", "div:not(.init)", function () {
