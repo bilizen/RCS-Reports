@@ -303,7 +303,7 @@ function validIP(ip, port, _url, alias, use, site, variable) {
             if (variable == -1) {
                 firstServer(ip, port, xurl, alias, use, site, variable);
             } else {
-                alert("entro al " + variable + " validip");
+                //alert("entro al " + variable + " validip");
                 newServer(ip, port, xurl, alias, use, site, variable);
             }
 
@@ -344,7 +344,6 @@ function newServer(ip, port, urlbase, alias, activo, site, variable) {
                 var pin = results.rows.item(0).pin;
                 var yurl = 'http://' + ip + ':' + port + '/' + site + '/login/session/post';
                 var array = {Pin: pin};
-                alert(pin)
                 $.ajax({
                     url: yurl,
                     timeout: 15000,
@@ -373,7 +372,7 @@ function newServer(ip, port, urlbase, alias, activo, site, variable) {
                                         + " , " + KEY_URLBASE + ", " + KEY_ALIAS + " , " + KEY_USE + ", " + KEY_SITE + ") VALUES (?,?,?,?,?,?);";
                                 localDB.transaction(function (transaction) {
                                     transaction.executeSql(query, [ip, port, urlbase, alias, activo, site], function (transaction, results) {
-                                        alert("inserto data en la TABLE_URL");
+                                        //alert("inserto data en la TABLE_URL");
                                         //direcciona al MENU.html
                                         window.location.href = "data/menu.html";
                                     }, errorHandler);
@@ -437,7 +436,7 @@ function obtenerVariables(name) {/*esta funcion obtiene los valores de las varia
 //apretas el boton entrar en el LOGIN.HTML
 function validData(pin, check) {
     var variable_ = getVariable_Parameter();
-    alert(variable_);
+    //alert(variable_);
     if (variable_ == "1") {//si es que es un servidor nuevo y estamos en la pantalla de login
         var ip = getIp_Parameter();
         var port = getPort_Parameter();
@@ -801,7 +800,7 @@ function addData(ip, port, urlbase, alias, use, site) {//aqui se hace uin insert
                 + " , " + KEY_URLBASE + ", " + KEY_ALIAS + " , " + KEY_USE + ", " + KEY_SITE + ") VALUES (?,?,?,?,?,?);";
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [ip, port, urlbase, alias, use, site], function (transaction, results) {
-                alert("inserto data en la TABLE_URL")
+                //alert("inserto data en la TABLE_URL")
                 //direcciona al MENU.html
                 //window.location.href = "data/menu.html";
             }, errorHandler);
@@ -1744,7 +1743,7 @@ function getAllData() {
 
 //insertar TABLE_CONFIGURATION
 function insertTableConfi(pin, save) {
-    alert(pin + " " + save);
+    //alert(pin + " " + save);
     var query = "INSERT INTO " + TABLE_CONFIGURATION + " ( " + KEY_PIN + " , " + KEY_REMEMBER + " ) VALUES(?,?);";
     try {
         localDB.transaction(function (transaction) {
@@ -1758,23 +1757,6 @@ function insertTableConfi(pin, save) {
     }
 }
 
-//funcion para calcular el numero servidfores que hay
-//function cantServer() {
-//    var query = "SELECT COUNT(*) as cant FROM " + TABLE_URL;
-//    var cant = 0;
-//    try {
-//        localDB.transaction(function (transaction) {
-//            transaction.executeSql(query, [], function (transaction, results) {
-//
-//                alert(results.rows.length);
-//                return results.rows.length;
-//            }, errorHandler);
-//        });
-//    } catch (e) {
-//        console.log("Error updateState " + e + ".");
-//    }
-//
-//}
 
 
 function updateStateURL(id) {
