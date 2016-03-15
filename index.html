@@ -105,7 +105,6 @@
                 });
 
                 $("#btnenter").click(function () {
-
                     var ip_1 = $("#ip_1").val();
                     var ip_2 = $("#ip_2").val();
                     var ip_3 = $("#ip_3").val();
@@ -122,10 +121,12 @@
                                     var ip = ip_1 + "." + ip_2 + "." + ip_3 + "." + ip_4;
                                     var urlBase = "http://" + ip + ":" + port + "/" + site;
                                     var variablEE = obtenerVariables("variable");
+                                    //entra al ejecutar el APP
+                                    alert(variablEE);
                                     if (variablEE == -1) {
                                         validIP(ip, port, urlBase, alias, "1", site, variablEE);
                                     } else {
-
+                                    //entra al agregar un servidor   
                                         capture_variable(variablEE);
                                         validIP(ip, port, urlBase, alias, "1", site, variablEE);
                                     }
