@@ -412,4 +412,5 @@ function prueba(detalle) {
 
 function showOptions(){
     $('#show_options').modal('show');
+    getDataInUse();
 }

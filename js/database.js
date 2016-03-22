@@ -591,6 +591,9 @@ function validData(pin, check) {
                                     success: function (data, textStatus, XMLHttpRequest) {
                                         //verifica que el pin es correcto
                                         if (data.successful == 1) {
+                                            //DELETE FROM REPORTS
+                                            delTable_Reports();
+                                            
                                             //delete from TABLE_CONFIGURATION
                                             deleteConfiguration();
                                             //insert el pin y el check en la TABLE_CONFIGURATION
@@ -2098,18 +2101,28 @@ function updateHideReports() {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
-                                    //delete from Reports
-                                    delTable_Reports();
-                                    //limpia el html de menu.html
-                                    $('.menu').empty();
-                                    for (var i = 0; i < data.report.length; i++) {
-                                        var report=data.report[i].toString();
-                                        
-                                        insertarTableReports(report,"1");
-                                    }
-                                    //pinta los reportes en el menu.html                  
-                                    selectReports();
-
+                                     var query1 = "SELECT * FROM " + TABLE_REPORTS;
+       
+                                    localDB.transaction(function (transaction) {
+                                        transaction.executeSql(query1, [], function (transaction, results) {
+                                                if(results.rows.length>0){
+                                                     //pinta los reportes en el menu.html                  
+                                                      selectReports();
+                 
+                                                }else{                                            
+                                                         //delete from Reports
+                                                        delTable_Reports();
+                                                        //limpia el html de menu.html
+                                                        $('.menu').empty();
+                                                        for (var i = 0; i < data.report.length; i++) {
+                                                            var report=data.report[i].toString();                                 
+                                                            insertarTableReports(report,"1");
+                                                        }
+                                                        //pinta los reportes en el menu.html                  
+                                                        selectReports();
+                                                }
+                                            });
+                                        });
                                 } else {
                                     if (current_lang == 'es') {
                                         mostrarModalGeneral("PIN Invalido");
@@ -2123,7 +2136,7 @@ function updateHideReports() {
                                 console.log(xhr.status);
                                 console.log(xhr.statusText);
                                 console.log(xhr.responseText);
-                                hideLoading();
+                                //hideLoading();
                                 if (current_lang == 'es') {
                                     mostrarModalGeneral("Error de Conexión");
                                 } else {
@@ -2162,23 +2175,22 @@ function showReports() {
                         check = "";                    
                     }
                     
-                    
                     if (current_lang == 'es') {     
                         if (report==2402) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report1' " + check + ">" +
                             "<label class='text-report'>Metas vs Ventas</label>" +
                             "<hr>");                                    
                         }
                         if (report==2403) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report2' " + check + ">" +
                             "<label class='text-report'>Clasificación por Tienda</label>" +
                             "<hr>");                       
                         }
                         if (report == 2404) {
                              $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report3' " + check + ">" +
                             "<label class='text-report'>Progreso en % por tienda</label>" +
                             "<hr>");
                             
@@ -2186,14 +2198,14 @@ function showReports() {
                         }
                         if (report ==2405) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report4' " + check + ">" +
                             "<label class='text-report'>Gráfico Avanzado</label>" +
                             "<hr>");
                                                                                  
                         }
                         if (report == 2406) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report5' " + check + ">" +
                             "<label class='text-report'>Alcance de Meta</label>" +
                             "<hr>");
                         }
@@ -2201,33 +2213,33 @@ function showReports() {
                         
                         if (report == 2402) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report1' " + check + ">" +
                             "<label class='text-report'>Goal VS Sales</label>" +
                             "<hr>");
          
                         }
                         if (report == 2403) { 
                              $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report2' " + check + ">" +
                             "<label class='text-report'>Store Clasification</label>" +
                             "<hr>");
                     
                         }
                         if (report == 2404) {
                              $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report3' " + check + ">" +
                             "<label class='text-report'>% Progress By Store</label>" +
                             "<hr>");
                         }
                         if (report == 2405) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report4' " + check + ">" +
                             "<label class='text-report'>Advance Graphic</label>" +
                             "<hr>");      
                         }
                         if (report == 2406) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
+                            "<input type='checkbox' class='check_report5' " + check + ">" +
                             "<label class='text-report'>Goal Scope By Clerk</label>" +
                             "<hr>");
                         }
@@ -2334,7 +2346,6 @@ function selectReports() {
                 var report = "";
                 var save = "";
                 var activo = "";
-                
                 $('.menu').empty();
                 for (var i = 0; i < results.rows.length; i++) {
                     report = results.rows.item(i).report;
@@ -2348,7 +2359,7 @@ function selectReports() {
                         
                         if (report==2402) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report1 "+ save + "' onclick ='openReport1();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Metas vs Ventas</span>" +
@@ -2359,7 +2370,7 @@ function selectReports() {
                         }
                         if (report==2403) {                          
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Clasificación por Tienda</span>" +
@@ -2370,7 +2381,7 @@ function selectReports() {
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Progreso en % por tienda</span>" +
@@ -2381,7 +2392,7 @@ function selectReports() {
                         }
                         if (report ==2405) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report4 " + save + "' onclick ='openReport4();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Gráfico Avanzado</span>" +
@@ -2392,7 +2403,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report5 " + save + "' onclick ='openReport5();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Alcance de Meta</span>" +
@@ -2405,7 +2416,7 @@ function selectReports() {
                         
                         if (report == 2402) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report1 " + save + "' onclick ='openReport" + (i) + "();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Goal VS Sales</span>" +
@@ -2416,7 +2427,7 @@ function selectReports() {
                         }
                         if (report == 2403) {                          
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report2 " + save + "' onclick ='openReport" + (i) + "();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Store Clasification</span>" +
@@ -2427,7 +2438,7 @@ function selectReports() {
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report3 " + save + "' onclick ='openReport" + (i) + "();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>% Progress By Store</span>" +
@@ -2438,7 +2449,7 @@ function selectReports() {
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report4 " + save + "' onclick ='openReport" + (i) + "();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Advance Graphic</span>" +
@@ -2449,7 +2460,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                            "<button class ='item report" + (i) + " " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report5 " + save + "' onclick ='openReport" + (i) + "();'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Goal Scope By Clerk</span>" +
