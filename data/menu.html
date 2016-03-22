@@ -112,9 +112,8 @@
             <div class="options_bar_space">
               <div id="btn_left"><button class="img_logotitle"></button></div>
               <div id="txt_maintitle"></div>
-              <div id="btn_right">
-                <button onclick="showReports()" class="hide_reports"></button>
-                <button onclick="mostrarModal()" class="add_server"></button>
+              <div id="btn_right">                
+                <button onclick="showOptions()" class="show_options"></button>
               </div>
             </div>      
         </header>    
@@ -122,102 +121,91 @@
         <div id="content">
             <div class="menu">
                 <!--
-                <button class="item report1" onclick="openReport1();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst" class="item_title">Goals vs Sales</span>
-                        <span id="lblgvsd" class="item_subtitle">Compare your Goals vs Sales in real time</span>
-                    </span>                    
-                </button>
-                <button class="item report2" onclick="openReport2();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst_r2" class="item_title">Store Clasification</span>
-                        <span id="lblgvsd_r2" class="item_subtitle">Custom clasification by store</span>
-                    </span>
-                </button>
-                <button class="item report3" onclick="openReport3();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst_r3" class="item_title">% Progress By Store</span>
-                        <span id="lblgvsd_r3" class="item_subtitle">Sales progress by store</span>
-                    </span>
-                </button>
-                <button class="item report4" onclick="openReport4();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst_r4" class="item_title">Advance Graphic</span>
-                        <span id="lblgvsd_r4" class="item_subtitle">See sales, goals and breakeven in Graphic by store</span>
-                    </span>
-                </button>
-                <button class="item report5" onclick="openReport5();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst_r5" class="item_title">Goal Scope By Clerk</span>
-                        <span id="lblgvsd_r5" class="item_subtitle">Compare the sale progress by employee</span>
-                    </span>
-                </button>
-                -->
-                <!--
-                <button class="item report6" onclick="openReport6();">
-                    <span class="box">
-                        <span class="iconReport"></span>
-                        <span id="lblgvst_r5" class="item_title">New Report</span>
-                        <span id="lblgvsd_r5" class="item_subtitle">Description goes here</span>
-                    </span>
-                </button>
+                buttons with the reports
                 -->
             </div>
         </div>
 
     </div>
     
-    <!-- Modal -->
-
+    <!-- Loading -->
     <div class="modal fade" id="show_loading" >
         <div class="modal-dialog">
             <div class="text-center loading">
                 <div></div>
                 <div></div>
             </div>
-            <!-- <div class="text-center"><p name="txtloading" id="txtloading"></p></div> -->
             <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
         </div>
     </div>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="show_alias" >
+    <!-- Modal Options-->
+    <div class="modal fade zIndex1" id="show_options" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">×</button>
-                    <h4 class="modal-title" id="lblchangealit">
-                        Select your Alias
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Cerrar</button>
+                    <h4 class="modal-title" id="lblToolsTitle">
+                        Tools
                     </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-control select-alias" id="divlistado">
-                    </div>
-                </div>
-                
+                </div>                
                 <div class="modal-footer info">
                     <p class="text-center" id="txtStore"></p>
                     <p class="text-center" id="txtIP" >IP: </p>
                 </div>
                 <div class="modal-footer add">                    
-                    <button type="button" class="btn btn-modal left" id="add_alias" name="add_alias" onclick="newInfoServer();delTables();">Add Alias</button>       
-                    <button type="button" class="btn btn-modal right danger" id="btnSignOut">Sign out</button>             
+                    <button class="btn btn-modal" data-dismiss="modal" id="servers_list" onclick="mostrarModal();">Servers</button> 
+                    <button class="btn btn-modal" data-dismiss="modal" id="add_alias" onclick="newInfoServer();delTables();">Add Alias</button> 
+                    <button class="btn btn-modal" data-dismiss="modal" id="hide_reports" onclick="showReports()">Hide/Show Reports</button>
+                    <button class="btn btn-modal danger" data-dismiss="modal" id="btnSignOut">Sign out</button>             
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="ModalConfirm" >
-    <!--<form name="frmConfirm" id="frmConfirm">-->
-    <input type="hidden" name="txtvalue" id="txtvalue" value="0">
+    <!-- Modal Servers List-->
+    <div class="modal fade zIndex2" id="show_alias" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Cerrar</button>
+                    <h4 class="modal-title" id="lblchangealit">
+                        Servers
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-control select-alias" id="divlistado">
+                    </div>
+                </div>                
+
+            </div>
+        </div>
+    </div>
+
+    <!-- modal Option Hide Reports -->
+    <div class="modal fade zIndex2" id="ModalReportsOption" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title" id="lblchangealit">
+                        Hide/Show Reports
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-control select-alias divlistadoReports">
+                      <div id="list_reports"></div>
+                    </div>
+                </div>
+                <div class="modal-footer add">
+                    <button onclick="buttonOkReports()" class="btn btn-modal" data-dismiss="modal" id="btnStore">Ok</button> 
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirm change Server-->
+    <div class="modal fade zIndex3" id="ModalConfirm" >
+        <input type="hidden" name="txtvalue" id="txtvalue" value="0">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -231,34 +219,32 @@
                 </div>
             </div>
         </div>
-    <!-- </form>-->
     </div>
 
     <!--Modal Store  report_4-->
-    <div class="modal fade" id="show_modalStore">
+    <div class="modal fade zIndex1" id="show_modalStore">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="title_store_menu_r4" class="modal-header text-center">Choose Your Store</div>
                 <div id="list_store"></div>
-                <button onclick="passReport4();" class="btn btn-modal" id="btnStore">Ok</button> 
+                <button onclick="passReport4();" class="btn btn-modal" data-dismiss="modal" id="btnStore">Ok</button> 
             </div>
         </div>
     </div>
     
-       <!--Modal Store  report_5-->
-    <div class="modal fade" id="show_modalStore5">
+    <!--Modal Store  report_5-->
+    <div class="modal fade zIndex1" id="show_modalStore5">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="title_store_menu_r5" class="modal-header text-center">Choose Your Store</div>
                 <div id="list_store5"></div>
-                <button onclick="passReport5();" class="btn btn-modal" id="btnStore5">Ok</button> 
+                <button onclick="passReport5();" class="btn btn-modal" data-dismiss="modal" id="btnStore5">Ok</button> 
             </div>
         </div>
     </div>
     
-    
-    <div class="modal fade" id="ModalConfirmDelete" >
-      <!--Confirm modal to Delete Server-->
+    <!-- Confirm delete server -->
+    <div class="modal fade zIndex3" id="ModalConfirmDelete" >
       <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -273,11 +259,10 @@
                 </div>
             </div>
         </div>
-    <!-- </form>-->
     </div>
 
-    <div class="modal fade" id="ModalConfirmSignOut" >
-      <!--Confirm modal Sign out-->
+    <!--Confirm modal Sign out-->
+    <div class="modal fade zIndex3" id="ModalConfirmSignOut" >      
       <input type="hidden" name="txtvaluedelete" id="txtvaluedelete" value="0">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -292,10 +277,10 @@
                 </div>
             </div>
         </div>
-    <!-- </form>-->
     </div>
 
-    <div class="modal fade" id="ModalMessage" >
+    <!--Can't delete active server-->
+    <div class="modal fade zIndex4" id="ModalMessage" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -309,26 +294,6 @@
         </div>
     </div>
 
-    <!-- modal Option Hide Reports -->
-    <div class="modal fade" id="ModalReportsOption" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title" id="lblchangealit">
-                        Hide Reports
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-control select-alias divlistadoReports">
-                      <div id="list_reports"></div>
-                    </div>
-                </div>
-                <div class="modal-footer add">
-                    <button onclick="buttonOkReports()" class="btn btn-modal" id="btnStore">Ok</button> 
-                </div>                
-            </div>
-        </div>
-    </div>
     
     <script type="text/javascript" src="../js/scripts.js"></script>
     <script type="text/javascript" src="../js/scripts2.js"></script>

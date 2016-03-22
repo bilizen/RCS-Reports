@@ -81,10 +81,14 @@ $(document).ready(function () {
     //modal to confirm Sign out
     $('#btnSignOut').click(function(){
         $('#ModalConfirmSignOut').modal('show');
-        $('#show_alias').css('z-index','1030');
     });
-    $('#btnnoSignOut').click(function(){
-        $('#show_alias').css('z-index','1040');
+
+    $(document).on('show.bs.modal', '.modal', function (event) {
+        var zIndex = 1040 + (10 * $('.modal:visible').length);
+        $(this).css('z-index', zIndex);
+        setTimeout(function() {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+        }, 0);
     });
     
 });
@@ -203,25 +207,6 @@ function selectAlias() {
 }
 
 function mostrarModal() {
-    $("#show_alias").on("show", function () {
-        $("#show_alias a.btn").on("click", function (e) {
-            $("#show_alias").modal('hide');
-        });
-    });
-    $("#show_alias").on("show", function () {
-        $("#show_alias a.btn").on("click", function (e) {
-            $("#show_alias").modal('hide');
-        });
-    });
-
-    $("#show_alias").on("hide", function () {
-        $("#show_alias a.btn").off("click");
-    });
-
-    $("#show_alias").on("hidden", function () {  // eliminar los elementos reales de la DOM cuando está completamente oculto
-        $("#show_alias").remove();
-    });
-
     $("#show_alias").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
         "keyboard": true,
@@ -234,24 +219,6 @@ function mostrarModal() {
 }
 
 function mostrarModalMessage() {
-    $("#ModalMessage").on("show", function () {
-        $("#ModalMessage a.btn").on("click", function (e) {
-            $("#ModalMessage").modal('hide');
-        });
-    });
-    $("#ModalMessage").on("show", function () {
-        $("#ModalMessage a.btn").on("click", function (e) {
-            $("#ModalMessage").modal('hide');
-        });
-    });
-
-    $("#ModalMessage").on("hide", function () {
-        $("#ModalMessage a.btn").off("click");
-    });
-
-    $("#ModalMessage").on("hidden", function () {  // eliminar los elementos reales de la DOM cuando está completamente oculto
-        $("#ModalMessage").remove();
-    });
 
     $("#ModalMessage").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
@@ -264,24 +231,6 @@ function mostrarModalMessage() {
 function mostrarInfo() {
     //getDataInUse();  
     //getAllData();
-    $("#show_info").on("show", function () {
-        $("#show_info a.btn").on("click", function (e) {
-            $("#show_info").modal('hide');
-        });
-    });
-    $("#show_info").on("show", function () {
-        $("#show_info a.btn").on("click", function (e) {
-            $("#show_info").modal('hide');
-        });
-    });
-
-    $("#show_info").on("hide", function () {
-        $("#show_info a.btn").off("click");
-    });
-
-    $("#show_info").on("hidden", function () {  // eliminar los elementos reales de la DOM cuando está completamente oculto
-        $("#show_info").remove();
-    });
 
     $("#show_info").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
@@ -294,24 +243,6 @@ function mostrarInfo() {
 function mostrarCalendar() {
     //getDataInUse();  
     //getAllData();
-    $("#show_calendar").on("show", function () {
-        $("#show_calendar a.btn").on("click", function (e) {
-            $("#show_calendar").modal('hide');
-        });
-    });
-    $("#show_calendar").on("show", function () {
-        $("#show_calendar a.btn").on("click", function (e) {
-            $("#show_info").modal('hide');
-        });
-    });
-
-    $("#show_calendar").on("hide", function () {
-        $("#show_calendar a.btn").off("click");
-    });
-
-    $("#show_calendar").on("hidden", function () {  // eliminar los elementos reales de la DOM cuando está completamente oculto
-        $("#show_calendar").remove();
-    });
 
     $("#show_calendar").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
@@ -361,26 +292,8 @@ function showCombo() {
 }
 
 function mostrarModalGeneral(contenido) {
-    $("#modalgeneral").on("show", function () {
-        $("#modalgeneral a.btn").on("click", function (e) {
-            $("#modalgeneral").modal('hide');
-        });
-    });
-    $("#modalgeneral").on("show", function () {
-        $("#modalgeneral a.btn").on("click", function (e) {
-            $("#modalgeneral").modal('hide');
-        });
-    });
 
-    $("#modalgeneral").on("hide", function () {
-        $("#modalgeneral a.btn").off("click");
-    });
-
-    $("#modalgeneral").on("hidden", function () {  // eliminar los elementos reales de la DOM cuando está completamente oculto
-        $("#modalgeneral").remove();
-    });
-
-    $("#modalgeneral").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
+    $("#show_alias").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
         "keyboard": true,
         "show": true                     // garantizar el modal se muestra inmediatamente
@@ -495,4 +408,8 @@ function prueba(detalle) {
         }
         $('#graph' + detalle).toggleClass('toogleChart');
     }
+}
+
+function showOptions(){
+    $('#show_options').modal('show');
 }

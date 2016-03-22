@@ -111,15 +111,7 @@ $(document).ready(function () {
     $('.general').hide();
     $('.date').hide();
     $('.region').hide();
-    $('#btnno').click(function () {
-        $('#show_alias').css('z-index', '1031');
-    });
-    $('#btnnodelete').click(function () {
-        $('#show_alias').css('z-index', '1031');
-    });
-    $('#btnsidelete').click(function () {
-        $('#show_alias').css('z-index', '1031');
-    });
+
 
     //Responsive menu
     $('.menu').height($(window).height() - $('header').height());
