@@ -2103,9 +2103,9 @@ function updateHideReports() {
                                     //limpia el html de menu.html
                                     $('.menu').empty();
                                     for (var i = 0; i < data.report.length; i++) {
-                                        var report=" "+data.report[i]+" ";
+                                        var report=data.report[i].toString();
                                         
-                                        insertarTableReports(report,'1');
+                                        insertarTableReports(report,"1");
                                     }
                                     //pinta los reportes en el menu.html                  
                                     selectReports();
@@ -2194,7 +2194,7 @@ function showReports() {
                         if (report == 2406) {
                             $('#list_reports').append(
                             "<input type='checkbox' class='check_report" + (i) + "' " + check + ">" +
-                            "<label class='text-report'>Alcance de Met</label>" +
+                            "<label class='text-report'>Alcance de Meta</label>" +
                             "<hr>");
                         }
                     } else {
@@ -2307,6 +2307,24 @@ function buttonOkReports() {
     selectReports();
 }
 
+function updateCheckModalReports(report, active) {
+    try {
+        var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "='" + active + "' WHERE "+KEY_REPORT+"='"+report+"'";
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [], function (transaction, results) {
+                 
+            });
+        }, errorHandler);
+    } catch (e) {
+        console.log("error: " + e);
+    }
+}
+
+
+
+
+
+
 //pinta los reportes en el menu.html
 function selectReports() {
     var query2 = "SELECT " + KEY_REPORT +" , "+KEY_ACTIVO+ " FROM " + TABLE_REPORTS;
@@ -2316,8 +2334,8 @@ function selectReports() {
                 var report = "";
                 var save = "";
                 var activo = "";
-                $('.menu').empty();
                 
+                $('.menu').empty();
                 for (var i = 0; i < results.rows.length; i++) {
                     report = results.rows.item(i).report;
                     activo = results.rows.item(i).activo;
@@ -2454,21 +2472,6 @@ function selectReports() {
 }
 
 
-
-
-function updateCheckModalReports(report, active) {
-   
-    var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "= '" + active + "' WHERE "+KEY_REPORT+"='"+report+"'";
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query1, [], function (transaction, results) {
-                 
-            });
-        }, errorHandler);
-    } catch (e) {
-        console.log("error: " + e);
-    }
-}
 
 
 function deteclenguage() {
