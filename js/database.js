@@ -533,6 +533,9 @@ function validData(pin, check) {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
+                                     //DELETE FROM REPORTS
+                                     delTable_Reports();
+                                    
                                     //agrega en la TABLE_URL
                                     addData(ip, port, urlbase, alias, activo, site);
                                     //insert el pin y el check en la TABLE_CONFIGURATION
