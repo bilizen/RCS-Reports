@@ -91,11 +91,27 @@ function MSG_LBL_WORKING() {
 }
 //Modal Menu
 function MSG_LBL_CHANGE_ALIAS_T() {
-    $("#lblchangealit").html("Seleccione Alias");
+    $("#lblchangealit").html("Servidores");
+}
+function MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS() {
+    $("#lblHideTitle").html("Mostrar/Ocultar Reportes");
 }
 function MSG_LBL_CHANGE_ALIAS_BUTTON() {
-    $("#add_alias").html("Añadir Alias");
+    $("#add_alias").html("Añadir Servidor");
 }
+function MSG_LBL_CHANGE_ALIAS_SERVERS() {
+    $("#servers_list").html("Servidores");
+}
+function MSG_LBL_CHANGE_ALIAS_CLOSE() {
+    $("#btnclose").html("Close");
+}
+
+function MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS_T() {
+    $("#hide_reports").html("Mostrar/Ocultar Reportes");
+}
+
+
+
 function MSG_LBL_CHANGE_ALIAS_CONFIRM() {
     $("#lblchangealic").html("¿Desea cambiar de Servidor?");
 }
