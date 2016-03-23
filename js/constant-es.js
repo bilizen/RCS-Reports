@@ -58,6 +58,7 @@ function BTN_LOGIN() {
 
 
 
+
 /*****************************/
 
 /****************MENU*************/
@@ -104,6 +105,9 @@ function MSG_LBL_DELETE_SERVER_MESSAGE() {
 function MSG_LBL_CHANGE_ALIAS_CONFIRM_SI() {
     $("#btnsi").html("Si");
     $("#btnsidelete").html("Si");
+}
+function MSG_LBL_CHANGE_ALIAS_SETTINGS(){
+    $('#lblToolsTitle').html("Configuraciones");   
 }
 
 /******************************/

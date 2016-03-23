@@ -29,7 +29,8 @@
         $(window).load(function(){
             onInit();
             updateHideReports();
-            Title_Company();
+            //pone el titulo  
+            //Title_Company();
             deteclenguage();
     
         });
@@ -111,7 +112,7 @@
             <div id="top_bar_space"></div>
             <div class="options_bar_space">
               <div id="btn_left"><button class="img_logotitle"></button></div>
-              <div id="txt_maintitle"></div>
+              <div id="txt_maintitle">RCS REPORTS</div>
               <div id="btn_right">                
                 <button onclick="showOptions()" class="show_options"></button>
               </div>
@@ -146,12 +147,13 @@
                 <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Cerrar</button>
                     <h4 class="modal-title" id="lblToolsTitle">
-                        Tools
+                        Settings
                     </h4>
                 </div>                
                 <div class="modal-footer info">
-                    <p class="text-center" id="txtStore"></p>
+                    <p class="text-center" id="txtStore">SERVER:</p>
                     <p class="text-center" id="txtIP" >IP: </p>
+                    <p class="text-center" id="txtUser" >USER: </p>
                 </div>
                 <div class="modal-footer add">                    
                     <button class="btn btn-modal" data-dismiss="modal" id="servers_list" onclick="mostrarModal();">Servers</button> 

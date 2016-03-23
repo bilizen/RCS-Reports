@@ -2104,16 +2104,15 @@ function updateHideReports() {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
-                                     var query1 = "SELECT * FROM " + TABLE_REPORTS;
-       
+                                    //data.employeeName="";
+                                     var query1 = "SELECT * FROM " + TABLE_REPORTS;    
                                     localDB.transaction(function (transaction) {
                                         transaction.executeSql(query1, [], function (transaction, results) {
                                                 if(results.rows.length>0){
                                                      //pinta los reportes en el menu.html                  
                                                       selectReports();
-                 
                                                 }else{                                            
-                                                         //delete from Reports
+                                                        //delete from Reports
                                                         delTable_Reports();
                                                         //limpia el html de menu.html
                                                         $('.menu').empty();
@@ -2533,6 +2532,7 @@ function deteclenguage() {
         MSG_LBL_CHANGE_ALIAS_CONFIRM();
         MSG_LBL_CHANGE_ALIAS_CONFIRM_SI();
         MSG_LBL_DELETE_SERVER_MESSAGE();
+        MSG_LBL_CHANGE_ALIAS_SETTINGS();
 
         //Stores
         BTN_PREFERENCES_TXT();
