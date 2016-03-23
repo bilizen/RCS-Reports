@@ -336,8 +336,6 @@ function downloadReportGraphic() {
 
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
-
-
                     storeName = results.rows.item(0).StoreName;
                     storeNo = results.rows.item(0).StoreNo;
                     document.getElementById('nameStore').innerHTML = storeName;
