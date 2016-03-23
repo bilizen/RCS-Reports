@@ -1,3 +1,40 @@
+$(document).ready(function () {
+    onInit();
+    existDataDate();
+    ////////////////
+    if (window.orientation == 0) {
+        document.getElementById('content').style.display = 'none';
+        $('#miModal4').modal({backdrop: 'static', keyboard: false});
+    }
+    if (window.orientation == 90 || window.orientation == -90) {
+        $('#miModal4').modal('hide');
+        document.getElementById('content').style.display = 'block';
+        $('#chartdiv').height($(window).height() - $('header').height());
+    }
+    if (window.orientation == 180) {
+        document.getElementById('content').style.display = 'none';
+        $('#miModal4').modal({backdrop: 'static', keyboard: false});
+    }
+    $(window).on("orientationchange", function (event) {
+        if (window.orientation == 90 || window.orientation == -90) {
+            $('#miModal4').modal('hide');
+            document.getElementById('content').style.display = 'block';
+            $('#chartdiv').height($(window).height() - $('header').height());
+        }
+        if (window.orientation == 180 || window.orientation == 0) {
+            document.getElementById('content').style.display = 'none';
+            $('#miModal4').modal({backdrop: 'static', keyboard: false});
+        }
+    });
+});
+
+
+$(window).load(function () {
+    deteclenguage_R4();
+    downloadReportGraphic();
+});
+
+
 function showDialogStore() {
     $("#show_modalStore").modal();
     existDataStore();
@@ -389,10 +426,11 @@ function downloadReportGraphic() {
                                     console.log(xhr.statusText);
                                     console.log(xhr.responseText);
                                     hideLoading();
-                                    if (current_lang == 'es')
+                                    if (current_lang == 'es') {
                                         mostrarModalGeneral("Error de Conexión");
-                                    else
+                                    } else {
                                         mostrarModalGeneral("No Connection");
+                                    }
                                 }
                             });
                         });
@@ -428,11 +466,9 @@ function existDataDate() {
                             if (current_lang == 'en') {
                                 document.getElementById('dateStart').innerHTML = arrayDateStart[1] + "-" + arrayDateStart[2] + "-" + arrayDateStart[0];
                                 document.getElementById('dateEnd').innerHTML = arraydateEnd[1] + "-" + arraydateEnd[2] + "-" + arraydateEnd[0];
-
                             } else {
                                 document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
                                 document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
-
                             }
 
                         });
@@ -630,9 +666,7 @@ function deteclenguage_R4() {
 }
 
 function focusToactiveStore() {
-
     var list = $('#list_store');
-
     list.animate({
         scrollTop: $('.active').offset().top - list.offset().top + list.scrollTop()
     });

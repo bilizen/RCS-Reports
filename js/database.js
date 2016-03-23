@@ -2492,7 +2492,6 @@ function deteclenguage() {
     current_lang = (lang[0]);
     localStorage.lang = current_lang;
     if (current_lang == 'es') {
-
         //Index        
         MSG_INSERT_ADDRESS_SERVER();
         MSG_PORT();

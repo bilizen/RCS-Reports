@@ -1,3 +1,15 @@
+ //primero se ejecuta ready luego el load
+            $(document).ready(function(){/*** caraga elemento de la estructura html y estilos ***/
+                onInit();/**verificamos la base de datos**/
+                existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
+                henry3();
+            });
+            
+            $(window).load(function(){/***asegura que la pagina ya esta cargada**/
+                deteclenguage3();  
+            });
+
+
 function combo() {
     var xurl = "";
     var ip = "";

@@ -1,3 +1,22 @@
+  
+            //primero se ejecuta ready luego el load
+            $(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
+                onInit();/**verificamos la base de datos**/
+                existDataClasification();/***llenamos tabla clasificaciones**/
+                existDataDate();/**lleanmos tabla CustomRangeDate**/
+                henry2();
+            });
+            
+            $(window).load(function () {/***asegura que la pagina ya esta cargada**/
+                /**This download method only happend the first time**/
+                var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
+                value = $(".select-clasification .init").attr('data-value');
+                downloadStoreClasification(value);
+                deteclenguage2();
+            });
+
+
+
 function addDataClasificationFirstTime() {//aqui se hace uin insert
     var query = "INSERT INTO " + TABLE_CLASIFICATION + "("
             + KEY_MUY_BUENA + " ,"
