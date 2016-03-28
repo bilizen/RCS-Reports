@@ -95,6 +95,7 @@
             return false;
         }
         function passReport4(){
+           //var report = $('.item.report5').attr('data-value');
             window.location.href = "report4.html";
             return false;
         }
@@ -116,9 +117,9 @@
             <div id="top_bar_space"></div>
             <div class="options_bar_space">
               <div id="btn_left"><button class="img_logotitle"></button></div>
-              <div id="txt_maintitle">RCS REPORTS</div>
-              <div id="btn_right">                
-                <button onclick="showOptions()" class="show_options"></button>
+              <div id="txt_maintitle"><img src="../img/iconLogo.svg" class="titleLogo"/></div>
+              <div id="btn_right" class="config">                
+                <button onclick="showOptions()" ></button>
               </div>
             </div>      
         </header>    
@@ -148,17 +149,34 @@
     <div class="modal fade zIndex1" id="show_options" >
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
+                <div class="modal-header text-center">                    
                     <h4 class="modal-title" id="lblToolsTitle">
                         Settings
                     </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
                 </div>                
                 <div class="modal-footer info">
-                    <p class="text-center" id="txtStore">SERVER:</p>
+                    <div class="text-center" id="server" >
+                        <div id="txtStoreT">Server:</div>
+                        <div id="txtStore"></div>
+                    </div>
+                    <div class="text-center" id="ip" >
+                        <div id="txtIpT">IP:</div>
+                        <div id="txtIP"></div>
+                    </div>
+                    <div class="text-center" id="user" >
+                        <div id="txtUserT">User:</div>
+                        <div id="txtUser"></div>
+                    </div>
+                    <!--
+                    <p class="text-center" id="txtStore"></p>
+                    <p class="text-center" id="txtIP" >IP: </p>
+                    <p class="text-center" id="txtIP" >IP: </p>
                     <p class="text-center" id="txtIP" >IP: </p>
                     <p class="text-center" id="txtUser" >USER: </p>
-                </div>
+                    <p class="text-center" id="txtIP" >IP: </p>
+                    -->
+                    </div>
                 <div class="modal-footer add">                    
                     <button class="btn btn-modal" data-dismiss="modal" id="servers_list" onclick="mostrarModal();">Servers</button> 
                     <button class="btn btn-modal" data-dismiss="modal" id="add_alias" onclick="newInfoServer();delTables();">
@@ -175,6 +193,9 @@ Add Server</button>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header text-center">
+                    <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
+                        Back
+                    </button>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
                     <h4 class="modal-title" id="lblchangealit">
                         Servers
@@ -194,6 +215,9 @@ Add Server</button>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header text-center">
+                    <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
+                        Back
+                    </button>
                     <h4 class="modal-title" id="lblHideTitle">
                         Hide/Show Reports
                     </h4>

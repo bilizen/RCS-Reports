@@ -1644,7 +1644,7 @@ function loadComboRegions(actual_, global_) {
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
 
-                    mostrarModalGeneral("asasas");
+                    //mostrarModalGeneral("asasas");
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
@@ -1849,7 +1849,7 @@ function getDataInUse() {
                 var ip = results.rows.item(0).ip;
                 var alias = results.rows.item(0).alias;
                 console.log("ip: " + ip + " - alias: " + alias);
-                $("#txtIP").text("IP: " + ip);
+                $("#txtIP").text(ip);
                 $("#txtStore").text(alias);
 
             }, function (transaction, error) {
@@ -2104,7 +2104,7 @@ function updateHideReports() {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
-                                    //data.employeeName="";
+                                    $("#txtUser").text(data.employeeName);
                                      var query1 = "SELECT * FROM " + TABLE_REPORTS;    
                                     localDB.transaction(function (transaction) {
                                         transaction.executeSql(query1, [], function (transaction, results) {
@@ -2335,10 +2335,6 @@ function updateCheckModalReports(report, active) {
 }
 
 
-
-
-
-
 //pinta los reportes en el menu.html
 function selectReports() {
     var query2 = "SELECT " + KEY_REPORT +" , "+KEY_ACTIVO+ " FROM " + TABLE_REPORTS;
@@ -2394,7 +2390,7 @@ function selectReports() {
                         }
                         if (report ==2405) {
                             $('.menu').append(
-                            "<button class ='item report4 " + save + "' onclick ='openReport4();'>" +
+                            "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Gráfico Avanzado</span>" +
@@ -2405,7 +2401,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                            "<button class ='item report5 " + save + "' onclick ='openReport5();'>" +
+                            "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Alcance de Meta</span>" +
@@ -2451,7 +2447,7 @@ function selectReports() {
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                            "<button class ='item report4 " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report4 " + save + "' onclick ='openReport" + (i) + "();' data-value='report4'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Advance Graphic</span>" +
@@ -2462,7 +2458,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                            "<button class ='item report5 " + save + "' onclick ='openReport" + (i) + "();'>" +
+                            "<button class ='item report5 " + save + "' onclick ='openReport" + (i) + "();' data-value='report5'>" +
                             "<span class ='box' >" +
                             "<span class ='iconReport'> </span>" +
                             "<span id ='lblgvst' class ='item_title'>Goal Scope By Clerk</span>" +
@@ -2483,6 +2479,385 @@ function selectReports() {
         console.log(e);
     }
 }
+
+//dialog_report4
+function showDialogStore() {
+    $("#show_modalStore").modal();
+    existDataStore();
+}
+
+function existDataStore() {
+    var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                url = results.rows.item(0).urlBase;
+                if (url > 0) {
+                    downloadAllStore2();
+                } else {
+                    downloadAllStore();
+                }
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("Error existsData " + e + ".");
+    }
+}
+
+function downloadAllStore2() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading();
+                        },
+                        complete: function () {
+                            hideLoading();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $("#list_store").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('#list_store').append(show);
+                            }
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+            });
+        });
+    });
+
+}
+
+function downloadAllStore() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+
+            //xurl="http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading();
+                },
+                complete: function () {
+                    hideLoading();
+                },
+                success: function (data, textStatus, XMLHttpRequest) {
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var use = 1;
+                        var show = "";
+                        $("#list_store").empty();
+                        $(data.report).each(function (index, value) {
+                            StoreName = value.StoreName;
+                            StoreNo = value.StoreNo;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+
+                        });
+                        $('#list_store').append(show);
+
+                    }
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+
+                    //mostrarModalGeneral("asasas");
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    hideLoading();
+                    if (current_lang == 'es')
+                        mostrarModalGeneral("Error de Conexión");
+                    else
+                        mostrarModalGeneral("No Connection");
+
+                }
+            });
+
+        });
+    });
+
+}
+
+function insertTableStore(StoreNo, StoreName, use) {
+    /***insertamos en la base de datos***/
+    var queryInsert = "INSERT INTO " + TABLE_STORE + "(" + KEY_STORENO + ", " + KEY_STORENAME + ", " + KEY_USEDSTORE + ") VALUES (?,?,?)";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(queryInsert, [StoreNo, StoreName, use], function (transaction, results) {
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error addData " + e + ".");
+    }
+    /*********************************/
+}
+
+function setStoreNo(storeNo) {
+    $('#list_store h1').removeClass('active');
+    $('.storeName-' + storeNo).addClass('active');
+    var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
+    updateStore(storeNo, StoreName);
+    $('#show_modalStore #btnStore').show();
+
+}
+
+function updateStore(storeNo, StoreName) {
+    var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_STORENO + " ='" + storeNo + "' ," + KEY_STORENAME + " = '" + StoreName + "'  WHERE " + KEY_USEDSTORE + " ='1'";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(queryStore, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
+}
+//acaba function del reporte4
+
+
+
+
+//incia function del report5
+function showDialogStore5() {
+    $("#show_modalStore5").modal();
+    existDataStore_report5();
+}
+
+function existDataStore_report5() {
+    try {
+        var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                var store = results.rows.item(0).cant;
+                if (store > 0) {
+                    downloadAllstore52();
+                } else {
+                    downloadAllStore5();
+                }
+            });
+        });
+    } catch (e) {
+        console.log("error:" + e);
+    }
+}
+
+function downloadAllstore52() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading();
+                        },
+                        complete: function () {
+                            hideLoading();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $("#list_store5").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('#list_store5').append(show);
+                            }
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+            });
+        });
+    });
+}
+
+function downloadAllStore5() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading();
+                },
+                complete: function () {
+                    hideLoading();
+                },
+                success: function (data) {
+
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var show = "";
+                        $("#list_store5").empty();
+                        $(data.report).each(function (index, value) {
+                            StoreNo = value.StoreNo;
+                            StoreName = value.StoreName;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+                        });
+                        $('#list_store5').append(show);
+                    }//modal no hay data
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    hideLoading();
+                    if (current_lang == 'es')
+                        mostrarModalGeneral("Error de Conexión");
+                    else
+                        mostrarModalGeneral("No Connection");
+                }
+            });
+        });
+    });
+}
+
+//acaba function report 5
+
+
+
+
 
 
 

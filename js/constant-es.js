@@ -94,7 +94,7 @@ function MSG_LBL_CHANGE_ALIAS_T() {
     $("#lblchangealit").html("Servidores");
 }
 function MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS() {
-    $("#lblHideTitle").html("Mostrar/Ocultar Reportes");
+    $("#lblHideTitle").html("Ocultar Reportes");
 }
 function MSG_LBL_CHANGE_ALIAS_BUTTON() {
     $("#add_alias").html("Añadir Servidor");
@@ -103,14 +103,13 @@ function MSG_LBL_CHANGE_ALIAS_SERVERS() {
     $("#servers_list").html("Servidores");
 }
 function MSG_LBL_CHANGE_ALIAS_CLOSE() {
-    $("#btnclose").html("Close");
+    $(".close").html("Cerrar");
+    $(".close.back").html("Atrás");
 }
 
 function MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS_T() {
-    $("#hide_reports").html("Mostrar/Ocultar Reportes");
+    $("#hide_reports").html("Ocultar Reportes");
 }
-
-
 
 function MSG_LBL_CHANGE_ALIAS_CONFIRM() {
     $("#lblchangealic").html("¿Desea cambiar de Servidor?");
@@ -123,8 +122,12 @@ function MSG_LBL_CHANGE_ALIAS_CONFIRM_SI() {
     $("#btnsidelete").html("Si");
 }
 function MSG_LBL_CHANGE_ALIAS_SETTINGS(){
-    $('#lblToolsTitle').html("Configuraciones");   
+    $('#lblToolsTitle').html("Configuraciones"); 
+    $('#txtStoreT').text('Servidor: ');
+    $('#txtIpT').text('IP: ');
+    $('#txtUserT').text('Usuario: ');
 }
+
 
 /******************************/
 

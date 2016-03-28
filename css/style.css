@@ -151,6 +151,10 @@ header button{
 header button:active{
     opacity: 0.3;
 }
+.titleLogo {
+    height: 20pt;
+    vertical-align: middle;
+}
 #btn_left{
     position: absolute;
     bottom: 0;
@@ -767,12 +771,16 @@ div[class^="detalle-"] span{
 .ambar{ color: rgb(201, 148, 18) !important;}
 
 
-.close {
+.close,.close.back {
     position: absolute;
     right: 2px;
     top: 0;
     width: 50px;
     height: 50px;
+}
+.close.back{
+    right: inherit;
+    left: 2px;
 }
 
 #lblToday,#lblYesterday,#lblWeek,#lblMonth,#lblYear{
@@ -1257,6 +1265,9 @@ button.delete{
 .zIndex2{    z-index: 1060 !important;     }
 .zIndex3{    z-index: 1070 !important;     }
 .zIndex4{    z-index: 1080 !important;     }
+.modal-backdrop.in{
+    z-index: 1029 !important;
+}
 
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
@@ -1417,6 +1428,10 @@ button.delete{
     label,#ip_1, #ip_2, #ip_3, #ip_4{
         font-size: 16pt;
     }
+    .titleLogo {
+        height: 31pt;
+        vertical-align: middle;
+    }
     .img_logotitle {
         background-position: 2px 4px !important;
         background-size: 36px !important;
@@ -1433,7 +1448,7 @@ button.delete{
     .lblLastConexion,.dataLastConexion{
         line-height: 32pt;
     }
-    .close {
+    .close,.close.back {
         font-size: 16px;
         opacity: 0.6;
     }
@@ -1486,7 +1501,7 @@ button.delete{
     .lblLastConexion {
         padding-right: 2pt;
     }
-    .close {
+    .close,.close.back {
         font-size: 14px;
         opacity: 0.6;
     }
@@ -1587,7 +1602,7 @@ button.delete{
         line-height: 16px;
         padding-right: 60px;
     }
-    .close {
+    .close,.close.back {
         font-size: 12px;
         opacity: 0.6;
     }

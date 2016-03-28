@@ -40,16 +40,13 @@ $(window).load(function () {/***asegura que la pagina ya esta cargada**/
 
 function showDialogStore5() {
     $("#show_modalStore5").modal();
-    existDataStore_report5();
+    //existDataStore_report5();
+    downloadAllstore52();
+
 }
 
-// funcion para disminuir o aumentar la barra desplazamiendo
-function henry5() {
-    $('.list').height($(window).height() - $('header').height());
-}
-$(window).resize(function () {
-    $('.list').height($(window).height() - $('header').height());
-});
+
+
 function existDataStore_report5() {
     try {
         var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
@@ -66,23 +63,6 @@ function existDataStore_report5() {
     } catch (e) {
         console.log("error:" + e);
     }
-}
-
-function showLoading5() {
-    $('#show_modalStore5 #list_store5').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
-    $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0.23)');
-    $('#show_modalStore5 #btnStore').attr('disabled', 'disabled');
-}
-
-function hideLoading5() {
-//    setTimeout(function () {
-    $('#show_modalStore5 .loader-ios').remove();
-    $('#show_modalStore5 #list_store5').css('background', 'rgba(0,0,0,0)');
-    $('#show_modalStore5 #list_store5 h1').removeClass('hide');
-    setTimeout(function () {
-        focusToactiveStore5();
-    }, 500);
-//    }, 3200);
 }
 
 function downloadAllstore52() {
@@ -115,10 +95,10 @@ function downloadAllstore52() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading5();
+                            showLoading();
                         },
                         complete: function () {
-                            hideLoading5();
+                            hideLoading();
                         },
                         success: function (data) {
 
@@ -131,10 +111,9 @@ function downloadAllstore52() {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
                                     if (StoreNo == StoreNoT) {
-
-                                        show += "<h1 class='storeName-" + StoreNo + " hide active' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                                     } else {
-                                        show += "<h1 class='storeName-" + StoreNo + " hide' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                                     }
                                 });
                                 $('#list_store5').append(show);
@@ -143,7 +122,7 @@ function downloadAllstore52() {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
-                            hideLoading5();
+                            hideLoading();
                             if (current_lang == 'es')
                                 mostrarModalGeneral("Error de Conexión");
                             else
@@ -156,7 +135,7 @@ function downloadAllstore52() {
     });
 }
 
-
+//no se usa
 function downloadAllStore5() {
     var xurl = "";
     var ip = "";
@@ -181,10 +160,10 @@ function downloadAllStore5() {
                 crossdomain: true,
                 async: true,
                 beforeSend: function () {
-                    showLoading5();
+                    showLoading();
                 },
                 complete: function () {
-                    hideLoading5();
+                    hideLoading();
                 },
                 success: function (data) {
 
@@ -197,10 +176,10 @@ function downloadAllStore5() {
                             StoreNo = value.StoreNo;
                             StoreName = value.StoreName;
                             if (index == 0) {
-                                insertTableStore5(StoreNo, StoreName, '1')
-                                show += "<h1 class='storeName-" + StoreNo + " hide active' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                             } else {
-                                show += "<h1 class='storeName-" + StoreNo + " hide' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');>" + StoreName + "</h1>";
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                             }
                         });
                         $('#list_store5').append(show);
@@ -209,7 +188,7 @@ function downloadAllStore5() {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading5();
+                    hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -219,8 +198,9 @@ function downloadAllStore5() {
         });
     });
 }
-
-function insertTableStore5(StoreNo, StoreName, use) {
+//no se usa
+function insertTableStore(StoreNo, StoreName, use) {
+    /***insertamos en la base de datos***/
     var queryInsert = "INSERT INTO " + TABLE_STORE + "(" + KEY_STORENO + ", " + KEY_STORENAME + ", " + KEY_USEDSTORE + ") VALUES (?,?,?)";
     try {
         localDB.transaction(function (transaction) {
@@ -230,16 +210,16 @@ function insertTableStore5(StoreNo, StoreName, use) {
     } catch (e) {
         console.log("Error addData " + e + ".");
     }
+    /*********************************/
 }
 
-function setStoreNo5(storeNo) {
-//updateAllStoreUsedToZero5();
-    $('#list_store5 h1').removeClass('active');
+function setStoreNo(storeNo) {
+    $('#list_store h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
     updateStore(storeNo, StoreName);
-    $('#show_modalStore5 #btnStore').removeAttr('disabled');
-    //updateStoreUsedTableStore5(storeNo);
+    $('#show_modalStore #btnStore').show();
+
 }
 
 function updateStore(storeNo, StoreName) {
@@ -259,6 +239,16 @@ function updateStore(storeNo, StoreName) {
     }
 
 }
+
+
+// funcion para disminuir o aumentar la barra desplazamiendo
+function henry5() {
+    $('.list').height($(window).height() - $('header').height());
+}
+$(window).resize(function () {
+    $('.list').height($(window).height() - $('header').height());
+});
+
 
 function updateStoreUsedTableStore5(storeNo) {
     var queryStore = "UPDATE " + TABLE_STORE + " SET " + KEY_USEDSTORE + " = '1' WHERE " + KEY_STORENO + " = " + storeNo;
