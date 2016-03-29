@@ -24,6 +24,7 @@
     <script  type="text/javascript">        
         
         $(window).load(function(){
+            
              onInit();    
              deteclenguage();
              hideCombo();
@@ -81,7 +82,10 @@
                 <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences">Return</button></div>
                 <div id="txt_title"  onclick="refresh();">Goals vs Sales</div>
                 <div id="btn_right" class="side config" ><button onclick="moveToLeft(3);"></button></div>
+                
+                <!--
                 <div id="btn_right" onclick="mostrarInfo();"><button>Aa</button></div>
+                -->
             </div>      
         </header>
 
@@ -148,8 +152,11 @@
                     <hr>
                     <input type="checkbox" name="check_global" id="check_global" onclick="updateGlobal()" checked>
                     <label class="text-checkbox global">Show Global</label>
-                </div>                
+                </div>  
+                <span id="lblVisualization">Dictionary</span>
             </div>
+            
+                <div  onclick="mostrarInfo();"><button>Aa</button></div>
         </div> 
 
         <div id="content" class="general">

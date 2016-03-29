@@ -23,12 +23,15 @@
             $(window).load(function () {
                 onInit();
                 deteclenguage();
+
                 var variablEE = obtenerVariables("variable");
                 if (checkNetConnection() == true) {
                     if (variablEE == -1) {
                         existsData();
                     } else
-                    {
+                    {   
+                        //camibar el nombre del boton de ingresar --> agregar
+                        MSG_GO_ADD();
                         $("#btn_left").removeAttr("hidden");
                     }
                 }
@@ -112,6 +115,7 @@
                     }
                 });
 
+
                 $("#btnenter").click(function () {
                     var ip_1 = $("#ip_1").val();
                     var ip_2 = $("#ip_2").val();
@@ -134,7 +138,7 @@
                                     if (variablEE == -1) {
                                         validIP(ip, port, urlBase, alias, "1", site, variablEE);
                                     } else {
-                                        //entra al agregar un servidor   
+                                        //entra al agregar un servidor
                                         capture_variable(variablEE);
                                         validIP(ip, port, urlBase, alias, "1", site, variablEE);
                                     }

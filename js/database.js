@@ -1425,7 +1425,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
                             var goalAmountGlobal = value.goalAmountGlobal;
                             var payTotal = value.payTotal;
                             var payTotalGlobal = value.payTotalGlobal;
-                            var lastConexion = value.regionName;
+                            var lastConexion = value.lastConexion;
                             var percent = 0.00;
                             var percentGlobal = 0.00;
 
@@ -2104,11 +2104,20 @@ function updateHideReports() {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
+                                    var arrReport=data.report;
+                                    
+             
                                     $("#txtUser").text(data.employeeName);
                                      var query1 = "SELECT * FROM " + TABLE_REPORTS;    
                                     localDB.transaction(function (transaction) {
                                         transaction.executeSql(query1, [], function (transaction, results) {
-                                                if(results.rows.length>0){
+                                            var igual=0;
+                                            for(var a=0;a<results.rows.length;a++){
+                                                if(arrReport[a]==results.rows.item(a).report){
+                                                    igual++;
+                                                }
+                                            }
+                                            if(results.rows.length==igual){
                                                      //pinta los reportes en el menu.html                  
                                                       selectReports();
                                                 }else{                                            

@@ -20,6 +20,15 @@ function MSG_RETURN() {
 }
 
 
+function MSG_GO_ADD() {
+    var lang = navigator.language.split("-");
+    var current_lang = (lang[0]);
+    if (current_lang == 'es')
+        $("#btnenter").val("Agregar");
+    else
+        $("#btnenter").val("Add");
+}
+
 function MSG_GO() {
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
@@ -108,7 +117,7 @@ function MSG_LBL_CHANGE_ALIAS_CLOSE() {
 }
 
 function MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS_T() {
-    $("#hide_reports").html("Ocultar Reportes");
+    $("#hide_reports").html("Ocultar/Mostrar Reportes");
 }
 
 function MSG_LBL_CHANGE_ALIAS_CONFIRM() {
