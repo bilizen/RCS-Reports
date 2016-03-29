@@ -33,8 +33,11 @@
             <div class="options_bar_space">
                 <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences">Return</button></div>
                 <div id="txt_title" ><span id="refresh" onclick="">% Progress By Store</span></div>
-                <div id="btn_right" class="side calendar" ><button onclick="moveToLeft(2);"></button></div>
+                <div id="btn_right" class="config" ><button onclick="moveToLeft(2);"></button></div>
+                <!--
                 <div id="btn_right" onclick="mostrarInfo();"><button>Aa</button></div>
+                -->
+                
             </div>      
         </header>
 
@@ -135,7 +138,16 @@
                     </div> 
                 </div>                
             </div>
-        </div>   
+            <div class="section">
+                 <span class="lblmodaldicc">Dictionary</span>
+                 <div class="section_content">
+                     <div onclick="mostrarInfo();"><button>Aa</button></div>
+                 </div>       
+
+                
+            </div>
+            
+        </div>
 
     </div>  
 
@@ -156,7 +168,7 @@
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">×</button>
-                    <h4 class="modal-title" id="lblmodaldicc">
+                    <h4 class="modal-title lblmodaldicc">
                         Dictionary
                     </h4>
                 </div>

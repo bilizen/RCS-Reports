@@ -533,9 +533,9 @@ function validData(pin, check) {
                             success: function (data, textStatus, XMLHttpRequest) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
-                                     //DELETE FROM REPORTS
-                                     delTable_Reports();
-                                    
+                                    //DELETE FROM REPORTS
+                                    delTable_Reports();
+
                                     //agrega en la TABLE_URL
                                     addData(ip, port, urlbase, alias, activo, site);
                                     //insert el pin y el check en la TABLE_CONFIGURATION
@@ -596,7 +596,7 @@ function validData(pin, check) {
                                         if (data.successful == 1) {
                                             //DELETE FROM REPORTS
                                             delTable_Reports();
-                                            
+
                                             //delete from TABLE_CONFIGURATION
                                             deleteConfiguration();
                                             //insert el pin y el check en la TABLE_CONFIGURATION
@@ -1306,7 +1306,7 @@ function downloadByRegion(actual_, global_) {
 }
 
 //************ Descargar data por Store, en el arrary su indice vale***********//
-function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmount) {
+function downloadByStore(actual_, global_) {
     var xurl = "";
     var c_ip = "";
     var c_port = "";
@@ -1325,7 +1325,7 @@ function downloadByStore(actual_, global_, _ch_order_payTotal, _ch_order_goalAmo
         regionCode = "";
     }
 
-    var array = {option: option, regionCode: regionCode, total: _ch_order_payTotal, goal: _ch_order_goalAmount};
+    var array = {option: option, regionCode: regionCode};
 
     var actual = actual_;
     var global = global_;
@@ -2084,77 +2084,90 @@ function updateHideReports() {
                 localDB.transaction(function (transaction) {
                     transaction.executeSql(query2, [], function (transaction, results) {
                         var pin = results.rows.item(0).pin;
-                        var yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
-                        var array = {Pin: pin};
-                        $.ajax({
-                            url: yurl,
-                            timeout: 15000,
-                            type: 'POST',
-                            data: JSON.stringify(array),
-                            contentType: 'application/json; charset=utf-8',
-                            dataType: 'json',
-                            async: true,
-                            crossdomain: true,
-                            beforeSend: function () {
-                                showLoading();
-                            },
-                            complete: function () {
-                                hideLoading();
-                            },
-                            success: function (data, textStatus, XMLHttpRequest) {
-                                //verifica que el pin es correcto
-                                if (data.successful == 1) {
-                                    var arrReport=data.report;
-                                    
-             
-                                    $("#txtUser").text(data.employeeName);
-                                     var query1 = "SELECT * FROM " + TABLE_REPORTS;    
-                                    localDB.transaction(function (transaction) {
-                                        transaction.executeSql(query1, [], function (transaction, results) {
-                                            var igual=0;
-                                            for(var a=0;a<results.rows.length;a++){
-                                                if(arrReport[a]==results.rows.item(a).report){
+                        var query3 = "SELECT * FROM " + TABLE_REPORTS;
+                        localDB.transaction(function (transaction) {
+                            transaction.executeSql(query3, [], function (transaction, results) {
+                                var yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
+                                var array = {Pin: pin};
+                                $.ajax({
+                                    url: yurl,
+                                    timeout: 15000,
+                                    type: 'POST',
+                                    data: JSON.stringify(array),
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    async: true,
+                                    crossdomain: true,
+                                    beforeSend: function () {
+                                        showLoading();
+                                    },
+                                    complete: function () {
+                                        hideLoading();
+                                    },
+                                    success: function (data, textStatus, XMLHttpRequest) {
+                                        //verifica que el pin es correcto
+                                        if (data.successful == 1) {
+                                            var arrReport = data.report;
+                                            $("#txtUser").text(data.employeeName);
+
+                                            var igual = 0;
+                                            for (var a = 0; a < results.rows.length; a++) {
+                                                if (arrReport[a] == results.rows.item(a).report) {
                                                     igual++;
                                                 }
                                             }
-                                            if(results.rows.length==igual){
-                                                     //pinta los reportes en el menu.html                  
-                                                      selectReports();
-                                                }else{                                            
-                                                        //delete from Reports
-                                                        delTable_Reports();
-                                                        //limpia el html de menu.html
-                                                        $('.menu').empty();
-                                                        for (var i = 0; i < data.report.length; i++) {
-                                                            var report=data.report[i].toString();                                 
-                                                            insertarTableReports(report,"1");
-                                                        }
-                                                        //pinta los reportes en el menu.html                  
-                                                        selectReports();
+                                            if (data.report.length == igual) {
+                                                //pinta los reportes en el menu.html                  
+                                                selectReports();
+                                            } else {
+                                                //delete from Reports
+                                                delTable_Reports();
+                                                //limpia el html de menu.html
+                                                $('.menu').empty();
+                                                for (var i = 0; i < data.report.length; i++) {
+                                                    var report = data.report[i].toString();
+                                                    insertarTableReports(report, "1");
                                                 }
-                                            });
-                                        });
-                                } else {
-                                    if (current_lang == 'es') {
-                                        mostrarModalGeneral("PIN Invalido");
-                                    } else {
-                                        mostrarModalGeneral("Invalid PIN");
+                                                //pinta los reportes en el menu.html                  
+                                                selectReports();
+                                            }
+
+
+
+
+                                        } else {
+                                            if (current_lang == 'es') {
+                                                mostrarModalGeneral("PIN Invalido");
+                                            } else {
+                                                mostrarModalGeneral("Invalid PIN");
+                                            }
+                                            window.location.href = "login.html";
+                                        }
+                                    },
+                                    error: function (xhr, ajaxOptions, thrownError) {
+                                        console.log(xhr.status);
+                                        console.log(xhr.statusText);
+                                        console.log(xhr.responseText);
+                                        //hideLoading();
+                                        if (current_lang == 'es') {
+                                            mostrarModalGeneral("Error de Conexión");
+                                        } else {
+                                            mostrarModalGeneral("No Connection");
+                                        }
                                     }
-                                    window.location.href = "login.html";
-                                }
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                console.log(xhr.status);
-                                console.log(xhr.statusText);
-                                console.log(xhr.responseText);
-                                //hideLoading();
-                                if (current_lang == 'es') {
-                                    mostrarModalGeneral("Error de Conexión");
-                                } else {
-                                    mostrarModalGeneral("No Connection");
-                                }
-                            }
+                                });
+
+
+
+
+                            });
                         });
+
+
+
+
+
+
                     });
                 });
             });
@@ -2167,12 +2180,12 @@ function updateHideReports() {
 
 function showReports() {
     $('#ModalReportsOption').modal('show');
-    
+
     try {
         var query1 = "SELECT * FROM " + TABLE_REPORTS;
         var report = "";
         var check = "";
-        var active="";
+        var active = "";
         localDB.transaction(function (transaction) {
             transaction.executeSql(query1, [], function (transaction, results) {
                 $('#list_reports').empty();
@@ -2180,82 +2193,82 @@ function showReports() {
                     report = results.rows.item(i).report;
                     active = results.rows.item(i).activo;
                     if (active == 1) {
-                        check = "checked";                   
-                    }else{
-                        
-                        check = "";                    
-                    }
-                    
-                    if (current_lang == 'es') {     
-                        if (report==2402) {
-                            $('#list_reports').append(
-                            "<input type='checkbox' class='check_report1' " + check + ">" +
-                            "<label class='text-report'>Metas vs Ventas</label>" +
-                            "<hr>");                                    
-                        }
-                        if (report==2403) {
-                            $('#list_reports').append(
-                            "<input type='checkbox' class='check_report2' " + check + ">" +
-                            "<label class='text-report'>Clasificación por Tienda</label>" +
-                            "<hr>");                       
-                        }
-                        if (report == 2404) {
-                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report3' " + check + ">" +
-                            "<label class='text-report'>Progreso en % por tienda</label>" +
-                            "<hr>");
-                            
-                            
-                        }
-                        if (report ==2405) {
-                            $('#list_reports').append(
-                            "<input type='checkbox' class='check_report4' " + check + ">" +
-                            "<label class='text-report'>Gráfico Avanzado</label>" +
-                            "<hr>");
-                                                                                 
-                        }
-                        if (report == 2406) {
-                            $('#list_reports').append(
-                            "<input type='checkbox' class='check_report5' " + check + ">" +
-                            "<label class='text-report'>Alcance de Meta</label>" +
-                            "<hr>");
-                        }
+                        check = "checked";
                     } else {
-                        
+
+                        check = "";
+                    }
+
+                    if (current_lang == 'es') {
                         if (report == 2402) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report1' " + check + ">" +
-                            "<label class='text-report'>Goal VS Sales</label>" +
-                            "<hr>");
-         
+                                    "<input type='checkbox' class='check_report1' " + check + ">" +
+                                    "<label class='text-report'>Metas vs Ventas</label>" +
+                                    "<hr>");
                         }
-                        if (report == 2403) { 
-                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report2' " + check + ">" +
-                            "<label class='text-report'>Store Clasification</label>" +
-                            "<hr>");
-                    
+                        if (report == 2403) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report2' " + check + ">" +
+                                    "<label class='text-report'>Clasificación por Tienda</label>" +
+                                    "<hr>");
                         }
                         if (report == 2404) {
-                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report3' " + check + ">" +
-                            "<label class='text-report'>% Progress By Store</label>" +
-                            "<hr>");
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report3' " + check + ">" +
+                                    "<label class='text-report'>Progreso en % por tienda</label>" +
+                                    "<hr>");
+
+
                         }
                         if (report == 2405) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report4' " + check + ">" +
-                            "<label class='text-report'>Advance Graphic</label>" +
-                            "<hr>");      
+                                    "<input type='checkbox' class='check_report4' " + check + ">" +
+                                    "<label class='text-report'>Gráfico Avanzado</label>" +
+                                    "<hr>");
+
                         }
                         if (report == 2406) {
                             $('#list_reports').append(
-                            "<input type='checkbox' class='check_report5' " + check + ">" +
-                            "<label class='text-report'>Goal Scope By Clerk</label>" +
-                            "<hr>");
+                                    "<input type='checkbox' class='check_report5' " + check + ">" +
+                                    "<label class='text-report'>Alcance de Meta</label>" +
+                                    "<hr>");
+                        }
+                    } else {
+
+                        if (report == 2402) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report1' " + check + ">" +
+                                    "<label class='text-report'>Goal VS Sales</label>" +
+                                    "<hr>");
+
+                        }
+                        if (report == 2403) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report2' " + check + ">" +
+                                    "<label class='text-report'>Store Clasification</label>" +
+                                    "<hr>");
+
+                        }
+                        if (report == 2404) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report3' " + check + ">" +
+                                    "<label class='text-report'>% Progress By Store</label>" +
+                                    "<hr>");
+                        }
+                        if (report == 2405) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report4' " + check + ">" +
+                                    "<label class='text-report'>Advance Graphic</label>" +
+                                    "<hr>");
+                        }
+                        if (report == 2406) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report5' " + check + ">" +
+                                    "<label class='text-report'>Goal Scope By Clerk</label>" +
+                                    "<hr>");
                         }
 
-                    }              
+                    }
                 }
             });
         });
@@ -2325,17 +2338,17 @@ function buttonOkReports() {
     } else {
         updateCheckModalReports("2406", "0");
     }
-    
+
     //updateHideReports();
     selectReports();
 }
 
 function updateCheckModalReports(report, active) {
     try {
-        var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "='" + active + "' WHERE "+KEY_REPORT+"='"+report+"'";
+        var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "='" + active + "' WHERE " + KEY_REPORT + "='" + report + "'";
         localDB.transaction(function (transaction) {
             transaction.executeSql(query1, [], function (transaction, results) {
-                 
+
             });
         }, errorHandler);
     } catch (e) {
@@ -2346,7 +2359,7 @@ function updateCheckModalReports(report, active) {
 
 //pinta los reportes en el menu.html
 function selectReports() {
-    var query2 = "SELECT " + KEY_REPORT +" , "+KEY_ACTIVO+ " FROM " + TABLE_REPORTS;
+    var query2 = "SELECT " + KEY_REPORT + " , " + KEY_ACTIVO + " FROM " + TABLE_REPORTS;
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query2, [], function (transaction, results) {
@@ -2357,128 +2370,128 @@ function selectReports() {
                 for (var i = 0; i < results.rows.length; i++) {
                     report = results.rows.item(i).report;
                     activo = results.rows.item(i).activo;
-                    if(activo==1){
-                        save="";
-                    }else{
-                        save="hide";
+                    if (activo == 1) {
+                        save = "";
+                    } else {
+                        save = "hide";
                     }
                     if (current_lang == 'es') {
-                        
-                        if (report==2402) {
-                            $('.menu').append(
-                            "<button class ='item report1 "+ save + "' onclick ='openReport1();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Metas vs Ventas</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Compare sus metas vs ventas en tiempo real</span>" +
-                            "</span>" +
-                            "</button>"
-                            );            
-                        }
-                        if (report==2403) {                          
-                            $('.menu').append(
-                            "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Clasificación por Tienda</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Clasificación personalizado por Tienda</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
-                        }
-                        if (report == 2404) {
-                            $('.menu').append(
-                            "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Progreso en % por tienda</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>El progreso de ventas por tienda</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
-                        }
-                        if (report ==2405) {
-                            $('.menu').append(
-                            "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Gráfico Avanzado</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Visualiza ventas, metas y punto de equilibrio graficamente</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
-                        }
-                        if (report == 2406) {
-                            $('.menu').append(
-                            "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Alcance de Meta</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Mira y compara el progreso de venta por empleado</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
-                        }
-                    } else {
-                        
+
                         if (report == 2402) {
                             $('.menu').append(
-                            "<button class ='item report1 " + save + "' onclick ='openReport" + (i) + "();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Goal VS Sales</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
-                            "</span>" +
-                            "</button>"
-                            );            
+                                    "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Metas vs Ventas</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare sus metas vs ventas en tiempo real</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
                         }
-                        if (report == 2403) {                          
+                        if (report == 2403) {
                             $('.menu').append(
-                            "<button class ='item report2 " + save + "' onclick ='openReport" + (i) + "();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Store Clasification</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Custom Clasification by store</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
+                                    "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Clasificación por Tienda</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Clasificación personalizado por Tienda</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                            "<button class ='item report3 " + save + "' onclick ='openReport" + (i) + "();'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>% Progress By Store</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
+                                    "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Progreso en % por tienda</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>El progreso de ventas por tienda</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                            "<button class ='item report4 " + save + "' onclick ='openReport" + (i) + "();' data-value='report4'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Advance Graphic</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
+                                    "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Gráfico Avanzado</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Visualiza ventas, metas y punto de equilibrio graficamente</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                            "<button class ='item report5 " + save + "' onclick ='openReport" + (i) + "();' data-value='report5'>" +
-                            "<span class ='box' >" +
-                            "<span class ='iconReport'> </span>" +
-                            "<span id ='lblgvst' class ='item_title'>Goal Scope By Clerk</span>" +
-                            "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
-                            "</span>" +
-                            "</button>"
-                            );    
+                                    "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Alcance de Meta</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Mira y compara el progreso de venta por empleado</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
+                        }
+                    } else {
+
+                        if (report == 2402) {
+                            $('.menu').append(
+                                    "<button class ='item report1 " + save + "' onclick ='openReport" + (i) + "();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Goal VS Sales</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
+                        }
+                        if (report == 2403) {
+                            $('.menu').append(
+                                    "<button class ='item report2 " + save + "' onclick ='openReport" + (i) + "();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Store Clasification</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Custom Clasification by store</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
+                        }
+                        if (report == 2404) {
+                            $('.menu').append(
+                                    "<button class ='item report3 " + save + "' onclick ='openReport" + (i) + "();'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>% Progress By Store</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
+                        }
+                        if (report == 2405) {
+                            $('.menu').append(
+                                    "<button class ='item report4 " + save + "' onclick ='openReport" + (i) + "();' data-value='report4'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Advance Graphic</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
+                        }
+                        if (report == 2406) {
+                            $('.menu').append(
+                                    "<button class ='item report5 " + save + "' onclick ='openReport" + (i) + "();' data-value='report5'>" +
+                                    "<span class ='box' >" +
+                                    "<span class ='iconReport'> </span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Goal Scope By Clerk</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "</span>" +
+                                    "</button>"
+                                    );
                         }
 
-                    }             
-                                                         
+                    }
+
                 }
                 highlightButtons();
             });

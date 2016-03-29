@@ -252,7 +252,7 @@ function MSG_SPN_TITLE_1() {
     $('#txt_title').text("Metas vs Ventas");
 }
 function MSG_LBL_MODAL_DIC_1() {
-    $('#lblmodaldicc').html("Diccionario");
+    $('.lblmodaldicc').html("Diccionario");
 }
 function MSG_LBL_DET_DIC_1(){
     $('#TodayGoal').text("MH:");
@@ -489,7 +489,7 @@ function MSG_DATE_COMPARE_3() {
 }
 
 function MSG_DICTIONARY_3() {
-    $("#lblmodaldicc").text("Diccionario");
+    $(".lblmodaldicc").text("Diccionario");
 }
 
 function MSG_TOTALMONTHGOAL_3() {
