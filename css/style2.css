@@ -34,6 +34,13 @@
     display: inline-block;
 }
 
+.iconRange{
+    background-image: url(../img/iconRange.svg);
+    background-position: center;
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+}
+
 
 /* modal */
 .clasificationRow{
