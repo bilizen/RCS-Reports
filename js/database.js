@@ -2977,7 +2977,6 @@ function deteclenguage() {
         MSG_TXT_TITLE_1();
         MSG_SPN_HEADER_1();
         MSG_SPN_TITLE_1();
-        MSG_LBL_MODAL_DIC_1();
         MSG_RPT_TG_1();
         MSG_RPT_TS_1();
         MSG_RPT_YG_1();
@@ -3003,6 +3002,7 @@ function deteclenguage() {
         MSG_SHOWGLOBAL_1();
         MSG_TODAYP_1();
         MSG_LBL_DET_DIC_1();
+        MSG_DICTIONARY();
         /***************************************/
         MSGS_TEXT_OPTIONS();
         // Last Connection

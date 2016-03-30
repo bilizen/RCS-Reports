@@ -251,9 +251,7 @@ function MSG_SPN_HEADER_1() {
 function MSG_SPN_TITLE_1() {
     $('#txt_title').text("Metas vs Ventas");
 }
-function MSG_LBL_MODAL_DIC_1() {
-    $('.lblmodaldicc').html("Diccionario");
-}
+
 function MSG_LBL_DET_DIC_1(){
     $('#TodayGoal').text("MH:");
     $('#TodaySale').text("VH:");
@@ -490,9 +488,12 @@ function MSG_DATE_COMPARE_3() {
     $("#lbldateToCompare").text("Fecha de comparación");
 }
 
-function MSG_DICTIONARY_3() {
+function MSG_DICTIONARY() {
     $(".lblmodaldicc").text("Diccionario");
+    $(".dictionary").text("Mostrar Diccionario");
 }
+
+
 
 function MSG_TOTALMONTHGOAL_3() {
     $("#lblTotalMonthGoal").text("Meta mensual por tienda");

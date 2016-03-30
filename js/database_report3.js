@@ -546,7 +546,7 @@ function deteclenguage3() {
         MSG_ALL_REGION();
         MSG_DATE_END_3();
         MSG_CHOOSE_DATE_COMPARE_3();
-        MSG_DICTIONARY_3();
+        MSG_DICTIONARY();
         MSG_TOTALMONTHGOAL_3();
         MSG_TOTALGOALSTORE_3();
         MSG_TEXT_OPTIONS_3();
