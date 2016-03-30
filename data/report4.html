@@ -38,13 +38,16 @@
                             <span id="lblDateStart_r4">Date Start</span>
                             <span id="dateStartTitle">fecha 1</span>
                         </span>
-                        <span id="nameStore" onclick="refresh();">Store Name</span>
+                        <span class="nameStore" onclick="refresh();">Store Name</span>
                         <span class="dateEndSection">
                             <span id="lblDateEnd_r4">Date End</span>
                             <span id="dateEndTitle">fecha 2</span>
                         </span>
                     </div>
-                    <div id="btn_right" class="side storeIcon" onclick="showDialogStore();"><button ></button></div>
+                   <!--
+                   <div id="btn_right" class="side storeIcon" onclick="showDialogStore();"><button ></button></div>
+                   -->
+                    
                     <div id="btn_right" class="calendar" onclick="moveToLeft(2);
                             existDataDate();"><button></button></div>
                 </div>      
@@ -113,6 +116,21 @@
                         </div> 
                     </div>                
                 </div>
+                
+                <!-- Elegir tienda-->
+                 <div class="section">
+                    <span id="lblChooseMargen">Choose a Store</span>
+                    <div class="section_content">          
+                        <div class="select-calendar">
+                        <div class="side storeIcon" onclick="showDialogStore();">
+                            <button class="nameStore">Store</button></div>    
+                        </div> 
+                    </div>                
+                </div>
+                
+                
+                
+                
                 <script type="text/javascript">
                     function showModalMargen() {
                         $('#show_magen').modal('show');
@@ -140,7 +158,7 @@
                 <div class="modal-content">
                     <div id="title_store_r4" class="modal-header text-center">Choose Your Store</div>
                     <div id="list_store">Veamos</div>
-                    <button id="btn_ok_r4" onclick="downloadReportGraphic();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true">Ok</button> 
+                    <button id="btn_ok_r4" onclick="writeStore();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true">Ok</button> 
                 </div>
             </div>
         </div>

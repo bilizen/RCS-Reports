@@ -39,13 +39,15 @@
                             <span id="lblDateStart">Date Start</span>
                             <span id="dateStartTitle">fecha 1</span>
                         </span>
-                        <span id="nameStore5" onclick="refresh();">Store Name</span>
+                        <span class="nameStore5" onclick="refresh();">Store Name</span>
                         <span class="dateEndSection">
                             <span id="lblDateEnd">Date End</span>
                             <span id="dateEndTitle">fecha 2</span>
                         </span>
                     </div>
+                    <!--
                     <div id="btn_right" class="side storeIcon" onclick="showDialogStore5();"><button ></button></div>
+                    -->
                     <div id="btn_right" class="calendar" onclick="moveToLeft(2);"><button></button></div>
                 </div>      
             </header>
@@ -113,6 +115,19 @@
                         </div> 
                     </div>                
                 </div>
+                
+                
+                <!-- Store -->
+                <div class="section">
+                    <span>Choose a Store</span>
+                    <div class="section_content">
+                        <div class="select-calendar">
+                            <div  class="side storeIcon" onclick="showDialogStore5();"><button class="nameStore5">Store</button></div>
+                        </div> 
+                    </div>                
+                </div>
+                
+                
             </div> 
         </div>  
 
@@ -134,7 +149,7 @@
                 <div class="modal-content">
                     <div class="modal-header text-center">Choose Your Store</div>
                     <div id="list_store5"></div>
-                    <button onclick="downloadAllcustomers();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true" id="txtOk">Ok</button> 
+                    <button onclick="writeStore5();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true" id="txtOk">Ok</button> 
                 </div>
             </div>
         </div>

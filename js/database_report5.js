@@ -399,7 +399,8 @@ function downloadAllcustomers() {
 
                             var StoreNo = results.rows.item(0).StoreNo;
                             var StoreName = results.rows.item(0).StoreName;
-                            document.getElementById('nameStore5').innerHTML = StoreName;
+                            
+                            $('.nameStore5').text(StoreName);
                             //var xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportScopeClerk/POST";
                             array = {DateStart: dateStar, DateEnd: dateEnd, StoreNo: StoreNo};
                             $.ajax({
@@ -543,6 +544,19 @@ function BtnCancel5() {
             }
         });
     });
+}
+
+
+function writeStore5(){
+     var storeName="";
+    var storeNo="";
+    localDB.transaction(function (tx) {
+                tx.executeSql("SELECT * FROM " + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
+                    storeName = results.rows.item(0).StoreName;
+                    storeNo = results.rows.item(0).StoreNo;         
+                    $('.nameStore5').text(storeName);
+                });
+            }); 
 }
 
 

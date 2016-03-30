@@ -2247,7 +2247,6 @@ function showReports() {
                                     "<input type='checkbox' class='check_report2' " + check + ">" +
                                     "<label class='text-report'>Store Clasification</label>" +
                                     "<hr>");
-
                         }
                         if (report == 2404) {
                             $('#list_reports').append(
@@ -2267,7 +2266,6 @@ function showReports() {
                                     "<label class='text-report'>Goal Scope By Clerk</label>" +
                                     "<hr>");
                         }
-
                     }
                 }
             });
@@ -2880,8 +2878,17 @@ function downloadAllStore5() {
 
 
 
-
-
+//function para lo del Login()
+function verific(){
+    var query="SELECT * FROM "+TABLE_URL;
+    localDB.transaction(function (tx) {
+        tx.executeSql(query, [], function (tx, results) {
+            if(results.rows.length>0){
+            $('.arrow.white').addClass('hide');
+            }
+        });
+    });
+}
 
 
 function deteclenguage() {

@@ -110,9 +110,9 @@ function downloadAllStore2() {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
                                     if (StoreNo == StoreNoT) {
-                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore(); >" + StoreName + "</h1>";
                                     } else {
-                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore(); >" + StoreName + "</h1>";
                                     }
                                 });
                                 $('#list_store').append(show);
@@ -295,6 +295,19 @@ function updateStoreUsedTableStore(storeNo) {
 }
 
 
+function writeStore(){
+    var storeName="";
+    var storeNo="";
+    localDB.transaction(function (tx) {
+                tx.executeSql("SELECT * FROM " + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
+                    storeName = results.rows.item(0).StoreName;
+                    storeNo = results.rows.item(0).StoreNo;         
+                    $('.nameStore').text(storeName);
+                });
+            });
+}
+
+
 
 function downloadReportGraphic() {
     /***Dates***/
@@ -327,8 +340,8 @@ function downloadReportGraphic() {
                 tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
                     storeName = results.rows.item(0).StoreName;
                     storeNo = results.rows.item(0).StoreNo;
-                    document.getElementById('nameStore').innerHTML = storeName;
-
+                    
+                    $('.nameStore').text(storeName);
 
                     /**********OBTENEMOS LAS FECHAS DE LA BASE DE DATOS**************/
                     localDB.transaction(function (tx) {
@@ -506,19 +519,15 @@ function existDataDate() {
     } catch (e) {
         console.log("Error existsData " + e + ".");
     }
-
 }
 
 function insertFirstTimeDate(dateStart, dateEnd, dateUntil) {
-
     var query = "INSERT INTO " + TABLE_CUSTOM_DATE_RANGE +
             "(" + KEY_DATE_START + ", " + KEY_DATE_END + ", " + KEY_DATE_CHOOSED + ") VALUES (?,?,?)";
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [dateStart, dateEnd, dateUntil], function (transaction, results) {
-
             }, errorHandler);
-
         });
     } catch (e) {
         console.log("Error addData " + e + ".");
