@@ -378,7 +378,6 @@ function MSG_CHOOSE_DATE_COMPARE_2() {
     $("#lblChooseCompare").text("Elegir fecha de comparación");
 }
 
-
 function MSG_DATE_COMPARE_2() {
     $("#lbldateToCompare").text("Fecha de comparación");
 }
@@ -388,8 +387,8 @@ function MSG_BACK_2() {
 }
 
 function MSG_INFORMATION_2() {
-    $(".lblinformation").text("Información");
-    $(".lblinformation1").text("Información");
+    $(".lblChangeRange").text("Cambiar Rango");
+    $(".lblClasificationRange").text("Rango de Clasificación");
 }
 
 function MSG_CHOOSE_CLASIFICATION_2() {
