@@ -148,6 +148,7 @@ header button,
     text-overflow: ellipsis !important;
     max-width: 92px;
     min-width: 44px;
+    height: 44px;
 }
 header button:active{
     opacity: 0.3;
