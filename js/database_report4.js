@@ -656,6 +656,7 @@ function deteclenguage_R4() {
         MSG_OPTIONS_4();
         MSG_BACK_4();
         MSG_CHOOSE_MARGEN_4();
+        MSG_LBL_CHANGE_ALIAS_CLOSE();
         MODAL_R4();
         MODAL_ORIENTATION_R4();
     }

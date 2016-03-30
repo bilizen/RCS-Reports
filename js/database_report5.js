@@ -111,9 +111,9 @@ function downloadAllstore52() {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
                                     if (StoreNo == StoreNoT) {
-                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
                                     } else {
-                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
                                     }
                                 });
                                 $('#list_store5').append(show);
@@ -576,7 +576,9 @@ function changeLanguage5() {
         $('thead th:nth-child(3)').text('Vental Total');
         $('thead th:nth-child(4)').text('Meta');
         //range date head
-        $('.date span').text('Seleccione rango de fechas');
+        $('.ChooseRange').text('Elegir Rango');
+        $('.ChooseStore').text('Elegir Tienda');
+        $('.close').text("Cerrar");
         $('thead th:nth-child(2)').text('Unidades Vendidas');
         $('thead th:nth-child(3)').text('Vental Total');
         $('thead th:nth-child(4)').text('Meta');
@@ -584,7 +586,6 @@ function changeLanguage5() {
         $('#lbldateStart').text('Fecha inicio');
         $('.txt_options').text("Opciones");
         $('#txtBack').text("Retornar");
-        $('#show_modalStore5 .modal-header').text("Seleccione su tienda");
         $('#txtOk').text("Aceptar");
         $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
         $("#title_store_R5").text("Mensaje");

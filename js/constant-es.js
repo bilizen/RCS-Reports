@@ -380,6 +380,7 @@ function MSG_CHOOSE_DATE_COMPARE_2() {
     $("#lblChooseCompare").text("Elegir fecha de comparación");
 }
 
+
 function MSG_DATE_COMPARE_2() {
     $("#lbldateToCompare").text("Fecha de comparación");
 }
@@ -389,7 +390,8 @@ function MSG_BACK_2() {
 }
 
 function MSG_INFORMATION_2() {
-    $("#lblinformation").text("Información");
+    $(".lblinformation").text("Información");
+    $(".lblinformation1").text("Información");
 }
 
 function MSG_CHOOSE_CLASIFICATION_2() {
@@ -551,6 +553,8 @@ function MSG_BACK_4() {
 function MSG_CHOOSE_MARGEN_4(){
     $("#lblChooseMargen").text("Elegir margen");
 }
+
+ 
 function MODAL_R4(){
     $("#lblEnterMargen").text("Introduzca el Margen");
     $("#lblMargenValue").text("Valor de Margen");
@@ -630,7 +634,7 @@ function MSG_TOTAL_GOAL() {
 }
 
 function MSG_TITLE_DS_R4() {
-    $("#title_store_r4").html("Elija su tienda");
+    $(".title_store_r4").html("Elegir tienda");
 }
 function MSG_DS_OKR4() {
     $("#btn_ok_r4").html("Aceptar");

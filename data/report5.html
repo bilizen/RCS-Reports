@@ -104,7 +104,7 @@
             <!-- calendar -->
             <div id="content" class="date">
                 <div class="section">
-                    <span>Choose a Range</span>
+                    <span class="ChooseRange">Choose a Range</span>
                     <div class="section_content">
                         <div class="select-calendar">
                             <div class="item"  onclick="showCalendar(1);
@@ -119,7 +119,7 @@
                 
                 <!-- Store -->
                 <div class="section">
-                    <span>Choose a Store</span>
+                    <span class="ChooseStore">Choose a Store</span>
                     <div class="section_content">
                         <div class="select-calendar">
                             <div  class="side storeIcon" onclick="showDialogStore5();"><button class="nameStore5">Store</button></div>
@@ -147,9 +147,13 @@
         <div class="modal fade" id="show_modalStore5">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header text-center">Choose Your Store</div>
+                    <div class="modal-header text-center ChooseStore">Choose a Store</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
                     <div id="list_store5"></div>
+                    <!--
                     <button onclick="writeStore5();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true" id="txtOk">Ok</button> 
+                    -->
+                    
                 </div>
             </div>
         </div>
