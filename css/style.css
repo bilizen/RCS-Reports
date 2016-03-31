@@ -244,7 +244,7 @@ header button:active{
 }
 .img_logotitle {
     background-image: url(../img/iconReport.png) !important;
-    background-position: 2px 4px !important;
+    background-position: 2px 6px !important;
     background-size: 33px !important;
     background-repeat: no-repeat !important;
 }

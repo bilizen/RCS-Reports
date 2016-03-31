@@ -107,6 +107,20 @@ $(document).ready(function () {
         $('.options_bar_space').css('opacity', '1');
     }
 
+
+    // detect device
+    if( /Android|webOS/i.test(navigator.userAgent) ) {
+        $('#top_bar_space').remove();
+        $('#content').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
+        $('.content').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
+        $('.wrapper').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
+    }
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+        // is an Apple device
+    }
+
+    
+
     $('.visualization').hide();
     $('.general').hide();
     $('.date').hide();
@@ -135,12 +149,7 @@ $(document).ready(function () {
         $('.wrapper').height($(window).height() - $('header').height());
     });
 
-    if( /Android|webOS/i.test(navigator.userAgent) ) {
-        alert("is Android!");
-    }
-    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
-        alert("is Apple!");
-    }
+    
 });
 
 
