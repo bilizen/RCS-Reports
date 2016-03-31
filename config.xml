@@ -72,11 +72,13 @@
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960" />
 		<gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136" />
 
-		<gap:splash src="res/screen/android/ldpi.png" gap:platform="android" qualifier="ldpi"/>
-		<gap:splash src="res/screen/android/mdpi.png" gap:platform="android" qualifier="mdpi"/>
-		<gap:splash src="res/screen/android/hdpi.png" gap:platform="android" qualifier="hdpi"/>
-		<gap:splash src="res/screen/android/xhdpi.png" gap:platform="android" qualifier="xhdpi" />
-		<gap:splash src="res/screen/android/xxhdpi.png" gap:platform="android" qualifier="port-xxhdpi"/>
+		<platform name="android">
+			<splash src="res/screen/android/ldpi.png" platform="android" density="port-ldpi"/>
+			<splash src="res/screen/android/mdpi.png" platform="android" density="port-mdpi"/>
+			<splash src="res/screen/android/hdpi.png" platform="android" density="port-hdpi"/>
+			<splash src="res/screen/android/xhdpi.png" platform="android" density="port-xhdpi" />
+			<splash src="res/screen/android/xxhdpi.png" platform="android" density="port-xxhdpi"/>
+		</platform>
 
 		<access origin="*" />
 	</widget>
