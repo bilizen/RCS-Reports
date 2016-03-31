@@ -110,16 +110,17 @@ $(document).ready(function () {
 
     // detect device
     if( /Android|webOS/i.test(navigator.userAgent) ) {
-        $('#top_bar_space').remove();
-        $('#content').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
-        $('.content').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
-        $('.wrapper').css({'-webkit-transform':'translate3d(0,64px,0)','transform':'translate3d(0,64px,0)'});
+        $('.top_bar_space').remove();
+        $('header').height('44px');
+        $('#content').css({'-webkit-transform':'translate3d(0,44px,0)','transform':'translate3d(0,44px,0)'});
+        $('.content').css({'-webkit-transform':'translate3d(0,44px,0)','transform':'translate3d(0,44px,0)'});
+        $('.wrapper').css({'-webkit-transform':'translate3d(0,44px,0)','transform':'translate3d(0,44px,0)'});
     }
     if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
         // is an Apple device
     }
 
-    
+
 
     $('.visualization').hide();
     $('.general').hide();

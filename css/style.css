@@ -129,9 +129,8 @@ header{
     height: 64px;
     background-color: rgb(248, 248, 248);
 }
-#top_bar_space{
+.top_bar_space{
     height: 20px;
-    /*background-color: rgb(246, 246, 246);*/
 }
 .options_bar_space{
     position: relative;
@@ -244,8 +243,8 @@ header button:active{
 }
 .img_logotitle {
     background-image: url(../img/iconReport.png) !important;
-    background-position: 2px 6px !important;
-    background-size: 33px !important;
+    background-position: 2px 8px !important;
+    background-size: 32px !important;
     background-repeat: no-repeat !important;
 }
 
