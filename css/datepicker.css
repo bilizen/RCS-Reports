@@ -15,6 +15,10 @@ td {
     width: 30px;
     line-height: 30px;
 }
+td a{
+    display: block;
+    width: 100%;
+}
 td.ui-datepicker-current-day {
 	height: 30px;
     width: 30px;
@@ -22,8 +26,11 @@ td.ui-datepicker-current-day {
     border-radius: 50%;
 
 }
-td.ui-datepicker-current-day a{
+td.ui-datepicker-current-day a,
+td.ui-datepicker-current-day a:active,
+td.ui-datepicker-current-day a:hover{
     color: #fff;
+    text-decoration: none !important;
 }
 a.ui-datepicker-prev.ui-corner-all{
     padding-left: 18px;

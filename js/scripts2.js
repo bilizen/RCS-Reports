@@ -82,7 +82,7 @@ $(document).ready(function () {
         $('.clasRange6').val(changeinput);
     });
     $('#miModal4').css("margin-top", Math.max(0, ($(window).height() - 58 - $('#miModal4').find('.modal-dialog').height()) / 4));
-    // Centrado de los modelos al centro de la pantalla
+    // Centrado de los modales al centro de la pantalla
     $(function () {
         function reposition() {
             var modal = $(this),
@@ -129,6 +129,18 @@ $(document).ready(function () {
         $('#chartdiv6').height($(window).height() - $('header').height() -$('.selectDate').height()-9);
     });
 
+    // responsive wrapper
+    $('.wrapper').height($(window).height() - $('header').height());
+    $(window).resize(function () {
+        $('.wrapper').height($(window).height() - $('header').height());
+    });
+
+    if( /Android|webOS/i.test(navigator.userAgent) ) {
+        alert("is Android!");
+    }
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+        alert("is Apple!");
+    }
 });
 
 
@@ -158,8 +170,8 @@ function moveToLeft(valor) {
             }
         }
     }
-    $('#ios8_container').addClass('ocultar_atras');
-    $('#ios8_container').removeClass('mostrar_adelante');
+    $('.hybrid_container').addClass('ocultar_atras');
+    $('.hybrid_container').removeClass('mostrar_adelante');
 
     $('#floatWindow').addClass('mostrar');
     $('#floatWindow').removeClass('ocultar');
@@ -167,8 +179,8 @@ function moveToLeft(valor) {
     return false;
 }
 function moveToRight() {
-    $('#ios8_container').addClass('mostrar_adelante');
-    $('#ios8_container').removeClass('ocultar_atras');
+    $('.hybrid_container').addClass('mostrar_adelante');
+    $('.hybrid_container').removeClass('ocultar_atras');
 
     $('#floatWindow').addClass('ocultar');
     $('#floatWindow').removeClass('mostrar');

@@ -73,34 +73,33 @@ label{
     z-index: 10;
     width: 88%;  
 }
-/*preparando el entorno para ios8*/
-#ios8_container, #floatWindow{
+/*preparando el entorno para la app hybrid*/
+.hybrid_container, #floatWindow{
     position: absolute;
-    /*width: 375px;
-    height: 667px;*/
     width: 100%;
     height: 100%;
     top: 0; left: 0; bottom: 0; right: 0;
     margin: auto auto;
 }
-#ios8_container{
+.hybrid_container{
     background-image: none;
     /*background-color: #C3C5CA;*/
     background-repeat: no-repeat;
     background: #eeeeee; /* Old browsers */
-  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+    background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 }
-.ios8_bg{
+.hybrid_bg{
     background-color: none !important;
     background-image: url('../img/background_1024.jpg') !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     
 }
-.ios8_bg #content{
+.hybrid_bg .content,
+.hybrid_bg #content{
     opacity: 0;
     -webkit-animation: appear 0.5s forwards; 
     animation: appear 0.5s forwards;
@@ -135,6 +134,7 @@ header{
     /*background-color: rgb(246, 246, 246);*/
 }
 .options_bar_space{
+    position: relative;
     /*background-color: rgb(248, 248, 248);*/
     border-bottom: 1px solid rgb(200, 199, 204);
 }
@@ -162,15 +162,21 @@ header button:active{
     display: inline-block;
 }
 .titleLogo {
-    height: 20pt;
+    height: 24pt;
     vertical-align: middle;
 }
 #btn_left{
     position: absolute;
+    z-index: 10;
     bottom: 0;
     left: 0;
     height: 44px;
     padding-left: 9px;
+    opacity: 0;
+    -webkit-animation: fadeLeftToRight .4s forwards;
+        animation: fadeLeftToRight .4s forwards;
+    -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
 }
 #btn_left.arrow {
     padding-left: 23px;
@@ -182,7 +188,7 @@ header button:active{
 #btn_left.arrow.white{
     background-image: url(../img/backBtnWhite.svg);
 }
-#txt_login,#txt_maintitle,#txt_title, #top_txt_title,#txt_Options{
+#txt_login,#txt_maintitle,#txt_title, #top_txt_title,#txt_Options,#txt_title2{
     text-align: center;
     width: 160px;
     margin: 0 auto;
@@ -191,6 +197,11 @@ header button:active{
     white-space: nowrap;
     overflow: hidden;
     font-weight: bold;
+    opacity: 0;
+    -webkit-animation: fadeIn .4s forwards;
+        animation: fadeIn .4s forwards;
+    -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
 }
 #btn_right{
     position: absolute;
@@ -198,6 +209,11 @@ header button:active{
     right: 0;
     height: 44px;
     padding-right: 0px;
+    opacity: 0;
+    -webkit-animation: fadeRightToLeft .4s forwards;
+        animation: fadeRightToLeft .4s forwards;
+    -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
 }
 #btn_right.calendar{
     background-image: url(../img/iconCalendar.svg);
@@ -242,10 +258,11 @@ header button:active{
 .white{
     color: white;
 }
-#content{
+#content, .content, .wrapper{
     -webkit-transform: translate3d(0,64px,0);
     transform: translate3d(0,64px,0);
     background-color: #E6E7EB;
+    overflow-y: auto;
 }
 
 .logo-name{
@@ -436,8 +453,7 @@ input[type="checkbox"]:checked + label:before {
 
 .list{
     width: 100%;
-    /*height: 100%;*/
-    overflow-y: scroll;
+    overflow-y: auto;
     background-image: url('../img/Bottom-Waves-1024.png');
     background-size: cover;
     background-position: center center;
@@ -1149,6 +1165,13 @@ button.delete{
     border-bottom: 0;
 }
 
+.section_content > div{
+    opacity: 0;
+    -webkit-animation: fadeLeftToRight .4s forwards;
+        animation: fadeLeftToRight .4s forwards;
+    -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+}
 
 #css-filter-blur:hover {
   filter: progid:DXImageTransform.Microsoft.Blur(Strength=2);
@@ -1278,6 +1301,76 @@ button.delete{
     z-index: 1029 !important;
 }
 
+
+/*animation*/
+@-webkit-keyframes fadeLeftToRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3D(-10px,0,0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3D(0px,0,0);
+  }
+}
+@keyframes fadeLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translate3D(-10px,0,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3D(0px,0,0);
+  }
+}
+
+
+@-webkit-keyframes fadeRightToLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3D(10px,0,0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3D(0px,0,0);
+  }
+}
+
+@keyframes fadeRightToLeft {
+  0% {
+    opacity: 0;
+    transform: translate3D(10px,0,0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3D(0px,0,0);
+  }
+}
+
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.95,.95);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1,1);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(.95,.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+}
+
+
+
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
     #txt_login, #txt_maintitle, #txt_title, #top_txt_title, #txt_Options{
@@ -1286,7 +1379,7 @@ button.delete{
     .menu{
         background-image: url('../img/Bottom-Waves-1024.png');
     }
-    .ios8_bg{
+    .hybrid_bg{
         background-image: url('../img/background_1024.jpg') !important;    
     }
     .btn {
@@ -1325,7 +1418,7 @@ button.delete{
         padding-right: 44px;
         background-size: 34px !important;
     }
-    #content{
+    .content{
         background-size: cover;
     }
     .list .item{
@@ -1470,7 +1563,7 @@ button.delete{
     .menu{
         background-image: url('../img/Bottom-Waves-667.png');
     }
-    .ios8_bg{
+    .hybrid_bg{
         background-image: url('../img/background_667.jpg') !important;    
     }
     .actual span, .global span{
@@ -1525,8 +1618,11 @@ button.delete{
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .ios8_bg{
+    .hybrid_bg{
         background-image: url('../img/background_568.jpg') !important;    
+    }
+    .titleLogo {
+        height: 20pt;
     }
     .list .item, .menu .item{
         height: 90px;
@@ -1585,7 +1681,7 @@ button.delete{
         font-size: 13pt;
     }
     .modal-body {
-        padding: 15px;
+        padding: 10px;
     }
     span.ui-icon.ui-icon-circle-triangle-w,
     span.ui-icon.ui-icon-circle-triangle-e {
