@@ -3,7 +3,7 @@ $(document).ready(function () {/*** caraga elemento de la estructura html y esti
     onInit();/**verificamos la base de datos**/
     existDataClasification();/***llenamos tabla clasificaciones**/
     existDataDate();/**lleanmos tabla CustomRangeDate**/
-    henry2();
+    design_report2();
 });
 
 $(window).load(function () {/***asegura que la pagina ya esta cargada**/
@@ -39,11 +39,11 @@ function addDataClasificationFirstTime() {//aqui se hace uin insert
     }
 }
 
-function henry2() {
-    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height());
+function design_report2() {
+    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height()+19);
 }
 $(window).resize(function () {
-    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height());
+    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height()+19);
 });
 
 //Check if exists data , but yes or yes this function fills the table clasification
@@ -586,7 +586,7 @@ function downloadStoreClasification(_valueSelected) {
                                     $('.lblveryCritical').text('Muy Critico');
                                     $('.lblScope').text('Alcance:');
                                 }
-                                henry2();
+                                design_report2();
                             }
 
                         }, error: function (xhr, ajaxOptions, thrownError) {
