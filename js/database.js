@@ -1628,10 +1628,12 @@ function loadComboRegions(actual_, global_) {
                         $(data.data).each(function (index, value) {
                             var regionCode = value.regionCode;
                             var regionName = value.regionName;
+                            $('.region .section_content .select-region').append("<hr>");
                             $('.region .section_content .select-region')
                                     .append($("<div class='item' id=" + regionCode + ">" + regionName + "</div>")
                                             .attr("data-value", regionCode)
                                             .text(regionName));
+
                         });
 
                         showCombo();
