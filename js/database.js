@@ -2506,6 +2506,7 @@ function selectReports() {
 function showDialogStore() {
     $("#show_modalStore").modal();
     existDataStore();
+    //focusToactiveStore();
 }
 
 function existDataStore() {
@@ -2560,10 +2561,10 @@ function downloadAllStore2() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading();
+                            showLoading4();
                         },
                         complete: function () {
-                            hideLoading();
+                            hideLoading4();
                         },
                         success: function (data) {
 
@@ -2571,7 +2572,7 @@ function downloadAllStore2() {
                                 var StoreName;
                                 var StoreNo;
                                 var show = "";
-                                $("#list_store").empty();
+                                $('.list_r4').empty();
                                 $(data.report).each(function (index, value) {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
@@ -2581,13 +2582,13 @@ function downloadAllStore2() {
                                         show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                                     }
                                 });
-                                $('#list_store').append(show);
+                                $('.list_r4').append(show);
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
-                            hideLoading();
+                            //hideLoading();
                             if (current_lang == 'es')
                                 mostrarModalGeneral("Error de Conexión");
                             else
@@ -2625,10 +2626,10 @@ function downloadAllStore() {
                 crossdomain: true,
                 async: true,
                 beforeSend: function () {
-                    showLoading();
+                    showLoading4();
                 },
                 complete: function () {
-                    hideLoading();
+                    hideLoading4();
                 },
                 success: function (data, textStatus, XMLHttpRequest) {
                     if (data.successful > 0) {
@@ -2636,7 +2637,7 @@ function downloadAllStore() {
                         var StoreNo;
                         var use = 1;
                         var show = "";
-                        $("#list_store").empty();
+                        $('.list_r4').empty();
                         $(data.report).each(function (index, value) {
                             StoreName = value.StoreName;
                             StoreNo = value.StoreNo;
@@ -2648,7 +2649,7 @@ function downloadAllStore() {
                             }
 
                         });
-                        $('#list_store').append(show);
+                        $('.list_r4').append(show);
 
                     }
 
@@ -2659,7 +2660,7 @@ function downloadAllStore() {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    //hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -2688,7 +2689,7 @@ function insertTableStore(StoreNo, StoreName, use) {
 }
 
 function setStoreNo(storeNo) {
-    $('#list_store h1').removeClass('active');
+    $('.list_store h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
     updateStore(storeNo, StoreName);
@@ -2715,6 +2716,46 @@ function updateStore(storeNo, StoreName) {
 }
 //acaba function del reporte4
 
+function showLoading5() {
+    $('#show_modalStore5 .list_r5').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
+    $('#show_modalStore5 .list_r5').css('background', 'rgba(0,0,0,0.23)');
+    $('#show_modalStore5 #btnStore').attr('disabled', 'disabled');
+}
+
+function showLoading4() {
+    $('#show_modalStore .list_r4').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
+    $('#show_modalStore .list_r4').css('background', 'rgba(0,0,0,0.23)');
+    $('#show_modalStore #btnStore').attr('disabled', 'disabled');
+}
+
+function hideLoading5() {
+//    setTimeout(function () {
+    $('#show_modalStore5 .loader-ios').remove();
+    $('#show_modalStore5 .list_r5').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore5 .list_r5 h1').removeClass('hide');
+    $('#show_modalStore5 #btnStore').removeAttr('disabled');
+
+    setTimeout(function () {
+        focusToactiveStore5();
+    }, 500);
+
+//    }, 3200);
+}
+function hideLoading4() {
+//    setTimeout(function () {
+    $('#show_modalStore .loader-ios').remove();
+    $('#show_modalStore .list_r4').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore .list_r4 h1').removeClass('hide');
+    $('#show_modalStore #btnStore').removeAttr('disabled');
+
+    setTimeout(function () {
+        focusToactiveStore4();
+    }, 500);
+
+//    }, 3200);
+}
+
+
 
 
 
@@ -2722,6 +2763,7 @@ function updateStore(storeNo, StoreName) {
 function showDialogStore5() {
     $("#show_modalStore5").modal();
     existDataStore_report5();
+    //focusToactiveStore();
 }
 
 function existDataStore_report5() {
@@ -2772,10 +2814,11 @@ function downloadAllstore52() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading();
+                            showLoading5();
                         },
                         complete: function () {
-                            hideLoading();
+                            hideLoading5();
+                            
                         },
                         success: function (data) {
 
@@ -2783,7 +2826,7 @@ function downloadAllstore52() {
                                 var StoreName;
                                 var StoreNo;
                                 var show = "";
-                                $("#list_store5").empty();
+                                $(".list_r5").empty();
                                 $(data.report).each(function (index, value) {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
@@ -2793,13 +2836,15 @@ function downloadAllstore52() {
                                         show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                                     }
                                 });
-                                $('#list_store5').append(show);
+                                $('.list_r5').append(show);
+                                //focusToactiveStore5();
                             }
+                            
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
-                            hideLoading();
+                            //hideLoading();
                             if (current_lang == 'es')
                                 mostrarModalGeneral("Error de Conexión");
                             else
@@ -2807,6 +2852,7 @@ function downloadAllstore52() {
                         }
                     });
                 });
+                
             });
         });
     });
@@ -2836,10 +2882,10 @@ function downloadAllStore5() {
                 crossdomain: true,
                 async: true,
                 beforeSend: function () {
-                    showLoading();
+                    showLoading5();
                 },
                 complete: function () {
-                    hideLoading();
+                    hideLoading5();
                 },
                 success: function (data) {
 
@@ -2847,7 +2893,7 @@ function downloadAllStore5() {
                         var StoreName;
                         var StoreNo;
                         var show = "";
-                        $("#list_store5").empty();
+                        $(".list_r5").empty();
                         $(data.report).each(function (index, value) {
                             StoreNo = value.StoreNo;
                             StoreName = value.StoreName;
@@ -2858,13 +2904,13 @@ function downloadAllStore5() {
                                 show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
                             }
                         });
-                        $('#list_store5').append(show);
+                        $('.list_r5').append(show);
                     }//modal no hay data
                 }, error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    //hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -2875,7 +2921,36 @@ function downloadAllStore5() {
     });
 }
 
+
+
+
 //acaba function report 5
+
+
+//focus para el modal 4
+function focusToactiveStore4() {
+
+    var list4 = $('.list_r4');
+
+    list4.animate({
+        scrollTop: $('.list_r4 .active').offset().top - list4.offset().top + list4.scrollTop()
+    });
+}
+
+//focus para el modal 5 
+function focusToactiveStore5() {
+    
+     var list5 = $('.list_r5');
+
+    list5.animate({
+        scrollTop: $('.list_r5 .active').offset().top - list5.offset().top + list5.scrollTop()
+    });
+    
+
+    
+}
+
+
 
 
 

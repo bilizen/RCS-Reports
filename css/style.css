@@ -589,7 +589,7 @@ input[type="checkbox"]:checked + label:before {
 }
 
 
-#list_store h1,#list_store5 h1{ 
+.list_store h1{ 
     padding: 10px 6%;
     text-align: center;
 }
@@ -1155,8 +1155,19 @@ button.delete{
     font-weight: bold;
     text-align: center;
 }
- #list_store h1:nth-child(2n){
+ .list_store h1:nth-child(2n){
     background-color: #e6e6e9;
+}
+
+.list_store1{
+    padding: 13pt;
+    text-align: center;
+    line-height: 22pt;
+}
+
+.active{
+    background-color: rgb(21, 125, 251) !important;
+    color: white;
 }
 
 .transparent{
@@ -1181,6 +1192,11 @@ button.delete{
   top: -2px;
 }
 
+@media only screen and (min-width : 320px) and (max-width : 568px) { 
+    .list_store{
+        height: 200px;
+    }
+}
 
 @media (-webkit-max-device-pixel-ratio: 1) {
     li, input, textarea {
@@ -1193,6 +1209,11 @@ button.delete{
         background-image: none;
         border-bottom: 1px solid rgb(142, 142, 146);
     }
+}
+
+.list_store .loader-ios{
+	text-align: center;
+	margin-top: 112px;
 }
 
 .loader-ios {
@@ -1488,15 +1509,18 @@ button.delete{
         margin-bottom: 14pt;
     }
     
-    #list_store h1, #list_store5 h1 {
+    .list_store h1 {
         padding: 12pt 6%;
         font-size: 15pt;
     }
     .modal-header {
         font-size: 14pt;
     }
-    #list_store{
-        height: 320px !important;
+    .list_store{
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow-y: scroll;    
     }
     .ui-datepicker-month{
         font-size: 16pt;

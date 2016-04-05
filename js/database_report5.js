@@ -38,32 +38,12 @@ $(window).load(function () {/***asegura que la pagina ya esta cargada**/
 
 
 
-function showDialogStore5() {
+function showDialogStore55() {
     $("#show_modalStore5").modal();
     //existDataStore_report5();
     downloadAllstore52();
-
 }
 
-
-
-function existDataStore_report5() {
-    try {
-        var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (transaction, results) {
-                var store = results.rows.item(0).cant;
-                if (store > 0) {
-                    downloadAllstore52();
-                } else {
-                    downloadAllStore5();
-                }
-            });
-        });
-    } catch (e) {
-        console.log("error:" + e);
-    }
-}
 
 function downloadAllstore52() {
     var xurl = "";
@@ -95,10 +75,10 @@ function downloadAllstore52() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading();
+                            showLoading5();
                         },
                         complete: function () {
-                            hideLoading();
+                            hideLoading5();
                         },
                         success: function (data) {
 
@@ -106,7 +86,7 @@ function downloadAllstore52() {
                                 var StoreName;
                                 var StoreNo;
                                 var show = "";
-                                $("#list_store5").empty();
+                                $(".list_r5").empty();
                                 $(data.report).each(function (index, value) {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
@@ -116,7 +96,8 @@ function downloadAllstore52() {
                                         show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
                                     }
                                 });
-                                $('#list_store5').append(show);
+                                $('.list_r5').append(show);
+                                //focusToactiveStore();
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
@@ -136,69 +117,6 @@ function downloadAllstore52() {
 }
 
 //no se usa
-function downloadAllStore5() {
-    var xurl = "";
-    var ip = "";
-    var port = "";
-    var alias = "";
-    var site = "";
-    var array = "";
-    localDB.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
-            ip = results.rows.item(0).ip;
-            port = results.rows.item(0).port;
-            alias = results.rows.item(0).alias;
-            site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
-            $.ajax({
-                url: xurl,
-                type: 'get',
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                timeout: 15000,
-                crossdomain: true,
-                async: true,
-                beforeSend: function () {
-                    showLoading();
-                },
-                complete: function () {
-                    hideLoading();
-                },
-                success: function (data) {
-
-                    if (data.successful > 0) {
-                        var StoreName;
-                        var StoreNo;
-                        var show = "";
-                        $("#list_store5").empty();
-                        $(data.report).each(function (index, value) {
-                            StoreNo = value.StoreNo;
-                            StoreName = value.StoreName;
-                            if (index == 0) {
-                                insertTableStore(StoreNo, StoreName, '1');
-                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            } else {
-                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            }
-                        });
-                        $('#list_store5').append(show);
-                    }//modal no hay data
-                }, error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(xhr.statusText);
-                    console.log(xhr.responseText);
-                    hideLoading();
-                    if (current_lang == 'es')
-                        mostrarModalGeneral("Error de Conexión");
-                    else
-                        mostrarModalGeneral("No Connection");
-                }
-            });
-        });
-    });
-}
-//no se usa
 function insertTableStore(StoreNo, StoreName, use) {
     /***insertamos en la base de datos***/
     var queryInsert = "INSERT INTO " + TABLE_STORE + "(" + KEY_STORENO + ", " + KEY_STORENAME + ", " + KEY_USEDSTORE + ") VALUES (?,?,?)";
@@ -214,7 +132,7 @@ function insertTableStore(StoreNo, StoreName, use) {
 }
 
 function setStoreNo(storeNo) {
-    $('#list_store h1').removeClass('active');
+    $('.list_r5 h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
     updateStore(storeNo, StoreName);
@@ -592,9 +510,8 @@ function changeLanguage5() {
     }
 }
 
-function focusToactiveStore5() {
-
-    var list5 = $('#list_store5');
+function focusToactiveStore() {
+    var list5 = $('.list_store');
     list5.animate({
         scrollTop: $('.active').offset().top - list5.offset().top + list5.scrollTop()
     });

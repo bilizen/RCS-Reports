@@ -35,30 +35,9 @@ $(window).load(function () {
 });
 
 //buton Store
-function showDialogStore() {
+function showDialogStore4() {
     $("#show_modalStore").modal();
-    downloadAllStore2();
-}
-
-//no es necesario porque existe data en la TABLE_REPORT
-function existDataStore() {
-    var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (transaction, results) {
-                url = results.rows.item(0).urlBase;
-                if (url > 0) {
-                    downloadAllStore2();
-                } else {
-                    downloadAllStore();
-                }
-            }, function (transaction, error) {
-                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
-            });
-        });
-    } catch (e) {
-        console.log("Error existsData " + e + ".");
-    }
+    downloadAllStore2(); 
 }
 
 //si hay data en la TABLE_REPORT
@@ -94,10 +73,10 @@ function downloadAllStore2() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading();
+                            showLoading4();
                         },
                         complete: function () {
-                            hideLoading();
+                            hideLoading4();
                         },
                         success: function (data) {
 
@@ -105,7 +84,7 @@ function downloadAllStore2() {
                                 var StoreName;
                                 var StoreNo;
                                 var show = "";
-                                $("#list_store").empty();
+                                $(".list_r4").empty();
                                 $(data.report).each(function (index, value) {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
@@ -115,7 +94,7 @@ function downloadAllStore2() {
                                         show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore(); >" + StoreName + "</h1>";
                                     }
                                 });
-                                $('#list_store').append(show);
+                                $('.list_r4').append(show);
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
@@ -135,83 +114,9 @@ function downloadAllStore2() {
 
 }
 
-//si no hay data en la TABLE_REPORT
-function downloadAllStore() {
-    var xurl = "";
-    var ip = "";
-    var port = "";
-    var alias = "";
-    var site = "";
-    localDB.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
-            ip = results.rows.item(0).ip;
-            port = results.rows.item(0).port;
-            alias = results.rows.item(0).alias;
-            site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-
-            //xurl="http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
-            $.ajax({
-                url: xurl,
-                type: 'get',
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                timeout: 15000,
-                crossdomain: true,
-                async: true,
-                beforeSend: function () {
-                    showLoading();
-                },
-                complete: function () {
-                    hideLoading();
-                },
-                success: function (data, textStatus, XMLHttpRequest) {
-                    if (data.successful > 0) {
-                        var StoreName;
-                        var StoreNo;
-                        var use = 1;
-                        var show = "";
-                        $("#list_store").empty();
-                        $(data.report).each(function (index, value) {
-                            StoreName = value.StoreName;
-                            StoreNo = value.StoreNo;
-                            if (index == 0) {
-                                insertTableStore(StoreNo, StoreName, '1');
-                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            } else {
-                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
-                            }
-
-                        });
-                        $('#list_store').append(show);
-
-                    }
-
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-
-                    mostrarModalGeneral("asasas");
-                    console.log(xhr.status);
-                    console.log(xhr.statusText);
-                    console.log(xhr.responseText);
-                    hideLoading();
-                    if (current_lang == 'es')
-                        mostrarModalGeneral("Error de Conexión");
-                    else
-                        mostrarModalGeneral("No Connection");
-
-                }
-            });
-
-        });
-    });
-
-}
-
-
 
 function setStoreNo(storeNo) {
-    $('#list_store h1').removeClass('active');
+    $('.list_r4 h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
     updateStore(storeNo, StoreName);
@@ -663,7 +568,7 @@ function deteclenguage_R4() {
 }
 
 function focusToactiveStore() {
-    var list = $('#list_store');
+    var list = $('.list_store');
     list.animate({
         scrollTop: $('.active').offset().top - list.offset().top + list.scrollTop()
     });

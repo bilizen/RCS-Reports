@@ -353,6 +353,7 @@ $(window).load(function () {
 $(window).resize(function () {
     $(".indexSection").center(true);
 });
+
 jQuery.fn.center = function (parent) {
     if (parent) {
         parent = this.parent();

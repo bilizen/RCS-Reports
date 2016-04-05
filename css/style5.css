@@ -22,16 +22,6 @@
     background-repeat: no-repeat;
 }
 
-#list_store5{
-    width: 100%;
-    height: 232px;
-    overflow-y: scroll;
-        
-}
- #list_store5 h1:nth-child(2n){
-    background-color: #e6e6e9;
-}
-
 #lblDateStart_r4,
 #lblDateEnd_r4{
     font-size: 11px;
@@ -48,10 +38,7 @@
     transform: translate3D(0,10px,0);
 }
 #lbldateStartR4,#lbldateEndR4{display: inline-block;}
-#list_store5 .loader-ios{
-	text-align: center;
-	margin-top: 112px;
-}
+
 .table thead th{
     text-align: center;
     font-size: 16px;
@@ -106,9 +93,7 @@
 }
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
-    #list_store5{
-        height: 320px;
-    }
+
     #lblDateStart, #lblDateEnd{
         font-size: 11pt;
     }
@@ -145,8 +130,5 @@
     }
     .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
         padding:8px;
-    }
-    #list_store5{
-        height: 200px;
     }
 }
