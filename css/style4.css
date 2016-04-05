@@ -9,8 +9,8 @@
 #txt_title{
     width: inherit;
 }
-#lblDateStart,
-#lblDateEnd{
+#lblDateStart_r4,
+#lblDateEnd_r4{
     font-size: 11px;
     position: absolute;
     text-align: center;
@@ -24,7 +24,11 @@
     -webkit-transform: translate3D(0,10px,0);
     transform: translate3D(0,10px,0);
 }
-#lbldateStart,#lbldateEnd{display: inline-block;}
+#lblDateStart_r4,#lblDateEnd_r4,
+.item #lbldateStartR4,
+.item #lbldateEndR4{
+    display: inline-block;
+}
 #nameStore {
     padding-left: 10px;
     padding-right: 10px;

@@ -588,7 +588,12 @@ input[type="checkbox"]:checked + label:before {
     background-size: 80%, cover;
 }
 
-
+.list_store{
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow-y: scroll;    
+}
 .list_store h1{ 
     padding: 10px 6%;
     text-align: center;
@@ -1194,7 +1199,7 @@ button.delete{
 
 @media only screen and (min-width : 320px) and (max-width : 568px) { 
     .list_store{
-        height: 200px;
+        height: 180px;
     }
 }
 
@@ -1516,11 +1521,8 @@ button.delete{
     .modal-header {
         font-size: 14pt;
     }
-    .list_store{
-        position: relative;
-        width: 100%;
-        height: 220px;
-        overflow-y: scroll;    
+    .list_store{        
+        height: 280px;    
     }
     .ui-datepicker-month{
         font-size: 16pt;

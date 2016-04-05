@@ -22,8 +22,8 @@
     background-repeat: no-repeat;
 }
 
-#lblDateStart_r4,
-#lblDateEnd_r4{
+#lblDateStart,
+#lblDateEnd{
     font-size: 11px;
     position: absolute;
     text-align: center;
@@ -37,7 +37,19 @@
     -webkit-transform: translate3D(0,10px,0);
     transform: translate3D(0,10px,0);
 }
-#lbldateStartR4,#lbldateEndR4{display: inline-block;}
+#lblDateStart,#lblDateEnd,
+.item #lbldateStart,
+.item #lbldateEnd{
+    display: inline-block;
+}
+
+#btn_right.storeIcon,
+.storeIcon{
+    background-image: url(../img/iconStore.svg);
+    background-position: center;
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+}
 
 .table thead th{
     text-align: center;
@@ -70,6 +82,8 @@
     width: 100%;
     margin-bottom: 0px;
 }
+
+
 
 @media only screen and (orientation: portrait) { 
     .dateStartSection{
