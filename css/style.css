@@ -195,7 +195,6 @@ header button:active{
     padding-top: 20px;
     line-height: 44px;
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     font-weight: bold;
     opacity: 0;
@@ -260,8 +259,8 @@ header button:active{
     color: white;
 }
 #content, .content, .wrapper{
-    -webkit-transform: translate3d(0,64px,0);
-    transform: translate3d(0,64px,0);
+    -webkit-transform: translate3d(0,63px,0);
+    transform: translate3d(0,63px,0);
     background-color: #E6E7EB;
     overflow-y: auto;
 }
@@ -515,7 +514,6 @@ input[type="checkbox"]:checked + label:before {
     font-size: 20px;
     font-weight: bold;
     text-align: left;
-    white-space: nowrap;
 }
 .item .box .item_subtitle,.menu .box .item_subtitle{
     display: table;
@@ -664,7 +662,6 @@ hr {
 .store{
     padding: 4pt 6%;
     line-height: 0.8em;
-    white-space: nowrap;
 }
 .store:nth-of-type(2n){
     background-color: rgba(234,234,235,0.85);
@@ -677,7 +674,6 @@ hr {
     line-height: 1.6em;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
     color: #111;
 }
 .store h1.storeNameR1{
@@ -1329,6 +1325,22 @@ button.delete{
 }
 
 
+/*White space*/
+.options_bar_space div, .options_bar_space button, .options_bar_space div span,
+.item .box .item_title,.menu .box, .item, .item div,
+.store,
+.store h1,.store p,.store i, .store span,
+.actual i, .global i ,
+.item .box .item_subtitle, .menu .box .item_subtitle,
+.landLblLeft,
+.landLblRight,
+.select-general div,
+table th, table td{
+    white-space: nowrap;
+}
+
+
+
 /*animation*/
 @-webkit-keyframes fadeLeftToRight {
   0% {
@@ -1469,7 +1481,6 @@ button.delete{
     }
     .actual i, .global i {
         width: 9%;
-        white-space: nowrap;
     }
     .actual span, .global span {
         width: 19%;
@@ -1641,7 +1652,6 @@ button.delete{
     .item .box .item_subtitle, .menu .box .item_subtitle{
         display: block;
         width: 220px;
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -1751,7 +1761,6 @@ button.delete{
         float: left;
         width: 50%;
         padding: 0 3pt;
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -1759,7 +1768,6 @@ button.delete{
         float: right;
         width: 50%;
         padding: 0 3pt;
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
