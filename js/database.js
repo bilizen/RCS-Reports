@@ -993,7 +993,7 @@ function downloadByCompany(actual_, global_) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    //hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -1236,7 +1236,7 @@ function downloadByRegion(actual_, global_) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    //hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -1519,7 +1519,7 @@ function downloadByStore(actual_, global_) {
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
-                    hideLoading();
+                    ///hideLoading();
                     if (current_lang == 'es')
                         mostrarModalGeneral("Error de Conexión");
                     else
@@ -1553,10 +1553,10 @@ function loadComboRegions(actual_, global_) {
                 crossdomain: true,
                 async: true,
                 beforeSend: function () {
-
+                    //showLoading();
                 },
                 complete: function () {
-
+                    //hideLoading();
                 },
                 success: function (data, textStatus, XMLHttpRequest) {
                     $("#selectRegion").empty();
@@ -1589,7 +1589,6 @@ function loadComboRegions(actual_, global_) {
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
@@ -1852,15 +1851,15 @@ function refresh() {
     var principal = $(".select-general div:first-child()").attr("data-value");
 
 //    if (checkNetConnection() == true) {
-        var chActual = get_chActual();
-        var chGlobal = get_chGlobal();
-        if (principal == 1) {
-            downloadByCompany(chActual, chGlobal);
-        } else if (principal == 2) {
-            downloadByRegion(chActual, chGlobal);
-        } else if (principal == 3) {
-            downloadByStore(chActual, chGlobal);
-        }
+    var chActual = get_chActual();
+    var chGlobal = get_chGlobal();
+    if (principal == 1) {
+        downloadByCompany(chActual, chGlobal);
+    } else if (principal == 2) {
+        downloadByRegion(chActual, chGlobal);
+    } else if (principal == 3) {
+        downloadByStore(chActual, chGlobal);
+    }
 
 //    } else {
 //        mostrarModalGeneral();
@@ -2077,9 +2076,6 @@ function updateHideReports() {
                                                 selectReports();
                                             }
 
-
-
-
                                         } else {
                                             if (current_lang == 'es') {
                                                 mostrarModalGeneral("PIN Invalido");
@@ -2101,18 +2097,8 @@ function updateHideReports() {
                                         }
                                     }
                                 });
-
-
-
-
                             });
                         });
-
-
-
-
-
-
                     });
                 });
             });
@@ -2801,7 +2787,7 @@ function downloadAllstore52() {
                             showLoading5();
                         },
                         complete: function () {
-                            hideLoading5();                       
+                            hideLoading5();
                         },
                         success: function (data) {
 
@@ -2822,7 +2808,7 @@ function downloadAllstore52() {
                                 $('.list_r5').append(show);
                                 //focusToactiveStore5();
                             }
-                            
+
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
@@ -2835,7 +2821,7 @@ function downloadAllstore52() {
                         }
                     });
                 });
-                
+
             });
         });
     });
@@ -2991,7 +2977,7 @@ function downloadAllstore62() {
                             showLoading5();
                         },
                         complete: function () {
-                            hideLoading5();                       
+                            hideLoading5();
                         },
                         success: function (data) {
 
@@ -3012,7 +2998,7 @@ function downloadAllstore62() {
                                 $('.list_r6').append(show);
                                 //focusToactiveStore5();
                             }
-                            
+
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
@@ -3025,7 +3011,7 @@ function downloadAllstore62() {
                         }
                     });
                 });
-                
+
             });
         });
     });
@@ -3114,18 +3100,18 @@ function focusToactiveStore4() {
 
 //focus para el modal 5 
 function focusToactiveStore5() {
-     var list5 = $('.list_r5');
+    var list5 = $('.list_r5');
     list5.animate({
         scrollTop: $('.list_r5 .active').offset().top - list5.offset().top + list5.scrollTop()
-    });  
+    });
 }
 
 //focus para el modal 6 
 function focusToactiveStore6() {
-     var list6 = $('.list_r6');
+    var list6 = $('.list_r6');
     list6.animate({
         scrollTop: $('.list_r6 .active').offset().top - list6.offset().top + list6.scrollTop()
-    });  
+    });
 }
 
 
@@ -3134,12 +3120,12 @@ function focusToactiveStore6() {
 
 
 //function para lo del Login()
-function verific(){
-    var query="SELECT * FROM "+TABLE_URL;
+function verific() {
+    var query = "SELECT * FROM " + TABLE_URL;
     localDB.transaction(function (tx) {
         tx.executeSql(query, [], function (tx, results) {
-            if(results.rows.length>0){
-            $('.arrow.white').addClass('hide');
+            if (results.rows.length > 0) {
+                $('.arrow.white').addClass('hide');
             }
         });
     });

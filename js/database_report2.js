@@ -40,10 +40,10 @@ function addDataClasificationFirstTime() {//aqui se hace uin insert
 }
 
 function design_report2() {
-    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height()+19);
+    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height() + 19);
 }
 $(window).resize(function () {
-    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height()+19);
+    $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height() + 19);
 });
 
 //Check if exists data , but yes or yes this function fills the table clasification
@@ -228,7 +228,7 @@ function updaTableCustomDate2() {
             dateToCompare = document.getElementById('dateToCompare').innerHTML;
 
         }
-        
+
 
         if (valDate(dateStart, dateToCompare) && valDate(dateToCompare, dateEnd)) {
             var arrayDateStart = dateStart.split("-");
@@ -326,8 +326,16 @@ function updateClasification() {
     if (sup_buena == "" || sup_aceptable == "" || sup_deficiente == "" ||
             sup_critico == "" || muy_critico == "") {
 
-        document.getElementById('textgeneral').innerHTML = "DATA INCOMPLETA";
-        $('#modalgeneral').modal("show");
+//        document.getElementById('textgeneral').innerHTML = "DATA INCOMPLETA";
+//        $('#modalgeneral').modal("show");
+
+        if (current_lang == 'es'){
+           mostrarModalGeneral("Dato Incompleto");
+        }
+        else{
+            mostrarModalGeneral("Incomplete Data");
+        }
+           
 
     } else {
 

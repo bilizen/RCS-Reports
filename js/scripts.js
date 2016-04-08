@@ -207,7 +207,7 @@ function selectAlias() {
 }
 
 function mostrarModal() {
-    $("#show_alias").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
+    $("#ServersList").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
         "backdrop": "static",
         "keyboard": true,
         "show": true                     // garantizar el modal se muestra inmediatamente
