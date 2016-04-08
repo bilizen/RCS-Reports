@@ -1617,7 +1617,7 @@ function loadComboRegions(actual_, global_) {
                     $('.region .section_content .select-region').empty();
 
                     if (data.quantity == 1) { //este objeto data es el object que devuelve el webservice(2 atributos (1jsonarray y el otro un entero))
-
+                        alert("tiene regiones");
                         if (current_lang == 'es')
                             selectRegion = "TODAS LAS REGIONES";
 
@@ -1640,7 +1640,7 @@ function loadComboRegions(actual_, global_) {
                         downloadByStore(actual_, global_);
 
                     } else {
-
+                        alert("no ntiene regiones");
                         downloadByStore(actual_, global_);
                     }
                 },
@@ -1908,7 +1908,7 @@ function valDate(dateStar, dateEnd) {
 function refresh() {
     var principal = $(".select-general div:first-child()").attr("data-value");
 
-    if (checkNetConnection() == true) {
+//    if (checkNetConnection() == true) {
         var chActual = get_chActual();
         var chGlobal = get_chGlobal();
         if (principal == 1) {
@@ -1919,9 +1919,9 @@ function refresh() {
             downloadByStore(chActual, chGlobal);
         }
 
-    } else {
-        mostrarModalGeneral();
-    }
+//    } else {
+//        mostrarModalGeneral();
+//    }
 
 }
 
@@ -2235,6 +2235,12 @@ function showReports() {
                                     "<label class='text-report'>Alcance de Meta</label>" +
                                     "<hr>");
                         }
+                        if (report == 2407) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report6' " + check + ">" +
+                                    "<label class='text-report'>report6</label>" +
+                                    "<hr>");
+                        }
                     } else {
 
                         if (report == 2402) {
@@ -2266,6 +2272,12 @@ function showReports() {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report5' " + check + ">" +
                                     "<label class='text-report'>Goal Scope By Clerk</label>" +
+                                    "<hr>");
+                        }
+                        if (report == 2407) {
+                            $('#list_reports').append(
+                                    "<input type='checkbox' class='check_report6' " + check + ">" +
+                                    "<label class='text-report'>report6</label>" +
                                     "<hr>");
                         }
                     }
@@ -2439,10 +2451,10 @@ function selectReports() {
                         }
                         if (report == 2407) {
                             $('.menu').append(
-                                    "<button class ='item report5 " + save + "' onclick ='openReport6();' data-value='report6'>" +
+                                    "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Sales Advanced By Store</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>repor6</span>" +
                                     "<span id ='lblgvsd'  class ='item_subtitle'>Sales Advanced By Store</span>" +
                                     "</span>" +
                                     "</button>"
@@ -2510,7 +2522,7 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Sales Advanced By Store</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>reporte6</span>" +
                                     "<span id ='lblgvsd'  class ='item_subtitle'>Sales Advanced By Store</span>" +
                                     "</span>" +
                                     "</button>"
@@ -2740,16 +2752,34 @@ function updateStore(storeNo, StoreName) {
 }
 //acaba function del reporte4
 
-function showLoading5() {
-    $('#show_modalStore5 .list_r5').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
-    $('#show_modalStore5 .list_r5').css('background', 'rgba(0,0,0,0.23)');
-    $('#show_modalStore5 #btnStore').attr('disabled', 'disabled');
-}
-
 function showLoading4() {
     $('#show_modalStore .list_r4').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
     $('#show_modalStore .list_r4').css('background', 'rgba(0,0,0,0.23)');
     $('#show_modalStore #btnStore').attr('disabled', 'disabled');
+}
+
+
+function hideLoading4() {
+//    setTimeout(function () {
+    $('#show_modalStore .loader-ios').remove();
+    $('#show_modalStore .list_r4').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore .list_r4 h1').removeClass('hide');
+    $('#show_modalStore #btnStore').removeAttr('disabled');
+
+    setTimeout(function () {
+        focusToactiveStore4();
+    }, 500);
+
+//    }, 3200);
+}
+
+
+
+
+function showLoading5() {
+    $('#show_modalStore5 .list_r5').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
+    $('#show_modalStore5 .list_r5').css('background', 'rgba(0,0,0,0.23)');
+    $('#show_modalStore5 #btnStore').attr('disabled', 'disabled');
 }
 
 function hideLoading5() {
@@ -2761,19 +2791,6 @@ function hideLoading5() {
 
     setTimeout(function () {
         focusToactiveStore5();
-    }, 500);
-
-//    }, 3200);
-}
-function hideLoading4() {
-//    setTimeout(function () {
-    $('#show_modalStore .loader-ios').remove();
-    $('#show_modalStore .list_r4').css('background', 'rgba(0,0,0,0)');
-    $('#show_modalStore .list_r4 h1').removeClass('hide');
-    $('#show_modalStore #btnStore').removeAttr('disabled');
-
-    setTimeout(function () {
-        focusToactiveStore4();
     }, 500);
 
 //    }, 3200);
@@ -2841,8 +2858,7 @@ function downloadAllstore52() {
                             showLoading5();
                         },
                         complete: function () {
-                            hideLoading5();
-                            
+                            hideLoading5();                       
                         },
                         success: function (data) {
 
@@ -2951,11 +2967,203 @@ function downloadAllStore5() {
 //acaba function report 5
 
 
+
+
+//incia function del report6
+function showLoading6() {
+    $('#show_modalStore6 .list_r6').append(loading); // agrega el cargando <div class="loader-ios"... con toda la animacion del cargando
+    $('#show_modalStore6 .list_r6').css('background', 'rgba(0,0,0,0.23)');
+    $('#show_modalStore6 #btnStore').attr('disabled', 'disabled');
+}
+
+function hideLoading6() {
+//    setTimeout(function () {
+    $('#show_modalStore6 .loader-ios').remove();
+    $('#show_modalStore6 .list_r6').css('background', 'rgba(0,0,0,0)');
+    $('#show_modalStore6 .list_r6 h1').removeClass('hide');
+    $('#show_modalStore6 #btnStore').removeAttr('disabled');
+
+    setTimeout(function () {
+        focusToactiveStore6();
+    }, 500);
+
+//    }, 3200);
+}
+
+
+function showDialogStore6() {
+    $("#show_modalStore6").modal();
+    existDataStore_report6();
+    //focusToactiveStore();
+}
+
+function existDataStore_report6() {
+    try {
+        var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                var store = results.rows.item(0).cant;
+                if (store > 0) {
+                    downloadAllstore62();
+                } else {
+                    downloadAllStore6();
+                }
+            });
+        });
+    } catch (e) {
+        console.log("error:" + e);
+    }
+}
+
+function downloadAllstore62() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading5();
+                        },
+                        complete: function () {
+                            hideLoading5();                       
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $(".list_r6").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('.list_r6').append(show);
+                                //focusToactiveStore5();
+                            }
+                            
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            //hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+                
+            });
+        });
+    });
+}
+
+function downloadAllStore6() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading5();
+                },
+                complete: function () {
+                    hideLoading5();
+                },
+                success: function (data) {
+
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var show = "";
+                        $(".list_r6").empty();
+                        $(data.report).each(function (index, value) {
+                            StoreNo = value.StoreNo;
+                            StoreName = value.StoreName;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+                        });
+                        $('.list_r6').append(show);
+                    }//modal no hay data
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    //hideLoading();
+                    if (current_lang == 'es')
+                        mostrarModalGeneral("Error de Conexión");
+                    else
+                        mostrarModalGeneral("No Connection");
+                }
+            });
+        });
+    });
+}
+
+
+
+//acaba funcion del reporte6
+
+
+
+
+
+
+
 //focus para el modal 4
 function focusToactiveStore4() {
-
     var list4 = $('.list_r4');
-
     list4.animate({
         scrollTop: $('.list_r4 .active').offset().top - list4.offset().top + list4.scrollTop()
     });
@@ -2963,15 +3171,18 @@ function focusToactiveStore4() {
 
 //focus para el modal 5 
 function focusToactiveStore5() {
-    
      var list5 = $('.list_r5');
-
     list5.animate({
         scrollTop: $('.list_r5 .active').offset().top - list5.offset().top + list5.scrollTop()
-    });
-    
+    });  
+}
 
-    
+//focus para el modal 6 
+function focusToactiveStore6() {
+     var list6 = $('.list_r6');
+    list6.animate({
+        scrollTop: $('.list_r6 .active').offset().top - list6.offset().top + list6.scrollTop()
+    });  
 }
 
 

@@ -1,11 +1,17 @@
 $(document).ready(function(){
+     onInit();  
 
 	$('.value').click(function(){
 		$('.item span').text($(this).find(':first-child').text());
 	});
 
 });
-// end DOM
+
+$(window).load(function(){ 
+    deteclenguage();             
+
+});
+
 
 
 function showDialogStore() {

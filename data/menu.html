@@ -106,6 +106,14 @@
             window.location.href = "report5.html";
             return false;
         }
+        function openReport6(){
+            showDialogStore6();
+            return false;
+        }
+        function passReport6(){
+            window.location.href = "report6.html";
+            return false;
+        }
     </script>
 
 </head>
@@ -265,6 +273,20 @@
             </div>
         </div>
     </div>
+    
+    
+    <!--Modal Store  report_6-->
+    <div class="modal fade zIndex1" id="show_modalStore6">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="title_store_menu_r6" class="modal-header text-center">Choose Your Store</div>
+                <div class="list_store list_r6"></div>
+                <button onclick="passReport6();" class="btn btn-modal" data-dismiss="modal" id="btnStore6">Ok</button> 
+            </div>
+        </div>
+    </div>
+    
+    
     
     <!-- Confirm delete server -->
     <div class="modal fade zIndex3" id="ModalConfirmDelete" >
