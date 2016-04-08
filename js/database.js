@@ -489,7 +489,7 @@ function validData(pin, check) {
                 console.log(xhr.status);
                 console.log(xhr.statusText);
                 console.log(xhr.responseText);
-                hideLoading();
+                //hideLoading();
                 if (current_lang == 'es') {
                     mostrarModalGeneral("Error de Conexión");
                 } else {
@@ -614,7 +614,7 @@ function validData(pin, check) {
                                         console.log(xhr.status);
                                         console.log(xhr.statusText);
                                         console.log(xhr.responseText);
-                                        hideLoading();
+                                        //hideLoading();
                                         if (current_lang == 'es')
                                             mostrarModalGeneral("Error de Conexión");
                                         else
@@ -633,60 +633,6 @@ function validData(pin, check) {
         }
 
 
-    }
-}
-
-
-//*funcion solo para cuando ingresamos por primera vez nuestros datos*//
-function getExistData_Carlos(check) {
-    var url = "";
-    var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_URL;
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (transaction, results) {
-                url = results.rows.item(0).urlBase;
-                if (url > 0) {
-                    var ob = obtenerVariables("variable");
-                    //el ob = -1 --- todavia no hay nuevo servidor solo es lo que se recordo
-                    if (ob == "-1") {
-                        deleteConfiguration();
-                        addConfiguration(check);
-
-                    } else {
-                        var varrrrrrrr = getVariable_Parameter();
-                        if (varrrrrrrr == 1) {
-                            var ip = getIp_Parameter();
-                            var port = getPort_Parameter();
-                            var urlbase = getUrlBase_Parameter();
-                            var alias = getAlias_Parameter();
-                            var activo = getActivo_Parameter();
-                            var site = getSite_Parameter();
-
-                            updateState();
-                            addData(ip, port, urlbase, alias, activo, site);
-                        }
-                        deleteConfiguration();
-                        addConfiguration(check);
-                    }
-                } else {
-                    var ip = getIp_Parameter();
-                    var port = getPort_Parameter();
-                    var urlbase = getUrlBase_Parameter();
-                    var alias = getAlias_Parameter();
-                    var activo = getActivo_Parameter();
-                    var site = getSite_Parameter();
-
-                    addData(ip, port, urlbase, alias, activo, site);
-                    addConfiguration(check);
-
-
-                }
-            }, function (transaction, error) {
-                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
-            });
-        });
-    } catch (e) {
-        console.log("Error existsData " + e + ".");
     }
 }
 
@@ -1617,7 +1563,6 @@ function loadComboRegions(actual_, global_) {
                     $('.region .section_content .select-region').empty();
 
                     if (data.quantity == 1) { //este objeto data es el object que devuelve el webservice(2 atributos (1jsonarray y el otro un entero))
-                        alert("tiene regiones");
                         if (current_lang == 'es')
                             selectRegion = "TODAS LAS REGIONES";
 
@@ -1640,13 +1585,11 @@ function loadComboRegions(actual_, global_) {
                         downloadByStore(actual_, global_);
 
                     } else {
-                        alert("no ntiene regiones");
                         downloadByStore(actual_, global_);
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
 
-                    //mostrarModalGeneral("asasas");
                     console.log(xhr.status);
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
@@ -3265,6 +3208,7 @@ function deteclenguage() {
         MSG_DICT_TITLE();
         MSG_SHORTCUTS();
         BTN_OK();
+        TITLE_MESSAGE();
 
         //Preferences
         BTN_BACK();

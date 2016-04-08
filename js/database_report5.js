@@ -507,6 +507,7 @@ function changeLanguage5() {
         $('#txtOk').text("Aceptar");
         $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
         $("#title_store_R5").text("Mensaje");
+        
     }
 }
 

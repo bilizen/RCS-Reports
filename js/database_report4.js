@@ -37,7 +37,7 @@ $(window).load(function () {
 //buton Store
 function showDialogStore4() {
     $("#show_modalStore").modal();
-    downloadAllStore2(); 
+    downloadAllStore2();
 }
 
 //si hay data en la TABLE_REPORT
@@ -200,16 +200,16 @@ function updateStoreUsedTableStore(storeNo) {
 }
 
 
-function writeStore(){
-    var storeName="";
-    var storeNo="";
+function writeStore() {
+    var storeName = "";
+    var storeNo = "";
     localDB.transaction(function (tx) {
-                tx.executeSql("SELECT * FROM " + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
-                    storeName = results.rows.item(0).StoreName;
-                    storeNo = results.rows.item(0).StoreNo;         
-                    $('.nameStore').text(storeName);
-                });
-            });
+        tx.executeSql("SELECT * FROM " + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
+            storeName = results.rows.item(0).StoreName;
+            storeNo = results.rows.item(0).StoreNo;
+            $('.nameStore').text(storeName);
+        });
+    });
 }
 
 
@@ -245,7 +245,7 @@ function downloadReportGraphic() {
                 tx.executeSql('SELECT * FROM ' + TABLE_STORE + " WHERE " + KEY_USEDSTORE + "= '1'", [], function (tx, results) {
                     storeName = results.rows.item(0).StoreName;
                     storeNo = results.rows.item(0).StoreNo;
-                    
+
                     $('.nameStore').text(storeName);
 
                     /**********OBTENEMOS LAS FECHAS DE LA BASE DE DATOS**************/
@@ -354,8 +354,6 @@ function existDataDate() {
             transaction.executeSql(query, [], function (transaction, results) {
                 count = results.rows.item(0).countRDate;
                 if (count > 0) {
-
-
                     localDB.transaction(function (tx) {
                         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
@@ -375,6 +373,8 @@ function existDataDate() {
                                 document.getElementById('dateStart').innerHTML = arrayDateStart[2] + "-" + arrayDateStart[1] + "-" + arrayDateStart[0];
                                 document.getElementById('dateEnd').innerHTML = arraydateEnd[2] + "-" + arraydateEnd[1] + "-" + arraydateEnd[0];
                             }
+
+
 
                         });
                     });
@@ -534,17 +534,28 @@ function updatePointBalance() {
         var principal = $('#MargenValue').val();
         if (principal > 0) {
             $('#lblMargenNumber').empty();
-            $('#lblMargenNumber').append(principal + "%");
+            $('#lblMargenNumber').append(principal);
         } else {
             principal = 50;
             $('#lblMargenNumber').empty();
-            $('#lblMargenNumber').append(principal + "%");
+            $('#lblMargenNumber').append(principal);
         }
 
     } catch (e) {
         console.log("e: " + e);
     }
 }
+
+//show modal de percent
+function showModalMargen() {
+    $('#show_magen').modal('show');
+    var principal =$('#lblMargenNumber').text();
+    $('#MargenValue').focus();
+    $('#MargenValue').val(principal);
+}
+
+
+
 
 function deteclenguage_R4() {
     lang = navigator.language.split("-");
@@ -564,6 +575,8 @@ function deteclenguage_R4() {
         MSG_LBL_CHANGE_ALIAS_CLOSE();
         MODAL_R4();
         MODAL_ORIENTATION_R4();
+        BTN_OK();
+        TITLE_MESSAGE();
     }
 }
 

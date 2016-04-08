@@ -299,8 +299,8 @@ function mostrarModalGeneral(contenido) {
         "show": true                     // garantizar el modal se muestra inmediatamente
     });
 
-    $("#textgeneral").html(contenido);
-    $("#btngeneral").html("OK");
+    $(".textgeneral").html(contenido);
+    $(".btnok").html("OK");
 }
 
 function updateActual() {

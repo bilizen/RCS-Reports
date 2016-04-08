@@ -1,13 +1,13 @@
- //primero se ejecuta ready luego el load
-            $(document).ready(function(){/*** caraga elemento de la estructura html y estilos ***/
-                onInit();/**verificamos la base de datos**/
-                existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
-                henry3();
-            });
-            
-            $(window).load(function(){/***asegura que la pagina ya esta cargada**/
-                deteclenguage3();  
-            });
+//primero se ejecuta ready luego el load
+$(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
+    onInit();/**verificamos la base de datos**/
+    existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
+    henry3();
+});
+
+$(window).load(function () {/***asegura que la pagina ya esta cargada**/
+    deteclenguage3();
+});
 
 
 function combo() {
@@ -555,5 +555,8 @@ function deteclenguage3() {
         MSG_TEXT_ACUMULATE_PECENT_SALE_3();
         MSG_TEXT_ACUMULATE_PERCENT_GOAL_3();
         MSG_DATE_COMPARE_3();
+        MSG_LBL_CHANGE_ALIAS_CLOSE();
+        BTN_OK();
+        TITLE_MESSAGE();
     }
 }

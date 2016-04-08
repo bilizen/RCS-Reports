@@ -29,11 +29,7 @@
              deteclenguage();
              hideCombo();
              loadComboRegions("1","1");
-             //if(checkNetConnection()==true){
-                //downloadByStore("1","1");
-             //}else{
-                 //mostrarModalGeneral();
-             //}   
+              
         });
 
 
@@ -280,12 +276,31 @@
                             <i id="CompleteYerSale">CS:</i><span id="report1CS">Complete Year Sale</span>
                         </div>
                 </div>
-                <div class="modal-footer add">
-                    <button type="button" class="btn btn-modal" id="btnok" data-dismiss="modal" aria-hidden="true">Ok</button>
-                </div>
+                
             </div>
         </div>
     </div>
+    
+    
+     <!--Modal of CONECTION -->
+  <div class="modal fade" id="show_alias">
+      <div class="modal-dialog">
+          <div class="modal-content">                              
+              <div class="modal-body text-center">     
+                  <p class="title-alert titleMessage">Message</p>                 
+                  <p id="textgeneral" class="text-center"></p>              
+              </div>
+              <div class="modal-footer info">
+                  <button type="button" class="btn btn-modal btnok" name="btngeneral"  data-dismiss="modal" aria-hidden="true"></button>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+    
+    
+    
+    
     <script type="text/javascript" src="../js/scripts.js"></script>
     <script type="text/javascript" src="../js/scripts2.js"></script>
 </body>

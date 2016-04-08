@@ -41,12 +41,12 @@
         });
 
         function addID(abc){
-            $('#show_alias').css('z-index','1030');
+            $('#ServersList').css('z-index','1030');
             $("#txtvalue").val(abc);
         }        
 
         function addIDDelete(id){
-            $('#show_alias').css('z-index','1030');
+            $('#ServersList').css('z-index','1030');
             $("#txtvaluedelete").val(id);
         }
 
@@ -141,6 +141,23 @@
 
     </div>
     
+    
+    
+     <!--Modal OF CONECTION -->
+  <div class="modal fade" id="show_alias">
+      <div class="modal-dialog">
+          <div class="modal-content">                              
+              <div class="modal-body text-center">     
+                  <p class="title-alert titleMessage">Message</p>                 
+                  <p id="textgeneral" class="text-center"></p>              
+              </div>
+              <div class="modal-footer info">
+                  <button type="button" class="btn btn-modal btnok"  name="btngeneral"  data-dismiss="modal" aria-hidden="true"></button>
+              </div>
+          </div>
+      </div>
+  </div>
+    
     <!-- Loading -->
     <div class="modal fade" id="show_loading" >
         <div class="modal-dialog">
@@ -188,7 +205,7 @@
     </div>
 
     <!-- Modal Servers List-->
-    <div class="modal fade zIndex2" id="show_alias" >
+    <div class="modal fade zIndex2" id="ServersList" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header text-center">

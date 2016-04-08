@@ -639,5 +639,7 @@ function deteclenguage2() {
         MSG_DEFICIENT_2();
         MSG_CRITICAL_2();
         MSG_VERY_CRITICAL_2();
+        TITLE_MESSAGE();
+        BTN_OK();
     }
 }

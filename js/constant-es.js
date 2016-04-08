@@ -214,8 +214,12 @@ function MSG_SHORTCUTS() {
     $('#show_info .modal-body div:nth-child(12) span').html("Venta Año a Hoy");
 }
 function BTN_OK() {
-    $('#btnok').html("Aceptar");
+    $('.btnok').html("Aceptar");
 }
+function TITLE_MESSAGE(){
+    $('.titleMessage').html("Mensaje");
+}
+
 /*****************************/
 
 
