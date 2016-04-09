@@ -723,7 +723,7 @@ function getConfiguration() {
                                     console.log(xhr.status);
                                     console.log(xhr.statusText);
                                     console.log(xhr.responseText);
-                                    hideLoading();
+                                    //hideLoading();
                                     if (current_lang == 'es')
                                         mostrarModalGeneral("Error de Conexión");
                                     else
@@ -3003,7 +3003,7 @@ function downloadAllstore62() {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
-                            //hideLoading();
+                            hideLoading();
                             if (current_lang == 'es')
                                 mostrarModalGeneral("Error de Conexión");
                             else

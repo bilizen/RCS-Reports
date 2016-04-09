@@ -24,7 +24,7 @@
                 onInit();
                 deteclenguage();
                 var variablEE = obtenerVariables("variable");
-                if (checkNetConnection() == true) {
+                //-1 si si ingresa por primera vez o mata aplicacion
                     if (variablEE == -1) {
                         existsData();
                     } else
@@ -33,7 +33,7 @@
                         MSG_GO_ADD();
                         $("#btn_left").removeAttr("hidden");
                     }
-                }
+                
             });
             $(document).ready(function () {
                 document.addEventListener("deviceready", onDeviceReady, false);
