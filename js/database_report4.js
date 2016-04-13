@@ -139,7 +139,6 @@ function updateStore(storeNo, StoreName) {
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
-
 }
 
 

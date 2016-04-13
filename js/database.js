@@ -252,6 +252,7 @@ function delTables() {
     }
 
 }
+
 function delTable_Reports() {
     try {
         var queryDelete1 = "DELETE FROM " + TABLE_REPORTS;
@@ -2974,10 +2975,10 @@ function downloadAllstore62() {
                         crossdomain: true,
                         async: true,
                         beforeSend: function () {
-                            showLoading5();
+                            showLoading6();
                         },
                         complete: function () {
-                            hideLoading5();
+                            hideLoading6();
                         },
                         success: function (data) {
 
@@ -3003,7 +3004,7 @@ function downloadAllstore62() {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
-                            hideLoading();
+                            //hideLoading();
                             if (current_lang == 'es')
                                 mostrarModalGeneral("Error de Conexión");
                             else
@@ -3041,10 +3042,10 @@ function downloadAllStore6() {
                 crossdomain: true,
                 async: true,
                 beforeSend: function () {
-                    showLoading5();
+                    showLoading6();
                 },
                 complete: function () {
-                    hideLoading5();
+                    hideLoading6();
                 },
                 success: function (data) {
 

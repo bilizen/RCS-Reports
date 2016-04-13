@@ -51,6 +51,7 @@ $(document).ready(function () {
     //change of date ES->EN
     var lang = navigator.language.split("-");
     current_lang = (lang[0]);
+    
     if (current_lang == 'en') {
         var today=o_today.split("/");
         $('#time').text(today[1]+"/"+today[0]+"/"+today[2]);

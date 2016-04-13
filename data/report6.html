@@ -19,6 +19,7 @@
    
     <!-- AmCharts-->
     <script type="text/javascript" src="../js/amcharts.js"></script>
+    <script type="text/javascript" src="../js/amcharts_mGraphics.js" ></script>
     <script type="text/javascript" src="../js/serial.js"></script>
      <!-- TAG LENGUAGES -->
     <script type="text/javascript" src="../js/constant-es.js"></script>
@@ -36,21 +37,11 @@
                     <div id="txt_title" >
                         <span id="nameStore" onclick="refresh();">Store Name</span>
                     </div>
-                    <div id="btn_right" class="storeIcon" onclick="showDialogStore();"><button ></button></div>
+                    <div id="btn_right" class="storeIcon" onclick="moveToLeft(2);"><button ></button></div>
             </div>      
         </header>
 
         <div id="content">
-
-            <div class="section selectDate">
-                <span></span>
-                <div class="section_content">
-                    <div class="item innerLi" onclick="moveToLeft(2);" >
-                        <span id="lblTodayP">Week to Date</span>
-                        <div id="time"></div>
-                    </div>              
-                </div>
-            </div>
 
             <div class="section">
                 <div class="section_content">
@@ -63,45 +54,23 @@
 
     </div>
 
+    <!--- swiper -->
     <div id="floatWindow">
 
         <header>
             <div id="top_bar_space"></div>
             <div class="options_bar_space">
-                <div id="btn_left" class="arrow"><button onclick="moveToRight(); refresh();" id="txtBack">Back</button></div>
+                <div id="btn_left" class="arrow"><button onclick="moveToRight();" id="txtBack">Back</button></div>
                 <div id="top_txt_title" >Options</div>
                 <div id="btn_right"></div>
             </div>      
         </header>
-
-        <div id="content" class="date">
-            <div class="section">
-                <span id="lblChooseDate">Choose a date</span>
-                <div class="section_content">
-                    <div class="select-date">
-                        <div data-value="3" class="item value">
-                            <div id="lblWeek">Week to Date</div>
-                            <div id="week" class="date"></div>
-                        </div>
-                        <hr>
-                        <div data-value="4" class="item value">
-                            <div id="lblMonth">Month to Date</div>
-                            <div id="month" class="date"></div>
-                        </div>
-                        <hr>
-                        <div data-value="5" class="item value">
-                            <div id="lblYear">Year to Date</div>
-                            <div id="year" class="date"></div>
-                        </div>
-                    </div> 
-                </div>                
-            </div>
-        </div>
-
+  
+       
     </div>  
 
     <!-- rotate screen -->
-    <div class="modal fade" id="miModal4">
+    <div class="modal fade" id="miModal6">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="title_store_R4" class="modal-header text-center">Message</div>
@@ -116,7 +85,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="title_store_r4" class="modal-header text-center">Choose Your Store</div>
-                <div id="list_store">Content</div>
+                <div class="list_store list_r6" >No Store</div>
                 <button id="btn_ok_r4" onclick="downloadReportGraphic();" class="btn btn-modal" data-dismiss="modal" aria-hidden="true">Ok</button> 
             </div>
         </div>
