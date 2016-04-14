@@ -585,6 +585,16 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport5.svg') center center no-repeat;
     background-size: 80%, cover;
 }
+.report6 .iconReport{
+    background: rgba(0,183,255,1);
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background: url('../img/iconReport6.svg') center center no-repeat;
+    background-size: 80%, cover;
+}
 
 .list_store{
     position: relative;
