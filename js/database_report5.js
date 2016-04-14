@@ -91,9 +91,9 @@ function downloadAllstore52() {
                                     StoreNo = value.StoreNo;
                                     StoreName = value.StoreName;
                                     if (StoreNo == StoreNoT) {
-                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
                                     } else {
-                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo5('" + StoreNo + "');writeStore5(); >" + StoreName + "</h1>";
                                     }
                                 });
                                 $('.list_r5').append(show);
@@ -131,7 +131,7 @@ function insertTableStore(StoreNo, StoreName, use) {
     /*********************************/
 }
 
-function setStoreNo(storeNo) {
+function setStoreNo5(storeNo) {
     $('.list_r5 h1').removeClass('active');
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');

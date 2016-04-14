@@ -117,7 +117,7 @@ function graphicReport6(option) {
 }
 
 
-function showDialogStore() {
+function showDialogStore6() {
     $("#show_modalStore").modal();
     downloadStore6();
 }

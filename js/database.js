@@ -2384,8 +2384,8 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>repor6</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Sales Advanced By Store</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Grafico Avanzado por Tienda</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Venta Avanzado por Tienda</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2452,7 +2452,7 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>reporte6</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Advance Graphic By Store</span>" +
                                     "<span id ='lblgvsd'  class ='item_subtitle'>Sales Advanced By Store</span>" +
                                     "</span>" +
                                     "</button>"
