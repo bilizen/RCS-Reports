@@ -33,14 +33,13 @@
             <header>
                 <div id="top_bar_space"></div>
                 <div class="options_bar_space">
-                    <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences_r4">Return</button></div>
-                    <div id="txt_title" >
-                        <span id="nameStore" onclick="refresh();">Store Name</span>
-                    </div>
-                    <div id="btn_right" class="storeIcon" onclick="moveToLeft(2);"><button ></button></div>
+                    <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences_r6">Return</button></div>
+                    <div id="txt_title" class="titleTopBar"></div>
+                    <div id="btn_right" class="config" onclick="moveToLeft(2);"><button ></button></div>
                 </div>      
             </header>
-
+           
+            
             <div id="content">
                 <div class="section">
                     <div class="section_content">
@@ -59,7 +58,7 @@
                 <div class="top_bar_space"></div>
                 <div class="options_bar_space">
                     <div id="btn_left" class="arrow"><button onclick="moveToRight();
-                            graphicReport6(4);" id="lblBack">Back</button></div>
+                            refresh6();" id="lblBack">Back</button></div>
                     <div id="btn_right"></div>
                 </div>      
             </header>
@@ -76,21 +75,15 @@
 
 
             <div class="wrapper date">
-                <!-- calendar -->
+                 <!--  calendar -->
                 <div class="section">
-                    <span id="lblChooseRange">Choose Date</span>
-                    <div class="section_content">
-                        <div class="select-calendar">
-                            <div class="item" onclick="showCalendar(1);
-                                    mostrarCalendar();">
-                                <div id="lbldateStartR4">Date Start</div>
-                                <div id="dateStart" class="date"></div>
-                            </div>
-                            
-                        </div> 
+                    <span class="title_Date_r6">Choose Date</span>
+                    <div class="section_content item" onclick="showDialogDate6();">                    
+                        <div class="buttonItem nameDate">Week to Date</div>
+                        <button class="storeIcon"></button>
                     </div>                
                 </div>
-
+                          
                 <!-- Elegir tienda-->
                 <div class="section">
                     <span class="title_store_r6">Choose Store</span>
@@ -127,6 +120,24 @@
                 </div>
             </div>
         </div>
+        
+        
+        <!--Modal Date-->
+        <div class="modal fade" id="show_modaldate6">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center title_Date_r6">Choose Date</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
+                    <div class="list_store list_date" >
+                        <h1 class='date-3 active' data-value='3'  onclick="writeDate(3);" >Week to Date</h1>
+                        <h1 class='date-4' data-value='4'  onclick="writeDate(4);" >Month to Date</h1>
+                        <h1 class='date-5' data-value='5'  onclick="writeDate(5);" >Year to Date</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
 
         <!-- Modal -->

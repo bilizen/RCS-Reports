@@ -1,6 +1,7 @@
 $(document).ready(function () {
     onInit();
-    graphicReport6(4);
+    //por defecto que salga la semana de ventas
+    graphicReport6(3);
     
      //////
     if (window.orientation == 0) {
@@ -37,8 +38,9 @@ $(window).load(function () {
     deteclenguage();
 });
 
-function refresh() {
-
+function refresh6() {
+    var Option=$('.list_date .active').attr('data-value');
+    graphicReport6(Option);
 }
 
 function graphicReport6(option) {
@@ -57,12 +59,22 @@ function graphicReport6(option) {
             xurl = "http://" + ip + ":" + port + "/" + site + "/ReportAdvancedByStore/POST";
 
             var query2 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
-            var StoreNoT = "";
+            var StoreNoT ="";
+            var StoreName="";
+            
 
             localDB.transaction(function (tx) {
-                tx.executeSql(query1, [], function (tx, results) {
+                tx.executeSql(query2, [], function (tx, results) {
                     StoreNoT = results.rows.item(0).StoreNo;
-
+                    StoreName=results.rows.item(0).StoreName;
+                    //write en el title
+                    $('#txt_title_report6').text(StoreName);
+                    
+                    //write en el opciones -> Store
+                    $('.nameStore').text(StoreName);
+                    $('.titleTopBar').text(StoreName);
+                    
+                    
                     array = {Option: option,StoreNo: StoreNoT};
                     $.ajax({
                         url: xurl,
@@ -80,34 +92,51 @@ function graphicReport6(option) {
                         hideLoading();
                         },
                         success: function (data) {
-
+                            $('#chartdiv6').empty();
                             if (data.successful > 0) {
                                 var DayNo=[];
                                 var MonthNo=[];
                                 var PaytotalA=[];
                                 var PaytotalP=[];
-                                var StoreName;
+                                //var StoreName;
                                 var StoreNo;
+                                
                                 
                                 $(data.report).each(function (index, value) {
                                    DayNo[index] = value.DayNo;
                                    MonthNo[index]=value.MonthNo;
                                    PaytotalA[index]=value.PaytotalA;
                                    PaytotalP[index]=value.PaytotalP;
-                                   StoreName=value.StoreName;
+                                   //StoreName=value.StoreName;
                                 });
+                                
+                                //write in the  title  principal
+                                //$('#txt_title').text(StoreName);
+                                
+                                //$('.nameStore').text(StoreName);
+                               // $('#txt_title_report6').text(StoreName);
+                                
                                 //dia,mes,actual,pasado
                                 drawGraphicByStore6(DayNo,MonthNo,PaytotalA,PaytotalP);
+                            }else{
+                                if (current_lang == 'es'){
+                                    mostrarModalGeneral("No hay Datos");
+                                }else{
+                                    mostrarModalGeneral("There is no data");
+                                }
+                                
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
                             hideLoading();
-                            if (current_lang == 'es')
+                            if (current_lang == 'es'){
                                 mostrarModalGeneral("Error de Conexión");
-                            else
+                            }else{
                                 mostrarModalGeneral("No Connection");
+                            }
+                                
                         }
                     });
                 });
@@ -115,6 +144,20 @@ function graphicReport6(option) {
         });
     });
 }
+
+function showDialogDate6() {
+    $("#show_modaldate6").modal();
+}
+
+
+function writeDate(i){
+    $('.list_date h1').removeClass('active');
+    $('.date-'+i ).addClass('active');
+    //var Ndate = $('.date-'+i+'.active').attr('data-value');
+    $('.nameDate').text(  $('.date-'+i ).text()  );
+    
+}
+
 
 
 function showDialogStore6() {
@@ -197,6 +240,7 @@ function setStoreNo6(storeNo) {
     $('.storeName-' + storeNo).addClass('active');
     var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
     updateStore(storeNo, StoreName);
+    $('.nameStore').text(StoreName);
     $('#show_modalStore #btnStore').show();
 
 }
