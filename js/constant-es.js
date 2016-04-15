@@ -600,6 +600,8 @@ function MSG_DATE_START_R4() {
 function MSG_DATE_END_R4() {
     $("#lblDateEnd_r4").html("Fecha Fin");
 }
+
+//Grafico reprot 4 
 function MSG_SALES() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
@@ -636,6 +638,39 @@ function MSG_TOTAL_GOAL() {
         return "Total Goal";
     }
 }
+//
+
+//Grafico reprot 6 
+function MSG_REPORT6_YEARA() {
+    lang = navigator.language.split("-");
+    current_lang = (lang[0]);
+    if (current_lang == 'es') {
+        return "Año Actual";
+    } else {
+        return "Current Year";
+    }
+}
+
+function MSG_REPORT6_YEARP() {
+    lang = navigator.language.split("-");
+    current_lang = (lang[0]);
+    if (current_lang == 'es') {
+        return "Año Pasado";
+    } else {
+        return "Last Year";
+    }
+}
+
+function MSG_REPORT6_SALES() {
+    lang = navigator.language.split("-");
+    current_lang = (lang[0]);
+    if (current_lang == 'es') {
+        return "Ventas";
+    } else {
+        return "Sales";
+    }
+}
+//
 
 function MSG_TITLE_DS_R4() {
     $(".title_store_r4").html("Elegir tienda");
@@ -677,4 +712,26 @@ function MSGS_SIGNOUT(){
     $('#btnSignOut').text("Cerrar sesión");
     $('#lblSignOut').text("¿Está seguro que quiere cerrar sesión?");
     $('#btnYesSignOut').text("Si");
+}
+
+
+//report 6//
+function MSG_TITLE_DIALOGSTORE_R6(){
+    $('#title_store_menu_r6').text('Elija su tienda');
+}
+
+function changeLanguage6(){
+    $('#txtpreferences_r6').text('Retornar');
+    $('#lblBack').text('Atrás');
+    $('.title_Date_r6').text('Elegir Fecha');
+    $('.title_store_r6').text('Elegir Tienda');
+    $('.date-3').text('Inicio de Semana');
+    $('.date-4').text('Inicio de Mes');
+    $('.date-5').text('Inicio de Año');
+    $('.nameDate').text('Inicio de Semana');
+    $('.close').text('Cerrar');
+    $('.btnok').text('Aceptar');
+    $('.titleMessage').text('Mensaje');
+    $('.titleTopBarOpt').text('Opciones');
+    
 }

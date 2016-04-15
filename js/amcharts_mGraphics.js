@@ -156,16 +156,17 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
     var chartData = [];
 
     function maxSales() {
-        var iSalesMayorA = var3[0];
-        var iSalesMayorP = var4[0];
+        
+        var iSalesMayorA = parseFloat(var3[0]);
+        var iSalesMayorP = parseFloat(var4[0]);
         for (var i = 0; i < array3.length; i++) {
-            if (array3[i] > iSalesMayorA) {
-                iSalesMayorA = array3[i];
+            if (parseFloat(array3[i]) > iSalesMayorA) {
+                iSalesMayorA = parseFloat(array3[i]);
             }
         }
         for (var i = 0; i < array4.length; i++) {
-            if (array4[i] > iSalesMayorP) {
-                iSalesMayorP = array4[i];
+            if (parseFloat(array4[i]) < iSalesMayorP) {
+                iSalesMayorP = parseFloat(array4[i]);
             }
         }
 
@@ -321,7 +322,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
                 "dashLength": 5,
                 "gridCount": 10,
                 "position": "left",
-                "title": "Sales",
+                "title": MSG_REPORT6_SALES(),
                 "axisThickness": 2, /**grosor linea vertical*/
                 //"gridAlpha": 1,//lineas horizontales
                 "offset": 0 /**ubicacion linea vertical (mas ala izquierda o mas ala derecha)*/
@@ -331,7 +332,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
         "graphs": [{
                 "balloonText": " [[value]]",
                 "bullet": "round",
-                "title": "yearA",
+                "title": MSG_REPORT6_YEARA(),
                 //"bulletBorderThickness": 1,
                 //"hideBulletsCount": 20,
                 "valueField": "yearA",
@@ -339,7 +340,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
             }, {
                 "balloonText": "[[value]]",
                 "bullet": "round",
-                "title": "YearP",
+                "title": MSG_REPORT6_YEARP(),
                 //"bulletBorderThickness": 50,
                 //"hideBulletsCount": 50,
                 "valueField": "YearP",

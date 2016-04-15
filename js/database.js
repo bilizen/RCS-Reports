@@ -2168,7 +2168,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>report6</label>" +
+                                    "<label class='text-report'>Grafico Avanzado por Tienda</label>" +
                                     "<hr>");
                         }
                     } else {
@@ -2207,7 +2207,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>report6</label>" +
+                                    "<label class='text-report'>Advance Graphic By Store</label>" +
                                     "<hr>");
                         }
                     }
@@ -3206,11 +3206,14 @@ function deteclenguage() {
 
         //Modal Report 4 menu
         MSG_TITLE_DIALOGSTORE_R4();
-        MSG_OK_R4();
+        
         //Modal Reporte 5 menu
         MSG_TITLE_DIALOGSTORE_R5();
-        MSG_OK_R5();
+        
 
+        //Modal Reporte 6 menu
+        MSG_TITLE_DIALOGSTORE_R6();
+        
         /////////////////////////////
         /***************REPORTE1***************/
         MSG_COMPANY_1();

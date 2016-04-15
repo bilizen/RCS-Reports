@@ -35,7 +35,7 @@ $(document).ready(function () {
 });
 
 $(window).load(function () {
-    deteclenguage();
+    deteclenguage6();
 });
 
 function refresh6() {
@@ -67,8 +67,6 @@ function graphicReport6(option) {
                 tx.executeSql(query2, [], function (tx, results) {
                     StoreNoT = results.rows.item(0).StoreNo;
                     StoreName=results.rows.item(0).StoreName;
-                    //write en el title
-                    $('#txt_title_report6').text(StoreName);
                     
                     //write en el opciones -> Store
                     $('.nameStore').text(StoreName);
@@ -259,5 +257,14 @@ function updateStore(storeNo, StoreName) {
         });
     } catch (e) {
         console.log("Error updateState " + e + ".");
+    }
+}
+
+
+function  deteclenguage6(){
+    var lang = navigator.language.split("-");
+    var current_lang = (lang[0]);
+    if (current_lang == 'es') {
+        changeLanguage6();
     }
 }

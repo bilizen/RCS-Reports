@@ -301,7 +301,7 @@ function mostrarModalGeneral(contenido) {
     });
 
     $(".textgeneral").html(contenido);
-    $(".btnok").html("OK");
+    
 }
 
 function updateActual() {
