@@ -28,7 +28,7 @@ function drawGraphicByStore(var1, var2, var3, var4, _sizeRange, _dateStart) {
             // ne naegador safari al mes de se le quita 1 yaque safari lo aumenta en el mes .
             var newDate = new Date(arrayDateStart[0], arrayDateStart[1] - 1, arrayDateStart[2]);
             newDate.setDate(newDate.getDate() + i);
-            
+
             chartData.push({
                 date: newDate,
                 visits: array1[i],
@@ -87,6 +87,7 @@ function drawGraphicByStore(var1, var2, var3, var4, _sizeRange, _dateStart) {
                 "axisAlpha": 1,
                 "position": "right"
             }],
+        "startDuration": 0.3,
         "graphs": [{/**venta**/
                 //"valueAxis": "v1",
                 "lineColor": "#09B1B4", /*celeste*/
@@ -126,7 +127,8 @@ function drawGraphicByStore(var1, var2, var3, var4, _sizeRange, _dateStart) {
             }],
         "chartScrollbar": {},
         "chartCursor": {
-            "cursorPosition": "mouse"
+            "cursorPosition": "mouse",
+            "cursorColor": "#09B1B4"
         },
         "categoryField": "date",
         "categoryAxis": {
@@ -156,7 +158,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
     var chartData = [];
 
     function maxSales() {
-        
+
         var iSalesMayorA = parseFloat(var3[0]);
         var iSalesMayorP = parseFloat(var4[0]);
         for (var i = 0; i < array3.length; i++) {
@@ -165,7 +167,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
             }
         }
         for (var i = 0; i < array4.length; i++) {
-            if (parseFloat(array4[i]) < iSalesMayorP) {
+            if (parseFloat(array4[i]) > iSalesMayorP) {
                 iSalesMayorP = parseFloat(array4[i]);
             }
         }
@@ -179,102 +181,104 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
     }
 
 
-            
-            function dayDate(i){
-                       
-            var newDate = (('' +  var1[i]).length < 2 ? '0' : '') + var1[i] + '/' +
-            (('' + var2[i]).length < 2 ? '0' : '') + var2[i];
 
-            return newDate;
-            }
-            
-            
-            
-            function monthDate(i){
-                var lang = navigator.language.split("-");
-                
-    if (lang[0] == 'es') {
-        if(var2[i]==1){
-            return 'ENE';
-        }
-        if(var2[i]==2){
-            return 'FEB';
-        }
-        if(var2[i]==3){
-            return 'MAR';
-        }
-        if(var2[i]==4){
-            return 'ABR';
-        }
-        if(var2[i]==5){
-            return 'MAY';
-        }
-        if(var2[i]==6){
-            return 'JUN';
-        }
-        if(var2[i]==7){
-            return 'JUL';
-        }
-        if(var2[i]==8){
-            return 'AGO';
-        }
-        if(var2[i]==9){
-            return 'SET';
-        }
-        if(var2[i]==10){
-            return 'OCT';
-        }
-        if(var2[i]==11){
-            return 'NOV';
-        }
-        if(var2[i]==12){
-            return 'DIC';
-        }
-    } else {
-        if(var2[i]==1){
-            return 'JAN';
-        }
-        if(var2[i]==2){
-            return 'FEB';
-        }
-        if(var2[i]==3){
-            return 'MAR';
-        }
-        if(var2[i]==4){
-            return 'APR';
-        }
-        if(var2[i]==5){
-            return 'MAY';
-        }
-        if(var2[i]==6){
-            return 'JUN';
-        }
-        if(var2[i]==7){
-            return 'JUL';
-        }
-        if(var2[i]==8){
-            return 'AUG';
-        }
-        if(var2[i]==9){
-            return 'SEPT';
-        }
-        if(var2[i]==10){
-            return 'OCT';
-        }
-        if(var2[i]==11){
-            return 'NOV';
-        }
-        if(var2[i]==12){
-            return 'DIC';
-        }
-        
+    function dayDate(i) {
+
+        var newDate = (('' + var1[i]).length < 2 ? '0' : '') + var1[i] + '/' +
+                (('' + var2[i]).length < 2 ? '0' : '') + var2[i];
+
+        return newDate;
     }
-                       
-            var newDate = (('' +  var1[i]).length < 2 ? '0' : '') + var1[i] + '/' +
-            (('' + var2[i]).length < 2 ? '0' : '') + var2[i];
 
-            return newDate;
+
+
+
+
+    function monthDate(i) {
+        var lang = navigator.language.split("-");
+
+        if (lang[0] == 'es') {
+            if (var2[i] == 1) {
+                return 'ENE';
             }
+            if (var2[i] == 2) {
+                return 'FEB';
+            }
+            if (var2[i] == 3) {
+                return 'MAR';
+            }
+            if (var2[i] == 4) {
+                return 'ABR';
+            }
+            if (var2[i] == 5) {
+                return 'MAY';
+            }
+            if (var2[i] == 6) {
+                return 'JUN';
+            }
+            if (var2[i] == 7) {
+                return 'JUL';
+            }
+            if (var2[i] == 8) {
+                return 'AGO';
+            }
+            if (var2[i] == 9) {
+                return 'SET';
+            }
+            if (var2[i] == 10) {
+                return 'OCT';
+            }
+            if (var2[i] == 11) {
+                return 'NOV';
+            }
+            if (var2[i] == 12) {
+                return 'DIC';
+            }
+        } else {
+            if (var2[i] == 1) {
+                return 'JAN';
+            }
+            if (var2[i] == 2) {
+                return 'FEB';
+            }
+            if (var2[i] == 3) {
+                return 'MAR';
+            }
+            if (var2[i] == 4) {
+                return 'APR';
+            }
+            if (var2[i] == 5) {
+                return 'MAY';
+            }
+            if (var2[i] == 6) {
+                return 'JUN';
+            }
+            if (var2[i] == 7) {
+                return 'JUL';
+            }
+            if (var2[i] == 8) {
+                return 'AUG';
+            }
+            if (var2[i] == 9) {
+                return 'SEPT';
+            }
+            if (var2[i] == 10) {
+                return 'OCT';
+            }
+            if (var2[i] == 11) {
+                return 'NOV';
+            }
+            if (var2[i] == 12) {
+                return 'DIC';
+            }
+
+        }
+
+        var newDate = (('' + var1[i]).length < 2 ? '0' : '') + var1[i] + '/' +
+                (('' + var2[i]).length < 2 ? '0' : '') + var2[i];
+
+        return newDate;
+    }
 
 
     function graphic() {
@@ -299,7 +303,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
             }
 
         }
-        
+
         return chartData;
     }
 
@@ -309,14 +313,18 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
         "type": "serial",
         "theme": "light",
         "legend": {
-            "useGraphSettings": true
+            "useGraphSettings": true,   
+            "valueWidth":95        
         },
         "dataProvider": graphic(),
         "valueAxes": [{
+                "id":"v1",
                 "integersOnly": true,
                 "axisColor": "#09B1B4",
                 //"minimum": 0,
                 "maximum": maxSales(),
+                
+          
                 "reversed": false,
                 "axisAlpha": 1,
                 "dashLength": 5,
@@ -326,35 +334,47 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
                 "axisThickness": 2, /**grosor linea vertical*/
                 //"gridAlpha": 1,//lineas horizontales
                 "offset": 0 /**ubicacion linea vertical (mas ala izquierda o mas ala derecha)*/
-            }
-        ],
+            }],
         "startDuration": 0.3,
         "graphs": [{
+                "valueAxis":"v1",
+                "lineColor": "#BA3735", 
                 "balloonText": " [[value]]",
                 "bullet": "round",
                 "title": MSG_REPORT6_YEARA(),
-                //"bulletBorderThickness": 1,
-                //"hideBulletsCount": 20,
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 20,
                 "valueField": "yearA",
                 "fillAlphas": 0
             }, {
+                "valueAxis":"v2",
+                "lineColor": "#BAC133", 
                 "balloonText": "[[value]]",
                 "bullet": "round",
                 "title": MSG_REPORT6_YEARP(),
-                //"bulletBorderThickness": 50,
-                //"hideBulletsCount": 50,
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 20,
                 "valueField": "YearP",
                 "fillAlphas": 0
             }],
         "categoryField": "date",
+        "chartScrollbar": {},
         "chartCursor": {
             "cursorAlpha": 1,
             "zoomable": true,
-            "cursorColor": "#FF0000",
+            "cursorColor": "#09B1B4",
             "valueZoomable": false},
         "export": {
             "enabled": false,
             "position": "bottom-right"
         }
     });
+
+
+    function zoomChart() {
+        chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1);
+    }
+    chart.addListener("dataUpdated", zoomChart);
+    zoomChart();
+
 }
