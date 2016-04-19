@@ -33,7 +33,7 @@ $(document).ready(function () {/*** caraga elemento de la estructura html y esti
 });
 $(window).load(function () {/***asegura que la pagina ya esta cargada**/
     downloadAllcustomers();
-    changeLanguage5();
+    deteclenguage5();
 });
 
 
@@ -478,42 +478,21 @@ function writeStore5(){
 }
 
 
-
-/***********************Language**********************************/
-function changeLanguage5() {
-    lang = navigator.language.split("-");
-    current_lang = (lang[0]);
-    if (current_lang == 'es') {
-        //head
-        $('#txtReturn').text('Regresar');
-        $('#lblDateEnd').text('Fecha fin');
-        $('#lblDateStart').text('Fecha inicio');
-        //tabla head
-        $('thead th:nth-child(1)').text('Empleados');
-        $('thead th:nth-child(2)').text('Unidades Vendidas');
-        $('thead th:nth-child(3)').text('Vental Total');
-        $('thead th:nth-child(4)').text('Meta');
-        //range date head
-        $('.ChooseRange').text('Elegir Rango');
-        $('.ChooseStore').text('Elegir Tienda');
-        $('.close').text("Cerrar");
-        $('thead th:nth-child(2)').text('Unidades Vendidas');
-        $('thead th:nth-child(3)').text('Vental Total');
-        $('thead th:nth-child(4)').text('Meta');
-        $('#lbldateEnd').text('Fecha fin');
-        $('#lbldateStart').text('Fecha inicio');
-        $('.txt_options').text("Opciones");
-        $('#txtBack').text("Retornar");
-        $('#txtOk').text("Aceptar");
-        $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
-        $("#title_store_R5").text("Mensaje");
-        
-    }
-}
-
 function focusToactiveStore() {
     var list5 = $('.list_store');
     list5.animate({
         scrollTop: $('.active').offset().top - list5.offset().top + list5.scrollTop()
     });
+}
+
+
+
+
+/***********************Language**********************************/
+function deteclenguage5() {
+    lang = navigator.language.split("-");
+    current_lang = (lang[0]);
+    if (current_lang == 'es') {
+       changeLanguage5();
+    }
 }

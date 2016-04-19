@@ -720,6 +720,35 @@ function MSG_TITLE_DIALOGSTORE_R6(){
     $('#title_store_menu_r6').text('Elija su tienda');
 }
 
+//Language5
+function changeLanguage5(){
+     //head
+        $('#txtReturn').text('Regresar');
+        $('#lblDateEnd').text('Fecha fin');
+        $('#lblDateStart').text('Fecha inicio');
+        //tabla head
+        $('thead th:nth-child(1)').text('Empleados');
+        $('thead th:nth-child(2)').text('Unidades Vendidas');
+        $('thead th:nth-child(3)').text('Vental Total');
+        $('thead th:nth-child(4)').text('Meta');
+        //range date head
+        $('.ChooseRange').text('Elegir Rango');
+        $('.ChooseStore').text('Elegir Tienda');
+        $('.close').text("Cerrar");
+        $('thead th:nth-child(2)').text('Unidades Vendidas');
+        $('thead th:nth-child(3)').text('Vental Total');
+        $('thead th:nth-child(4)').text('Meta');
+        $('#lbldateEnd').text('Fecha fin');
+        $('#lbldateStart').text('Fecha inicio');
+        $('.txt_options').text("Opciones");
+        $('#txtBack').text("Retornar");
+        $('#txtOk').text("Aceptar");
+        $(".textRotateScreen").text("Por favor, Gire a la Posición Horizontal");
+        $(".title_rotateScreen_R5").text("Mensaje");
+        
+}
+
+//Language6
 function changeLanguage6(){
     $('#txtpreferences_r6').text('Retornar');
     $('#lblBack').text('Atrás');
@@ -733,5 +762,8 @@ function changeLanguage6(){
     $('.btnok').text('Aceptar');
     $('.titleMessage').text('Mensaje');
     $('.titleTopBarOpt').text('Opciones');
+    $(".textRotateScreen").text("Por favor, Gire a la Posición Horizontal");
+    $(".title_rotateScreen_R6").text("Mensaje");
+    
     
 }

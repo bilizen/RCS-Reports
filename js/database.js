@@ -2168,7 +2168,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Grafico Avanzado por Tienda</label>" +
+                                    "<label class='text-report'>Ventas por Tienda AP/AA</label>" +
                                     "<hr>");
                         }
                     } else {
@@ -2207,7 +2207,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Advance Graphic By Store</label>" +
+                                    "<label class='text-report'>Sales By Store LY/LT</label>" +
                                     "<hr>");
                         }
                     }
@@ -2384,8 +2384,8 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Grafico Avanzado por Tienda</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Venta Avanzado por Tienda</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Ventas por Tienda AP/AA</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compara ventas del Año Pasado/Año Actual</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2452,8 +2452,8 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Advance Graphic By Store</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Sales Advanced By Store</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Sales By Store LY/TY</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year/This Year</span>" +
                                     "</span>" +
                                     "</button>"
                                     );

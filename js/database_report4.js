@@ -554,6 +554,12 @@ function showModalMargen() {
 }
 
 
+function focusToactiveStore() {
+    var list = $('.list_store');
+    list.animate({
+        scrollTop: $('.active').offset().top - list.offset().top + list.scrollTop()
+    });
+}
 
 
 function deteclenguage_R4() {
@@ -577,11 +583,4 @@ function deteclenguage_R4() {
         BTN_OK();
         TITLE_MESSAGE();
     }
-}
-
-function focusToactiveStore() {
-    var list = $('.list_store');
-    list.animate({
-        scrollTop: $('.active').offset().top - list.offset().top + list.scrollTop()
-    });
 }
