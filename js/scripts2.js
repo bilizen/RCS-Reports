@@ -141,9 +141,9 @@ $(document).ready(function () {
         $('#chartdiv').height($(window).height() - $('header').height());
     });
     //Responsive  Report 6
-    $('#chartdiv6').height($(window).height() - $('header').height() -$('.selectDate').height()-9);
+    $('#chartdiv6').height($(window).height() - $('header').height());
     $(window).resize(function () {
-        $('#chartdiv6').height($(window).height() - $('header').height() -$('.selectDate').height()-9);
+        $('#chartdiv6').height($(window).height() - $('header').height());
     });
 
     // responsive wrapper

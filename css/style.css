@@ -1418,6 +1418,52 @@ table th, table td{
   }
 }
 
+text{
+    font-family: 'Helvetica Neue';
+}
+.iconRotate{
+    padding: 5pt 5pt 10pt;
+}
+.iconRotate img{
+    text-align: center;
+    display: block;
+    -webkit-animation-name: rotationIcon; 
+    -webkit-animation-duration: 1.25s;
+    animation-name: rotationIcon;
+    animation-duration: 1.25s;
+    -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+    animation-delay: 1s;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-fill-mode: backwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: backwards;
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out; 
+    animation-timing-function: ease-in-out;
+}
+.iconRotate img{
+    width: 44px;
+    margin: auto;
+}
+@-webkit-keyframes rotationIcon {
+    0% {
+        -webkit-transform:  rotateZ(0deg);
+    }
+    100%{
+        -webkit-transform:  rotateZ(-90deg);
+    }
+}
+
+@keyframes rotationIcon {
+    0% {
+        transform:  rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(-90deg);
+    }
+}
+
 
 
 /* iPad in portrait & landscape */
