@@ -687,8 +687,8 @@ function MSG_DATEEND_R4() {
 }
 
 function MODAL_ORIENTATION_R4(){
-     $("#list_store1").text("Por favor, Gire a la Posición Horizontal");
-     $("#title_store_R4").text("Mensaje");
+     $(".textRotateScreen").text("Por favor, Gire a la Posición Horizontal");
+     $(".title_rotateScreen_R4").text("Mensaje");
 }
 /****************************************************/
 
