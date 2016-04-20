@@ -742,7 +742,9 @@ function changeLanguage5(){
         $('#lbldateStart').text('Fecha inicio');
         $('.txt_options').text("Opciones");
         $('#txtBack').text("Retornar");
-        $('#txtOk').text("Aceptar");
+        
+        $('.titleMessage').text('Mensaje');
+        $('.btnok').text('Aceptar');
         $(".textRotateScreen").text("Por favor, Gire a la Posición Horizontal");
         $(".title_rotateScreen_R5").text("Mensaje");
         

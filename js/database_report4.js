@@ -30,8 +30,8 @@ $(document).ready(function () {
 
 
 $(window).load(function () {
-    deteclenguage_R4();
     downloadReportGraphic();
+    deteclenguage_R4();
 });
 
 //buton Store
@@ -285,7 +285,7 @@ function downloadReportGraphic() {
                                 }, complete: function () {
                                     hideLoading();
                                 }, success: function (data) {
-
+                                    $('#chartdiv').empty();
                                     if (data.successful > 0) {
                                         var arraySale = [];
                                         var arrayGoal = [];
@@ -324,6 +324,14 @@ function downloadReportGraphic() {
 
                                         drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, dateStart);
                                         $('#chartdiv').height($(window).height() - $('header').height());
+                                    }else{
+                                        if (current_lang == 'es') {
+                                            mostrarModalGeneral("No hay Datos");
+                                        } else {
+                                            mostrarModalGeneral("There is no data");
+                                        }
+
+                                        
                                     }
                                 }, error: function (xhr, ajaxOptions, thrownError) {
                                     console.log(xhr.status);

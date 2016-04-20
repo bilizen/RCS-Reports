@@ -101,6 +101,7 @@ function getDataClasification() {
             $('#clasRange4').val(sup_critico);
             $('.clasRange5').val(muy_critico);
             $('#clasRange5').val(muy_critico);
+            $('#clasRange5').focus();
         });
     });
 }
@@ -325,10 +326,7 @@ function updateClasification() {
 
     if (sup_buena == "" || sup_aceptable == "" || sup_deficiente == "" ||
             sup_critico == "" || muy_critico == "") {
-
-//        document.getElementById('textgeneral').innerHTML = "DATA INCOMPLETA";
-//        $('#modalgeneral').modal("show");
-
+        
         if (current_lang == 'es'){
            mostrarModalGeneral("Dato Incompleto");
         }
@@ -367,7 +365,7 @@ function updateClasification() {
                             value = $(".select-clasification .init").attr('data-value');
 
                             $('#show_info').modal('toggle');
-                            downloadStoreClasification(value);
+                            //downloadStoreClasification(value);
 
                         }
                     }, errorHandler);
@@ -377,6 +375,14 @@ function updateClasification() {
             }
 
         } else {
+            if (current_lang == 'es'){
+           mostrarModalGeneral("Dato Invalido");
+        }
+        else{
+            mostrarModalGeneral("Invalid Data");
+        }
+            
+            
         }
     }
 }

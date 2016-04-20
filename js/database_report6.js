@@ -118,7 +118,6 @@ function graphicReport6(option) {
                                 }else{
                                     mostrarModalGeneral("There is no data");
                                 }
-                                
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
