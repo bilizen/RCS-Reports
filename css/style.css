@@ -215,7 +215,8 @@ header button:active{
     -webkit-animation-delay: 0.2s;
         animation-delay: 0.2s;
 }
-#btn_right.calendar{
+#btn_right.calendar,
+.calendar{
     background-image: url(../img/iconCalendar.svg);
     background-position: 6px;
     background-size: 32px 32px;
@@ -231,6 +232,13 @@ header button:active{
     background-image: url(../img/iconConfig.svg);
     background-position: 4px;
     background-size: 31px 31px;
+    background-repeat: no-repeat;
+}
+#btn_right.storeIcon,
+.storeIcon{
+    background-image: url(../img/iconStore.svg);
+    background-position: center;
+    background-size: 34px 34px;
     background-repeat: no-repeat;
 }
 #btn_right.side {
@@ -810,6 +818,8 @@ div[class^="detalle-"] span{
     height: 50px;
     opacity: 1;
     color: #0000CD;
+
+    font-size: 14px;
 }
 .close.back{
     right: inherit;
@@ -1097,6 +1107,7 @@ button.delete{
 }
 .modal-header{
     padding: 9pt;
+    font-weight: bold;
 }
 .modal.fade .modal-dialog {
      -webkit-transform: translate(0,-2%) scale3d(1.35,1.35,1); 
@@ -1420,6 +1431,9 @@ table th, table td{
 
 text{
     font-family: 'Helvetica Neue';
+}
+.textRotateScreen{
+    text-align: center;
 }
 .iconRotate{
     padding: 5pt 5pt 10pt;

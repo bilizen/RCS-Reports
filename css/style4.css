@@ -39,13 +39,6 @@
     font-weight: bold;
 }
 
-#btn_right.storeIcon,
-.storeIcon{
-    background-image: url(../img/iconStore.svg);
-    background-position: center;
-    background-size: 34px 34px;
-    background-repeat: no-repeat;
-}
 
 #storeName{
     margin-top: 15px;
