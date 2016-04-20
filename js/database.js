@@ -189,7 +189,7 @@ nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TR
 
 
 //***************************************//
-function henry1() {
+function hideComboRegion() {
     var windowh = $(window).height();
     var headerh = $('header').height();
     var regionh = $('#divRegion').height();
@@ -987,7 +987,7 @@ function downloadByCompany(actual_, global_) {
                             mostrar += "<hr>";
                             $("#items").append(mostrar);
                         });
-                        henry1();
+                        hideComboRegion();
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1230,7 +1230,7 @@ function downloadByRegion(actual_, global_) {
                             mostrar = "";
 
                         });
-                        henry1();
+                        hideComboRegion();
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -1510,7 +1510,7 @@ function downloadByStore(actual_, global_) {
                             indice++;
 
                         });
-                        henry1();
+                        hideComboRegion();
                         mostrarIndice(indice);
                         deteclenguage();
                     }
@@ -2168,7 +2168,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Ventas por Tienda AP/AA</label>" +
+                                    "<label class='text-report'>Ventas por Tienda</label>" +
                                     "<hr>");
                         }
                     } else {
@@ -2207,7 +2207,7 @@ function showReports() {
                         if (report == 2407) {
                             $('#list_reports').append(
                                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Sales By Store LY/LT</label>" +
+                                    "<label class='text-report'>Sales By Store</label>" +
                                     "<hr>");
                         }
                     }
@@ -2384,8 +2384,8 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Ventas por Tienda AP/AA</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compara ventas del Año Pasado/Año Actual</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Ventas por Tienda</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compara ventas del Año Pasado vs Año Actual</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2452,8 +2452,8 @@ function selectReports() {
                                     "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Sales By Store LY/TY</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year/This Year</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Sales By Store</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year vs This Year</span>" +
                                     "</span>" +
                                     "</button>"
                                     );

@@ -2,7 +2,7 @@
 $(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
     onInit();/**verificamos la base de datos**/
     existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
-    henry3();
+    sizeSpaceStores3();
 });
 
 $(window).load(function () {/***asegura que la pagina ya esta cargada**/
@@ -64,7 +64,7 @@ function combo() {
 
 }
 ///cambiar tamaño de la barra de desplazamiento
-function henry3() {
+function sizeSpaceStores3() {
     $('.section.list').height($(window).height() - ($('header').height() + $('.select-region').height() + $('nav').height()) - 2);
     $(window).resize(function () {
         $('.section.list').height($(window).height() - ($('header').height() + $('.select-region').height() + $('nav').height()) - 2);
@@ -147,7 +147,7 @@ function refresh_report3(regionCode) {
                                 sumPercentSale = (sumPercentSale / (can + 1)).toFixed(2);
                             }
                             $('#contentReport3').append(show);
-                            henry3();
+                            sizeSpaceStores3();
                             $('#totalpromedio').empty();
                             $('#totalpromedio').append(sumTotalGoal);
                             $('#totalGoalPercentage').empty();
@@ -278,7 +278,7 @@ function existDataDate_report3() {
                                                 sumPercentSale = (sumPercentSale / (can + 1)).toFixed(2);
                                             }
                                             $('#contentReport3').append(show);
-                                            henry3();
+                                            sizeSpaceStores3();
                                             $('#totalpromedio').empty();
                                             $('#totalpromedio').append(sumTotalGoal);
                                             $('#totalGoalPercentage').empty();
@@ -386,7 +386,7 @@ function existDataDate_report3() {
                                         sumPercentSale = (sumPercentSale / (can + 1)).toFixed(2);
                                     }
                                     $('#contentReport3').append(show);
-                                    henry3();
+                                    sizeSpaceStores3();
                                     $('#totalpromedio').empty();
                                     $('#totalpromedio').append(sumTotalGoal);
                                     $('#totalGoalPercentage').empty();

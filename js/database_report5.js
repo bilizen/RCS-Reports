@@ -160,7 +160,7 @@ function updateStore(storeNo, StoreName) {
 
 
 // funcion para disminuir o aumentar la barra desplazamiendo
-function henry5() {
+function sizeSpaceStores5() {
     $('.list').height($(window).height() - $('header').height());
 }
 $(window).resize(function () {
@@ -354,7 +354,7 @@ function downloadAllcustomers() {
                                             show += "</tr>";
                                         });
                                         $("#list-empleados").append(show);
-                                        henry5();
+                                        sizeSpaceStores5();
                                     } else {
                                         if (current_lang == 'es') {
                                             mostrarModalGeneral("No hay Datos");
