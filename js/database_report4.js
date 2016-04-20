@@ -328,7 +328,7 @@ function downloadReportGraphic() {
                                         if (current_lang == 'es') {
                                             mostrarModalGeneral("No hay Datos");
                                         } else {
-                                            mostrarModalGeneral("There is no data");
+                                            mostrarModalGeneral("No data found");
                                         }
 
                                         

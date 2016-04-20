@@ -114,9 +114,9 @@ function graphicReport6(option) {
                                 drawGraphicByStore6(DayNo,MonthNo,PaytotalA,PaytotalP);
                             }else{
                                 if (current_lang == 'es'){
-                                    mostrarModalGeneral("No hay Datos");
+                                    mostrarModalGeneral("No hay datos");
                                 }else{
-                                    mostrarModalGeneral("There is no data");
+                                    mostrarModalGeneral("No data found");
                                 }
                             }
                         }, error: function (xhr, ajaxOptions, thrownError) {
