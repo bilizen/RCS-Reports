@@ -690,8 +690,7 @@ hr {
     font-size: 20px;
     font-weight: bold;    
     line-height: 1.6em;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    white-space: pre-line;
     color: #111;
 }
 .store h1.storeNameR1{
@@ -1350,7 +1349,7 @@ button.delete{
 .options_bar_space div, .options_bar_space button, .options_bar_space div span,
 .item .box .item_title,.menu .box, .item, .item div,
 .store,
-.store h1,.store p,.store i, .store span,
+.store p,.store i, .store span,
 .actual i, .global i ,
 .item .box .item_subtitle, .menu .box .item_subtitle,
 .landLblLeft,
