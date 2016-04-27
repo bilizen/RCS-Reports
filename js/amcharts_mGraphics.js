@@ -282,7 +282,7 @@ function drawGraphicByStore6(var1, var2, var3, var4) {
 
 
     function graphic() {
-        if (var1[0] > 0) {
+        if (parseFloat(var1[0]) > 0) {
             //cuadno es por dia de la semana
             for (var i = 0; i < var1.length; i++) {
                 chartData.push({

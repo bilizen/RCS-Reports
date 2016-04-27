@@ -252,9 +252,7 @@ function MSG_TXT_TITLE_1() {
 function MSG_SPN_HEADER_1() {
     $('#section_header').text("Elegir Filtros");
 }
-function MSG_SPN_TITLE_1() {
-    $('#txt_title').text("Metas vs Ventas");
-}
+
 
 function MSG_LBL_DET_DIC_1(){
     $('#TodayGoal').text("MH:");
@@ -346,13 +344,7 @@ function MSG_TODAYP_1(){
 
 /************REPORTE 2  *******************/
 
-function MSG_TITLE_STORE_CLASIFICATION_2() {
-    $('#refresh').text("Clasificación por tienda");
-}
 
-function MSG_TITLE_OPTIONS_2() {
-    $("#txt_title").text("Clasificación por tienda");
-}
 
 function MSG_RETURN_2() {
     $("#txtReturn").text("Retornar");
@@ -459,9 +451,7 @@ function MSG_VERY_CRITICAL_2() {
 /*******************************************/
 
 /**************REPORTE3***************/
-function MSG_LBL_PROGRESS_BY_STORE_3() {
-    $("#refresh").text("Progreso en % por Tienda");
-}
+
 
 function MSG_RETURN_3() {
     $("#txtpreferences").text("Retornar");

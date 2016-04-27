@@ -104,12 +104,7 @@ function graphicReport6(option) {
                                    //StoreName=value.StoreName;
                                 });
                                 
-                                //write in the  title  principal
-                                //$('#txt_title').text(StoreName);
-                                
-                                //$('.nameStore').text(StoreName);
-                               // $('#txt_title_report6').text(StoreName);
-                                
+                               
                                 //dia,mes,actual,pasado
                                 drawGraphicByStore6(DayNo,MonthNo,PaytotalA,PaytotalP);
                             }else{

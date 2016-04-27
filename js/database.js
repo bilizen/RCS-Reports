@@ -1538,6 +1538,10 @@ function loadComboRegions(actual_, global_) {
     var c_port = "";
     var c_site = "";
     var selectRegion = "ALL REGION";
+    
+    //pinta el titulo del reporte1
+    $('#txt_title').text(localStorage.getItem("titleReport1"));
+    
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
             c_ip = results.rows.item(0).ip;
@@ -2015,7 +2019,7 @@ function insertarTableReports(NameReport, Activo) {
     }
 }
 
-
+/*
 function updateHideReports() {
     try {
         var query1 = "SELECT * FROM " + TABLE_URL + " WHERE  " + KEY_USE + " = '1'";
@@ -2056,12 +2060,15 @@ function updateHideReports() {
                                             $("#txtUser").text(data.employeeName);
 
                                             var igual = 0;
-                                            for (var a = 0; a < results.rows.length; a++) {
-                                                if (arrReport[a] == results.rows.item(a).report) {
+                                            if(arrReport.length==results.rows.length){
+                                               for (var a = 0; a < results.rows.length; a++) {    
+                                                if (arrReport[a].functionCode == results.rows.item(a).report) {
                                                     igual++;
                                                 }
+                                               } 
                                             }
-                                            if (data.report.length == igual) {
+                                            
+                                            if (arrReport.length == igual) {
                                                 //pinta los reportes en el menu.html                  
                                                 selectReports();
                                             } else {
@@ -2069,8 +2076,8 @@ function updateHideReports() {
                                                 delTable_Reports();
                                                 //limpia el html de menu.html
                                                 $('.menu').empty();
-                                                for (var i = 0; i < data.report.length; i++) {
-                                                    var report = data.report[i].toString();
+                                                for (var i = 0; i < arrReport.length; i++) {
+                                                    var report = arrReport[i].functionCode.toString();
                                                     insertarTableReports(report, "1");
                                                 }
                                                 //pinta los reportes en el menu.html                  
@@ -2110,115 +2117,7 @@ function updateHideReports() {
     }
 }
 
-function showReports() {
-    $('#ModalReportsOption').modal('show');
-
-    try {
-        var query1 = "SELECT * FROM " + TABLE_REPORTS;
-        var report = "";
-        var check = "";
-        var active = "";
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query1, [], function (transaction, results) {
-                $('#list_reports').empty();
-                for (var i = 0; i < results.rows.length; i++) {
-                    report = results.rows.item(i).report;
-                    active = results.rows.item(i).activo;
-                    if (active == 1) {
-                        check = "checked";
-                    } else {
-
-                        check = "";
-                    }
-
-                    if (current_lang == 'es') {
-                        if (report == 2402) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report1' " + check + ">" +
-                                    "<label class='text-report'>Metas vs Ventas</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2403) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report2' " + check + ">" +
-                                    "<label class='text-report'>Clasificación por Tienda</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2404) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report3' " + check + ">" +
-                                    "<label class='text-report'>Progreso en % por tienda</label>" +
-                                    "<hr>");
-
-
-                        }
-                        if (report == 2405) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report4' " + check + ">" +
-                                    "<label class='text-report'>Gráfico Avanzado</label>" +
-                                    "<hr>");
-
-                        }
-                        if (report == 2406) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report5' " + check + ">" +
-                                    "<label class='text-report'>Alcance de Meta</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2407) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Ventas por Tienda</label>" +
-                                    "<hr>");
-                        }
-                    } else {
-
-                        if (report == 2402) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report1' " + check + ">" +
-                                    "<label class='text-report'>Goal VS Sales</label>" +
-                                    "<hr>");
-
-                        }
-                        if (report == 2403) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report2' " + check + ">" +
-                                    "<label class='text-report'>Store Clasification</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2404) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report3' " + check + ">" +
-                                    "<label class='text-report'>% Progress By Store</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2405) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report4' " + check + ">" +
-                                    "<label class='text-report'>Advance Graphic</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2406) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report5' " + check + ">" +
-                                    "<label class='text-report'>Goal Scope By Clerk</label>" +
-                                    "<hr>");
-                        }
-                        if (report == 2407) {
-                            $('#list_reports').append(
-                                    "<input type='checkbox' class='check_report6' " + check + ">" +
-                                    "<label class='text-report'>Sales By Store</label>" +
-                                    "<hr>");
-                        }
-                    }
-                }
-            });
-        });
-    } catch (e) {
-        console.log("error: " + e);
-    }
-
-}
+*/
 
 
 function  confirmSignOut() {
@@ -2253,6 +2152,8 @@ function exitsUsers() {
 
 }
 
+/*
+//Button ok hide/show reports
 function buttonOkReports() {
     $('#ModalReportsOption').modal('hide');
     if ($('.check_report1').is(':checked')) {
@@ -2286,10 +2187,10 @@ function buttonOkReports() {
         updateCheckModalReports("2407", "0");
     }
 
-    //updateHideReports();
+    
     selectReports();
 }
-
+*/
 function updateCheckModalReports(report, active) {
     try {
         var query1 = "UPDATE " + TABLE_REPORTS + " SET " + KEY_ACTIVO + "='" + active + "' WHERE " + KEY_REPORT + "='" + report + "'";
@@ -2305,6 +2206,7 @@ function updateCheckModalReports(report, active) {
 
 
 //pinta los reportes en el menu.html
+/*
 function selectReports() {
     var query2 = "SELECT " + KEY_REPORT + " , " + KEY_ACTIVO + " FROM " + TABLE_REPORTS;
     try {
@@ -2420,7 +2322,7 @@ function selectReports() {
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
                                     "<span id ='lblgvst' class ='item_title'>% Progress By Store</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>Sales progress by store</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2430,8 +2332,8 @@ function selectReports() {
                                     "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>Advance Graphic</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "<span id ='lblgvst' class ='item_title'>Advance Graphic By Store</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>See Sales, goals and breakeven in graphic</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2442,7 +2344,7 @@ function selectReports() {
                                     "<span class ='box' >" +
                                     "<span class ='iconReport'> </span>" +
                                     "<span id ='lblgvst' class ='item_title'>Goal Scope By Clerk</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                    "<span id ='lblgvsd'  class ='item_subtitle'>See and compare the sale progress by employee</span>" +
                                     "</span>" +
                                     "</button>"
                                     );
@@ -2469,7 +2371,7 @@ function selectReports() {
         console.log(e);
     }
 }
-
+*/
 //dialog_report4
 function showDialogStore() {
     $("#show_modalStore").modal();
@@ -3222,7 +3124,9 @@ function deteclenguage() {
         MSG_LBL_STORE_1();
         MSG_TXT_TITLE_1();
         MSG_SPN_HEADER_1();
-        MSG_SPN_TITLE_1();
+        
+        
+       
         MSG_RPT_TG_1();
         MSG_RPT_TS_1();
         MSG_RPT_YG_1();

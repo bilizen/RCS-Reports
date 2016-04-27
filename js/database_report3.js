@@ -192,6 +192,10 @@ function existDataDate_report3() {
     var port = "";
     var alias = "";
     var site = "";
+    
+    //pinta el title del report3 
+     $('#txt_title').text(localStorage.getItem("titleReport3"));
+    
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
@@ -538,7 +542,7 @@ function deteclenguage3() {
     lang = navigator.language.split("-");
     current_lang = (lang[0]);
     if (current_lang == 'es') {
-        MSG_LBL_PROGRESS_BY_STORE_3();
+       
         MSG_RETURN_3();
         MSG_BACK_3();
         MSG_CHOOSE_RANGE_3();

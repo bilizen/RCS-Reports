@@ -416,6 +416,10 @@ function downloadStoreClasification(_valueSelected) {
     var dateEnd = "";
     var dateUntil = "";
     var array;
+    
+    //pinta el title del report2 
+     $('#txt_title').text(localStorage.getItem("titleReport2"));
+    
     /****get****date****/
     /***get range date ***/
     /***date of today ***/
@@ -625,10 +629,8 @@ function deteclenguage2() {
     current_lang = (lang[0]);
     if (current_lang == 'es') {
 
-        MSG_TITLE_STORE_CLASIFICATION_2();
         MSG_TITLE_ALL_REGION_2();
         MSG_RETURN_2();
-        MSG_TITLE_OPTIONS_2();
         MSG_TITLE_OPTIONS_22();
         MSG_CHOOSE_RANGE_2();
         MSG_CALEN_VERYGOOD_2();
