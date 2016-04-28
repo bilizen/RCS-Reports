@@ -140,8 +140,7 @@ function updateHideReports() {
                                                     insertarTableReports(report, "1");
                                                     
                                                 }
-                                                //solo por prueba
-                                                insertarTableReports('2407','1');
+                                                
                                                 //pinta los reportes en el menu.html                  
                                                 selectReports();
                                             }
