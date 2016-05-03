@@ -1,5 +1,10 @@
 //primero se ejecuta ready luego el load
 $(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
+    document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+        }
+
     onInit();/**verificamos la base de datos**/
     existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
     sizeSpaceStores3();

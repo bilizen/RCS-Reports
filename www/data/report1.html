@@ -31,6 +31,15 @@
              loadComboRegions("1","1");
               
         });
+        $(document).ready(function(){
+           document.addEventListener("deviceready", onDeviceReady, false);
+           function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyDown, true);
+        }
+        function onBackKeyDown() {
+
+        }
+    });
 
 
         function addID(abc){
@@ -52,19 +61,6 @@
             console.log("id presionado: "+id);
             deleteServer(id);
         }
-    </script>
-
-    <script type="text/javascript" charset="utf-8"> 
-    
-        document.addEventListener('deviceready', onDeviceReady, false);
-        
-        function onDeviceReady() {
-              document.addEventListener("backbutton", onBackKeyDown, false);            
-        }
-
-       function onBackKeyDown() {
-            navigator.app.exitApp();
-       }
     </script>
 
 </head>

@@ -11,6 +11,7 @@
   <!-- Fav and touch icons -->
 
     <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../cordova.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/database.js"></script>
     <script type="text/javascript" src="../js/menu.js"></script>
@@ -20,13 +21,19 @@
 
     <script  type="text/javascript">
 
-        $(window).load(function(){
-            onInit();
-            updateHideReports();
-            //pone el titulo  
-            //Title_Company();
-            deteclenguage();
-        });
+    $(document).ready(function () {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyDown, true);
+        }
+
+        function onBackKeyDown() {
+            navigator.app.exitApp();     
+        }
+    });
+
+
+
 
         function addID(abc){
             $('#ServersList').css('z-index','1030');
@@ -54,54 +61,12 @@
         }
 
   
-        document.addEventListener('deviceready', onDeviceReady, false);
-        
-        function onDeviceReady() {
-              document.addEventListener("backbutton", onBackKeyDown, false);            
-        }
-
-       function onBackKeyDown() {
-            navigator.app.exitApp();
-       }
     
            
-        function openReport1(){
-              window.location.href = "report1.html";
-              return false;        
-        }
+       
+
+
         
-        function openReport2(){
-            window.location.href = "report2.html";
-            return false;
-        }
-        function openReport3(){
-            window.location.href = "report3.html";
-            return false;
-        }
-        function openReport4(){
-            showDialogStore();
-            return false;
-        }
-        function passReport4(){
-            window.location.href = "report4.html";
-            return false;
-        }
-        function openReport5(){
-            showDialogStore5();
-            return false;
-        }
-         function passReport5(){
-            window.location.href = "report5.html";
-            return false;
-        }
-        function openReport6(){
-            showDialogStore6();
-            return false;
-        }
-        function passReport6(){
-            window.location.href = "report6.html";
-            return false;
-        }
     </script>
 
 </head>

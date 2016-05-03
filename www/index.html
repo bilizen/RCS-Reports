@@ -34,13 +34,20 @@
                     }
                 
             });
+            
             $(document).ready(function () {
                 document.addEventListener("deviceready", onDeviceReady, false);
                 function onDeviceReady() {
-                    document.addEventListener("backbutton", onBackKeyDown, false);
+                    document.addEventListener("backbutton", onBackKeyDown, true);
                 }
+                
                 function onBackKeyDown() {
+                    alert("alter");
+                    //navigator.app.exitApp();
+                    
                 }
+               
+
 
 
                 /*esta funcion ocurre despues de que ya cargo toda la pagina*/

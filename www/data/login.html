@@ -10,6 +10,7 @@
 
   <!-- Fav and touch icons -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../cordova.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/scripts.js"></script>
   <script type="text/javascript" src="../js/design.js"></script>
@@ -27,6 +28,20 @@
         });    
 
         $(document).ready(function(){
+           document.addEventListener("deviceready", onDeviceReady, false);
+                function onDeviceReady() {
+                    document.addEventListener("backbutton", onBackKeyDown, true);
+                }
+                
+                function onBackKeyDown() {
+                    alert("alert");
+                    //navigator.app.exitApp();
+                    
+                }
+
+
+
+
 
          $("#btnlogin").click(function(){
             /******Borramos la informacion de la tabla Store porque es un nuevo servidor******/

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+        }
+        
     onInit();
     //por defecto que salga la semana de ventas
     graphicReport6(3);

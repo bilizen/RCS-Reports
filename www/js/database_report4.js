@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+        }
+
+
     onInit();
     existDataDate();
     ////////////////

@@ -1,3 +1,14 @@
+$(window).load(function(){
+    onInit();
+    updateHideReports();
+    //pone el titulo  
+    //Title_Company();
+    deteclenguage();
+});
+
+
+
+
 
 var titleReport1 = "";
 var titleReport2 = "";
@@ -408,96 +419,6 @@ function showReports() {
                                 "<label class='text-report'>" + titleReport6 + "</label>" +
                                 "<hr>");
                     }
-
-
-
-
-                    /*
-                     if (current_lang == 'es') {
-                     if (report == 2402) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report1' " + check + ">" +
-                     "<label class='text-report'>"+nameReport1+"</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2403) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report2' " + check + ">" +
-                     "<label class='text-report'>"+nameReport2+"</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2404) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report3' " + check + ">" +
-                     "<label class='text-report'>"+nameReport3+"</label>" +
-                     "<hr>");
-                     
-                     
-                     }
-                     if (report == 2405) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report4' " + check + ">" +
-                     "<label class='text-report'>"+nameReport4+"</label>" +
-                     "<hr>");
-                     
-                     }
-                     if (report == 2406) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report5' " + check + ">" +
-                     "<label class='text-report'>"+nameReport5+"</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2407) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                     "<label class='text-report'>"+nameReport6+"</label>" +
-                     "<hr>");
-                     }
-                     } else {
-                     
-                     if (report == 2402) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report1' " + check + ">" +
-                     "<label class='text-report'>Goal VS Sales</label>" +
-                     "<hr>");
-                     
-                     }
-                     if (report == 2403) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report2' " + check + ">" +
-                     "<label class='text-report'>Store Clasification</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2404) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report3' " + check + ">" +
-                     "<label class='text-report'>% Progress By Store</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2405) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report4' " + check + ">" +
-                     "<label class='text-report'>Advance Graphic</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2406) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report5' " + check + ">" +
-                     "<label class='text-report'>Goal Scope By Clerk</label>" +
-                     "<hr>");
-                     }
-                     if (report == 2407) {
-                     $('#list_reports').append(
-                     "<input type='checkbox' class='check_report6' " + check + ">" +
-                     "<label class='text-report'>Sales By Store</label>" +
-                     "<hr>");
-                     }
-                     }
-                     */
-
-
-
-
                 }
             });
         });
@@ -549,3 +470,41 @@ function buttonOkReports() {
 }
 
 
+
+ function openReport1(){
+              window.location.href = "report1.html";
+              return false;        
+        }
+        
+        function openReport2(){
+            window.location.href = "report2.html";
+            return false;
+        }
+        function openReport3(){
+            window.location.href = "report3.html";
+            return false;
+        }
+        function openReport4(){
+            showDialogStore();
+            return false;
+        }
+        function passReport4(){
+            window.location.href = "report4.html";
+            return false;
+        }
+        function openReport5(){
+            showDialogStore5();
+            return false;
+        }
+         function passReport5(){
+            window.location.href = "report5.html";
+            return false;
+        }
+        function openReport6(){
+            showDialogStore6();
+            return false;
+        }
+        function passReport6(){
+            window.location.href = "report6.html";
+            return false;
+        }
