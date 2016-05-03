@@ -1857,7 +1857,7 @@ label.control-label {
 }
 .form-group {
   padding-bottom: 7px;
-  margin: 28px 0 0 0;
+  margin: 15px 0 0 0;
 }
 .form-group .form-control {
   margin-bottom: 7px;
@@ -2914,14 +2914,16 @@ fieldset[disabled] .navbar .btn-link:focus {
 .modal-backdrop {
   background: rgba(0, 0, 0, 0.3);
 }
-.panel {
+.panel,.item {
   border-radius: 2px;
   border: 0;
+  background-color: #fff; 
+  margin-bottom: 20px;
   -webkit-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
 }
 .panel > .panel-heading,
-.panel.panel-default > .panel-heading {
+.panel.panel-default > .panel-heading{
   background-color: #eeeeee;
 }
 .panel.panel-inverse > .panel-heading {
