@@ -2,9 +2,9 @@
 $(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
        
 document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
-        document.addEventListener("backbutton", onBackKeyDown, true);
-        }
+function onDeviceReady() {
+    document.addEventListener("backbutton", onBackKeyDown, true);
+}
         
  
 

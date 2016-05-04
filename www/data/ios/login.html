@@ -5,87 +5,21 @@
   <title>RCS Reports</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link href="../css/style.css" rel="stylesheet">
+	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
 
   <!-- Fav and touch icons -->
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-  <script type="text/javascript" src="../cordova.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../js/scripts.js"></script>
-  <script type="text/javascript" src="../js/design.js"></script>
-  <script type="text/javascript" src="../js/database.js" ></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/scripts.js"></script>
+  <script type="text/javascript" src="../../js/design.js"></script>
+  <script type="text/javascript" src="../../js/database.js" ></script>
+  <script type="text/javascript" src="../../js/login.js" ></script>
+  <!-- TAG LENGUAGES -->
+  <script type="text/javascript" src="../../js/constant-es.js"></script>
 
-   <!-- TAG LENGUAGES -->
-    <script type="text/javascript" src="../js/constant-es.js"></script>
-
-  <script  type="text/javascript">
-
-        $(window).load(function(){
-          onInit();
-          verific();
-          deteclenguage();
-        });    
-
-        $(document).ready(function(){
-           document.addEventListener("deviceready", onDeviceReady, false);
-                function onDeviceReady() {
-                    document.addEventListener("backbutton", onBackKeyDown, true);
-                }
-                
-                function onBackKeyDown() {
-                    alert("alert");
-                    //navigator.app.exitApp();
-                    
-                }
-
-
-
-
-
-         $("#btnlogin").click(function(){
-            /******Borramos la informacion de la tabla Store porque es un nuevo servidor******/
-            var queryDelete= "DELETE FROM " +TABLE_STORE;
-            try {
-                localDB.transaction(function(transaction){
-                    transaction.executeSql(queryDelete, [], function(transaction, results){
-                        if (!results.rowsAffected) {
-                            console.log("Error updateState");
-                        }
-                        else {
-                            console.log("Update realizado:" + results.rowsAffected);
-                        }
-                    }, errorHandler);
-                });
-            }catch (e) {
-                console.log("Error updateState " + e + ".");
-            } 
-            
-            
-            var pin = $("#pin").val();
-            var check = "";
-
-            if($('#chkremember').is(':checked')){
-              check = "1";
-            }else{
-              check = "0";
-            }
-         
-            if(pin.length>0){
-                validData(pin, check);
-              
-            }else{
-              if(current_lang=='es')
-                mostrarModalGeneral("Pin Inválido");
-              else
-                mostrarModalGeneral("Invalid Pin"); 
-            }
-
-         });
-
-        });
-
-  </script>
+  
 
 </head>
 
@@ -101,7 +35,7 @@
     </header>
 
   	<div id="content" class="indexSection">
-      <div class="logo-name"><img src="../img/iconLogo.svg"/></div>
+      <div class="logo-name"><img src="../../img/iconLogo.svg"/></div>
       <p class="welcome">&nbsp;</p>
   		<form action="javascript:void(0);">
         <div class="form-group text-center">
