@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.realcs.report" 
-    version="0.0.1" 
+<widget id="com.realcs.report"
+    versionCode="18" 
+    version="3.1.1" 
     xmlns="http://www.w3.org/ns/widgets" 
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>RCS Reports</name>
@@ -8,16 +9,23 @@
     <author href="http://retailcs.com/" email="devmobile@realcs.com">
         Retail Custom Solutions
     </author>
-    <content src="index.html" />
-    <preference name="AutoHideSplashScreen"  value = "true"  />
-    <preference name="SplashScreenDelay"  value = "2000"  />
-    <preference name="FadeSplashScreen"  value = "true" />
-    <preference name="FadeSplashScreenDuration"  value = "1000" />
-    <preference name="ShowSplashScreenSpinner"  value = "false" />
+    <!--
+        <content src="data/android/ip.html"/>
+        <content src="index.html" />
+    -->
+    <content src="index.html"/>
+
+    <preference name="AutoHideSplashScreen"  value= "true"  />
+    <preference name="SplashScreenDelay"  value= "3000"  />
+    <preference name="FadeSplashScreen"  value= "true" />
+    <preference name="FadeSplashScreenDuration"  value= "1000" />
+    <preference name="ShowSplashScreenSpinner"  value= "false" />
+    <preference name="SplashShowOnlyFirstTime"  value= "false"  />
     
 
-    <preference name="Fullscreen" value="true"/>
-    <preference name="BackgroundColor" value="#5A64FB"/>
+    <preference name="Fullscreen" value="false"/>
+    <preference name="StatusBarBackgroundColor" value="#2196F3"/>
+    <preference name="StatusBarStyle" value="lightcontent" />
 
 
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -28,6 +36,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
     <platform name="android">
         <allow-intent href="market:*" />
         <icon src="www/res/icon/android/ldpi.png"  qualifier="ldpi" />

@@ -1,3 +1,15 @@
+$(document).ready(function () {
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+    }
+
+    function onBackKeyDown() {
+        navigator.app.exitApp();     
+    }
+});
+
+
 $(window).load(function(){
     onInit();
     updateHideReports();

@@ -5,11 +5,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, true);
 }
-        
- 
-
-
-
     onInit();/**verificamos la base de datos**/
     existDataClasification();/***llenamos tabla clasificaciones**/
     existDataDate();/**lleanmos tabla CustomRangeDate**/

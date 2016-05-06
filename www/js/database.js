@@ -329,7 +329,6 @@ function getConfiguration() {
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], function (transaction, results) {
-
                 if (results.rows.length > 0) {
                     pin = results.rows.item(0).pin;
                     localDB.transaction(function (tx) {
@@ -358,14 +357,12 @@ function getConfiguration() {
                                     //verifica que el pin es correcto
                                     if (data.successful == 1) {
                                         //envia a ala vista MENU.HTML
-                                        window.location = "data/menu.html";
-                                    } else {
+                                        window.location.href= "menu.html";
+                                    }else{
                                         if (current_lang == 'es') {
-                                            mostrarModalGeneral("Pin Actualizado");
-                                            window.location = "data/login.html";
+                                            window.location.href = "login.html";
                                         } else {
-                                            mostrarModalGeneral("Update Pin");
-                                            window.location = "data/login.html";
+                                            window.location.href= "login.html";
                                         }
                                     }
                                 },
@@ -374,10 +371,12 @@ function getConfiguration() {
                                     console.log(xhr.statusText);
                                     console.log(xhr.responseText);
                                     //hideLoading();
-                                    if (current_lang == 'es')
+                                    if (current_lang == 'es'){
                                         mostrarModalGeneral("Error de Conexión");
-                                    else
+                                    }
+                                    else{
                                         mostrarModalGeneral("No Connection");
+                                    }
                                 }
                             });
 
@@ -385,7 +384,7 @@ function getConfiguration() {
                         });
                     });
                 } else {
-                    window.location = "data/login.html";
+                    window.location.href = "login.html";
                 }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
@@ -425,7 +424,7 @@ function addConfiguration(remember) {
                     console.log("Error no se inserto Configuration");
                 } else {
                     console.log("Insert realizado configuration, id: " + results.insertId);
-                    window.location.href = "menu.html";
+                    window.location.href="menu.html";
                 }
             }, errorHandler);
         });
@@ -850,7 +849,7 @@ function  confirmSignOut() {
         var query1 = "DELETE FROM " + TABLE_CONFIGURATION;
         localDB.transaction(function (transaction) {
             transaction.executeSql(query1, [], function (transaction, results) {
-                window.location = "./login.html";
+                window.location.href = "login.html";
             });
         });
     } catch (e) {
