@@ -34,11 +34,26 @@
 
 	height: 80px;
 }
-
 .icon-bar{
 	border-color: #f1f1f1 !important;
 }
 
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.ip{
+	display: flex;
+	flex-direction: row;
+}
+.ip-val{
+	margin: 0 5px;
+	flex-grow: 1;
+}
 .report1 .iconReport{
   background: rgba(136,58,209);
   background: url('../../img/iconReport1-white.svg') center center no-repeat, url('../../img/bg_report1.jpg') center center no-repeat;
@@ -68,4 +83,27 @@
   background: #6a1b9a;
   background: url('../../img/iconReport6-white.svg') center center no-repeat, url('../../img/bg_report6.jpg') center center no-repeat;
   background-size: 80px, 100%;
+}
+
+.bg-material{
+	background: #333;
+	background: url('../../img/bg_material.jpg') center center no-repeat;
+}
+.bg-material-white{
+	background: #f1f1f1;
+	background: url('../../img/bg_material-white.jpg') center center no-repeat;
+}
+.bg-material,
+.bg-material-white{
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.btn,
+.modal-footer .btn{
+	margin: 6px 1px;
+	padding: 0 20px;
+}
+.bs-component{
+	width: 100%;
 }

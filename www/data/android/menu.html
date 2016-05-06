@@ -6,8 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
   <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../../css/material/materialize.css" rel="stylesheet" type="text/css">
   <link href="../../css/material/bootstrap-material-design.css" rel="stylesheet" type="text/css">
   <link href="../../css/material/ripples.css" rel="stylesheet" type="text/css">
+
   <link href="../../css/material/style-material.css" rel="stylesheet" type="text/css">
 
   <!-- Fav and touch icons -->
@@ -122,15 +125,15 @@
 
 </head>
 
-<body>
+<body class="bg-material-white">
 
   <!-- Navbar -->
   <div class="bs-docs-section clearfix">
     <div class="bs-component">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default  blue darken-4">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" onclick="showOptions()">
+            <button type="button" class="btn navbar-toggle" onclick="showOptions()">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -155,13 +158,15 @@
   <!--Modal OF CONECTION -->
   <div class="modal fade" id="show_alias">
     <div class="modal-dialog">
-      <div class="modal-content">                              
-        <div class="modal-body ">     
-          <p class="title-alert titleMessage">Message</p>                 
-          <p  class=" textgeneral"></p>              
+      <div class="modal-content">  
+        <div class="modal-header">
+          <h4 class="modal-title titleMessage">Message</h4>
+        </div>                            
+        <div class="modal-body text-center">   
+          <p class="text-center textgeneral"></p>              
         </div>
-        <div class="modal-footer info">
-          <button type="button" class="btn btn-modal btnok"  name="btngeneral"  data-dismiss="modal" aria-hidden="true">Ok</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btnok" data-dismiss="modal" aria-hidden="true">Ok</button>
         </div>
       </div>
     </div>
@@ -188,7 +193,7 @@
           </h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
         </div>                
-        <div class="modal-footer info form-horizontal">
+        <div class="modal-body form-horizontal">
           <div class="form-group row" id="server" >
             <label class="col-xs-4 text-right" id="txtStoreT">Server:</label>
             <div class="col-xs-8 text-left" id="txtStore"></div>
@@ -202,9 +207,11 @@
             <div class="col-xs-8 text-left" id="txtIP"></div>
           </div>
         </div>
-        <div class="modal-footer add">                    
+        <div class=" form-horizontal text-right">                    
           <button class="btn btn-modal btn-primary" data-dismiss="modal" id="servers_list" onclick="mostrarModal();">Servers</button> 
           <button class="btn btn-modal btn-primary" data-dismiss="modal" id="add_alias" onclick="newInfoServer();delTables();">Add Server</button> 
+        </div>
+        <div class="form-horizontal text-right"> 
           <button class="btn btn-modal btn-success" data-dismiss="modal" id="hide_reports" onclick="showReports()">Hide/Show Reports</button>
           <button class="btn btn-modal btn-danger" data-dismiss="modal" id="btnSignOut">Sign out</button>             
         </div>
@@ -248,13 +255,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
         </div>
         <div class="modal-body">
-          <div class="form-control select-alias divlistadoReports">
-            <div id="list_reports"></div>
+          <div class="select-alias divlistadoReports">
+            <div id="list_reports" class="switch"></div>
           </div>
         </div>
         <div class="modal-footer add">
           <button onclick="buttonOkReports()" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
-        </div>                
+        </div>               
       </div>
     </div>
   </div>

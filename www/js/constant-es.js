@@ -32,10 +32,13 @@ function MSG_GO_ADD() {
 function MSG_GO() {
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
-    if (current_lang == 'es')
+    if (current_lang == 'es'){
         $("#btnenter").val("Ingresar");
-    else
+        $("#btnenter").text("Ingresar");
+    }else{
         $("#btnenter").val("Ok");
+        $("#btnenter").text("Ok");
+    }
 }
 // Errores Index
 function MSG_CONNECTION_FAILURE() {
@@ -63,6 +66,7 @@ function MSG_BACK_LOGIN() {
 }
 function BTN_LOGIN() {
     $("#btnlogin").val("Entrar");
+    $("#btnlogin").text("Entrar");
 }
 
 

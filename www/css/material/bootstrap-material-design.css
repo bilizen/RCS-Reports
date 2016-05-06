@@ -2257,6 +2257,9 @@ legend {
 .navbar .navbar-toggle .icon-bar {
   background-color: inherit;
   border: 1px solid;
+  width: 3px;
+  height: 3px;
+  background-color: #f1f1f1;
 }
 .navbar .navbar-default .navbar-toggle,
 .navbar .navbar-inverse .navbar-toggle {
