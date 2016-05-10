@@ -511,10 +511,10 @@ function getAllData() {
 
                     //<div class="alias-item" id="alias-item">Cambiar de Alias 1 <button type="button" class="delete">×</button></div>
 
-                    mostrar += "<div class='alias-item' id='alias-item'> ";
-                    mostrar += "<span data-toggle='modal' data-target='#ModalConfirm' onclick=\"addID(" + _id + ")\">" + _alias + "</span> ";//data-target ???
-                    mostrar += "<button type='button' class='delete' data-toggle='modal' data-target='#ModalConfirmDelete' ";
-                    mostrar += "onclick=\"addIDDelete(" + _id + ")\"></button></div>";
+                    mostrar += "<div class='collection-item'> ";
+                    mostrar += "<span data-toggle='modal' data-dismiss='modal' data-target='#ModalConfirm' onclick=\"addID(" + _id + ")\">" + _alias + "</span> ";//data-target ???
+                    mostrar += "<button type='button' data-dismiss='modal' class='delete btn btn-fab red darken-1' data-toggle='modal' data-target='#ModalConfirmDelete' ";
+                    mostrar += "onclick=\"addIDDelete(" + _id + ")\"><i class='material-icons right'></i></button></div>";
                 }
                 $("#divlistado").append(mostrar);
 

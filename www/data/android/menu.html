@@ -21,10 +21,11 @@
   <script type="text/javascript" src="../../js/database.js"></script>
   <script type="text/javascript" src="../../js/menu.js"></script>
   
+  <script type="text/javascript" src="../../js/material/materialize.js"></script>
   <script type="text/javascript" src="../../js/material/ripples.min.js"></script>
   <script type="text/javascript" src="../../js/material/material.min.js"></script>
 
-
+  <script type="text/javascript" src="../../js/scripts-android.js"></script>
 
 
   <!-- TAG LENGUAGES -->
@@ -160,20 +161,21 @@
   <div class="modal fade zIndex2" id="ServersList" >
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header ">
-          <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
-            Back
-          </button>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
+        <div class="modal-header ">          
           <h4 class="modal-title" id="lblchangealit">
             Servers
           </h4>
+          <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
+            Back
+          </button>
         </div>
         <div class="modal-body">
-          <div class="form-control select-alias" id="divlistado">
+          <div class="collection" id="divlistado">
           </div>
-        </div>                
-
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btnok" data-dismiss="modal" aria-hidden="true">Ok</button>
+        </div>               
       </div>
     </div>
   </div>
@@ -182,14 +184,13 @@
   <div class="modal fade zIndex2" id="ModalReportsOption" >
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header ">
-          <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
-            Back
-          </button>
+        <div class="modal-header ">          
           <h4 class="modal-title" id="lblHideTitle">
             Hide/Show Reports
           </h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" name="btnclose" id="btnclose">Close</button>
+          <button type="button" class="close back" data-dismiss="modal" aria-hidden="true" onclick="showOptions()">
+            Back
+          </button>
         </div>
         <div class="modal-body">
           <div class="select-alias divlistadoReports">

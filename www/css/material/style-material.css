@@ -107,3 +107,52 @@
 .bs-component{
 	width: 100%;
 }
+hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.modal-footer{
+	margin-top: 0;
+}
+.delete {
+  position: absolute !important;
+  right: 10px;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  line-height: 0px !important;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.collection-item{
+	position: relative;
+}
+.delete::before{
+	content: 'x';
+	font-size: 14px;
+	color: white;
+}
+.actual p,.global p,
+.actual i,.global i,
+.actual span,.global span{
+    display: inline-block;
+}
+/*Report1 by Store*/
+.showGraphic {
+    opacity: 1 !important;
+    height: 144px !important;
+}
+div[class^="chartdiv-"]{
+    width: 70%;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    
+}
+.section:first-child{
+	padding-top: 0;
+}
+.section .item{
+	margin-bottom: 0;
+}

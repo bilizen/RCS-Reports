@@ -1073,7 +1073,7 @@ div[class^="detalle-"] span{
     padding: 0;
     overflow-y: auto;
 }
-#alias-item {
+.collection-item {
     position: relative;
     width: 100%;
     text-align: center;
@@ -1082,7 +1082,7 @@ div[class^="detalle-"] span{
     font-size: 16px;
     border-bottom: 1px solid #CCCCCC;
 }
-#alias-item span{
+.collection-item span{
     width: 100%;
     display: block;
     font-weight: bold;
@@ -1618,7 +1618,7 @@ text{
     span.ui-icon.ui-icon-circle-triangle-w{
         font-size: 16pt;
     }
-    #alias-item{
+    .collection-item{
         height: 54px;
         line-height: 54px;
     }
@@ -1627,7 +1627,7 @@ text{
         width: 54px;
         background-size: 32px;
     }
-    #alias-item span,
+    .collection-item span,
     #txtStore{
         font-size: 16pt;
     }

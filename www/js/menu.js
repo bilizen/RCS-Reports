@@ -394,42 +394,41 @@ function showReports() {
 
                     if (report == 2402) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report1' " + check + ">" +
-                                "<label class='text-report'>" + titleReport1 + "</label>" +
+                                "<input type='checkbox' id='chkr1' class='filled-in check_report1' " + check + ">" +
+                                "<label for='chkr1' class='text-report'>" + titleReport1 + "</label>" +
                                 "<hr>");
                     }
                     if (report == 2403) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report2' " + check + ">" +
-                                "<label class='text-report'>" + titleReport2 + "</label>" +
+                                "<input type='checkbox' id='chkr2' class='filled-in check_report2' " + check + ">" +
+                                "<label for='chkr2' class='text-report'>" + titleReport2 + "</label>" +
                                 "<hr>");
                     }
                     if (report == 2404) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report3' " + check + ">" +
-                                "<label class='text-report'>" + titleReport3 + "</label>" +
+                                "<input type='checkbox' id='chkr3' class='filled-in check_report3' " + check + ">" +
+                                "<label for='chkr3' class='text-report'>" + titleReport3 + "</label>" +
                                 "<hr>");
 
 
                     }
                     if (report == 2405) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report4' " + check + ">" +
-                                "<label class='text-report'>" + titleReport4 + "</label>" +
+                                "<input type='checkbox' id='chkr4' class='filled-in check_report4' " + check + ">" +
+                                "<label for='chkr4' class='text-report'>" + titleReport4 + "</label>" +
                                 "<hr>");
 
                     }
                     if (report == 2406) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report5' " + check + ">" +
-                                "<label class='text-report'>" + titleReport5 + "</label>" +
+                                "<input type='checkbox' id='chkr5' class='filled-in check_report5' " + check + ">" +
+                                "<label for='chkr5' class='text-report'>" + titleReport5 + "</label>" +
                                 "<hr>");
                     }
                     if (report == 2407) {
                         $('#list_reports').append(
-                                "<input type='checkbox' class='check_report6' " + check + ">" +
-                                "<label class='text-report'>" + titleReport6 + "</label>" +
-                                "<hr>");
+                                "<input type='checkbox' id='chkr6' class='filled-in check_report6' " + check + ">" +
+                                "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>");
                     }
                 }
             });
