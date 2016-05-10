@@ -19,9 +19,6 @@ $(window).load(function(){
 });
 
 
-
-
-
 var titleReport1 = "";
 var titleReport2 = "";
 var titleReport3 = "";
@@ -73,7 +70,7 @@ function updateHideReports() {
                                             var igual = 0;
                                             //copmprueba que son iguales los reportes
                                             if (arrReport.length == results.rows.length) {
-                                                
+
                                                 for (var a = 0; a < results.rows.length; a++) {
                                                     if (arrReport[a].functionCode == results.rows.item(a).report) {
                                                         igual++;
@@ -99,12 +96,12 @@ function updateHideReports() {
                                                         }
                                                         if (arrReport[a].functionCode === 2406) {
                                                             titleReport5 = arrReport[a].functionName;
-                                                           
+
 
                                                         }
                                                         if (arrReport[a].functionCode === 2407) {
                                                             titleReport6 = arrReport[a].functionName;
-                                                           
+
                                                         }
                                                     }
                                                 }
@@ -122,36 +119,36 @@ function updateHideReports() {
                                                 delTable_Reports();
                                                 
                                                 for (var a = 0; a < arrReport.length; a++) {
-                                                    
-                                                        if (arrReport[a].functionCode === 2402) {
-                                                            titleReport1 = arrReport[a].functionName;
-                                                            localStorage.setItem("titleReport1",titleReport1);
 
-                                                        }
-                                                        if (arrReport[a].functionCode === 2403) {
-                                                            titleReport2 = arrReport[a].functionName;
-                                                            localStorage.setItem("titleReport2",titleReport2);
-                                                            
-                                                        }
-                                                        if (arrReport[a].functionCode === 2404) {
-                                                            titleReport3 = arrReport[a].functionName;
-                                                            localStorage.setItem("titleReport3",titleReport3);
-                                                            
-                                                        }
-                                                        if (arrReport[a].functionCode === 2405) {
-                                                            titleReport4 = arrReport[a].functionName;
+                                                    if (arrReport[a].functionCode === 2402) {
+                                                        titleReport1 = arrReport[a].functionName;
+                                                        localStorage.setItem("titleReport1",titleReport1);
+
+                                                    }
+                                                    if (arrReport[a].functionCode === 2403) {
+                                                        titleReport2 = arrReport[a].functionName;
+                                                        localStorage.setItem("titleReport2",titleReport2);
+
+                                                    }
+                                                    if (arrReport[a].functionCode === 2404) {
+                                                        titleReport3 = arrReport[a].functionName;
+                                                        localStorage.setItem("titleReport3",titleReport3);
+
+                                                    }
+                                                    if (arrReport[a].functionCode === 2405) {
+                                                        titleReport4 = arrReport[a].functionName;
 
 
-                                                        }
-                                                        if (arrReport[a].functionCode === 2406) {
-                                                            titleReport5 = arrReport[a].functionName;
-                                                           
+                                                    }
+                                                    if (arrReport[a].functionCode === 2406) {
+                                                        titleReport5 = arrReport[a].functionName;
 
-                                                        }
-                                                        if (arrReport[a].functionCode === 2407) {
-                                                            titleReport6 = arrReport[a].functionName;
-                                                           
-                                                        }
+
+                                                    }
+                                                    if (arrReport[a].functionCode === 2407) {
+                                                        titleReport6 = arrReport[a].functionName;
+
+                                                    }
                                                     
                                                 }
                                                 
@@ -189,16 +186,16 @@ function updateHideReports() {
                                         }
                                     }
                                 });
-                            });
-                        });
-                    });
-                });
-            });
-        });
+});
+});
+});
+});
+});
+});
 
-    } catch (e) {
-        console.log("Error updateState " + e + ".");
-    }
+} catch (e) {
+    console.log("Error updateState " + e + ".");
+}
 }
 
 
@@ -224,148 +221,148 @@ function selectReports() {
 
                         if (report == 2402) {
                             $('.menu').append(
-                                    "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare sus metas vs ventas en tiempo real</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Compare sus metas vs ventas en tiempo real</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2403) {
                             $('.menu').append(
-                                    "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Clasificación personalizado por Tienda</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Clasificación personalizado por Tienda</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                                    "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>El progreso de ventas por tienda</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>El progreso de ventas por tienda</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                                    "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Visualiza ventas, metas y punto de equilibrio graficamente</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Visualiza ventas, metas y punto de equilibrio graficamente</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                                    "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Mira y compara el progreso de venta por empleado</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Mira y compara el progreso de venta por empleado</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2407) {
                             $('.menu').append(
-                                    "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compara ventas del Año Pasado vs Año Actual</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Compara ventas del Año Pasado vs Año Actual</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                     } else {
 
                         if (report == 2402) {
                             $('.menu').append(
-                                    "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Compare your Goals vs Sales in real time</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2403) {
                             $('.menu').append(
-                                    "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Custom Clasification by store</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Custom Clasification by store</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                                    "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Sales progress by store</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Sales progress by store</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                                    "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>See Sales, goals and breakeven in graphic</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>See Sales, goals and breakeven in graphic</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                                    "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>See and compare the sale progress by employee</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>See and compare the sale progress by employee</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
                         if (report == 2407) {
                             $('.menu').append(
-                                    "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
-                                    "<span class ='box' >" +
-                                    "<span class ='iconReport'> </span>" +
-                                    "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
-                                    "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year vs This Year</span>" +
-                                    "</span>" +
-                                    "</button>"
-                                    );
+                                "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year vs This Year</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
                         }
 
                     }
                 }
                 highlightButtons();
             });
-        });
+});
 
-    } catch (e) {
-        console.log(e);
-    }
+} catch (e) {
+    console.log(e);
+}
 }
 
 
@@ -394,53 +391,50 @@ function showReports() {
 
                     if (report == 2402) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr1' class='filled-in check_report1' " + check + ">" +
-                                "<label for='chkr1' class='text-report'>" + titleReport1 + "</label>" +
-                                "<hr>");
+                            "<input type='checkbox' id='chkr1' class='filled-in check_report1' " + check + ">" +
+                            "<label for='chkr1' class='text-report'>" + titleReport1 + "</label>" +
+                            "<hr>");
                     }
                     if (report == 2403) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr2' class='filled-in check_report2' " + check + ">" +
-                                "<label for='chkr2' class='text-report'>" + titleReport2 + "</label>" +
-                                "<hr>");
+                            "<input type='checkbox' id='chkr2' class='filled-in check_report2' " + check + ">" +
+                            "<label for='chkr2' class='text-report'>" + titleReport2 + "</label>" +
+                            "<hr>");
                     }
                     if (report == 2404) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr3' class='filled-in check_report3' " + check + ">" +
-                                "<label for='chkr3' class='text-report'>" + titleReport3 + "</label>" +
-                                "<hr>");
+                            "<input type='checkbox' id='chkr3' class='filled-in check_report3' " + check + ">" +
+                            "<label for='chkr3' class='text-report'>" + titleReport3 + "</label>" +
+                            "<hr>");
 
 
                     }
                     if (report == 2405) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr4' class='filled-in check_report4' " + check + ">" +
-                                "<label for='chkr4' class='text-report'>" + titleReport4 + "</label>" +
-                                "<hr>");
+                            "<input type='checkbox' id='chkr4' class='filled-in check_report4' " + check + ">" +
+                            "<label for='chkr4' class='text-report'>" + titleReport4 + "</label>" +
+                            "<hr>");
 
                     }
                     if (report == 2406) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr5' class='filled-in check_report5' " + check + ">" +
-                                "<label for='chkr5' class='text-report'>" + titleReport5 + "</label>" +
-                                "<hr>");
+                            "<input type='checkbox' id='chkr5' class='filled-in check_report5' " + check + ">" +
+                            "<label for='chkr5' class='text-report'>" + titleReport5 + "</label>" +
+                            "<hr>");
                     }
                     if (report == 2407) {
                         $('#list_reports').append(
-                                "<input type='checkbox' id='chkr6' class='filled-in check_report6' " + check + ">" +
-                                "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>");
+                            "<input type='checkbox' id='chkr6' class='filled-in check_report6' " + check + ">" +
+                            "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>");
                     }
                 }
             });
-        });
-    } catch (e) {
-        console.log("error: " + e);
-    }
-
+});
+} catch (e) {
+    console.log("error: " + e);
 }
 
-
-
+}
 
 
 
@@ -482,40 +476,556 @@ function buttonOkReports() {
 
 
 
- function openReport1(){
-              window.location.href = "report1.html";
-              return false;        
-        }
-        
-        function openReport2(){
-            window.location.href = "report2.html";
-            return false;
-        }
-        function openReport3(){
-            window.location.href = "report3.html";
-            return false;
-        }
-        function openReport4(){
-            showDialogStore();
-            return false;
-        }
-        function passReport4(){
-            window.location.href = "report4.html";
-            return false;
-        }
-        function openReport5(){
-            showDialogStore5();
-            return false;
-        }
-         function passReport5(){
-            window.location.href = "report5.html";
-            return false;
-        }
-        function openReport6(){
-            showDialogStore6();
-            return false;
-        }
-        function passReport6(){
-            window.location.href = "report6.html";
-            return false;
-        }
+function openReport1(){
+  window.location.href = "report1.html";
+  return false;        
+}
+
+function openReport2(){
+    window.location.href = "report2.html";
+    return false;
+}
+function openReport3(){
+    window.location.href = "report3.html";
+    return false;
+}
+function openReport4(){
+    showDialogStore4();
+    return false;
+}
+function passReport4(){
+    window.location.href = "report4.html";
+    return false;
+}
+function openReport5(){
+    showDialogStore5();
+    return false;
+}
+function passReport5(){
+    window.location.href = "report5.html";
+    return false;
+}
+function openReport6(){
+    showDialogStore6();
+    return false;
+}
+function passReport6(){
+    window.location.href = "report6.html";
+    return false;
+}
+
+
+
+//dialog_report4
+function showDialogStore4() {
+    $("#show_modalStore4").modal();
+    existDataStore4();
+    //focusToactiveStore();
+}
+
+
+
+function existDataStore4() {
+    var query = "SELECT COUNT(*) AS urlBase FROM " + TABLE_STORE;
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                url = results.rows.item(0).urlBase;
+                if (url > 0) {
+                    downloadStore4();
+                } else {
+                    downloadAllStore4();
+                }
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("Error existsData " + e + ".");
+    }
+}
+
+
+
+function downloadStore4() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading4();
+                        },
+                        complete: function () {
+                            hideLoading4();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $('.list_r4').empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('.list_r4').append(show);
+                            }
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            //hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+            });
+        });
+    });
+}
+
+function downloadAllStore4() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+
+            //xurl="http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading4();
+                },
+                complete: function () {
+                    hideLoading4();
+                },
+                success: function (data, textStatus, XMLHttpRequest) {
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var use = 1;
+                        var show = "";
+                        $('.list_r4').empty();
+                        $(data.report).each(function (index, value) {
+                            StoreName = value.StoreName;
+                            StoreNo = value.StoreNo;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "' onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+
+                        });
+                        $('.list_r4').append(show);
+
+                    }
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    //hideLoading();
+                    if (current_lang == 'es'){
+                        mostrarModalGeneral("Error de Conexión");
+                    }else{
+                        mostrarModalGeneral("No Connection");
+                    }
+                }
+            });
+
+        });
+    });
+
+}
+
+
+//dialog_report5
+function showDialogStore5() {
+    $("#show_modalStore5").modal();
+    existDataStore_report5();
+    //focusToactiveStore();
+}
+
+
+function existDataStore_report5() {
+    try {
+        var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                var store = results.rows.item(0).cant;
+                if (store > 0) {
+                    downloadStore5();
+                } else {
+                    downloadAllStore5();
+                }
+            });
+        });
+    } catch (e) {
+        console.log("error:" + e);
+    }
+}
+
+
+function downloadStore5() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading5();
+                        },
+                        complete: function () {
+                            hideLoading5();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $(".list_r5").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('.list_r5').append(show);
+                                //focusToactiveStore5();
+                            }
+
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            //hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+
+            });
+        });
+    });
+}
+
+
+function downloadAllStore5() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading5();
+                },
+                complete: function () {
+                    hideLoading5();
+                },
+                success: function (data) {
+
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var show = "";
+                        $(".list_r5").empty();
+                        $(data.report).each(function (index, value) {
+                            StoreNo = value.StoreNo;
+                            StoreName = value.StoreName;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+                        });
+                        $('.list_r5').append(show);
+                    }//modal no hay data
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    //hideLoading();
+                    if (current_lang == 'es'){
+                        mostrarModalGeneral("Error de Conexión");
+                    }else{
+                        mostrarModalGeneral("No Connection");
+                    }
+                        
+                }
+            });
+        });
+    });
+}
+
+
+//dialog_report6
+function showDialogStore6() {
+    $("#show_modalStore6").modal();
+    existDataStore_report6();
+    //focusToactiveStore();
+}
+
+function existDataStore_report6() {
+    try {
+        var query = 'SELECT count(*) AS cant FROM ' + TABLE_STORE;
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                var store = results.rows.item(0).cant;
+                if (store > 0) {
+                    downloadStore6();
+                } else {
+                    downloadAllStore6();
+                }
+            });
+        });
+    } catch (e) {
+        console.log("error:" + e);
+    }
+}
+
+
+function downloadStore6() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+
+            var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
+            var StoreNoT = "";
+            localDB.transaction(function (tx) {
+                tx.executeSql(query1, [], function (tx, results) {
+                    StoreNoT = results.rows.item(0).StoreNo;
+                    $.ajax({
+                        url: xurl,
+                        type: 'get',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        timeout: 15000,
+                        crossdomain: true,
+                        async: true,
+                        beforeSend: function () {
+                            showLoading6();
+                        },
+                        complete: function () {
+                            hideLoading6();
+                        },
+                        success: function (data) {
+
+                            if (data.successful > 0) {
+                                var StoreName;
+                                var StoreNo;
+                                var show = "";
+                                $(".list_r6").empty();
+                                $(data.report).each(function (index, value) {
+                                    StoreNo = value.StoreNo;
+                                    StoreName = value.StoreName;
+                                    if (StoreNo == StoreNoT) {
+                                        show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    } else {
+                                        show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                                    }
+                                });
+                                $('.list_r6').append(show);
+                                //focusToactiveStore5();
+                            }
+
+                        }, error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(xhr.statusText);
+                            console.log(xhr.responseText);
+                            //hideLoading();
+                            if (current_lang == 'es')
+                                mostrarModalGeneral("Error de Conexión");
+                            else
+                                mostrarModalGeneral("No Connection");
+                        }
+                    });
+                });
+
+            });
+        });
+    });
+}
+
+function downloadAllStore6() {
+    var xurl = "";
+    var ip = "";
+    var port = "";
+    var alias = "";
+    var site = "";
+    var array = "";
+    localDB.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
+            ip = results.rows.item(0).ip;
+            port = results.rows.item(0).port;
+            alias = results.rows.item(0).alias;
+            site = results.rows.item(0).site;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
+            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            $.ajax({
+                url: xurl,
+                type: 'get',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                timeout: 15000,
+                crossdomain: true,
+                async: true,
+                beforeSend: function () {
+                    showLoading6();
+                },
+                complete: function () {
+                    hideLoading6();
+                },
+                success: function (data) {
+
+                    if (data.successful > 0) {
+                        var StoreName;
+                        var StoreNo;
+                        var show = "";
+                        $(".list_r6").empty();
+                        $(data.report).each(function (index, value) {
+                            StoreNo = value.StoreNo;
+                            StoreName = value.StoreName;
+                            if (index == 0) {
+                                insertTableStore(StoreNo, StoreName, '1');
+                                show += "<h1 class='storeName-" + StoreNo + " active' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            } else {
+                                show += "<h1 class='storeName-" + StoreNo + "' data-value='" + StoreName + "'  onclick=setStoreNo('" + StoreNo + "');>" + StoreName + "</h1>";
+                            }
+                        });
+                        $('.list_r6').append(show);
+                    }//modal no hay data
+                }, error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.statusText);
+                    console.log(xhr.responseText);
+                    //hideLoading();
+                    if (current_lang == 'es'){
+                        mostrarModalGeneral("Error de Conexión");
+                    }else{
+                        mostrarModalGeneral("No Connection");
+                    }
+                }
+            });
+        });
+    });
+}
+
+
+//pinta la tienda que se selecciona
+function setStoreNo(storeNo) {
+    $('.list_store h1').removeClass('active');
+    $('.storeName-' + storeNo).addClass('active');
+    var StoreName = $('.storeName-' + storeNo + '.active').attr('data-value');
+    updateStore(storeNo, StoreName);
+    //$('#show_modalStore #btnStore').show();
+}
