@@ -207,17 +207,7 @@ function selectAlias() {
 
 }
 
-function mostrarModal() {
-    $("#ServersList").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
-        "backdrop": "static",
-        "keyboard": true,
-        "show": true                     // garantizar el modal se muestra inmediatamente
-    });
 
-    getAllData();
-    getDataInUse();
-
-}
 
 function mostrarModalMessage() {
 
@@ -411,7 +401,3 @@ function prueba(detalle) {
     }
 }
 
-function showOptions(){
-    $('#show_options').modal('show');
-    getDataInUse();
-}

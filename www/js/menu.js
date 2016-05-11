@@ -1029,3 +1029,182 @@ function setStoreNo(storeNo) {
     updateStore(storeNo, StoreName);
     //$('#show_modalStore #btnStore').show();
 }
+
+
+
+
+function showOptions(){
+    $('#show_options').modal('show');
+    getDataInUse();
+}
+
+function mostrarModal() {
+    $("#ServersList").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
+        "backdrop": "static",
+        "keyboard": true,
+        "show": true                     // garantizar el modal se muestra inmediatamente
+    });
+
+    getAllData();
+    //getDataInUse();
+
+}
+
+
+function addID(abc){
+    $('#ServersList').css('z-index','1030');
+    $("#txtvalue").val(abc);
+}        
+
+function addIDDelete(id){
+    $('#ServersList').css('z-index','1030');
+    $("#txtvaluedelete").val(id);
+}
+
+function ocultaMiModal(){
+    var id = $("#txtvalue").val();
+    updateStateURL(id);
+}
+
+function ocultaMiModalDelete(){
+    var id = $("#txtvaluedelete").val();
+    deleteServer(id);
+}
+
+
+function newInfoServer(){
+    window.location.href = "ip.html?variable=1";
+}
+
+
+function updateStateURL(id) {
+
+    var query = "UPDATE " + TABLE_URL + " SET " + KEY_USE + " = '0'";
+
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
+    var query2 = "UPDATE " + TABLE_URL + " SET " + KEY_USE + " = '1' WHERE " + KEY_ID + " = ? ";
+    console.log("query2 " + query2);
+
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query2, [id], function (transaction, results) {
+                if (!results.rowsAffected) {
+                    console.log("Error updateState");
+                } else {
+                    console.log("Update realizado:" + results.rowsAffected);
+                    location.reload();
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+}
+
+
+function deleteServer(id) {
+    var query1 = "SELECT " + KEY_USE + " FROM " + TABLE_URL + " WHERE " + KEY_ID + " = ?";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query1, [id], function (transaction, results) {
+                var total = results.rows.item(0).use;
+                if (total == 1) {
+                    mostrarModalMessage();
+                } else {
+                    var query2 = "DELETE FROM " + TABLE_URL + " WHERE " + KEY_ID + " = ? ";
+                    try {
+                        localDB.transaction(function (transaction) {
+                            transaction.executeSql(query2, [id], function (transaction, results) {
+                                if (!results.rowsAffected) {
+                                    console.log("Error eliminar servidor");
+                                } else {
+                                    console.log("deleteServer realizado:" + results.rowsAffected);
+                                    getDataInUse();
+                                    getAllData();
+                                }
+                            }, errorHandler);
+                        });
+                    } catch (e) {
+                        console.log("Error updateState " + e + ".");
+                    }
+                }
+            }, errorHandler);
+        });
+    } catch (e) {
+        console.log("Error deleteServer " + e + ".");
+    }
+
+}
+
+
+
+function getAllData() {
+    var query = "SELECT " + KEY_ID + ", " + KEY_URLBASE + "," + KEY_ALIAS + " FROM " + TABLE_URL;
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+
+                var mostrar = "";
+                $("#divlistado").empty();
+
+                for (var i = 0; i < results.rows.length; i++) {
+
+                    var row = results.rows.item(i);
+                    var _id = row['id'];
+                    var _alias = row['alias'];
+                    var _url = row['urlBase'];
+
+                    //<div class="alias-item" id="alias-item">Cambiar de Alias 1 <button type="button" class="delete">×</button></div>
+
+                    mostrar += "<div class='collection-item'> ";
+                    mostrar += "<span data-toggle='modal' data-dismiss='modal' data-target='#ModalConfirm' onclick=\"addID(" + _id + ")\">" + _alias + "</span> ";//data-target ???
+                    mostrar += "<button type='button' data-dismiss='modal' class='delete btn btn-fab red darken-1' data-toggle='modal' data-target='#ModalConfirmDelete' ";
+                    mostrar += "onclick=\"addIDDelete(" + _id + ")\"><i class='material-icons right'></i></button></div>";
+                }
+                $("#divlistado").append(mostrar);
+
+
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("Error getAllData " + e + ".");
+    }
+}
+
+
+
+function getDataInUse() {
+    var query = "SELECT " + KEY_IP + "," + KEY_ALIAS + " FROM " + TABLE_URL + " WHERE " + KEY_USE + " = '1'";
+    try {
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query, [], function (transaction, results) {
+                var ip = results.rows.item(0).ip;
+                var alias = results.rows.item(0).alias;
+                console.log("ip: " + ip + " - alias: " + alias);
+                $("#txtIP").text(ip);
+                $("#txtStore").text(alias);
+
+            }, function (transaction, error) {
+                console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+            });
+        });
+    } catch (e) {
+        console.log("Error getDataInUse " + e + ".");
+    }
+}
+
