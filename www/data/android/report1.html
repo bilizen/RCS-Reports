@@ -23,7 +23,6 @@
   <script type="text/javascript" src="../../js/database_report1.js"></script>
 
   <script type="text/javascript" src="../../js/material/materialize.js"></script>
-  <script type="text/javascript" src="../../js/material/sideNav.js"></script>
   <script type="text/javascript" src="../../js/material/ripples.min.js"></script>
   <script type="text/javascript" src="../../js/material/material.min.js"></script>
   <script type="text/javascript" src="../../js/scripts-android.js"></script>
@@ -58,7 +57,7 @@
 
 </head>
 
-<body id="pageone">
+<body>
 
   <!-- Navbar -->
   <div class="bs-docs-section clearfix">
@@ -66,7 +65,30 @@
       <nav class="navbar navbar-default  green darken-4">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="btn navbar-toggle config" onclick="showOptions()" id="btn_right">
+            <button type="button" class="btn navbar-toggle config dropdown-button" onclick="showOptions()" id="btn_right" data-activates='dropdown1'>
+              <!-- Dropdown Structure -->
+              <ul id='dropdown1' class='dropdown-content'>
+                <li>
+                  <a href="#">
+                    <input type="checkbox" class="filled-in" id="check_actual" onclick = "updateActual()" checked>
+                    <label class="text-checkbox current" for="check_actual">Show Current</label>
+                  </a>
+                <li>
+                  <a href="#">
+                  <input type="checkbox" class="filled-in" id="check_global" onclick="updateGlobal()" checked>
+                  <label class="text-checkbox global" for="check_global">Show Global</label></a></li>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#">
+                    <div onclick="mostrarInfo();">                    
+                      <div class="buttonItem dictionary">Show Dictionary</div>
+                      
+                    </div>
+                  </a>
+                </li>
+              </ul>
               <div >
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -119,98 +141,69 @@
 
   </div>
 
-        <div id="floatWindow">
+  <div id="floatWindow">
 
-          <header>
-            <div class="top_bar_space"></div>
-            <div class="options_bar_space">
-              <div id="btn_left" class="arrow"><button onclick="moveToRight(); refresh();" id="txtBack">Back</button></div>
-              <div id="top_txt_title" class="titleTopBar">Options</div>
-              <div id="btn_right"></div>
-            </div>      
-          </header>
 
-          <div class="wrapper visualization">
-            <div class="section">
-              <span id="lblVisualization">Visualization</span>
-              <div class="section_content">
-                <input type="checkbox" name="check_actual" id="check_actual" onclick = "updateActual()" checked>
-                <label class="text-checkbox current">Show Current</label>
-                <hr>
-                <input type="checkbox" name="check_global" id="check_global" onclick="updateGlobal()" checked>
-                <label class="text-checkbox global">Show Global</label>
-              </div>  
+    <div class="wrapper general">
+      <div class="section">
+        <span id="section_header">Choose Filter</span>
+        <div class="section_content">
+          <div class="select-general">
+            <div data-value="1" class="item " id="lbl_By_company">By Company</div>
+            <hr>
+            <div data-value="2" class="item" id="lbl_By_region">By Region</div>
+            <hr>
+            <div data-value="3" class="item selected lbl_By_Store"  id="lbl_By_Store">By Store</div>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper date">
+      <div class="section">
+        <span id="lblChooseDate">Choose Date</span>
+        <div class="section_content">
+          <div class="select-date">
+            <div data-value="1" class="item selected"  >
+              <div id="lblToday">Today</div>
+              <div id="today" class="date"></div>
             </div>
-
-            <div class="section">
-              <span class="lblmodaldicc">Dictionary</span>
-              <div class="section_content item" onclick="mostrarInfo();">                    
-                <div class="buttonItem dictionary">Show Dictionary</div>
-                <button>Aa</button>
-              </div>  
+            <hr>
+            <div data-value="2" class="item">
+              <div id="lblYesterday">Yesterday</div>
+              <div id="yesterday" class="date"></div>
+            </div>
+            <hr>
+            <div data-value="3" class="item">
+              <div id="lblWeek">Week to Date</div>
+              <div id="week" class="date"></div>
+            </div>
+            <hr>
+            <div data-value="4" class="item">
+              <div id="lblMonth">Month to Date</div>
+              <div id="month" class="date"></div>
+            </div>
+            <hr>
+            <div data-value="5" class="item">
+              <div id="lblYear">Year to Date</div>
+              <div id="year" class="date"></div>
             </div>
           </div> 
+        </div>                
+      </div>
+    </div>
+    <div class="wrapper region">
+      <div class="section">
+        <span>Choose Region</span>
+        <div class="section_content">
+          <div class="select-region">
+            <!-- combo -->
+          </div> 
+        </div>                
+      </div>
+    </div>
 
-          <div class="wrapper general">
-            <div class="section">
-              <span id="section_header">Choose Filter</span>
-              <div class="section_content">
-                <div class="select-general">
-                  <div data-value="1" class="item " id="lbl_By_company">By Company</div>
-                  <hr>
-                  <div data-value="2" class="item" id="lbl_By_region">By Region</div>
-                  <hr>
-                  <div data-value="3" class="item selected lbl_By_Store"  id="lbl_By_Store">By Store</div>
-                </div> 
-              </div>
-            </div>
-          </div>
-
-          <div class="wrapper date">
-            <div class="section">
-              <span id="lblChooseDate">Choose Date</span>
-              <div class="section_content">
-                <div class="select-date">
-                  <div data-value="1" class="item selected"  >
-                    <div id="lblToday">Today</div>
-                    <div id="today" class="date"></div>
-                  </div>
-                  <hr>
-                  <div data-value="2" class="item">
-                    <div id="lblYesterday">Yesterday</div>
-                    <div id="yesterday" class="date"></div>
-                  </div>
-                  <hr>
-                  <div data-value="3" class="item">
-                    <div id="lblWeek">Week to Date</div>
-                    <div id="week" class="date"></div>
-                  </div>
-                  <hr>
-                  <div data-value="4" class="item">
-                    <div id="lblMonth">Month to Date</div>
-                    <div id="month" class="date"></div>
-                  </div>
-                  <hr>
-                  <div data-value="5" class="item">
-                    <div id="lblYear">Year to Date</div>
-                    <div id="year" class="date"></div>
-                  </div>
-                </div> 
-              </div>                
-            </div>
-          </div>
-          <div class="wrapper region">
-            <div class="section">
-              <span>Choose Region</span>
-              <div class="section_content">
-                <div class="select-region">
-                  <!-- combo -->
-                </div> 
-              </div>                
-            </div>
-          </div>
-
-        </div>  
+  </div>      
 
   <!-- Modal -->
 
