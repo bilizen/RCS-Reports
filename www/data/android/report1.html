@@ -67,7 +67,7 @@
           <div class="navbar-header">
             <button type="button" class="btn navbar-toggle config dropdown-button" onclick="showOptions()" id="btn_right" data-activates='dropdown1'>
               <!-- Dropdown Structure -->
-              <ul id='dropdown1' class='dropdown-content'>
+              <ul id='dropdown1' class='dropdown-content collection'>
                 <li>
                   <a href="#">
                     <input type="checkbox" class="filled-in" id="check_actual" onclick = "updateActual()" checked>
@@ -80,12 +80,10 @@
                   </a>
                 </li>
                 <li class="divider"></li>
-                <li>
+                <li class="collection-item avatar" onclick="mostrarInfo();">                  
                   <a href="#">
-                    <div onclick="mostrarInfo();">                    
-                      <div class="buttonItem dictionary">Show Dictionary</div>
-                      
-                    </div>
+                    <i class="material-icons circle">Aa</i>
+                    <p class="buttonItem dictionary">Show Dictionary</p>
                   </a>
                 </li>
               </ul>
@@ -109,17 +107,44 @@
 
       <div class="section">
         <div class="select-general">
-          <div data-value="3" class="init item innerLi" onclick="moveToLeft(1);" id="lbl_By_Store">By Store</div>
-        </div>               
+          <div data-value="3" class="init item innerLi dropdown-button btn" data-activates='dpGeneral' id="lbl_By_Store">By Store</div>
+        </div> 
+        <ul class="select-general dropdown-content" id="dpGeneral">
+          <div data-value="1" class="item " id="lbl_By_company">By Company</div>
+          <div data-value="2" class="item" id="lbl_By_region">By Region</div>
+          <div data-value="3" class="item selected lbl_By_Store"  id="lbl_By_Store">By Store</div>
+        </div>              
       </div>
 
       <div class="section">
         <div class="select-dateP">
-          <div data-value="1" class="init item innerLi" onclick="moveToLeft(2);" >
+          <div data-value="1" class="init item innerLi dropdown-button btn" data-activates='dpDate'>
             <span id="lblTodayP">Today</span>
             <div id="time"></div>
           </div>
-        </div>                
+        </div>
+        <ul class="select-date dropdown-content" id="dpDate">
+          <div data-value="1" class="item selected"  >
+            <div id="lblToday">Today</div>
+            <div id="today" class="date"></div>
+          </div>
+          <div data-value="2" class="item">
+            <div id="lblYesterday">Yesterday</div>
+            <div id="yesterday" class="date"></div>
+          </div>
+          <div data-value="3" class="item">
+            <div id="lblWeek">Week to Date</div>
+            <div id="week" class="date"></div>
+          </div>
+          <div data-value="4" class="item">
+            <div id="lblMonth">Month to Date</div>
+            <div id="month" class="date"></div>
+          </div>
+          <div data-value="5" class="item">
+            <div id="lblYear">Year to Date</div>
+            <div id="year" class="date"></div>
+          </div>
+        </ul>                 
       </div>
 
       <div class="section">
@@ -147,7 +172,7 @@
     <div class="wrapper general">
       <div class="section">
         <span id="section_header">Choose Filter</span>
-        <div class="section_content">
+        <!-- <div class="section_content">
           <div class="select-general">
             <div data-value="1" class="item " id="lbl_By_company">By Company</div>
             <hr>
@@ -155,7 +180,7 @@
             <hr>
             <div data-value="3" class="item selected lbl_By_Store"  id="lbl_By_Store">By Store</div>
           </div> 
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -163,7 +188,7 @@
       <div class="section">
         <span id="lblChooseDate">Choose Date</span>
         <div class="section_content">
-          <div class="select-date">
+<!--           <div class="select-date">
             <div data-value="1" class="item selected"  >
               <div id="lblToday">Today</div>
               <div id="today" class="date"></div>
@@ -188,7 +213,7 @@
               <div id="lblYear">Year to Date</div>
               <div id="year" class="date"></div>
             </div>
-          </div> 
+          </div> --> 
         </div>                
       </div>
     </div>
