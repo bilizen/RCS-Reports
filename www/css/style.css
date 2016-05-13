@@ -1152,6 +1152,19 @@ button.delete{
 .modal-footer.info {
     line-height: 32px;
 }
+.chkTax label{
+    text-align: center;
+}
+.chkTax input[type="checkbox"] + label:before{
+    top: 2px;
+    width: 45px;
+    height: 25px;
+}
+.chkTax input[type="checkbox"] + label:after{
+    top: 4px;
+    width: 19px;
+    height: 19px;
+}
 .title-alert{
     
     font-size: 20px;

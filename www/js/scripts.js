@@ -401,3 +401,6 @@ function prueba(detalle) {
     }
 }
 
+function showActualServer(){
+    $('.show_actual_server').modal('show');
+}
