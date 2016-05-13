@@ -4,3 +4,6 @@
     background-size: 34px 34px;
     background-repeat: no-repeat;
 }
+#txt_title {
+    width: inherit;
+}
