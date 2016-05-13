@@ -1,17 +1,16 @@
 //primero se ejecuta ready luego el load
-$(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
-       
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    document.addEventListener("backbutton", onBackKeyDown, true);
-}
+$(document).ready(function () {
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+    }
     onInit();/**verificamos la base de datos**/
     existDataClasification();/***llenamos tabla clasificaciones**/
     existDataDate();/**lleanmos tabla CustomRangeDate**/
     design_report2();
 });
 
-$(window).load(function () {/***asegura que la pagina ya esta cargada**/
+$(window).load(function () {
     /**This download method only happend the first time**/
     var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
     value = $(".select-clasification .init").attr('data-value');
@@ -44,12 +43,14 @@ function addDataClasificationFirstTime() {//aqui se hace uin insert
     }
 }
 
+
 function design_report2() {
     $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height() + 19);
 }
 $(window).resize(function () {
     $('.list').height($(window).height() - $('header').height() - $('.select-clasification').height() + 19);
 });
+
 
 //Check if exists data , but yes or yes this function fills the table clasification
 function existDataClasification() {
@@ -285,6 +286,7 @@ function updaTableCustomDate2() {
     }
 }
 
+
 function BtnCancel2() {
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
@@ -314,13 +316,15 @@ function BtnCancel2() {
 
 }
 
+
 /**Call when you touch to see dialog clasification**/
 function addDataClasification() {
     getDataClasification();
     mostrarInfo();
 }
-function updateClasification() {
 
+
+function updateClasification() {
     var sup_buena = document.getElementById("clasRange1").value;
     var sup_aceptable = document.getElementById("clasRange2").value;
     var sup_deficiente = document.getElementById("clasRange3").value;
@@ -392,12 +396,12 @@ function updateClasification() {
     }
 }
 function downloadRefresh() {
-
     var value = "";/**antes de descargar verificamos que opcion esta seleccionada en el combo clasificacion**/
     value = $(".select-clasification .init").attr('data-value');
     downloadStoreClasification(value);
-
 }
+
+
 function downloadStoreClasification(_valueSelected) {
     var xurl = "";
     var ip = "";
@@ -425,16 +429,26 @@ function downloadStoreClasification(_valueSelected) {
     //pinta el title del report2 
      $('#txt_title').text(localStorage.getItem("titleReport2"));
     
-    /****get****date****/
-    /***get range date ***/
-    /***date of today ***/
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="ReportClasification/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="ReportClasification/POST";
+    }else{
+        console.log("error: downloadByStore");
+    }
+
+  
+
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
             /*******************   Verificamos si    ***************************/
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CLASIFICATION, [], function (tx, results) {

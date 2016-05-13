@@ -1,9 +1,8 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
+    function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        }
-
+    }
 
     onInit();
     existDataDate();
@@ -40,11 +39,13 @@ $(window).load(function () {
     deteclenguage_R4();
 });
 
+
 //buton Store
 function showDialogStore4() {
     $("#show_modalStore").modal();
     downloadAllStore2();
 }
+
 
 //si hay data en la TABLE_REPORT
 function downloadAllStore2() {
@@ -232,7 +233,16 @@ function downloadReportGraphic() {
     var alias = "";
     var site = "";
 
-    /*******OBTENEMOS LOS VALORES DEL SERVIDOR ACTUAL**********/
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="ReportGraphicStore/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="ReportGraphicStore/POST";
+    }else{
+        console.log("error: downloadReportGraphic");
+    }
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -241,7 +251,7 @@ function downloadReportGraphic() {
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
 
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportGraphicStore/POST";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
 
 
             /*****OBTENEMOS EL VALOR DE STORENO DE LA BASE DE DATOS PARA LA TIENDA USADA***/

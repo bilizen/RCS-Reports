@@ -1,16 +1,15 @@
 //primero se ejecuta ready luego el load
-$(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
+$(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
+    function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        }
-
+    }
     onInit();/**verificamos la base de datos**/
     existDataDate_report3();/**lleanmos tabla CustomRangeDate**/
     sizeSpaceStores3();
 });
 
-$(window).load(function () {/***asegura que la pagina ya esta cargada**/
+$(window).load(function () {
     deteclenguage3();
 });
 
@@ -96,13 +95,25 @@ function refresh_report3(regionCode) {
     var sumTotalGoal = 0;
     var sumPercentGoal = 0;
     var sumPercentSale = 0;
+
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="ReportClasification/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="ReportClasification/POST";
+    }else{
+        console.log("error: refresh_report3");
+    }
+
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM CRANGEDATE', [], function (tx, results) {
                     dateStart = results.rows.item(0).dateStart;
@@ -190,6 +201,7 @@ function butttonBack3() {
     }
 }
 
+
 function existDataDate_report3() {
     var count = 0;
     var xurl = "";
@@ -199,7 +211,20 @@ function existDataDate_report3() {
     var site = "";
     
     //pinta el title del report3 
-     $('#txt_title').text(localStorage.getItem("titleReport3"));
+    $('#txt_title').text(localStorage.getItem("titleReport3"));
+
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="ReportClasification/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="ReportClasification/POST";
+    }else{
+        console.log("error: existDataDate_report3");
+    }
+
+
     
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -207,13 +232,13 @@ function existDataDate_report3() {
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
             var query = "SELECT COUNT(*) AS countRDate FROM " + TABLE_CUSTOM_DATE_RANGE;
             try {
                 localDB.transaction(function (transaction) {
                     transaction.executeSql(query, [], function (transaction, results) {
                         count = results.rows.item(0).countRDate;
-                        if (count > 0) {
+                        if(count > 0){
                             localDB.transaction(function (tx) {
                                 tx.executeSql('SELECT * FROM ' + TABLE_CUSTOM_DATE_RANGE, [], function (tx, results) {
 
@@ -309,7 +334,7 @@ function existDataDate_report3() {
                                     });
                                 });
                             });
-                        } else {
+                        }else{
                             /***asignamos fecha por defecto la primera vez***/
                             /***date of today ***/
                             var obj_date = new Date();

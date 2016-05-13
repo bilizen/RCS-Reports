@@ -136,7 +136,7 @@ function MSG_LBL_CHANGE_ALIAS_CONFIRM_SI() {
 }
 function MSG_LBL_CHANGE_ALIAS_SETTINGS(){
     $('#lblToolsTitle').html("Configuraciones"); 
-    $('#txtStoreT').text('Servidor: ');
+    $('#txtServerT').text('Servidor: ');
     $('#txtIpT').text('IP: ');
     $('#txtUserT').text('Usuario: ');
 }

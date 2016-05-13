@@ -29,13 +29,25 @@ function downloadByCompany(actual_, global_) {
     var lblCurrentGoal = "";
     var lblGlobalSale = "";
     var lblGlobalGoal = "";
+
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="reportCompany/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="reportCompany/POST";
+    }else{
+        console.log("error: downloadByCompany");
+    }
+
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
             c_ip = results.rows.item(0).ip;
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
             c_alias = results.rows.item(0).alias;
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportCompany/POST';
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
             //******************* captura los datos del report1.html *************************//
             var principal = $(".select-general div:first-child()").attr("data-value");
             var option = $(".select-dateP .init").attr("data-value");
@@ -251,6 +263,19 @@ function downloadByRegion(actual_, global_) {
     var lblGlobalSale = "";
     var lblGlobalGoal = "";
 
+
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="reportByRegion/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="reportByRegion/POST";
+    }else{
+        console.log("error: downloadByRegion");
+    }
+
+
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
 
@@ -258,7 +283,7 @@ function downloadByRegion(actual_, global_) {
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
 
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportByRegion/POST';
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
 
             var byRegion = $(".select-general div:first-child()").attr("data-value");
             var option = $(".select-dateP .init").attr("data-value");
@@ -464,18 +489,16 @@ function downloadByRegion(actual_, global_) {
                     console.log(xhr.statusText);
                     console.log(xhr.responseText);
                     //hideLoading();
-                    if (current_lang == 'es')
+                    if (current_lang == 'es'){
                         mostrarModalGeneral("Error de Conexión");
-                    else
+                    }     
+                    else{
                         mostrarModalGeneral("No Connection");
+                    }
                 }
             });
-
-
         });
-
     });
-
 }
 
 
@@ -492,7 +515,7 @@ function loadComboRegions(actual_, global_) {
     //pinta el titulo del reporte1
     $('#txt_title').text(localStorage.getItem("titleReport1"));
     
-    localDB.transaction(function (tx) {
+      localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
             c_ip = results.rows.item(0).ip;
             c_port = results.rows.item(0).port;
@@ -577,6 +600,16 @@ function downloadByStore(actual_, global_) {
     var option = $(".select-dateP .init").attr("data-value");
     var regionCode = $(".select-region div:first-child()").attr("data-value");
 
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="reportgoal/post";
+    }else if(impuesto=="1"){
+        serviceUrl="reportgoal/post";
+    }else{
+        console.log("error: downloadByStore");
+    }
 
     if (regionCode == "R-1" || regionCode == null) {
         regionCode = "";
@@ -592,7 +625,7 @@ function downloadByStore(actual_, global_) {
             c_ip = results.rows.item(0).ip;
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportgoal/post';
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
 
 
             /*********************/

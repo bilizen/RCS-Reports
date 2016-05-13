@@ -1,8 +1,8 @@
 $(document).ready(function () {/*** caraga elemento de la estructura html y estilos ***/
     document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
+    function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        }
+    }
         
     onInit();/**verificamos la base de datos**/
     existDataDate_report5();/**lleanmos tabla CustomRangeDate**/
@@ -290,13 +290,28 @@ function downloadAllcustomers() {
     var alias = "";
     var site = "";
     var array;
+
+    //verifica si esta con impuestos
+    var impuesto=localStorage.getItem("check_tax");
+    var serviceUrl="";
+    if(impuesto=="0"){
+        serviceUrl="ReportScopeClerk/POST";
+    }else if(impuesto=="1"){
+        serviceUrl="ReportScopeClerk/POST";
+    }else{
+        console.log("error: downloadAllcustomers");
+    }
+
+
+
+
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportScopeClerk/POST";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
             var query = "SELECT * FROM " + TABLE_CUSTOM_DATE_RANGE;
             localDB.transaction(function (tx) {
                 tx.executeSql(query, [], function (tx, results) {

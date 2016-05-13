@@ -3,7 +3,6 @@ $(document).ready(function () {
     function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
     }
-
     function onBackKeyDown() {
         navigator.app.exitApp();     
     }
@@ -16,7 +15,54 @@ $(window).load(function(){
     //pone el titulo  
     //Title_Company();
     deteclenguage();
+    //localStorage.clear();
 });
+
+
+
+
+function showOptions(){
+    $('#show_options').modal('show');
+    getDataInUse();
+}
+
+function mostrarModal() {
+    $("#ServersList").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
+        "backdrop": "static",
+        "keyboard": true,
+        "show": true                     // garantizar el modal se muestra inmediatamente
+    });
+
+    getAllData();
+    //getDataInUse();
+
+}
+
+
+function addID(abc){
+    $('#ServersList').css('z-index','1030');
+    $("#txtvalue").val(abc);
+}        
+
+function addIDDelete(id){
+    $('#ServersList').css('z-index','1030');
+    $("#txtvaluedelete").val(id);
+}
+
+function ocultaMiModal(){
+    var id = $("#txtvalue").val();
+    updateStateURL(id);
+}
+
+function ocultaMiModalDelete(){
+    var id = $("#txtvaluedelete").val();
+    deleteServer(id);
+}
+
+
+function newInfoServer(){
+    window.location.href = "ip.html?variable=1";
+}
 
 
 var titleReport1 = "";
@@ -1033,49 +1079,6 @@ function setStoreNo(storeNo) {
 
 
 
-function showOptions(){
-    $('#show_options').modal('show');
-    getDataInUse();
-}
-
-function mostrarModal() {
-    $("#ServersList").modal({// cablear la funcionalidad real modal y mostrar el cuadro de diálogo
-        "backdrop": "static",
-        "keyboard": true,
-        "show": true                     // garantizar el modal se muestra inmediatamente
-    });
-
-    getAllData();
-    //getDataInUse();
-
-}
-
-
-function addID(abc){
-    $('#ServersList').css('z-index','1030');
-    $("#txtvalue").val(abc);
-}        
-
-function addIDDelete(id){
-    $('#ServersList').css('z-index','1030');
-    $("#txtvaluedelete").val(id);
-}
-
-function ocultaMiModal(){
-    var id = $("#txtvalue").val();
-    updateStateURL(id);
-}
-
-function ocultaMiModalDelete(){
-    var id = $("#txtvaluedelete").val();
-    deleteServer(id);
-}
-
-
-function newInfoServer(){
-    window.location.href = "ip.html?variable=1";
-}
-
 
 function updateStateURL(id) {
 
@@ -1197,14 +1200,34 @@ function getDataInUse() {
                 var alias = results.rows.item(0).alias;
                 console.log("ip: " + ip + " - alias: " + alias);
                 $("#txtIP").text(ip);
-                $("#txtStore").text(alias);
+                $("#txtServer").text(alias);
 
+                if(null==localStorage.getItem("check_tax")){
+                    $('.check_tax').prop("checked",true);
+                    localStorage.setItem("check_tax","1");
+                }else{
+                    if(localStorage.getItem("check_tax")=="1"){
+                        $('.check_tax').prop("checked",true);
+                    }else{
+                        $('.check_tax').prop("checked",false);
+                    }
+                }
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
         });
     } catch (e) {
         console.log("Error getDataInUse " + e + ".");
+    }
+}
+
+
+//function del check impuesto
+function checkTax(){
+    if($('.check_tax').is(':checked')){
+        localStorage.setItem("check_tax","1");     
+    }else{
+        localStorage.setItem("check_tax","0");
     }
 }
 
