@@ -239,7 +239,7 @@ function downloadReportGraphic() {
     if(impuesto=="0"){
         serviceUrl="ReportGraphicStore/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportGraphicStore/POST";
+        serviceUrl="ReportGraphicStoreWT/POST";
     }else{
         console.log("error: downloadReportGraphic");
     }

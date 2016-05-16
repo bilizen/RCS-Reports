@@ -435,7 +435,7 @@ function downloadStoreClasification(_valueSelected) {
     if(impuesto=="0"){
         serviceUrl="ReportClasification/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportClasification/POST";
+        serviceUrl="ReportClasificationWT/POST";
     }else{
         console.log("error: downloadByStore");
     }

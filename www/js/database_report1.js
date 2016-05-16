@@ -36,7 +36,7 @@ function downloadByCompany(actual_, global_) {
     if(impuesto=="0"){
         serviceUrl="reportCompany/POST";
     }else if(impuesto=="1"){
-        serviceUrl="reportCompany/POST";
+        serviceUrl="reportCompanyWT/POST";
     }else{
         console.log("error: downloadByCompany");
     }
@@ -270,7 +270,7 @@ function downloadByRegion(actual_, global_) {
     if(impuesto=="0"){
         serviceUrl="reportByRegion/POST";
     }else if(impuesto=="1"){
-        serviceUrl="reportByRegion/POST";
+        serviceUrl="reportByRegionWT/POST";
     }else{
         console.log("error: downloadByRegion");
     }
@@ -606,7 +606,7 @@ function downloadByStore(actual_, global_) {
     if(impuesto=="0"){
         serviceUrl="reportgoal/post";
     }else if(impuesto=="1"){
-        serviceUrl="reportgoal/post";
+        serviceUrl="reportgoalWT/post";
     }else{
         console.log("error: downloadByStore");
     }

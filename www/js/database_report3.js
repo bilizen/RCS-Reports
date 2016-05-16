@@ -102,7 +102,7 @@ function refresh_report3(regionCode) {
     if(impuesto=="0"){
         serviceUrl="ReportClasification/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportClasification/POST";
+        serviceUrl="ReportClasificationWT/POST";
     }else{
         console.log("error: refresh_report3");
     }
@@ -219,7 +219,7 @@ function existDataDate_report3() {
     if(impuesto=="0"){
         serviceUrl="ReportClasification/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportClasification/POST";
+        serviceUrl="ReportClasificationWT/POST";
     }else{
         console.log("error: existDataDate_report3");
     }

@@ -297,7 +297,7 @@ function downloadAllcustomers() {
     if(impuesto=="0"){
         serviceUrl="ReportScopeClerk/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportScopeClerk/POST";
+        serviceUrl="ReportScopeClerkWT/POST";
     }else{
         console.log("error: downloadAllcustomers");
     }

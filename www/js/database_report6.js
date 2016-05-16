@@ -1,9 +1,9 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
+    function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        }
-        
+    }
+
     onInit();
     //por defecto que salga la semana de ventas
     graphicReport6(3);
@@ -57,7 +57,7 @@ function graphicReport6(option) {
     if(impuesto=="0"){
         serviceUrl="ReportAdvancedByStore/POST";
     }else if(impuesto=="1"){
-        serviceUrl="ReportAdvancedByStore/POST";
+        serviceUrl="ReportAdvancedByStoreWT/POST";
     }else{
         console.log("error: graphicReport6");
     }
