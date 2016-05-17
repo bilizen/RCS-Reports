@@ -103,6 +103,10 @@ function MSG_LBL_WORKING() {
     $("#lblworkd").html("Más Reportes Proximamente...");
 }
 //Modal Menu
+function MSG_LBL_CHANGE_CURRENT_SERVER(){
+    $('.actual_server').text('Servidor Actual');
+    $('#lblViewServer').text('Servidor Actual');
+}
 function MSG_LBL_CHANGE_ALIAS_T() {
     $("#lblchangealit").html("Servidores");
 }

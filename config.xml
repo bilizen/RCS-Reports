@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.realcs.report"
-    versionCode="18" 
-    version="3.1.1" 
+    versionCode="19" 
+    version="3.1.2" 
     xmlns="http://www.w3.org/ns/widgets" 
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>RCS Reports</name>
@@ -12,11 +12,12 @@
     <!--
         <content src="data/android/ip.html"/>
         <content src="index.html" />
+        <content src="data/ios/ip.html"/>
     -->
-    <content src="index.html"/>
+    <content src="data/ios/ip.html"/>
 
     <preference name="AutoHideSplashScreen"  value= "true"  />
-    <preference name="SplashScreenDelay"  value= "3000"  />
+    <preference name="SplashScreenDelay"  value= "2000"  />
     <preference name="FadeSplashScreen"  value= "true" />
     <preference name="FadeSplashScreenDuration"  value= "1000" />
     <preference name="ShowSplashScreenSpinner"  value= "false" />

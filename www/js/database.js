@@ -970,6 +970,7 @@ function deteclenguage() {
         MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS_T();
         MSG_LBL_CHANGE_ALIAS_HIDE_SHOW_REPORTS();
         MSG_LBL_CHANGE_ALIAS_CLOSE();
+        MSG_LBL_CHANGE_CURRENT_SERVER();
 
         //Stores
         BTN_PREFERENCES_TXT();

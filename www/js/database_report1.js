@@ -604,8 +604,10 @@ function downloadByStore(actual_, global_) {
     var impuesto=localStorage.getItem("check_tax");
     var serviceUrl="";
     if(impuesto=="0"){
+        
         serviceUrl="reportgoal/post";
     }else if(impuesto=="1"){
+
         serviceUrl="reportgoalWT/post";
     }else{
         console.log("error: downloadByStore");

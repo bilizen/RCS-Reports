@@ -18,7 +18,7 @@ $(window).load(function(){
         alert("android");
         window.location.href = "data/android/ip.html";
     }
-    if( /Chrome|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent)){
         //is an Apple device
         alert("ios");
         window.location.href = "data/ios/ip.html";
