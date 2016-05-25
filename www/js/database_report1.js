@@ -131,7 +131,7 @@ function downloadByCompany(actual_, global_) {
                         }
 
                         mostrar += "<div id='divByCompany'>";
-                        mostrar += "<div class='store'>";
+                        mostrar += "<div class='store waves-effect waves-light'>";
                         mostrar += "<h1>" + c_alias + '</h1>';
                         $(data.report).each(function (index, value) {
                             var goalAmount = value.goalAmount;
@@ -450,7 +450,7 @@ function downloadByRegion(actual_, global_) {
                             percent = parseFloat(percent).toFixed(2);
                             percentGlobal = parseFloat(percentGlobal).toFixed(2);
 
-                            mostrar += "<div class='store'>";
+                            mostrar += "<div class='store waves-effect waves-light'>";
                             mostrar += "<h1>" + regionName + "</h1>";
                             if (actual == 1) {
                                 mostrar += "<div class='actual'>";
@@ -792,7 +792,7 @@ function downloadByStore(actual_, global_) {
                             percentGlobal = parseFloat(percentGlobal).toFixed();
 
 
-                            mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store'>";
+                            mostrar += "<div onclick=\"storeWitdhGraphic('-" + indice + "')\" class='store waves-effect waves-light'>";
                             mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
                             mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last Conn.: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
                             // mostrar += "<div>";

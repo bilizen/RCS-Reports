@@ -1,3 +1,8 @@
+.container {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .modal-header .close{
 	margin-top: -20px;
 	font-size: 14px;
@@ -155,4 +160,12 @@ div[class^="chartdiv-"]{
 }
 .section .item{
 	margin-bottom: 0;
+}
+
+.stores{
+	background-color: white;
+	padding: 0 5px;
+}
+.store{
+	display: block;
 }
