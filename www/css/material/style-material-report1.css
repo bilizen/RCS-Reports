@@ -78,7 +78,9 @@ div[class^="graphic-"]
     -webkit-transition: all 0.12s cubic-bezier(.18, .06, .19, .80); 
     transition: all 0.12s cubic-bezier(.18, .06, .19, .80); 
 }
-#time{
+#time,
+#yesterday, #today, #week, #yesterday, #month, #year{
+	display: block !important;
     position: absolute;
     bottom: 4px;
     left: 0;
@@ -99,10 +101,12 @@ div[class^="graphic-"]
 .select-date .item,
 .select-general .item,
 .select-region .item{
+	position: relative;
 	height: 36px;
 	line-height: 36px;
 	text-align: center;
 }
+
 .item.selected{
 	font-weight: bold;
 	box-shadow: none;

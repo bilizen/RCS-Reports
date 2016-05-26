@@ -116,6 +116,10 @@ hr{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+hr:last-child{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
 .modal-footer{
 	margin-top: 0;
 }
@@ -143,6 +147,9 @@ hr{
 .actual span,.global span{
     display: inline-block;
 }
+.navbar{
+	margin-bottom: 5px;
+}
 /*Report1 by Store*/
 .showGraphic {
     opacity: 1 !important;
@@ -168,4 +175,7 @@ div[class^="chartdiv-"]{
 }
 .store{
 	display: block;
+}
+.combo{
+	padding-bottom: 5px;
 }
