@@ -31,11 +31,8 @@ $(document).ready(function () {/*** caraga elemento de la estructura html y esti
             $('#miModal5').modal({backdrop: 'static', keyboard: false});
         }
     });
-
-
-
-
 });
+
 $(window).load(function () {/***asegura que la pagina ya esta cargada**/
     downloadAllcustomers();
     deteclenguage5();
@@ -109,10 +106,12 @@ function downloadAllstore52() {
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
                             hideLoading();
-                            if (current_lang == 'es')
+                            if (current_lang == 'es'){
                                 mostrarModalGeneral("Error de Conexión");
-                            else
+                            }
+                            else{
                                 mostrarModalGeneral("No Connection");
+                            }
                         }
                     });
                 });
@@ -293,17 +292,6 @@ function downloadAllcustomers() {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="ReportScopeClerk/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="ReportScopeClerkWT/POST";
-    }else{
-        console.log("error: downloadAllcustomers");
-    }
-
-
-
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -311,7 +299,7 @@ function downloadAllcustomers() {
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportScopeClerk/POST";
             var query = "SELECT * FROM " + TABLE_CUSTOM_DATE_RANGE;
             localDB.transaction(function (tx) {
                 tx.executeSql(query, [], function (tx, results) {
@@ -340,7 +328,7 @@ function downloadAllcustomers() {
 
                             $('.nameStore5').text(StoreName);
                             //var xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportScopeClerk/POST";
-                            array = {DateStart: dateStar, DateEnd: dateEnd, StoreNo: StoreNo};
+                            array = {DateStart: dateStar, DateEnd: dateEnd, StoreNo: StoreNo, Tax: impuesto};
                             $.ajax({
                                 url: xurl,
                                 type: 'POST',

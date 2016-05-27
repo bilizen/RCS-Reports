@@ -53,14 +53,6 @@ function graphicReport6(option) {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="ReportAdvancedByStore/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="ReportAdvancedByStoreWT/POST";
-    }else{
-        console.log("error: graphicReport6");
-    }
 
     var query1 = "SELECT * FROM " + TABLE_URL + " WHERE " + KEY_USE + " = 1 ";
     localDB.transaction(function (tx) {
@@ -68,7 +60,7 @@ function graphicReport6(option) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportAdvancedByStore/POST";
 
             var query2 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
             var StoreNoT ="";
@@ -85,7 +77,7 @@ function graphicReport6(option) {
                     $('.titleTopBar').text(StoreName);
                     
                     
-                    array = {Option: option,StoreNo: StoreNoT};
+                    array = {Option: option,StoreNo: StoreNoT,Tax:impuesto};
                     $.ajax({
                         url: xurl,
                         type: 'POST',
@@ -109,7 +101,7 @@ function graphicReport6(option) {
                                 var PaytotalA=[];
                                 var PaytotalP=[];
                                 //var StoreName;
-                                var StoreNo;
+                                //var StoreNo;
                                 
                                 
                                 $(data.report).each(function (index, value) {

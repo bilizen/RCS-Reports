@@ -180,10 +180,12 @@ function validData(pin, check) {
                                 console.log(xhr.statusText);
                                 console.log(xhr.responseText);
                                 //hideLoading();
-                                if (current_lang == 'es')
+                                if (current_lang == 'es'){
                                     mostrarModalGeneral("Error de Conexión");
-                                else
+                                }
+                                else{
                                     mostrarModalGeneral("No Connection");
+                                }
                             }
                         });
 

@@ -1,10 +1,13 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
+
     function onDeviceReady() {
-        document.addEventListener("backbutton", onBackKeyDown, true);
+
+         //checkConnection();
+        //document.addEventListener("backbutton", onBackKeyDown, true);
     }
     function onBackKeyDown() {
-        navigator.app.exitApp();
+        navigator.app.exitApp();     
     }
 });
 
@@ -93,7 +96,8 @@ $(window).load(function(){
             if (port.length > 0) {
                 if (alias.length > 0) {
                     if (site.length > 0) {
-                        site = site + "/Service1.svc";
+                        site = site + "/WCFRCSReports.svc";
+                        //site = site + "/Service1.svc";
                         var ip = ip_1 + "." + ip_2 + "." + ip_3 + "." + ip_4;
                         var urlBase = "http://" + ip + ":" + port + "/" + site;
                         var variablEE = obtenerVariables("variable");
@@ -137,7 +141,7 @@ $(window).load(function(){
         }
     });
 
-    
+if(checkNetConnection()==true){
     var variablEE = obtenerVariables("variable");
     //-1 si si ingresa por primera vez o mata aplicacion
     if(variablEE == -1){
@@ -147,9 +151,36 @@ $(window).load(function(){
         MSG_GO_ADD();
         $("#btn_left").removeAttr("hidden");
     }
-    
+}else{
+    if (current_lang == 'es'){
+        //modal para no conexion
+    }else{
+       //modal para no conexcion
+    }
+}
+
 });
 
+
+ function buttonExitApp() {
+        navigator.app.exitApp();
+    }
+
+  function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+    }
 
 
 /************************ funcion valida IP ********************************************/

@@ -431,16 +431,6 @@ function downloadStoreClasification(_valueSelected) {
     
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="ReportClasification/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="ReportClasificationWT/POST";
-    }else{
-        console.log("error: downloadByStore");
-    }
-
-  
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -448,7 +438,7 @@ function downloadStoreClasification(_valueSelected) {
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportClasification/POST";
             /*******************   Verificamos si    ***************************/
             localDB.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM ' + TABLE_CLASIFICATION, [], function (tx, results) {
@@ -475,7 +465,7 @@ function downloadStoreClasification(_valueSelected) {
                     dateUntil = results.rows.item(0).dateChoosed.toString();
 
                     //array = {DateStart:"2015-08-01",DateEnd:"2015-09-11",DateUntil:"2015-09-11",RegionCode:""};
-                    array = {DateStart: dateStart, DateEnd: dateEnd, DateUntil: dateUntil, RegionCode: ""};
+                    array = {DateStart: dateStart, DateEnd: dateEnd, DateUntil: dateUntil, RegionCode: "",Tax: impuesto};
 
                     $.ajax({
                         url: xurl,

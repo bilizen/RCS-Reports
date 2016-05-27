@@ -235,14 +235,6 @@ function downloadReportGraphic() {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="ReportGraphicStore/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="ReportGraphicStoreWT/POST";
-    }else{
-        console.log("error: downloadReportGraphic");
-    }
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -251,7 +243,7 @@ function downloadReportGraphic() {
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
 
-            xurl = "http://" + ip + ":" + port + "/" + site + "/"+serviceUrl;
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportGraphicStore/POST";
 
 
             /*****OBTENEMOS EL VALOR DE STORENO DE LA BASE DE DATOS PARA LA TIENDA USADA***/
@@ -286,7 +278,7 @@ function downloadReportGraphic() {
 
                             //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportGraphicStore/POST";
                             //array = {"DateStart":"2015-08-01","DateEnd":"2015-08-20","StoreNo":3};
-                            array = {DateStart: dateStart, DateEnd: dateEnd, StoreNo: storeNo};
+                            array = {DateStart: dateStart, DateEnd: dateEnd, StoreNo: storeNo, Tax:impuesto};
 
                             $.ajax({
                                 url: xurl,
