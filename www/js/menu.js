@@ -10,14 +10,25 @@ $(document).ready(function () {
 
 
 $(window).load(function(){
+    if(checkNetConnection()==true){
     onInit();
     updateHideReports();
     //pone el titulo  
     //Title_Company();
     deteclenguage();
     //localStorage.clear();
-});
+    }else{
+        $('#no_connection').modal('show');
+        if (current_lang=='es'){
+            $('titleMessage').text('Mensaje');
+            $('textNoConnection').text('No Conexión');
+            $('btngeneral').text('Aceptar');
+        }else{
+           //modal para no conexcion
+        }
+    }
 
+});
 
 
 

@@ -230,6 +230,12 @@ function ChangeWebServices(){
     }    
 
 }
+
+//button exip app
+function buttonExitApp() {
+        navigator.app.exitApp();
+    }
+
 //actualizar el name werservices
 function updateUrlBase(){
 
@@ -620,8 +626,6 @@ function valDate(dateStar, dateEnd) {
 /*******ocultar y mostrar lineas principal y global*******/
 function refresh() {
     var principal = $(".select-general div:first-child()").attr("data-value");
-
-//    if (checkNetConnection() == true) {
     var chActual = get_chActual();
     var chGlobal = get_chGlobal();
     if (principal == 1) {
@@ -631,10 +635,6 @@ function refresh() {
     } else if (principal == 3) {
         downloadByStore(chActual, chGlobal);
     }
-
-//    } else {
-//        mostrarModalGeneral();
-//    }
 
 }
 

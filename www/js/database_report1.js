@@ -32,14 +32,7 @@ function downloadByCompany(actual_, global_) {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="reportCompany/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="reportCompanyWT/POST";
-    }else{
-        console.log("error: downloadByCompany");
-    }
+   
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -47,11 +40,11 @@ function downloadByCompany(actual_, global_) {
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
             c_alias = results.rows.item(0).alias;
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportCompany/POST';
             //******************* captura los datos del report1.html *************************//
             var principal = $(".select-general div:first-child()").attr("data-value");
             var option = $(".select-dateP .init").attr("data-value");
-            var array = {principal: principal, option: option};
+            var array = {Principal: principal, Option: option, Tax:impuesto};
 
             var actual = actual_;
             var global = global_;
@@ -266,15 +259,6 @@ function downloadByRegion(actual_, global_) {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        serviceUrl="reportByRegion/POST";
-    }else if(impuesto=="1"){
-        serviceUrl="reportByRegionWT/POST";
-    }else{
-        console.log("error: downloadByRegion");
-    }
-
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -283,11 +267,11 @@ function downloadByRegion(actual_, global_) {
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
 
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportByRegion/POST';
 
             var byRegion = $(".select-general div:first-child()").attr("data-value");
             var option = $(".select-dateP .init").attr("data-value");
-            var array = {byRegion: byRegion, option: option};
+            var array = {ByRegion: byRegion, Option: option,Tax: impuesto};
             var actual = actual_;
             var global = global_;
 
@@ -602,22 +586,13 @@ function downloadByStore(actual_, global_) {
 
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
-    var serviceUrl="";
-    if(impuesto=="0"){
-        
-        serviceUrl="reportgoal/post";
-    }else if(impuesto=="1"){
-
-        serviceUrl="reportgoalWT/post";
-    }else{
-        console.log("error: downloadByStore");
-    }
+   
 
     if (regionCode == "R-1" || regionCode == null) {
         regionCode = "";
     }
 
-    var array = {option: option, regionCode: regionCode};
+    var array = {Option: option, RegionCode: regionCode,Tax: impuesto};
 
     var actual = actual_;
     var global = global_;
@@ -627,7 +602,7 @@ function downloadByStore(actual_, global_) {
             c_ip = results.rows.item(0).ip;
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/'+serviceUrl;
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportgoal/post';
 
 
             /*********************/
