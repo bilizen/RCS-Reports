@@ -1,3 +1,31 @@
+.showGraphic {
+    opacity: 1 !important;
+    height: 144px !important;
+}
+div[class^="chartdiv-"]{
+    width: 70%;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    
+}
+.section{
+	padding-top: 0;
+}
+.section .item{
+	margin-bottom: 0;
+}
+
+.stores{
+	background-color: white;
+	padding: 0 5px;
+}
+.store{
+	display: block;
+}
+.combo{
+	padding-bottom: 5px;
+}
 .store h1{
     width: 100%;
     font-size: 20px;
@@ -22,14 +50,14 @@
     color: #CE291E;
 }
 .lblLastConexion{
-    width: 100%;
+    width: 45%;
 }
 .dataLastConexion{
-    width: 100%;
+    width: 54%;
 }
 .lblLastConexion,.dataLastConexion{
     line-height: 20pt;
-    display: block;
+    display: inline-block;
 }
 .actual p,.global p,
 .actual i,.global i,
@@ -113,4 +141,43 @@ div[class^="graphic-"]
 }
 ul .item{
 	box-shadow: none;
+}
+
+
+div[class^="chartdiv-"]{
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+    
+}
+div[class^="detalle-"]{
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    float: right;
+}.
+year, .quantity{
+    font-size: 12px;
+}
+.year , div[class^="detalle-"] i {float: left; width: 40%;}
+.quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}
+.quantity{ text-align: center;}
+div[class^="detalle-"] i,
+div[class^="detalle-"] span{
+    margin: 0;
+    padding: 0;
+}
+
+
+.infoReport1{display: block; width: 100%; margin-bottom: 10px;}
+.infoReport1 i,
+.infoReport1 span{
+    display: inline-block;
+}
+.infoReport1 i{width: 19%; color: #0000CD;}
+.infoReport1 span{
+    width: 30%;
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: baseline-middle;
 }
