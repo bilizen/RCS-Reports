@@ -13,16 +13,15 @@ $(window).load(function(){
     if(checkNetConnection()==true){
     onInit();
     updateHideReports();
-    //pone el titulo  
-    //Title_Company();
+    checktaxDefault();
     deteclenguage();
     //localStorage.clear();
     }else{
         $('#no_connection').modal('show');
         if (current_lang=='es'){
-            $('titleMessage').text('Mensaje');
-            $('textNoConnection').text('No Conexión');
-            $('btngeneral').text('Aceptar');
+            $('.titleMessage').text('Mensaje');
+            $('.textNoConnection').text('No hay conexion de red');
+            $('.btngeneral').text('Aceptar');
         }else{
            //modal para no conexcion
         }
@@ -1213,16 +1212,13 @@ function getDataInUse() {
                 $("#txtIP").text(ip);
                 $("#txtServer").text(alias);
 
-                if(null==localStorage.getItem("check_tax")){
+                
+                if(localStorage.getItem("check_tax")=="1"){
                     $('.check_tax').prop("checked",true);
-                    localStorage.setItem("check_tax","1");
                 }else{
-                    if(localStorage.getItem("check_tax")=="1"){
-                        $('.check_tax').prop("checked",true);
-                    }else{
-                        $('.check_tax').prop("checked",false);
-                    }
+                    $('.check_tax').prop("checked",false);
                 }
+                
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
@@ -1231,6 +1227,21 @@ function getDataInUse() {
         console.log("Error getDataInUse " + e + ".");
     }
 }
+
+function checktaxDefault(){
+    if(null==localStorage.getItem("check_tax")){
+        $('.check_tax').prop("checked",true);
+        localStorage.setItem("check_tax","1");
+    }else{
+        if(localStorage.getItem("check_tax")=="1"){
+            $('.check_tax').prop("checked",true);
+        }else{
+            $('.check_tax').prop("checked",false);
+        }
+    }
+
+}
+
 
 
 //function del check impuesto
