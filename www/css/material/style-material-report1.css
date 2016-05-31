@@ -9,33 +9,12 @@ div[class^="chartdiv-"]{
     float: left;
     
 }
-.section{
-	padding-top: 0;
-}
-.section .item{
-	margin-bottom: 0;
-}
-
-.stores{
-	background-color: white;
-	padding: 0 5px;
-}
 .store{
 	display: block;
 }
-.combo{
-	padding-bottom: 5px;
-}
+
+
 .store h1{
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;    
-    line-height: 1.6em;
-    white-space: pre-line;
-    color: rgba(0,0,0, 0.87);
-}
-.store h1.storeNameR1{
-	margin: 2px 0;
     width: 77%;
     display: inline-block;
 }
@@ -124,23 +103,6 @@ div[class^="graphic-"]
 .select-region hr{
 	height: 0;
 	margin: 0;
-}
-
-.select-date .item,
-.select-general .item,
-.select-region .item{
-	position: relative;
-	height: 36px;
-	line-height: 36px;
-	text-align: center;
-}
-
-.item.selected{
-	font-weight: bold;
-	box-shadow: none;
-}
-ul .item{
-	box-shadow: none;
 }
 
 
