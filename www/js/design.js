@@ -111,9 +111,9 @@ $(document).ready(function () {
     // detect device
     if( /Android|webOS/i.test(navigator.userAgent) ) {
         $('.top_bar_space').remove();
-        // $('header').css({'height':'44px'});
-        // $('#content').css({'-webkit-transform':'translate3d(0,43px,0)','transform':'translate3d(0,43px,0)'});
-        // $('.content').css({'-webkit-transform':'translate3d(0,43px,0)','transform':'translate3d(0,43px,0)'});
+        $('header').css({'height':'44px'});
+        $('#content').css({'-webkit-transform':'translate3d(0,43px,0)','transform':'translate3d(0,43px,0)'});
+        $('.content').css({'-webkit-transform':'translate3d(0,43px,0)','transform':'translate3d(0,43px,0)'});
         $('.wrapper').css({'-webkit-transform':'translate3d(0,43px,0)','transform':'translate3d(0,43px,0)'});
         $('.options_bar_space').css({'margin-top':'0px'});
         $('.titleTopBar').css({'padding-top':'0px'});
