@@ -209,9 +209,13 @@ div[class^="select-"] .item{
 ul .item{
 	box-shadow: none;
 }
-.dropdown-content li>a *, .dropdown-content li>span {
+.dropdown-content li>a *, .dropdown-content li>span,
+.chkTax label{
     font-size: 16px;
     color: #26a69a;
+}
+.chkTax label{
+	line-height: initial;
 }
 .close{
 	opacity: 1;
