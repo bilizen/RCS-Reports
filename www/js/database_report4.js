@@ -8,7 +8,7 @@ $(document).ready(function () {
     existDataDate();
     ////////////////
     if (window.orientation == 0) {
-        document.getElementById('content').style.display = 'none';
+        // document.getElementById('content').style.display = 'none';
         $('#miModal4').modal({backdrop: 'static', keyboard: false});
     }
     if (window.orientation == 90 || window.orientation == -90) {

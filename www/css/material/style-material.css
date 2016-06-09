@@ -190,7 +190,7 @@ div[class^="select-"] .item{
 	margin: 2px 0;
 }
 
-.stores,#divClasification{
+.stores,#divClasification,.storeGraphic{
 	background-color: white;
 	padding: 0 5px;
 }
@@ -201,4 +201,48 @@ div[class^="select-"] .item{
 }
 ul .item{
 	box-shadow: none;
+}
+.dropdown-content li>a *, .dropdown-content li>span {
+    font-size: 16px;
+    color: #26a69a;
+}
+.close{
+	opacity: 1;
+}
+.dropdown-content label{
+	margin-bottom: 0px;
+}
+
+/*list of stores in Modal*/
+.list_store{
+	height: 240px;
+	overflow-y: auto;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.list_store h1{
+	font-size: 16px;
+	margin: 0;
+	font-weight: bold;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.list_store .active{
+	background-color: rgba(0,0,0,.06);
+}
+
+.list_store h1:last-child{
+	border-bottom: none;
+}
+
+
+/*Dropdown*/
+.collection .collection-item{
+	padding-top: 0px;
+	padding-bottom: 0px; 
 }

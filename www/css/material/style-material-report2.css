@@ -81,3 +81,42 @@
     border-radius: 2px;
     text-align: center;
 }
+
+/* modal */
+.clasificationRow{
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 44px;
+}
+.clasificationRow .clasName{
+    flex-grow: 6;
+}
+.clasificationRow .rangeMax{
+    flex-grow: 2;
+    text-align: right;
+}
+.clasificationRow .rangeMin {
+    flex-grow: 2;
+    text-align: right;
+}
+
+.clasificationRow .clasName{
+    font-size: 14px;
+    font-weight: bold;
+}
+.clasificationRow .rangeMax,
+.clasificationRow .rangeMin {
+    font-size: 15px;
+}
+.clasificationRow .rangeMax input,
+.clasificationRow .rangeMin input{
+    width: 38px;
+    text-align: right;
+}
+
+.ui-datepicker-header,
+td.ui-datepicker-current-day{
+    background-color: #B71C1C !important;
+}

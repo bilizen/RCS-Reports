@@ -38,7 +38,7 @@
 
   <!-- Navbar -->
   <div class="bs-docs-section clearfix">
-    <div class="bs-component">
+    <div class="bs-component navbar-fixed">
       <nav class="navbar navbar-default  blue darken-4">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -81,12 +81,21 @@
     </div>
   </div>
 
-  <!-- Loading -->
+  <!-- Loader -->
   <div class="modal fade" id="show_loading" >
     <div class="modal-dialog">
-      <div class=" loading">
-        <div></div>
-        <div></div>
+      <div class="text-center">
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
     </div>
@@ -194,12 +203,22 @@
   </div>
 
   <!--Modal Store  report_4-->
-  <div class="modal fade zIndex1" id="show_modalStore">
+  <div class="modal fade zIndex1" id="show_modalStore4">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div id="title_store_menu_r4" class="modal-header ">Choose Your Store</div>
-        <div class="list_store list_r4"></div>
-        <button onclick="passReport4();" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
+        <div class="modal-header">
+          <h4 class="modal-title" id="title_store_menu_r4">
+            Choose Your Store
+          </h4>          
+        </div>
+
+        <div class="list_store list_r4 collection">
+          <!-- store list -->
+        </div>
+
+        <div class="modal-footer">
+          <button onclick="passReport4();" class="btn btn-modal right btnok" data-dismiss="modal" >Ok</button> 
+        </div>        
       </div>
     </div>
   </div>
@@ -208,9 +227,19 @@
   <div class="modal fade zIndex1" id="show_modalStore5">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div id="title_store_menu_r5" class="modal-header ">Choose Your Store</div>
-        <div class="list_store list_r5"></div>
-        <button onclick="passReport5();" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
+        <div class="modal-header">
+          <h4 class="modal-title" id="title_store_menu_r5">
+            Choose Your Store
+          </h4>          
+        </div>
+
+        <div class="list_store list_r5 collection">
+          <!-- store list -->
+        </div>
+        
+        <div class="modal-footer">
+          <button onclick="passReport5();" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
+        </div>
       </div>
     </div>
   </div>
@@ -220,9 +249,19 @@
   <div class="modal fade zIndex1" id="show_modalStore6">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div id="title_store_menu_r6" class="modal-header ">Choose Your Store</div>
-        <div class="list_store list_r6"></div>
-        <button onclick="passReport6();" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
+        <div class="modal-header">
+          <h4 class="modal-title" id="title_store_menu_r6">
+            Choose Your Store
+          </h4>          
+        </div>
+
+        <div class="list_store list_r6 collection">
+          <!-- store list -->
+        </div>
+        
+        <div class="modal-footer">
+          <button onclick="passReport6();" class="btn btn-modal btnok" data-dismiss="modal" >Ok</button> 
+        </div>
       </div>
     </div>
   </div>
