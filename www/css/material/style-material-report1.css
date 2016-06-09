@@ -124,7 +124,6 @@ year, .quantity{
 }
 .year , div[class^="detalle-"] i {float: left; width: 40%;}
 .quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}
-.quantity{ text-align: center;}
 div[class^="detalle-"] i,
 div[class^="detalle-"] span{
     margin: 0;

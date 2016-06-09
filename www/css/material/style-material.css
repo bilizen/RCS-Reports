@@ -151,7 +151,14 @@ hr:last-child{
 	margin-bottom: 5px;
 }
 
+.navbar .navbar-brand{
+	z-index: 300;
+}
 .btn-right{
+	position: absolute;
+	z-index: 600;
+	top: 0;
+	right: 0;
 	width: 180px;
 	margin: 0;
 	padding: 0;

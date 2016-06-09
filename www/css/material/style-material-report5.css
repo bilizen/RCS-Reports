@@ -1,5 +1,6 @@
-g *{
-	font-family: 'Roboto';
+.list{
+	overflow-y: auto;
+	padding-bottom: 0;
 }
 .storeInfoDates{
 	height: 50px;
@@ -24,25 +25,33 @@ g *{
 	font-size: 18px;
 	display: block;
 }
-.margenNumber{
-    display: inline-block;
-    margin-right: -4px;
-}
-.margenNumber,
-.percentage{
-	color: white !important;
+
+.table{
+	background-color: white;
+	margin-top: 5px;
 }
 
+.table>thead{
+	text-transform: capitalize;
+}
+
+.table>thead>tr>th{
+	border-bottom-width: 1px;
+}
+.table>tbody>tr>td:first-child{
+	text-align: left;
+}
+
+.table>thead>tr>th, 
+.table>tbody>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>td{
+	vertical-align: middle;
+}
 
 .ui-datepicker-header,
 td.ui-datepicker-current-day a,
 td.ui-datepicker-current-day a:active,
 td.ui-datepicker-current-day a:hover{
-    background-color: #673ab7 !important;
-}
-
-@media only screen and (orientation: landscape) { 
-	.valDate{
-		display: inline-block;
-	}
-}
+    background-color: #0097a7 !important;
+} 

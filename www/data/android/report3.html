@@ -49,7 +49,7 @@
         <div class="container-fluid">
           <div class="navbar-header">
 
-            <a class="navbar-brand titleTopBar" href="javascript:void(0)" id="txt_title" onclick="refresh();">% Progress By Store</a>
+            <a class="navbar-brand" href="javascript:void(0)" id="txt_title" onclick="refresh();">% Progress By Store</a>
 
             <button type="button" class="btn-right navbar-toggle config dropdown-button" data-activates='dropdown1'>
               <div class="btn icon-menu waves-effect waves-light">
@@ -186,15 +186,19 @@
   <!--Modal of CONECTION -->
   <div class="modal fade" id="show_alias">
     <div class="modal-dialog">
-        <div class="modal-content">                              
-            <div class="modal-body text-center">     
-                <p class="title-alert titleMessage">Message</p>                 
-                <p class="text-center textgeneral"></p>              
-            </div>
-            <div class="modal-footer info">
-                <button type="button" class="btn btn-modal btnok" name="btngeneral"  data-dismiss="modal" aria-hidden="true"></button>
-            </div>
+      <div class="modal-content"> 
+        <div class="modal-header text-center">
+          <h4 class="modal-title titleMessage">
+            Message
+          </h4>          
+        </div>                             
+        <div class="modal-body text-center">                   
+          <h4 class="textgeneral red-text"></h4>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-modal btnok" data-dismiss="modal" aria-hidden="true">Ok</button>
+        </div>
+      </div>
     </div>
   </div>
 

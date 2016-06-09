@@ -67,7 +67,7 @@
         <div class="container-fluid">
           <div class="navbar-header">
 
-            <a class="navbar-brand titleTopBar" href="javascript:void(0)" id="txt_title" onclick="refresh();">Goals vs Sales</a>
+            <a class="navbar-brand" href="javascript:void(0)" id="txt_title" onclick="refresh();">Goals vs Sales</a>
 
             <button type="button" class="btn-right navbar-toggle config dropdown-button" data-activates='dropdown1'>
               <div class="btn icon-menu waves-effect waves-light">
@@ -183,26 +183,6 @@
   </div>
     
 
-  <!-- Loader -->
-  <div class="modal fade" id="show_loading" >
-    <div class="modal-dialog">
-      <div class="text-center">
-        <div class="preloader-wrapper active">
-          <div class="spinner-layer spinner-green-only">
-            <div class="circle-clipper left">
-              <div class="circle"></div>
-            </div><div class="gap-patch">
-              <div class="circle"></div>
-            </div><div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
-    </div>
-  </div>
-
   <!-- Information -->
   <div class="modal fade" id="show_info" >
     <div class="modal-dialog">
@@ -254,15 +234,55 @@
   <!--Modal of CONECTION -->
   <div class="modal fade" id="show_alias">
     <div class="modal-dialog">
+      <div class="modal-content"> 
+        <div class="modal-header text-center">
+          <h4 class="modal-title titleMessage">
+            Message
+          </h4>          
+        </div>                             
+        <div class="modal-body text-center">                   
+          <h4 class="textgeneral red-text"></h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-modal btnok" data-dismiss="modal" aria-hidden="true">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- no connection -->
+  <div class="modal fade" id="no_connection" data-backdrop="static">
+    <div class="modal-dialog">
       <div class="modal-content">                              
         <div class="modal-body text-center">     
           <p class="title-alert titleMessage">Message</p>                 
-          <p class="text-center textgeneral"></p>              
+          <p class="text-center textNoConnection">No Connection</p>              
         </div>
         <div class="modal-footer info">
-          <button type="button" class="btn btn-modal btnok" name="btngeneral"  data-dismiss="modal" aria-hidden="true">Ok</button>
+            <button type="button" class="btn btn-modal btnok"  name="btngeneral"  data-dismiss="modal" aria-hidden="true">Ok</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  
+  <!-- Loader -->
+  <div class="modal fade" id="show_loading" >
+    <div class="modal-dialog">
+      <div class="text-center">
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
     </div>
   </div>
 
