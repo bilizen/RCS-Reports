@@ -12,6 +12,7 @@
   <link href="../../css/material/ripples.css" rel="stylesheet" type="text/css">
 
   <link href="../../css/material/style-material.css" rel="stylesheet" type="text/css">
+  <link href="../../css/material/style-material-menu.css" rel="stylesheet" type="text/css">  
 
   <!-- Fav and touch icons -->
 
@@ -37,22 +38,29 @@
 <body class="bg-material-white">
 
   <!-- Navbar -->
-  <div class="bs-docs-section clearfix">
-    <div class="bs-component navbar-fixed">
-      <nav class="navbar navbar-default  blue darken-4">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="btn navbar-toggle" onclick="showOptions()">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">RCS Reports</a>
+  <header>
+    <div class="bs-docs-section clearfix">
+      <div class="bs-component navbar-fixed">
+        <nav class="navbar navbar-default  blue darken-4">
+          <div class="container-fluid">
+            <div class="navbar-header">
+
+              <a class="navbar-brand" href="javascript:void(0)">RCS Reports</a>
+
+              <button type="button" class="btn btn-right navbar-toggle" onclick="showOptions()">
+                <div class="btn icon-menu waves-effect waves-light">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </div>
+              </button>
+              
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
-  </div>
+  </header><!-- /header -->  
 
   <div class="container">
     <div class="menu">

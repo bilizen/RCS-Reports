@@ -156,11 +156,6 @@ div[class^="detalle-"] span{
 /*Nexus 10*/
 @media all and (min-width: 800px){
 
-    .navbar .navbar-brand{
-        height: 55px;
-        line-height: 55px;
-        font-size: 23px;
-    }
     div[class^="select-"] .item{
         height: 55px;
         line-height: 55px;
@@ -186,5 +181,4 @@ div[class^="detalle-"] span{
     .showGraphic {
         height: 184px !important;
     }
-
 }
