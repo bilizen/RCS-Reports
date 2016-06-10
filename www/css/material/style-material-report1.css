@@ -1,3 +1,6 @@
+g *{
+    font-family: 'Roboto';
+}
 .showGraphic {
     opacity: 1 !important;
     height: 144px !important;
@@ -15,28 +18,29 @@ div[class^="chartdiv-"]{
 
 
 .store h1{
-    width: 77%;
+    width: 75%;
     display: inline-block;
 }
 .lastConexion {
     display: inline-block;
-    width: 23%;
-    font-size: 10pt;
-    text-align: center;
-    line-height: 14pt;
-    position: relative;
-    vertical-align: top;
+    width: 25%;
+    vertical-align: middle;
     color: #CE291E;
 }
 .lblLastConexion{
     width: 45%;
+    white-space: nowrap;
+
+    font-weight: bold;
+    font-size: 10px;
 }
 .dataLastConexion{
     width: 54%;
-}
-.lblLastConexion,.dataLastConexion{
+
     font-size: 12px;
-    line-height: 20pt;
+}
+.lblLastConexion,.dataLastConexion{    
+    
     display: inline-block;
 }
 .actual p,.global p,
@@ -51,12 +55,12 @@ div[class^="chartdiv-"]{
     color: #0000CD;
 }
 .actual p,.global p{
-    width: 26.5%;
+    width: 25.5%;
     font-size: 16px;
     text-align: left;
 }
 .actual span,.global span{
-    width: 23%;
+    width: 25%;
     padding-right: 0;
     padding-top: 4pt;
     padding-bottom: 4pt;
@@ -119,9 +123,14 @@ div[class^="detalle-"]{
     height: 100%;
     display: inline-block;
     float: right;
-}.
-year, .quantity{
+    margin: 10px 0;
+    padding: 0 5px;
+}
+.year, .quantity{
     font-size: 12px;
+    font-weight: bold;
+    color: #a9a9a9;
+    font-style: italic;
 }
 .year , div[class^="detalle-"] i {float: left; width: 40%;}
 .quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}
@@ -142,4 +151,40 @@ div[class^="detalle-"] span{
     width: 30%;
     vertical-align: -webkit-baseline-middle;
     vertical-align: baseline-middle;
+}
+
+/*Nexus 10*/
+@media all and (min-width: 800px){
+
+    .navbar .navbar-brand{
+        height: 55px;
+        line-height: 55px;
+        font-size: 23px;
+    }
+    div[class^="select-"] .item{
+        height: 55px;
+        line-height: 55px;
+        font-size: 22px;
+    }    
+    #time, #yesterday, #today, #week, #yesterday, #month, #year{
+        bottom: 14px;
+        font-size: 14px;
+    }
+    .lblLastConexion, .dataLastConexion{
+        font-size: 14px;
+    }
+    .store h1{
+        font-size: 22px;
+    }
+    .actual p, .global p,
+    .actual i, .global i,
+    .actual span, .global span,
+    .year, .quantity,
+    div[class^="detalle-"]{
+        font-size: 20px;
+    }
+    .showGraphic {
+        height: 184px !important;
+    }
+
 }

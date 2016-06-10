@@ -259,3 +259,6 @@ ul .item{
 .collection .collection-item.avatar{
 	min-height: 72px;
 }
+.collection-item a{
+	padding-left: 0px !important;
+}
