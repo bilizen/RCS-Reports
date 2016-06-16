@@ -171,7 +171,6 @@ function onInit() {
         } else {
             initDB();
             createTables();
-            ChangeWebServices();
         }
     } catch (e) {
         if (e == 2) {
@@ -181,54 +180,6 @@ function onInit() {
         }
         return;
     }
-}
-
-function ChangeWebServices(){
-    try {
-        var query = "SELECT * FROM  " + TABLE_URL;
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], function (tx, results) {
-                //alert(results.rows.length);
-                if(results.rows.length>0){
-                    var testing_serviceName=(results.rows.item(0).site).split('/');
-                    if('Service1.svc'== testing_serviceName[1]){
-                        for(var i=0;i<results.rows.length;i++){
-                            var id=results.rows.item(i).id;
-                            var urlbase=results.rows.item(i).urlBase;
-                            var site=results.rows.item(i).site;
-                            var arr_site = site.split("/");
-                            var arr_urlbase=urlbase.split("/");
-                            if('Service1.svc'==arr_site[1]){
-                                var newSitio=arr_site[0]+"/WCFRCSReports.svc";
-                                var newUrlBase=arr_urlbase[0]+"//"+arr_urlbase[2]+"/"
-                                +arr_urlbase[3]+"/WCFRCSReports.svc/"+arr_urlbase[5]+"/";
-                                console.log(newUrlBase);
-                                console.log(newSitio);
-                               
-                               var query2 = "UPDATE " + TABLE_URL + " SET " + KEY_URLBASE + "= '"+newUrlBase+"' , "
-                               + KEY_SITE+" = '"+newSitio +"' WHERE "+KEY_ID+" = "+ id ;
-                               
-                                localDB.transaction(function (transaction) {
-                                transaction.executeSql(query2, [], function (transaction, results) {
-                                    alert("entro al wcfsermobiles id: "+id);
-                                    console.log();
-                                }, errorHandler);
-                                });
-                            }
-                        }
-                        
-                    }
-
-                }else{
-
-                }
-
-            }, errorHandler);
-        });
-    } catch (e) {
-        console.log("Error updateState " + e + ".");
-    }    
-
 }
 
 //button exip app
