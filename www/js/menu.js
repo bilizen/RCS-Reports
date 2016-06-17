@@ -277,7 +277,7 @@ function selectReports() {
 
                         if (report == 2402) {
                             $('.menu').append(
-                                "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
+                                "<button class ='waves-effect waves-light  item report1 " + save + "' onclick ='openReport1();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
@@ -288,7 +288,7 @@ function selectReports() {
                         }
                         if (report == 2403) {
                             $('.menu').append(
-                                "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
+                                "<button class ='waves-effect waves-light  item report2 " + save + "' onclick ='openReport2();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
@@ -299,7 +299,7 @@ function selectReports() {
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                                "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
+                                "<button class ='waves-effect waves-light  item report3 " + save + "' onclick ='openReport3();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
@@ -310,7 +310,7 @@ function selectReports() {
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                                "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
+                                "<button class ='waves-effect waves-light  item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
@@ -321,7 +321,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                                "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
+                                "<button class ='waves-effect waves-light  item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
@@ -332,7 +332,7 @@ function selectReports() {
                         }
                         if (report == 2407) {
                             $('.menu').append(
-                                "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
+                                "<button class ='waves-effect waves-light  item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
@@ -345,7 +345,7 @@ function selectReports() {
 
                         if (report == 2402) {
                             $('.menu').append(
-                                "<button class ='item report1 " + save + "' onclick ='openReport1();'>" +
+                                "<button class ='waves-effect waves-light  item report1 " + save + "' onclick ='openReport1();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport1 + "</span>" +
@@ -356,7 +356,7 @@ function selectReports() {
                         }
                         if (report == 2403) {
                             $('.menu').append(
-                                "<button class ='item report2 " + save + "' onclick ='openReport2();'>" +
+                                "<button class ='waves-effect waves-light  item report2 " + save + "' onclick ='openReport2();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport2 + "</span>" +
@@ -367,7 +367,7 @@ function selectReports() {
                         }
                         if (report == 2404) {
                             $('.menu').append(
-                                "<button class ='item report3 " + save + "' onclick ='openReport3();'>" +
+                                "<button class ='waves-effect waves-light  item report3 " + save + "' onclick ='openReport3();'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport3 + "</span>" +
@@ -378,7 +378,7 @@ function selectReports() {
                         }
                         if (report == 2405) {
                             $('.menu').append(
-                                "<button class ='item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
+                                "<button class ='waves-effect waves-light  item report4 " + save + "' onclick ='openReport4();' data-value='report4'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport4 + "</span>" +
@@ -389,7 +389,7 @@ function selectReports() {
                         }
                         if (report == 2406) {
                             $('.menu').append(
-                                "<button class ='item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
+                                "<button class ='waves-effect waves-light  item report5 " + save + "' onclick ='openReport5();' data-value='report5'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport5 + "</span>" +
@@ -400,7 +400,7 @@ function selectReports() {
                         }
                         if (report == 2407) {
                             $('.menu').append(
-                                "<button class ='item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
+                                "<button class ='waves-effect waves-light  item report6 " + save + "' onclick ='openReport6();' data-value='report6'>" +
                                 "<span class ='box' >" +
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +

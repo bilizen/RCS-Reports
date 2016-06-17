@@ -182,3 +182,34 @@ div[class^="detalle-"] span{
         height: 184px !important;
     }
 }
+
+/*Samsung tab 8*/
+@media all and (min-width: 768px){
+
+    div[class^="select-"] .item{
+        height: 55px;
+        line-height: 55px;
+        font-size: 22px;
+        text-transform: uppercase;
+    }    
+    #time, #yesterday, #today, #week, #yesterday, #month, #year{
+        bottom: 14px;
+        font-size: 14px;
+    }
+    .lblLastConexion, .dataLastConexion{
+        font-size: 14px;
+    }
+    .store h1{
+        font-size: 24px;
+    }
+    .actual p, .global p,
+    .actual i, .global i,
+    .actual span, .global span,
+    .year, .quantity,
+    div[class^="detalle-"]{
+        font-size: 22px;
+    }
+    .showGraphic {
+        height: 184px !important;
+    }
+}

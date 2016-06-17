@@ -46,7 +46,6 @@ td.ui-datepicker-current-day a:hover{
     line-height: 220%;
     margin: auto;
     color: #fff;
-    background-color: black;
     text-decoration: none !important;   
 }
 a.ui-datepicker-prev, a.ui-datepicker-next{
@@ -65,4 +64,11 @@ a.ui-datepicker-prev.ui-corner-all{
 }
 a.ui-datepicker-next.ui-corner-all{
 	right: 0;
+}
+
+@media all and (orientation: landscape){
+  #dinamicContent {
+    width: 380px;
+    margin: auto;
+  }
 }
