@@ -11,9 +11,22 @@
 body .well.ip-form{
 	margin-bottom: 0;
 }
+/*end ip*/
+
+/*clear: Clean some styles for a better use*/
+.btn.btn-fab, .input-group-btn .btn.btn-fab{
+	height: inherit;
+	width: inherit;
+	min-width: inherit;
+}
+/*end clear*/
 
 header{
 	height: initial !important;
+}
+body .container .well, body .container-fluid .well, body .container .jumbotron, body .container-fluid .jumbotron{
+	margin-bottom: 0;
+	padding: 19px 19px 0px;
 }
 .modal-header .close{
 	margin-top: -20px;
@@ -103,6 +116,9 @@ hr:last-child{
 }
 .modal-footer{
 	margin-top: 0;
+}
+.modal-content .modal-body{
+	margin-top: 16px;
 }
 .delete {
   position: absolute !important;
@@ -211,7 +227,7 @@ ul .item{
 
 /*list of stores in Modal*/
 .list_store{
-	height: 240px;
+	height: 264px;
 	overflow-y: auto;
 	margin-top: 8px !important;
 	margin-bottom: 0 !important;
@@ -252,7 +268,65 @@ ul .item{
 
 /*small devices*/
 @media all and (min-width: 320px){
+	.form-group .checkbox label, .form-group .radio label, .form-group label{
+		font-size: 13px;
+	}
 
+	/*modal choose store*/
+	.list_store{
+		height: 180px;
+	}
+	.list_store h1{
+		font-size: 13px;
+  	height: 30px;
+  	line-height: 30px;
+  }
+  /*end modal choose store*/
+
+  .modal-content .modal-header{
+  	padding-top: 18px;
+  }
+  .modal .modal-footer{
+  	height: 42px;    
+  }
+  .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat{
+  	margin: 2px 0;
+  }
+  /*dropdown*/
+  .btn-right{
+  	width: 145px;
+  }
+  .dropdown-content li>a *, .dropdown-content li>span, .chkTax label{
+  	font-size: 14px;
+  }
+  .dropdown-content li > a, .dropdown-content li > span{
+  	padding: 8px 13px;
+  }
+  .collection .collection-item.avatar{
+  	min-height: 56px;
+  }
+  /*end dropdown*/
+}
+/* Galaxy S5*/
+@media all and (min-width: 360px){
+	.form-group .checkbox label, .form-group .radio label, .form-group label,
+	input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea{
+		font-size: 14px;
+	}
+	/*dropdown*/
+  .btn-right{
+  	width: 170px;
+  }
+  .dropdown-content li>a *, .dropdown-content li>span, .chkTax label{
+  	font-size: 16px;
+  }
+  .dropdown-content li > a, .dropdown-content li > span{
+  	padding: 12px 15px;
+  }
+  .collection .collection-item.avatar{
+  	min-height: 64px;
+  }
+  /*end dropdown*/
 }
 /*medium devices*/
 @media all and (min-width: 600px){
@@ -284,32 +358,69 @@ ul .item{
 		height: 6px;
 		margin-top: 3px;
 	}
+	.form-group .checkbox label, .form-group .radio label, .form-group label{
+		font-size: 18px;
+	}
+	.form-group label.control-label{
+		font-size: 16px;
+	}
 	.btn-right{
 		width: 220px;
 	}
 	.btn-right .btn{
-		padding-top: 4px;
+		padding-top: 8px;
 	}
-  .dropdown-content li > a, .dropdown-content li > span{
-  	line-height: 55px;
-  	padding: 19px 16px;
-  }
-  .dropdown-content li>a *, .dropdown-content li>span, .chkTax label{
-  	font-size: 20px;
-  }
+	.btn, .btn-large, .btn-flat{
+		height: 44px;
+	}
 
   /*modales*/
   .modal-title{
   	font-size: 24px;
   }
   .modal-body *,
-  .btn, .modal-footer .btn{ 
+  .btn, .modal-footer .btn,
+  .modal-body input{ 
   	font-size: 18px;
+  }
+  .modal-content .modal-header{
+  	padding-top: 24px;
+  }
+  .modal .modal-footer{
+  	height: 56px;    
+  }
+  .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat{
+  	margin: 4px 6px;
   }
   .stores, #divClasification, .storeGraphic{
   	padding: 0 15px;
   }
 
+  /*modal choose store*/
+  .list_store{
+		height: 264px;
+	}
+  .list_store h1{
+  	font-size: 16px;
+  	height: 44px;
+  	line-height: 44px;
+  }
+  /*end modal choose store*/
+
+  /*dropdown*/
+  .btn-right{
+  	width: 185px;
+  }
+  .dropdown-content li>a *, .dropdown-content li>span, .chkTax label{
+  	font-size: 18px;
+  }
+  .dropdown-content li > a, .dropdown-content li > span{
+  	padding: 14px 16px;
+  }
+  .collection .collection-item.avatar{
+  	min-height: 68px;
+  }
+  /*end dropdown*/
 }
 
 /*Nexus 10*/
@@ -317,8 +428,8 @@ ul .item{
 
   .navbar .navbar-brand{
     height: 64px;
-    line-height: 36px;
-    font-size: 26px;
+    line-height: 46px;
+    font-size: 30px;
 	}
 	.navbar-toggle{
 		display: block;
@@ -329,11 +440,19 @@ ul .item{
 		height: 6px;
 		margin-top: 3px;
 	}
+
+	.btn, .input-group-btn .btn{
+		border-radius: 4px;
+	}
 	.btn-right{
 		width: 220px;
 	}
 	.btn-right .btn{
-		padding-top: 4px;
+		padding-top: 9px;
+	}
+	.btn:not(.navbar-toggle),.btn:not(.btn.icon-menu), .modal-footer .btn {
+    margin: 12px 3px;
+    padding: 0 30px;
 	}
   .dropdown-content li > a, .dropdown-content li > span{
   	line-height: 55px;
@@ -343,6 +462,17 @@ ul .item{
   	font-size: 20px;
   }
 
+  /*modal choose store*/
+  .list_store{
+		height: 288px;
+	}
+  .list_store h1{
+  	font-size: 18px;
+  	height: 48px;
+  	line-height: 48px;
+  }
+  /*end modal choose store*/
+
   /*modales*/
   .modal-title{
   	font-size: 24px;
@@ -351,20 +481,20 @@ ul .item{
   .btn, .modal-footer .btn{ 
   	font-size: 20px;
   }
+  .modal .modal-footer {
+	  height: 64px;
+	}
+	.btn:not(.navbar-toggle), .btn-large, .btn-flat{
+		height: 44px;
+		line-height: 44px;
+	}
   .stores, #divClasification, .storeGraphic{
   	padding: 0 15px;
   }
-
-}
-
-/*Nexus 10*/
-@media all and (min-width: 800px){
 	.collection .collection-item{
 		line-height: 2.5rem;
 	}
-	.delete::before{
-		font-size: 20px;
-	}
+
 }
 
 @media all and (min-width: 480px) and (orientation: landscape){
@@ -392,4 +522,16 @@ ul .item{
 	.modal-header{
 		padding-top: 24px;
 	}
+
+	/*modal choose store*/
+  .list_store{
+		height: 288px;
+	}
+  .list_store h1{
+  	font-size: 18px;
+  	height: 48px;
+  	line-height: 48px;
+  }
+  /*end modal choose store*/
+
 }

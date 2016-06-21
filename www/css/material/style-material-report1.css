@@ -130,7 +130,6 @@ div[class^="detalle-"]{
     font-size: 12px;
     font-weight: bold;
     color: #a9a9a9;
-    font-style: italic;
 }
 .year , div[class^="detalle-"] i {float: left; width: 40%;}
 .quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}

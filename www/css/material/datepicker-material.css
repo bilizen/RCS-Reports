@@ -5,8 +5,8 @@
 	position: relative;	
 }
 td.ui-datepicker-current-day {
-    height: 30px;
-    width: 30px;
+/*    height: 30px;
+    width: 30px;*/
     padding: 0;
     border-radius: 2px;
 }
@@ -71,4 +71,28 @@ a.ui-datepicker-next.ui-corner-all{
     width: 380px;
     margin: auto;
   }
+}
+
+
+/*small devices*/
+@media all and (min-width: 320px){
+
+}
+/* Galaxy S5*/
+@media all and (min-width: 360px){
+
+}
+/*medium devices*/
+@media all and (min-width: 600px){
+
+}
+
+/*Samsung tab 8*/
+@media all and (min-width: 768px){
+
+}
+
+/*Nexus 10*/
+@media all and (min-width: 800px){
+
 }
