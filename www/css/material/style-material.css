@@ -19,6 +19,7 @@ body .well.ip-form{
 	width: inherit;
 	min-width: inherit;
 }
+
 /*end clear*/
 
 header{
@@ -387,7 +388,8 @@ ul .item{
   }
   .modal-body *,
   .btn, .modal-footer .btn,
-  .modal-body input{ 
+  .modal-body input,
+  [type="checkbox"] + label{ 
   	font-size: 18px;
   }
   .modal-content .modal-header{
