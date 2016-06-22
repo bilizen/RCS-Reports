@@ -170,6 +170,7 @@ function updateHideReports() {
                                             if (arrReport.length == igual) {
                                                 //pinta los reportes en el menu.html                  
                                                 selectReports();
+                                                writeHideShowModal();
                                             } else {
                                                 //delete from Reports
                                                 delTable_Reports();
@@ -242,16 +243,15 @@ function updateHideReports() {
                                         }
                                     }
                                 });
-});
-});
-});
-});
-});
-});
-
-} catch (e) {
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    } catch (e) {
     console.log("Error updateState " + e + ".");
-}
+    }
 }
 
 
@@ -427,7 +427,11 @@ function selectReports() {
 function showReports() {
     $('#ModalReportsOption').modal('show');
 
-    try {
+
+
+
+function writeHideShowModal(){
+     try {
         var query1 = "SELECT * FROM " + TABLE_REPORTS;
         var report = "";
         var check = "";
@@ -485,11 +489,10 @@ function showReports() {
                     }
                 }
             });
-});
-} catch (e) {
+        });
+    } catch (e) {
     console.log("error: " + e);
-}
-
+    }
 }
 
 
