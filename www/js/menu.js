@@ -426,6 +426,9 @@ function selectReports() {
 
 function showReports() {
     $('#ModalReportsOption').modal('show');
+    writeHideShowModal();
+   
+}
 
 
 
