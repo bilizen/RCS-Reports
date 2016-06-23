@@ -146,9 +146,9 @@ header button,
     padding-left: 4px;
     font-weight: 300;
     text-overflow: ellipsis !important;
-    max-width: 92px;
-    min-width: 44px;
-    height: 44px;
+    max-width: 64px;
+    min-width: 34px;
+    height: 34px;
 }
 header button:active{
     opacity: 0.3;
@@ -162,7 +162,7 @@ header button:active{
     display: inline-block;
 }
 .titleLogo {
-    height: 24pt;
+    /*height: 24pt;*/
     vertical-align: middle;
 }
 #btn_left{
@@ -179,10 +179,10 @@ header button:active{
         animation-delay: 0.2s;
 }
 #btn_left.arrow {
-    padding-left: 23px;
+    padding-left: 24px;
     background-image: url(../img/backBtn.svg);
-    background-position: left bottom;
-    background-size: 24px 46px;
+    background-position: -25px 0px;
+    background-size: 65px 44px;
     background-repeat: no-repeat;
 }
 #btn_left.arrow.white{
@@ -207,7 +207,7 @@ header button:active{
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 44px;
+    height: 34px;
     padding-right: 0px;
     opacity: 0;
     -webkit-animation: fadeRightToLeft .4s forwards;
@@ -219,26 +219,26 @@ header button:active{
 .calendar{
     background-image: url(../img/iconCalendar.svg);
     background-position: 6px;
-    background-size: 32px 32px;
+    background-size: 32px;
     background-repeat: no-repeat;
 }
 #btn_right.config{
     background-image: url(../img/iconItems.svg);
     background-position: center;
-    background-size: 30px 30px;
+    background-size: 36px;
     background-repeat: no-repeat;
 }
 #btn_right.configuration{
     background-image: url(../img/iconConfig.svg);
     background-position: 4px;
-    background-size: 31px 31px;
+    background-size: 31px;
     background-repeat: no-repeat;
 }
 #btn_right.storeIcon,
 .storeIcon{
     background-image: url(../img/iconStore.svg);
     background-position: center;
-    background-size: 34px 34px;
+    background-size: 34px;
     background-repeat: no-repeat;
 }
 #btn_right.side {
@@ -535,7 +535,7 @@ input[type="checkbox"]:checked + label:before {
     position: absolute;
     width: 60px;
     height: 60px;
-    left: 0;
+    left: 12px;
     top: 0;
     right: 0;
     bottom: 0;
@@ -551,7 +551,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport1.svg') center center no-repeat;
     background: url('../img/iconReport1.svg') center center no-repeat;
     background: url('../img/iconReport1.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 .report2 .iconReport{
     background: rgba(0,183,255,1);
@@ -561,7 +561,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport2.svg') center center no-repeat;
     background: url('../img/iconReport2.svg') center center no-repeat;
     background: url('../img/iconReport2.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 .report3 .iconReport{
    background: rgba(0,183,255,1);
@@ -571,7 +571,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport3.svg') center center no-repeat;
     background: url('../img/iconReport3.svg') center center no-repeat;
     background: url('../img/iconReport3.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 .report4 .iconReport{
    background: rgba(0,183,255,1);
@@ -581,7 +581,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport4.svg') center center no-repeat;
     background: url('../img/iconReport4.svg') center center no-repeat;
     background: url('../img/iconReport4.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 .report5 .iconReport{
     background: rgba(0,183,255,1);
@@ -591,7 +591,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport5.svg') center center no-repeat;
     background: url('../img/iconReport5.svg') center center no-repeat;
     background: url('../img/iconReport5.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 .report6 .iconReport{
     background: rgba(0,183,255,1);
@@ -601,7 +601,7 @@ input[type="checkbox"]:checked + label:before {
     background: url('../img/iconReport6.svg') center center no-repeat;
     background: url('../img/iconReport6.svg') center center no-repeat;
     background: url('../img/iconReport6.svg') center center no-repeat;
-    background-size: 80%, cover;
+    background-size: 100%, cover;
 }
 
 .list_store{
@@ -661,7 +661,7 @@ hr {
     float: right;
     height: 44px;
     font-size: 14px;
-    padding-right: 2%;
+    padding-right: 4%;
     line-height: 3.3em;
     color: rgb(88,88,88);
 }
@@ -1651,7 +1651,7 @@ text{
         font-size: 16pt;
     }
     .titleLogo {
-        height: 31pt;
+        /*height: 31pt;*/
         vertical-align: middle;
     }
     .img_logotitle {
@@ -1741,13 +1741,13 @@ text{
         background-image: url('../img/background_568.jpg') !important;    
     }
     .titleLogo {
-        height: 20pt;
+        /*height: 20pt;*/
     }
     .list .item, .menu .item{
         height: 90px;
     }
     .item .box, .menu .box{
-        padding-left: 60px;
+        padding-left: 80px;
     }
     .actual i, .global i {
         width: 13%;

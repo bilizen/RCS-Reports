@@ -32,6 +32,18 @@
   <!-- TAG LENGUAGES -->
   <script type="text/javascript" src="../../js/constant-es.js"></script>
 
+  <script>
+    $(window).load(function(){
+
+      var options = [
+        { selector: '#staggered-test', offset: 400 }
+      ];
+      Materialize.showStaggeredList(options);
+
+
+    });
+  </script>
+
 
 </head>
 
@@ -65,11 +77,11 @@
   <!-- /Navbar --> 
 
   <div class="container">
-    <div class="menu">
+    <ul class="menu" id="staggered-test">
         <!--
         buttons with the reports
       -->
-    </div>
+    </ul>
   </div>
 
   <!--Modal OF CONECTION -->
@@ -314,7 +326,7 @@
             <!-- store list -->
           </div>
         </div>
-        
+
         <div class="modal-footer">
           <button onclick="passReport6();" class="btn  btnok" data-dismiss="modal" >Ok</button> 
         </div>

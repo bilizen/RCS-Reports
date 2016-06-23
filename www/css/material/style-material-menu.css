@@ -1,5 +1,7 @@
 .menu .item{
 	margin-top: 10px;
+
+/*  opacity: 0;*/
 }
 button:focus{
   background-color: white;
