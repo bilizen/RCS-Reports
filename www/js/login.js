@@ -30,7 +30,7 @@ $(document).ready(function(){
 		var pin = $("#pin").val();
 		var check = "";
 
-		if($('#chkremember').is(':checked')){
+		if($('.chkremember').hasClass('checked')){
 			check = "1";
 		}else{
 			check = "0";
@@ -56,8 +56,20 @@ $(window).load(function(){
 	onInit();
 	verific();
 	deteclenguage();
+
 }); 
 
+function changePinRemember(){
+    if($('.chkremember').hasClass('checked')){
+
+            $('.chkremember').removeClass('checked');
+            
+        }else{
+
+            $('.chkremember').addClass('checked');
+            
+        }
+}
 
 //apretas el boton entrar en el LOGIN.HTML
 function validData(pin, check) {

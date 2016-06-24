@@ -454,41 +454,54 @@ function writeHideShowModal(){
 
                     if (report == 2402) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr1' class='filled-in check_report1' " + check + ">" +
                             "<label for='chkr1' class='text-report'>" + titleReport1 + "</label>" +
+                            "</div>"+
                             "<hr>");
                     }
                     if (report == 2403) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr2' class='filled-in check_report2' " + check + ">" +
                             "<label for='chkr2' class='text-report'>" + titleReport2 + "</label>" +
+                            "</div>"+
                             "<hr>");
                     }
                     if (report == 2404) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr3' class='filled-in check_report3' " + check + ">" +
                             "<label for='chkr3' class='text-report'>" + titleReport3 + "</label>" +
+                            "</div>"+
                             "<hr>");
 
 
                     }
                     if (report == 2405) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr4' class='filled-in check_report4' " + check + ">" +
                             "<label for='chkr4' class='text-report'>" + titleReport4 + "</label>" +
+                            "</div>"+
                             "<hr>");
 
                     }
                     if (report == 2406) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr5' class='filled-in check_report5' " + check + ">" +
                             "<label for='chkr5' class='text-report'>" + titleReport5 + "</label>" +
+                            "</div>"+
                             "<hr>");
                     }
                     if (report == 2407) {
                         $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr6' class='filled-in check_report6' " + check + ">" +
-                            "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>");
+                            "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>"+
+                            "</div>"
+                            );
                     }
                 }
             });
@@ -1252,10 +1265,12 @@ function checktaxDefault(){
 
 //function del check impuesto
 function checkTax(){
-    if($('.check_tax').is(':checked')){
-        localStorage.setItem("check_tax","1");     
+    if($('.check_tax').hasClass('checked')){
+        $('.check_tax').removeClass('checked');
+        localStorage.setItem("check_tax","0");     
     }else{
-        localStorage.setItem("check_tax","0");
+        $('.check_tax').addClass('checked');
+        localStorage.setItem("check_tax","1");
     }
 }
 
