@@ -13,7 +13,7 @@
   font-size: 16px;
   font-style: normal;
   text-align: center;
-  color: #0000CD;
+  color: #666666;
 }
 .progressByStore i.T{
   width: 7%;
@@ -85,7 +85,7 @@ p.clasification:first-of-type{
 	font-size: 16px;
 	border-radius: 2px;
 	display: inline-block;
-	color: #0000CD;
+	color: #666666;
 }
 
 .heightSection{

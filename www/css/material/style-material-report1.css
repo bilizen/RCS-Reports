@@ -52,7 +52,7 @@ div[class^="chartdiv-"]{
     width: 12%;
     font-size: 16px;
     font-style: normal;
-    color: #0000CD;
+    color: #666666;
 }
 .actual p,.global p{
     width: 25.5%;
@@ -145,7 +145,7 @@ div[class^="detalle-"] span{
 .infoReport1 span{
     display: inline-block;
 }
-.infoReport1 i{width: 19%; color: #0000CD;}
+.infoReport1 i{width: 19%; color: #666666;}
 .infoReport1 span{
     width: 30%;
     vertical-align: -webkit-baseline-middle;

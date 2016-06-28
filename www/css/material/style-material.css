@@ -25,9 +25,14 @@ body .well.ip-form{
 header{
 	height: initial !important;
 }
+body, html{
+	width: 100%;
+	height: 100%;
+}
 body .container .well, body .container-fluid .well, body .container .jumbotron, body .container-fluid .jumbotron{
 	margin-bottom: 0;
 	padding: 19px 19px 0px;
+
 }
 .modal-header .close{
 	margin-top: -20px;
@@ -178,6 +183,7 @@ div[class^="select-"] .item{
 	line-height: 36px;
 	text-align: center;
 	font-size: 16px;
+	font-weight: 500;
 }
 .section .item{
 	margin-bottom: 0;
@@ -202,8 +208,9 @@ div[class^="select-"] .item{
 }
 
 .item.selected{
-	font-weight: bold;
+	font-weight: bold !important;
 	box-shadow: none;
+	background-color: rgba(0,0,0,.06);
 }
 ul .item{
 	box-shadow: none;
@@ -466,7 +473,7 @@ ul .item{
 		border-radius: 4px;
 	}
 	.btn-right{
-		width: 230px;
+		width: 240px;
 	}
 	.btn-right .btn{
 		padding-top: 9px;
@@ -477,10 +484,11 @@ ul .item{
 	}
   .dropdown-content li > a, .dropdown-content li > span{
   	line-height: 55px;
-  	padding: 19px 16px;
+  	padding: 19px 14px;
   }
   .dropdown-content li>a *, .dropdown-content li>span, .chkTax label{
-  	font-size: 20px;
+  	font-size: 23px;
+  	font-weight: 500;
   }
 
   /*modal choose store*/
