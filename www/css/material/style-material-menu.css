@@ -3,6 +3,9 @@
 
 /*  opacity: 0;*/
 }
+.item_title, .item_subtitle{
+  font-weight: 500;
+}
 button:focus{
   background-color: white;
 }
@@ -122,7 +125,6 @@ button:focus{
   }
   .item_title, .item_subtitle {
     padding: 4px 15px;
-	}
-  
+	}  
 
 }
