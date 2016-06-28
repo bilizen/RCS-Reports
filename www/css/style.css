@@ -1288,6 +1288,23 @@ button.delete{
   top: -2px;
 }
 
+.modal-rotate .modal-dialog{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 185px;
+    margin: auto !important;
+}
+.bg-rotate{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1040;    
+    background-color: rgba(0,0,0,.3);    
+}
+
 @media only screen and (min-width : 320px) and (max-width : 568px) { 
     .list_store{
         height: 180px;
@@ -1506,21 +1523,32 @@ table th, table td{
 text{
     font-family: 'Helvetica Neue';
 }
+.modal-rotate{
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
 .textRotateScreen{
     text-align: center;
+    font-size: 18px;
+    line-height: 24px;
 }
 .iconRotate{
-    padding: 5pt 5pt 10pt;
+    height: 60px;
+    padding: 5pt 2pt 5pt;
+    margin: 10px 0;
 }
+
 .iconRotate img{
+    height: 44px;
     text-align: center;
     display: block;
+    margin: auto;
     -webkit-animation-name: rotationIcon; 
-    -webkit-animation-duration: 1.25s;
+    -webkit-animation-duration: 1.8s;
     animation-name: rotationIcon;
-    animation-duration: 1.25s;
-    -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
-    animation-delay: 1s;
+    animation-duration: 1.8s;
+    -webkit-animation-delay: 0.8s; /* Chrome, Safari, Opera */
+    animation-delay: 0.8s;
     -webkit-transform-origin: center center;
     transform-origin: center center;
     -webkit-animation-fill-mode: backwards; /* Chrome, Safari, Opera */
@@ -1530,16 +1558,23 @@ text{
     -webkit-animation-timing-function: ease-in-out; 
     animation-timing-function: ease-in-out;
 }
-.iconRotate img{
-    width: 44px;
-    margin: auto;
-}
+
+
 @-webkit-keyframes rotationIcon {
     0% {
         -webkit-transform:  rotateZ(0deg);
     }
+    10% {
+        -webkit-transform:  rotateZ(0deg);
+    }
+    50%{
+        -webkit-transform:  rotateZ(90deg);
+    }
+    70%{
+        -webkit-transform:  rotateZ(90deg);
+    }
     100%{
-        -webkit-transform:  rotateZ(-90deg);
+        -webkit-transform:  rotateZ(0deg);
     }
 }
 
@@ -1547,8 +1582,17 @@ text{
     0% {
         transform:  rotateZ(0deg);
     }
+    10% {
+        transform:  rotateZ(0deg);
+    }
+    50%{
+        transform:  rotateZ(90deg);
+    }
+    60%{
+        transform:  rotateZ(90deg);
+    }
     100%{
-        transform: rotateZ(-90deg);
+        transform: rotateZ(0deg);
     }
 }
 
