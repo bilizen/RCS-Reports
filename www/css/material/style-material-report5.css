@@ -86,22 +86,22 @@ td.ui-datepicker-current-day a:hover{
 /*Samsung tab 8*/
 @media all and (min-width: 768px){
 	.storeInfoDates{
-		height: 64px;
+		height: 80px;
 	}
 	.lblDate{
-		font-size: 14px;
+		font-size: 20px;
 	}
 	.valDate{
-		font-size: 22px;
+		font-size: 26px;
 	}
 	.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
 		padding: 10px;
 	}
 	th{
-		font-size: 16px;
+		font-size: 22px;
 	}
 	td{
-		font-size: 18px;
+		font-size: 24px;
 	}
 }
 
