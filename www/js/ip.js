@@ -1,5 +1,6 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
+ 
 
     function onDeviceReady() {
         //document.addEventListener("backbutton", onBackKeyDown, true);
@@ -156,8 +157,6 @@ $(window).load(function(){
         }
     });
 
-    
-
 });
 
 
@@ -200,7 +199,6 @@ function validIP(ip, port, _url, alias, use, site, variable) {
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
-
             console.log(xhr.status);
             console.log(xhr.statusText);
             console.log(xhr.responseText);
@@ -217,6 +215,26 @@ function validIP(ip, port, _url, alias, use, site, variable) {
 
 
 function newServer(ip, port, urlbase, alias, activo, site, variable) {
+    
+
+    try {
+        window.location.href = "login.html?" +
+                                    "ip=" + ip +
+                                    "&port=" + port +
+                                    "&urlbase=" + urlbase +
+                                    "&alias=" + alias +
+                                    "&activo=1" +
+                                    "&site=" + site +
+                                    "&variable=" + variable;
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
+
+
+    /*
+
+
     try {
         var query1 = "SELECT " + KEY_PIN + " FROM " + TABLE_CONFIGURATION;
         localDB.transaction(function (transaction) {
@@ -293,6 +311,10 @@ function newServer(ip, port, urlbase, alias, activo, site, variable) {
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
+
+
+*/
+
 }
 
 

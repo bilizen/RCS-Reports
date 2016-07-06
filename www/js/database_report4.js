@@ -16,7 +16,7 @@ $(document).ready(function () {
         document.getElementById('content').style.display = 'block';
         $('#chartdiv').height($(window).height() - $('header').height());
     }
-
+  
 });
 
 

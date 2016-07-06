@@ -38,7 +38,6 @@ $(document).ready(function(){
 
 		if(pin.length>0){
 			validData(pin, check);
-
 		}else{
 			if(current_lang=='es'){
 				mostrarModalGeneral("Pin Inválido");
@@ -61,21 +60,17 @@ $(window).load(function(){
 
 function changePinRemember(){
     if($('.chkremember').hasClass('checked')){
-
             $('.chkremember').removeClass('checked');
-            
         }else{
-
             $('.chkremember').addClass('checked');
-            
         }
 }
 
 //apretas el boton entrar en el LOGIN.HTML
 function validData(pin, check) {
     var variable_ = getVariable_Parameter();
-    //alert(variable_);
-    if (variable_ == "1") {//si es que es un servidor nuevo y estamos en la pantalla de login
+
+    if (variable_ == "1") {//si es que agregamos un servidor nuevo y estamos en la pantalla de login
         var ip = getIp_Parameter();
         var port = getPort_Parameter();
         var site = getSite_Parameter();
@@ -103,17 +98,26 @@ function validData(pin, check) {
                 //verifica que el pin es correcto
                 if (data.successful == 1) {
                     //borramos las TABLE_REPORTS
-                    delTable_Reports();
-                    //delete TABLE_CONFIGURATION
-                    deleteConfiguration();
+                    //delTable_Reports();
+
+                    
                     //UPDATE  a la TABLE_URL  1  a 0
                     updateState();
-                    //insert
-                    addData(ip, port, urlbase, alias, activo, site);
+
+
+                    //agrega los accesos  en la TABLE_URL
+                    if(check=="1"){
+                    addData(ip, port, urlbase, alias, activo, site,pin);
+                    }else{
+                    addData(ip, port, urlbase, alias, activo, site,"");                
+                    }
+
+
+                    //delete TABLE_CONFIGURATION
+                    deleteConfiguration();
                     //insert el pin y el check en la TABLE_CONFIGURATION
                     insertTableConfi(pin, check);
-                    //envia a ala vista MENU.HTML
-                    //window.location = "../menu.html";
+                    
                 } else {
                     if (current_lang == 'es') {
                         mostrarModalGeneral("PIN Invalido");
@@ -136,7 +140,7 @@ function validData(pin, check) {
         });
 
     } else {
-
+        
         var query = "SELECT COUNT(*) as cant FROM " + TABLE_URL;
         var cant = 0;
         try {
@@ -171,20 +175,27 @@ function validData(pin, check) {
                                 //verifica que el pin es correcto
                                 if (data.successful == 1) {
                                     //DELETE FROM REPORTS
-                                    delTable_Reports();
+                                    //delTable_Reports();
 
-                                    //agrega en la TABLE_URL
-                                    addData(ip, port, urlbase, alias, activo, site);
+                                    //agrega los accesos  en la TABLE_URL
+                                    if(check=="1"){
+                                    addData(ip, port, urlbase, alias, activo, site,pin);
+                                    }else{
+                                    addData(ip, port, urlbase, alias, activo, site,"");                
+                                    }
+                                    
                                     //insert el pin y el check en la TABLE_CONFIGURATION
                                     insertTableConfi(pin, check);
 
                                     //window.location.href = "../data/menu.html";
 
                                 } else {
-                                    if (current_lang == 'es')
+                                    if (current_lang == 'es'){
                                         mostrarModalGeneral("PIN Invalido");
-                                    else
+                                    }
+                                    else{
                                         mostrarModalGeneral("Invalid PIN");
+                                    }
                                 }
                             },
                             error: function (xhr, ajaxOptions, thrownError) {
@@ -200,10 +211,7 @@ function validData(pin, check) {
                                 }
                             }
                         });
-
-
-
-                        //cuadno sale del app y pone no gusradar pin o cerrar sesion
+                    //cuadno sale del app y pone no gusradar pin o cerrar sesion
                     } else {
                         var c_ip = "";
                         var c_port = "";
@@ -234,7 +242,14 @@ function validData(pin, check) {
                                         //verifica que el pin es correcto
                                         if (data.successful == 1) {
                                             //DELETE FROM REPORTS
-                                            delTable_Reports();
+                                            //delTable_Reports();
+
+                                            //actuliza los accesos  en la TABLE_URL
+                                            if(check=="1"){
+                                            updatePinTableUrl(pin);
+                                            }else{
+                                            updatePinTableUrl("");                
+                                            }
 
                                             //delete from TABLE_CONFIGURATION
                                             deleteConfiguration();
@@ -274,9 +289,6 @@ function validData(pin, check) {
         }
     }
 }
-
-
-
 
 //Go to IP.HTML
 function goIp() {

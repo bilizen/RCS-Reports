@@ -26,7 +26,6 @@ $(window).load(function(){
            //modal para no conexcion
         }
     }
-
 });
 
 
@@ -44,7 +43,6 @@ function mostrarModal() {
     });
 
     getAllData();
-    //getDataInUse();
 
 }
 
@@ -84,6 +82,7 @@ var titleReport6 = "";
 
 //Actualizar vistas de reportes
 function updateHideReports() {
+
     try {
         var query1 = "SELECT * FROM " + TABLE_URL + " WHERE  " + KEY_USE + " = '1'";
         localDB.transaction(function (transaction) {
@@ -91,6 +90,7 @@ function updateHideReports() {
                 var c_ip = results.rows.item(0).ip;
                 var c_port = results.rows.item(0).port;
                 var c_site = results.rows.item(0).site;
+                var c_pin=results.rows.item(0).pin;
 
                 var query2 = "SELECT " + KEY_PIN + " FROM " + TABLE_CONFIGURATION;
                 localDB.transaction(function (transaction) {
@@ -247,11 +247,17 @@ function updateHideReports() {
                         });
                     });
                 });
+
+
+
+
+
             });
         });
     } catch (e) {
     console.log("Error updateState " + e + ".");
     }
+
 }
 
 
@@ -852,10 +858,12 @@ function downloadStore5() {
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
                             //hideLoading();
-                            if (current_lang == 'es')
+                            if (current_lang == 'es'){
                                 mostrarModalGeneral("Error de Conexión");
-                            else
+                            }
+                            else{
                                 mostrarModalGeneral("No Connection");
+                            }
                         }
                     });
                 });
@@ -1018,10 +1026,12 @@ function downloadStore6() {
                             console.log(xhr.statusText);
                             console.log(xhr.responseText);
                             //hideLoading();
-                            if (current_lang == 'es')
+                            if (current_lang == 'es'){
                                 mostrarModalGeneral("Error de Conexión");
-                            else
+                            }
+                            else{
                                 mostrarModalGeneral("No Connection");
+                            }
                         }
                     });
                 });
@@ -1119,6 +1129,7 @@ function updateStateURL(id) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
+                    alert("use:0");
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -1129,21 +1140,44 @@ function updateStateURL(id) {
 
     var query2 = "UPDATE " + TABLE_URL + " SET " + KEY_USE + " = '1' WHERE " + KEY_ID + " = ? ";
     console.log("query2 " + query2);
-
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query2, [id], function (transaction, results) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
+                    alert("use:1");
                     console.log("Update realizado:" + results.rowsAffected);
-                    location.reload();
+                    
                 }
             }, errorHandler);
         });
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
+
+
+
+    
+    try {
+        var query3 = "SELECT * FROM  " +TABLE_URL + " WHERE " + KEY_USE + "='1'";
+        localDB.transaction(function (transaction) {
+            transaction.executeSql(query3,[], function (transaction, results) {
+                var pin=results.rows.item(0).pin;
+                
+                var query4="UPDATE "+TABLE_CONFIGURATION+" SET "+KEY_PIN+"='"+pin+"'";
+                  localDB.transaction(function (transaction) {
+                    transaction.executeSql(query4, [], function (transaction, results) {
+                        location.reload();
+                    });
+                });
+            });
+        });
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+
+
 }
 
 
@@ -1230,14 +1264,7 @@ function getDataInUse() {
                 console.log("ip: " + ip + " - alias: " + alias);
                 $("#txtIP").text(ip);
                 $("#txtServer").text(alias);
-
-                
-                if(localStorage.getItem("check_tax")=="1"){
-                    $('.check_tax').prop("checked",true);
-                }else{
-                    $('.check_tax').prop("checked",false);
-                }
-                
+                checktaxDefault();
             }, function (transaction, error) {
                 console.log("Error: " + error.code + "<br>Mensage: " + error.message);
             });
@@ -1273,4 +1300,7 @@ function checkTax(){
         localStorage.setItem("check_tax","1");
     }
 }
+
+
+
 

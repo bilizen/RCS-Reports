@@ -7,7 +7,7 @@ $(document).ready(function () {
     onInit();
     //por defecto que salga la semana de ventas
     graphicReport6(3);
-        
+  
 });
 
 $(window).load(function () {
