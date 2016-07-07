@@ -1,8 +1,25 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
+
     function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
+        if(checkNetConnection()==true){
+        onInit();
+        updateHideReports();
+        checktaxDefault();
+        deteclenguage();
+        }else{
+            $('#no_connection').modal('show');
+            if (current_lang=='es'){
+                $('.titleMessage').text('Mensaje');
+                $('.textNoConnection').text('No hay conexion de red');
+                $('.btnok').text('Aceptar');
+            }else{
+               //modal para no conexion
+            }
+        }
     }
+
     function onBackKeyDown() {
         navigator.app.exitApp();     
     }
@@ -10,22 +27,6 @@ $(document).ready(function () {
 
 
 $(window).load(function(){
-    if(checkNetConnection()==true){
-    onInit();
-    updateHideReports();
-    checktaxDefault();
-    deteclenguage();
-    //localStorage.clear();
-    }else{
-        $('#no_connection').modal('show');
-        if (current_lang=='es'){
-            $('.titleMessage').text('Mensaje');
-            $('.textNoConnection').text('No hay conexion de red');
-            $('.btngeneral').text('Aceptar');
-        }else{
-           //modal para no conexcion
-        }
-    }
 });
 
 
@@ -90,7 +91,7 @@ function updateHideReports() {
                 var c_ip = results.rows.item(0).ip;
                 var c_port = results.rows.item(0).port;
                 var c_site = results.rows.item(0).site;
-                var c_pin=results.rows.item(0).pin;
+                //var c_pin= results.rows.item(0).pin;
 
                 var query2 = "SELECT " + KEY_PIN + " FROM " + TABLE_CONFIGURATION;
                 localDB.transaction(function (transaction) {
@@ -101,6 +102,7 @@ function updateHideReports() {
                             transaction.executeSql(query3, [], function (transaction, results) {
                                 var yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
                                 var array = {Pin: pin};
+
                                 $.ajax({
                                     url: yurl,
                                     timeout: 15000,
@@ -247,11 +249,6 @@ function updateHideReports() {
                         });
                     });
                 });
-
-
-
-
-
             });
         });
     } catch (e) {
@@ -1129,7 +1126,6 @@ function updateStateURL(id) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
-                    alert("use:0");
                     console.log("Update realizado:" + results.rowsAffected);
                 }
             }, errorHandler);
@@ -1146,7 +1142,7 @@ function updateStateURL(id) {
                 if (!results.rowsAffected) {
                     console.log("Error updateState");
                 } else {
-                    alert("use:1");
+                    
                     console.log("Update realizado:" + results.rowsAffected);
                     
                 }
@@ -1274,20 +1270,19 @@ function getDataInUse() {
     }
 }
 
+
 function checktaxDefault(){
     if(null==localStorage.getItem("check_tax")){
-        $('.check_tax').prop("checked",true);
+        $('.check_tax').addClass("checked");
         localStorage.setItem("check_tax","1");
     }else{
         if(localStorage.getItem("check_tax")=="1"){
-            $('.check_tax').prop("checked",true);
+            $('.check_tax').addClass("checked");
         }else{
-            $('.check_tax').prop("checked",false);
+            $('.check_tax').removeClass("checked");
         }
     }
-
 }
-
 
 
 //function del check impuesto
@@ -1300,7 +1295,3 @@ function checkTax(){
         localStorage.setItem("check_tax","1");
     }
 }
-
-
-
-

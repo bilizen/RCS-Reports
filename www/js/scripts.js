@@ -294,17 +294,51 @@ function mostrarModalGeneral(contenido) {
     
 }
 
+
+//verifica los los switch si estan activos
+function checktaxDefaultActualGlobal(){
+    if(null==localStorage.getItem("check_tax_actual_report1")){
+        $('.check_actual').addClass("checked");
+        localStorage.setItem("check_tax_actual_report1","1");
+        ch_actual=localStorage.getItem("check_tax_actual_report1");
+
+    }else{
+        if(localStorage.getItem("check_tax_actual_report1")=="1"){
+            $('.check_actual').addClass("checked");
+            ch_actual = localStorage.getItem("check_tax_actual_report1");
+        }else{
+            $('.check_actual').removeClass("checked");
+            ch_actual = localStorage.getItem("check_tax_actual_report1");
+        }
+    }
+
+    if(null==localStorage.getItem("check_tax_global_report1")){
+        $('.check_global').addClass("checked");
+        localStorage.setItem("check_tax_global_report1","1");
+        ch_global =localStorage.getItem("check_tax_global_report1");
+    }else{
+        if(localStorage.getItem("check_tax_global_report1")=="1"){
+            $('.check_global').addClass("checked");
+            ch_global = localStorage.getItem("check_tax_global_report1");
+        }else{
+            $('.check_global').removeClass("checked");
+            ch_global =localStorage.getItem("check_tax_global_report1");
+        }
+    }
+}
+
+
 function updateActual() {
     var principal = $(".select-general div:first-child()").attr("data-value");
     ch_principal = principal;
     if ($('.check_actual').hasClass('checked')) {
-        
         $('.check_actual').removeClass('checked');
-
-        ch_actual = "0";
+        localStorage.setItem("check_tax_actual_report1","0");
+        ch_actual = localStorage.getItem("check_tax_actual_report1");
     } else {
         $('.check_actual').addClass('checked');
-        ch_actual = "1";
+        localStorage.setItem("check_tax_actual_report1","1");
+        ch_actual = localStorage.getItem("check_tax_actual_report1");
     }    
 }
 
@@ -312,14 +346,14 @@ function updateGlobal() {
     var principal = $(".select-general div:first-child()").attr("data-value");
     ch_principal = principal;
     if ($('.check_global').hasClass('checked')) {
-
         $('.check_global').removeClass('checked');
-        ch_global = "0";
+        localStorage.setItem("check_tax_global_report1","0");
+        ch_global = localStorage.getItem("check_tax_global_report1");
     } else {
         $('.check_global').addClass('checked');
-        ch_global = "1";
+        localStorage.setItem("check_tax_global_report1","1");
+        ch_global = localStorage.getItem("check_tax_global_report1");
     }
-
 }
 
 //AQUI

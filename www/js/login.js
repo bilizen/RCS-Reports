@@ -8,45 +8,7 @@ $(document).ready(function(){
 	//navigator.app.exitApp();   
 	}
 
-	$("#btnlogin").click(function(){
-		/******Borramos la informacion de la tabla Store porque es un nuevo servidor******/
-		var queryDelete= "DELETE FROM " +TABLE_STORE;
-		try {
-			localDB.transaction(function(transaction){
-				transaction.executeSql(queryDelete, [], function(transaction, results){
-					if (!results.rowsAffected) {
-						console.log("Error updateState");
-					}
-					else {
-						console.log("Update realizado:" + results.rowsAffected);
-					}
-				}, errorHandler);
-			});
-		}catch (e) {
-			console.log("Error updateState " + e + ".");
-		} 
-
-
-		var pin = $("#pin").val();
-		var check = "";
-
-		if($('.chkremember').hasClass('checked')){
-			check = "1";
-		}else{
-			check = "0";
-		}
-
-		if(pin.length>0){
-			validData(pin, check);
-		}else{
-			if(current_lang=='es'){
-				mostrarModalGeneral("Pin Inválido");
-			}
-			else{
-				mostrarModalGeneral("Invalid Pin"); 
-			}
-		}
-	});
+	
 
 });
 
@@ -55,6 +17,45 @@ $(window).load(function(){
 	onInit();
 	verific();
 	deteclenguage();
+    $("#btnlogin").click(function(){
+        /******Borramos la informacion de la tabla Store porque es un nuevo servidor******/
+        var queryDelete= "DELETE FROM " +TABLE_STORE;
+        try {
+            localDB.transaction(function(transaction){
+                transaction.executeSql(queryDelete, [], function(transaction, results){
+                    if (!results.rowsAffected) {
+                        console.log("Error updateState");
+                    }
+                    else {
+                        console.log("Update realizado:" + results.rowsAffected);
+                    }
+                }, errorHandler);
+            });
+        }catch (e) {
+            console.log("Error updateState " + e + ".");
+        } 
+
+
+        var pin = $("#pin").val();
+        var check = "";
+
+        if($('.chkremember').hasClass('checked')){
+            check = "1";
+        }else{
+            check = "0";
+        }
+
+        if(pin.length>0){
+            validData(pin, check);
+        }else{
+            if(current_lang=='es'){
+                mostrarModalGeneral("Pin Inválido");
+            }
+            else{
+                mostrarModalGeneral("Invalid Pin"); 
+            }
+        }
+    });
 
 }); 
 

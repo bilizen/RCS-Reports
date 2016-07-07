@@ -66,15 +66,6 @@ function initDB() {
 	localDB = openDatabase(shortName, version, displayName, maxSize);
 }
 
-function initDB2() {
-	var shortName = 'RCS';
-	var version = '3.0';
-	var displayName = 'RCS Reports';
-	var maxSize = 10240; // Em bytes
-	localDB = openDatabase(shortName, version, displayName, maxSize);
-}
-
-
 
 function createTables() {
 
@@ -177,20 +168,17 @@ function dropTableExists(){
 
 	var tableURL = "DROP TABLE IF EXISTS " + TABLE_URL ;
 
-	var tableConfiguration = "CREATE TABLE " + TABLE_CONFIGURATION + " (" + KEY_PIN + " TEXT, " + KEY_REMEMBER + " TEXT)";
+	var tableConfiguration = "DROP TABLE IF EXISTS " + TABLE_CONFIGURATION;
 
-	var tableClasification = "CREATE TABLE " + TABLE_CLASIFICATION + " ( " +
-			KEY_MUY_BUENA + " TEXT, " + KEY_LIMIT_INF_BUENA + " TEXT, " + KEY_LIMIT_SUP_BUENA + " TEXT, " + KEY_LIMIT_INF_ACEPTABLE + " TEXT, " +
-			KEY_LIMIT_SUP_ACEPTABLE + " TEXT, " + KEY_LIMIT_INF_DEFICIENTE + " TEXT, " + KEY_LIMIT_SUP_DEFICIENTE + " TEXT, " + KEY_LIMIT_INF_CRITICO + " TEXT, " +
-			KEY_LIMIT_SUP_CRITICO + " TEXT, " + KEY_MUY_CRITICO + " TEXT)";
+	var tableClasification = "DROP TABLE IF EXISTS " + TABLE_CLASIFICATION;
 
-	var tableCDateRange = "CREATE TABLE " + TABLE_CUSTOM_DATE_RANGE + "(" + KEY_DATE_START + " TEXT," + KEY_DATE_END + " TEXT," + KEY_DATE_CHOOSED + " TEXT)";
+	var tableCDateRange = "DROP TABLE IF EXISTS " + TABLE_CUSTOM_DATE_RANGE;
 
-	var tableStore = "CREATE TABLE " + TABLE_STORE + "(" + KEY_IDSTORE + " INTEGER PRIMARY KEY, " + KEY_STORENO + " TEXT, " + KEY_STORENAME + " TEXT, "
-			+ KEY_USEDSTORE + " TEXT)";
+	var tableStore = "DROP TABLE IF EXISTS " + TABLE_STORE;
 
-	var tableRegion = "CREATE TABLE REGION( regionCode TEXT, regionName TEXT)";
-	var tableReports = "CREATE TABLE " + TABLE_REPORTS + "(" + KEY_REPORT + " TEXT , " + KEY_ACTIVO + " TEXT)";
+	var tableRegion = "DROP TABLE IF EXISTS REGION";
+
+	var tableReports = "DROP TABLE IF EXISTS " + TABLE_REPORTS;
 
 }
 
@@ -198,16 +186,15 @@ function onInit() {
 	try {
 		
 		if (!window.openDatabase) {
-			initDB2();
-			createTables();
 			console.log("No soporta BD");
 		} else { 
 			initDB();
-			localDB.changeVersion("2.0", "3.0", function(t){
-				t.executeSql("ALTER TABLE "+TABLE_URL+" ADD COLUMN "+KEY_PIN+" TEXT");
-			});   
+			alterTableUrl();
+			// localDB.changeVersion("2.0", "3.0", function(t){
+			// 	t.executeSql("ALTER TABLE "+TABLE_URL+" ADD COLUMN "+KEY_PIN+" TEXT");
+			// });   
 			createTables();
-			validationPinTableUrl();
+			//validationPinTableUrl();
 
 		}
 	} catch (e) {
@@ -221,26 +208,37 @@ function onInit() {
 }
 
 
+function alterTableUrl(){
+	 try {
+	 	var query1="ALTER TABLE "+TABLE_URL+" ADD COLUMN "+KEY_PIN+" TEXT";
+	 	localDB.transaction(function (transaction) {
+            transaction.executeSql(query1,[], function (transaction, results) {
+            });
+		});
+    } catch (e) {
+        console.log("Error updateState " + e + ".");
+    }
+}
+
 
 //validacion al  insertar en el pín en la tabla url 
 function validationPinTableUrl(){
-	 try {
+	try {
 	 	var query1="SELECT * FROM "+TABLE_URL +" WHERE "+KEY_USE+"='1'";
 	 	localDB.transaction(function (transaction) {
             transaction.executeSql(query1,[], function (transaction, results) {
                 var pin=results.rows.item(0).pin;
                 alert(pin);
-
                 if(pin==null){
                 	var query2 = "SELECT * FROM  " +TABLE_CONFIGURATION;
 			        localDB.transaction(function (transaction) {
 			            transaction.executeSql(query2,[], function (transaction, results) {
-
 			                var c_pin=results.rows.item(0).pin;
 			                alert(c_pin);
 			                var query3="UPDATE "+TABLE_URL+" SET "+KEY_PIN+"='"+c_pin+"' WHERE "+KEY_USE+"='1'";
 			                  localDB.transaction(function (transaction) {
 			                    transaction.executeSql(query3, [], function (transaction, results) {
+			                    	alert("update table url con el pin");
 			                    });
 			                });
 			            });
@@ -248,21 +246,16 @@ function validationPinTableUrl(){
                 }
             });
 		});
-    } catch (e) {
+    }catch (e){
         console.log("Error updateState " + e + ".");
     }
-
 }
-
-
-
-
 
 
 //button exip app
 function buttonExitApp() {
-		navigator.app.exitApp();
-	}
+	navigator.app.exitApp();
+}
 
 
 
@@ -273,7 +266,6 @@ errorHandler = function (transaction, error) {//THIS VARIABLE IS FOR OUR TRANSAC
 
 nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TRANSACTION.EXECUTESQL IN OUR METHOD CREATETABLE
 }
-
 
 
 
@@ -364,16 +356,20 @@ function obtenerVariables(name) {/*esta funcion obtiene los valores de las varia
 
 //*funcion que verifica si hay o no hay data para decidir donde mandar menu o store*//
 function existsData() {
-	var url = "";
-	var query = "SELECT COUNT(" + KEY_URLBASE + ") AS urlBase FROM " + TABLE_URL;
+	var pin = "";
+	var query = "SELECT *  FROM " + TABLE_URL+" WHERE "+KEY_USE+"='1'";
 	try {
 		localDB.transaction(function (transaction) {
 			transaction.executeSql(query, [], function (transaction, results) {
-				url = results.rows.item(0).urlBase;
-				if (url > 0) {
-					//function verific if vista menu.html or login.html 
-					getRemenberPinTableUrl();
+				if(results.rows.length==1){
+					pin= results.rows.item(0).pin;
+					if (pin=="") {
+						window.location.href= "login.html";
+					}else{
+						window.location.href= "menu.html";
+					}
 				}
+				
 			}, function (transaction, error) {
 				console.log("Error: " + error.code + "<br>Mensage: " + error.message);
 			});
@@ -381,6 +377,26 @@ function existsData() {
 	} catch (e) {
 		console.log("Error existsData " + e + ".");
 	}
+
+
+	// var url = "";
+	// var query = "SELECT COUNT(" + KEY_URLBASE + ") AS urlBase FROM " + TABLE_URL;
+	// try {
+	// 	localDB.transaction(function (transaction) {
+	// 		transaction.executeSql(query, [], function (transaction, results) {
+	// 			url = results.rows.item(0).urlBase;
+	// 			if (url > 0) {
+	// 				//function verific if vista menu.html or login.html 
+	// 				getRemenberPinTableUrl();
+	// 			}
+	// 		}, function (transaction, error) {
+	// 			console.log("Error: " + error.code + "<br>Mensage: " + error.message);
+	// 		});
+	// 	});
+	// } catch (e) {
+	// 	console.log("Error existsData " + e + ".");
+	// }
+
 }
 
 function Title_Company() {
@@ -405,7 +421,11 @@ function Title_Company() {
 //function verifica si vista se dirige a menu.html or login.html 
 function getRemenberPinTableUrl() {
 	var query = "SELECT * FROM " + TABLE_URL + " WHERE " + KEY_USE + "='1'";
-
+	alert("getRemenberPinTableUrl");
+	var c_ip ="";
+	var c_port ="";
+	var c_site = "";
+	var c_pin="";
 	try {
 		localDB.transaction(function (tx) {
 			tx.executeSql(query, [], function (tx, results) {
@@ -413,7 +433,7 @@ function getRemenberPinTableUrl() {
 				var c_port = results.rows.item(0).port;
 				var c_site = results.rows.item(0).site;
 				var c_pin= results.rows.item(0).pin;
-				
+				alert("getRemenberPinTableUrl pin="+c_pin);
 				var yurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/login/session/post';
 				var array = {Pin: c_pin};
 				$.ajax({
@@ -486,7 +506,7 @@ function addData(ip, port, urlbase, alias, use, site,pin) {//aqui se hace uin in
 				+ " , " + KEY_URLBASE + ", " + KEY_ALIAS + " , " + KEY_USE + ", " + KEY_SITE +" , "+KEY_PIN+") VALUES (?,?,?,?,?,?,?);";
 		localDB.transaction(function (transaction) {
 			transaction.executeSql(query, [ip, port, urlbase, alias, use, site,pin], function (transaction, results) {
-				//alert("inserto data en la TABLE_URL")
+				
 				//direcciona al MENU.html
 				//window.location.href = "data/menu.html";
 			}, errorHandler);
@@ -576,7 +596,7 @@ function updateCheckGlobal(variable) {
 
 //insertar TABLE_CONFIGURATION
 function insertTableConfi(pin, save) {
-	//alert(pin + " " + save);
+	
 	var query = "INSERT INTO " + TABLE_CONFIGURATION + " ( " + KEY_PIN + " , " + KEY_REMEMBER + " ) VALUES(?,?);";
 	try {
 		localDB.transaction(function (transaction) {
@@ -876,9 +896,6 @@ function  confirmSignOut() {
 								window.location.href = "login.html"; 
 							});
 						});
-
-
-
 					});
 
 				});

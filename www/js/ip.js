@@ -1,12 +1,13 @@
 $(document).ready(function () {
     document.addEventListener("deviceready", onDeviceReady, false);
- 
 
     function onDeviceReady() {
         //document.addEventListener("backbutton", onBackKeyDown, true);
         if(checkNetConnection()==true){
             var variablEE = obtenerVariables("variable");
             //-1 si si ingresa por primera vez o mata aplicacion
+            onInit();
+            deteclenguage();
             if(variablEE == -1){
                 existsData();
             }else{   
@@ -19,17 +20,16 @@ $(document).ready(function () {
             if (current_lang == 'es'){
                 $('.titleMessage').text('Mensaje');
                 $('.textNoConnection').text('No hay conexion de red');
-                $('.btngeneral').text('Aceptar');
+                $('.btnok').text('Aceptar');
             }else{
                //modal para no conexcion
             }
         }
     }
+
 });
 
 $(window).load(function(){
-    onInit();
-    deteclenguage();
     /*esta funcion ocurre despues de que ya cargo toda la pagina*/
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
@@ -156,6 +156,7 @@ $(window).load(function(){
             }
         }
     });
+
 
 });
 
