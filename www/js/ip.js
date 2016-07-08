@@ -159,12 +159,6 @@ $(window).load(function(){
 
 });
 
-
- 
-
- 
-
-
 /************************ funcion valida IP ********************************************/
 /*esta funcion es muy importante para no tener problemas de no poder ingresar a datos de servidores*/
 //entra al ejecutar el APP
@@ -319,8 +313,6 @@ function newServer(ip, port, urlbase, alias, activo, site, variable) {
 
 
 
-
-
 function firstServer(ip, port, urlbase, alias, activo, site, variable) {
     
     window.location.href = "login.html?" +
@@ -332,5 +324,3 @@ function firstServer(ip, port, urlbase, alias, activo, site, variable) {
             "&site=" + site +
             "&variable=" + variable;
 }
-
-
