@@ -633,7 +633,6 @@ function downloadStoreClasification(_valueSelected) {
     });
     /*******************************/
 }
-
 function deteclenguage2() {
     var lang = navigator.language.split("-");
     current_lang = (lang[0]);

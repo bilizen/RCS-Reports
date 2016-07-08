@@ -9,7 +9,7 @@ function onBackKeyDown() {
 
 $(window).load(function(){
    onInit();    
-   deteclenguage1();
+   deteclenguage();
    hideCombo();
    checktaxDefaultActualGlobal();
    loadComboRegions(localStorage.getItem("check_tax_actual_report1"),localStorage.getItem("check_tax_global_report1"));
@@ -867,16 +867,5 @@ function hideComboRegion() {
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
     } else {
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 68);
-    }
-}
-
-
-
-//caption
-function deteclenguage1() {
-    var lang = navigator.language.split("-");
-    current_lang = (lang[0]);
-    if (current_lang == 'es') {
-        changeLanguage1();
     }
 }
