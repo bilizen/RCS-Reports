@@ -3,7 +3,15 @@ $(document).ready(function () {
 
     function onDeviceReady() {
         //document.addEventListener("backbutton", onBackKeyDown, true);
-        if(checkNetConnection()==true){
+        
+
+
+    }
+
+});
+
+$(window).load(function(){
+    if(checkNetConnection()==true){
             var variablEE = obtenerVariables("variable");
             //-1 si si ingresa por primera vez o mata aplicacion
             onInit();
@@ -25,11 +33,8 @@ $(document).ready(function () {
                //modal para no conexcion
             }
         }
-    }
 
-});
-
-$(window).load(function(){
+    
     /*esta funcion ocurre despues de que ya cargo toda la pagina*/
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
