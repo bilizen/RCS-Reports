@@ -3,18 +3,8 @@ $(document).ready(function () {
 
     function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-
         
-    }
-
-    function onBackKeyDown() {
-        navigator.app.exitApp();     
-    }
-});
-
-
-$(window).load(function(){
-    if(checkNetConnection()==true){
+        if(checkNetConnection()==true){
         onInit();
         updateHideReports();
         checktaxDefault();
@@ -29,6 +19,17 @@ $(window).load(function(){
                //modal para no conexion
             }
         }
+        
+    }
+
+    function onBackKeyDown() {
+        navigator.app.exitApp();     
+    }
+});
+
+
+$(window).load(function(){
+    
 });
 
 
