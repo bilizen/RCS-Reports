@@ -484,7 +484,7 @@ function getRemenberPinTableUrl() {
 //function para insertar el pin en la tabla urltable
 function updatePinTableUrl(pin){
 	try {
-		var query = "UPDATE " + TABLE_URL + " SET  " + KEY_PIN + "=  "+pin +" WHERE "+KEY_USE+"='1'";
+		var query = "UPDATE " + TABLE_URL + " SET  " + KEY_PIN + "=  '"+pin +"' WHERE "+KEY_USE+"='1'";
 		localDB.transaction(function (transaction) {
 			transaction.executeSql(query, [], function (transaction, results) {
 				//direcciona al MENU.html

@@ -3,23 +3,11 @@ $(document).ready(function () {
 
     function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        
-        
-        
-    }
-
-    function onBackKeyDown() {
-        navigator.app.exitApp();     
-    }
-});
-
-
-$(window).load(function(){
-    if(checkNetConnection()==true){
-        onInit();
-        updateHideReports();
-        checktaxDefault();
-        deteclenguage();
+        if(checkNetConnection()==true){
+            onInit();
+            updateHideReports();
+            checktaxDefault();
+            deteclenguage();
         }else{
             $('#no_connection').modal('show');
             if (current_lang=='es'){
@@ -30,6 +18,17 @@ $(window).load(function(){
                //modal para no conexion
             }
         }
+        
+    }
+
+    function onBackKeyDown() {
+        navigator.app.exitApp();     
+    }
+});
+
+
+$(window).load(function(){
+    
     
 });
 
