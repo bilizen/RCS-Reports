@@ -146,8 +146,8 @@ header button,
     padding-left: 4px;
     font-weight: 300;
     text-overflow: ellipsis !important;
-    max-width: 64px;
-    min-width: 34px;
+    max-width: 88px;
+    min-width: 44px;
     height: 44px;
 }
 header button:active{
@@ -156,7 +156,7 @@ header button:active{
 .item button{
     background-color: transparent;
     float: right;
-    padding-right: 15pt;
+    padding-right: 4pt;
 }
 .buttonItem{
     display: inline-block;
@@ -338,7 +338,7 @@ header button:active{
 }
 .btn_only1{
     display: block;
-    width: 88%;
+    width: 90%;
     margin: auto auto;
     background-color: #456CD8;
     color: white;
@@ -375,7 +375,6 @@ header button:active{
 }
 .text-checkbox{
     display: inline-block;
-    position: absolute;
     z-index: 10;
     width: initial;
     left: 0;
@@ -739,6 +738,9 @@ hr {
     padding-right: 4%;
     line-height: 3.3em;
     color: rgb(88,88,88);
+}
+.item>.date{
+    padding-right: 0;
 }
 .item.selected>div{
     color: #f1f1f1;
@@ -1224,7 +1226,7 @@ button.delete{
     opacity: .35;
     filter: alpha(opacity=5k);
 }
-.modal-footer.info {
+.info {
     line-height: 32px;
 }
 .chkTax label{
@@ -1639,7 +1641,7 @@ text{
         height: 72px;
     }
     .item .box, .menu .box{
-        padding-left: 82px;
+        padding-left: 98px;
     }
     .add_server {
         padding-right: 44px;
