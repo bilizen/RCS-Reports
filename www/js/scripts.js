@@ -23,22 +23,11 @@ $(document).ready(function () {
             (('' + month2).length < 2 ? '0' : '') + month2 + '/' +
             d2.getFullYear();
 
-    /* STAR WEEKEND*/
-    var o_today2 = d1.getFullYear() + '-' +
-            (('' + month1).length < 2 ? '0' : '') + month1 + '-' +
-            (('' + day1).length < 2 ? '0' : '') + day1;
 
-    var d = new Date('' + o_today2);
-    var day = d.getDay(),
-            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday       
-    var ASU = new Date(d.setDate(diff));
-    var convertido = ASU;
-    var dia = ASU.getDate();
-    var mes = ASU.getMonth() + 1;
-    var año = ASU.getFullYear();
-    var porfin = (('' + dia).length < 2 ? '0' : '') + dia + '/' +
-            (('' + mes).length < 2 ? '0' : '') + mes + '/' +
-            año;
+
+    /* STAR WEEKEND*/
+    var starWeek= weekToDay();
+
 
     /* Week to Date */
     var d3 = new Date();
@@ -60,7 +49,7 @@ $(document).ready(function () {
         var yesterday=o_yesterday.split("/");
         $('#yesterday').text(yesterday[1]+"/"+yesterday[0]+"/"+yesterday[2]);
         
-        var por_fin=porfin.split("/");
+        var por_fin=starWeek.split("/");
         $('#week').text(por_fin[1]+"/"+por_fin[0]+"/"+por_fin[2]);
         
         var month=o_month.split("/");
@@ -73,7 +62,7 @@ $(document).ready(function () {
         $('#time').text(o_today);
         $('#today').text(o_today);
         $('#yesterday').text(o_yesterday);
-        $('#week').text(porfin);
+        $('#week').text(starWeek);
         $('#month').text(o_month);
         $('#year').text(o_year);
     }
@@ -125,21 +114,7 @@ $(".select-general").on("click", "div:not(.init)", function () {
     $(this).addClass('selected');
     $(".select-general").children('.init').html($(this).html());
     $(".select-general").children('.init').attr("data-value", value_global);
-    console.log(value_global);
     moveToRight();
-    if (value_global == '1') {
-        hideCombo();
-        //$("#items").empty();
-        downloadByCompany(ch_actual, ch_global);
-    } else if (value_global == '2') {
-        hideCombo();
-        //$("#items").empty();
-        downloadByRegion(ch_actual, ch_global);
-    } else if (value_global == '3') {
-        //showCombo();  
-        //$("#items").empty();
-        loadComboRegions(ch_actual, ch_global);
-    }
 });
 
 
@@ -150,18 +125,6 @@ $(".select-date").on("click", "div:not(.init)", function () {
     $(".select-dateP").children('.init').html($(this).html());
     $(".select-dateP").children('.init').attr("data-value", value_date);
     moveToRight();
-    if (value_global == '1') {
-        $("#items").empty();
-        //downloadByStore(ch_actual,ch_global);
-        downloadByCompany(ch_actual, ch_global);
-    } else if (value_global == '2') {
-        $("#items").empty();
-        downloadByRegion(ch_actual, ch_global);
-    } else if (value_global == '3') {
-        $("#items").empty();
-        //downloadByCompany(ch_actual,ch_global);
-        downloadByStore(ch_actual, ch_global);
-    }
 });
 
 $(".select-region").on("click", "div:not(.init)", function () {
@@ -171,34 +134,12 @@ $(".select-region").on("click", "div:not(.init)", function () {
     $(".select-region").children('.init').html($(this).html());
     $(".select-region").children('.init').attr("data-value", regionCode);
     moveToRight();
-    downloadByStore(ch_actual, ch_global);
 });
 
 
 
-var quantityStores = "";
-function mostrarIndice(valor) {
 
-    quantityStores = valor;
-    return false;
-}
-function storeWitdhGraphic(detalle) {
-    var altura = $('#graph' + detalle).height();
 
-    if (altura > 0) { // esta mostrandose ; se debe ocultar
-        $('#graph' + detalle).removeClass("showGraphic");
-    } else { //  para toda la lista, remover el showing
-        for (var i = 0; i <= quantityStores; i++) {
-            if ("#graph-" + i + "".length) {
-                $('#graph-' + i).removeClass("showGraphic");
-            } else {
-                i = quantityStores;
-            }
-        }
-        // en caso este monstrandose, oculta; en caso no este mostrandose, muestra.     
-        $('#graph' + detalle).toggleClass('showGraphic');
-    }
-}
 
 function selectAlias() {
     $('#load').addClass('in').css("display", "block").attr("aria-hidden", false);
@@ -295,66 +236,46 @@ function mostrarModalGeneral(contenido) {
 }
 
 
-//verifica los los switch si estan activos
-function checktaxDefaultActualGlobal(){
-    if(null==localStorage.getItem("check_tax_actual_report1")){
+
+
+
+
+
+
+
+function checktaxDefaultActualGlobal_report8(){
+    if(null==localStorage.getItem("check_tax_actual_report8")){
         $('.check_actual').addClass("checked");
-        localStorage.setItem("check_tax_actual_report1","1");
-        ch_actual=localStorage.getItem("check_tax_actual_report1");
+        localStorage.setItem("check_tax_actual_report8","1");
+        ch_actual=localStorage.getItem("check_tax_actual_report8");
 
     }else{
-        if(localStorage.getItem("check_tax_actual_report1")=="1"){
+        if(localStorage.getItem("check_tax_actual_report8")=="1"){
             $('.check_actual').addClass("checked");
-            ch_actual = localStorage.getItem("check_tax_actual_report1");
+            ch_actual = localStorage.getItem("check_tax_actual_report8");
         }else{
             $('.check_actual').removeClass("checked");
-            ch_actual = localStorage.getItem("check_tax_actual_report1");
+            ch_actual = localStorage.getItem("check_tax_actual_report8");
         }
     }
 
-    if(null==localStorage.getItem("check_tax_global_report1")){
+    if(null==localStorage.getItem("check_tax_global_report8")){
         $('.check_global').addClass("checked");
-        localStorage.setItem("check_tax_global_report1","1");
-        ch_global =localStorage.getItem("check_tax_global_report1");
+        localStorage.setItem("check_tax_global_report8","1");
+        ch_global =localStorage.getItem("check_tax_global_report8");
     }else{
-        if(localStorage.getItem("check_tax_global_report1")=="1"){
+        if(localStorage.getItem("check_tax_global_report8")=="1"){
             $('.check_global').addClass("checked");
-            ch_global = localStorage.getItem("check_tax_global_report1");
+            ch_global = localStorage.getItem("check_tax_global_report8");
         }else{
             $('.check_global').removeClass("checked");
-            ch_global =localStorage.getItem("check_tax_global_report1");
+            ch_global = localStorage.getItem("check_tax_global_report8");
         }
     }
+
 }
 
 
-function updateActual() {
-    var principal = $(".select-general div:first-child()").attr("data-value");
-    ch_principal = principal;
-    if ($('.check_actual').hasClass('checked')) {
-        $('.check_actual').removeClass('checked');
-        localStorage.setItem("check_tax_actual_report1","0");
-        ch_actual = localStorage.getItem("check_tax_actual_report1");
-    } else {
-        $('.check_actual').addClass('checked');
-        localStorage.setItem("check_tax_actual_report1","1");
-        ch_actual = localStorage.getItem("check_tax_actual_report1");
-    }    
-}
-
-function updateGlobal() {
-    var principal = $(".select-general div:first-child()").attr("data-value");
-    ch_principal = principal;
-    if ($('.check_global').hasClass('checked')) {
-        $('.check_global').removeClass('checked');
-        localStorage.setItem("check_tax_global_report1","0");
-        ch_global = localStorage.getItem("check_tax_global_report1");
-    } else {
-        $('.check_global').addClass('checked');
-        localStorage.setItem("check_tax_global_report1","1");
-        ch_global = localStorage.getItem("check_tax_global_report1");
-    }
-}
 
 //AQUI
 function retornarStores(principal) {
@@ -442,4 +363,50 @@ function prueba(detalle) {
 
 function showActualServer(){
     $('.show_actual_server').modal('show');
+}
+
+
+
+function weekToDay(){
+    var d1 = new Date();
+    var days=d1.getDay();
+    var n=0
+    if(days==0){
+        n=6;
+    }
+    if(days==1){
+        n=0;
+    }
+    if(days==2){
+        n=1;
+    }
+    if(days==3){
+        n=2;
+    }
+    if(days==4){
+        n=3;
+    }
+    if(days==5){
+        n=4;
+    }
+    if(days==6){
+        n=5;
+    }
+    var d2 = new Date(new Date()-((n)*24*60*60*1000));
+    var day = d2.getDate();
+    var month = d2.getMonth() + 1;
+    var year=d2.getFullYear();
+
+    var date_n = ( (''+day).length< 2 ? '0' : '') + day + '/' +
+    (('' + month).length < 2 ? '0' : '') + month + '/' +year;
+    
+    return date_n;
+}
+
+function todayreport1(){
+    var d1 = new Date();
+    var month1 = d1.getMonth() + 1;
+    var day1 = d1.getDate();
+    var o_today =d1.getFullYear()+'-'+ (('' + month1).length < 2 ? '0' : '') + month1 + '-' +(('' + day1).length < 2 ? '0' : '') + day1 ;
+    return o_today;
 }

@@ -3,21 +3,22 @@ $(document).ready(function () {
 
     function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, true);
-        if(checkNetConnection()==true){
-            onInit();
-            updateHideReports();
-            checktaxDefault();
-            deteclenguage();
-        }else{
-            $('#no_connection').modal('show');
-            if (current_lang=='es'){
-                $('.titleMessage').text('Mensaje');
-                $('.textNoConnection').text('No hay conexion de red');
-                $('.btnok').text('Aceptar');
-            }else{
-               //modal para no conexion
-            }
-        }
+        
+        // if(checkNetConnection()==true){
+        // onInit();
+        // updateHideReports();
+        // checktaxDefault();
+        // deteclenguage();
+        // }else{
+        //     $('#no_connection').modal('show');
+        //     if (current_lang=='es'){
+        //         $('.titleMessage').text('Mensaje');
+        //         $('.textNoConnection').text('No hay conexion de red');
+        //         $('.btnok').text('Aceptar');
+        //     }else{
+        //        //modal para no conexion
+        //     }
+        // }
         
     }
 
@@ -28,8 +29,22 @@ $(document).ready(function () {
 
 
 $(window).load(function(){
-    
-    
+    if(checkNetConnection()==true){
+        onInit();
+        updateHideReports();
+        checktaxDefault();
+        deteclenguage();
+        }else{
+            $('#no_connection').modal('show');
+            if (current_lang=='es'){
+                $('.titleMessage').text('Mensaje');
+                $('.textNoConnection').text('No hay conexion de red');
+                $('.btnok').text('Aceptar');
+            }else{
+               //modal para no conexion
+            }
+        }
+  
 });
 
 
@@ -83,6 +98,8 @@ var titleReport3 = "";
 var titleReport4 = "";
 var titleReport5 = "";
 var titleReport6 = "";
+var titleReport7 = "";
+var titleReport8 = "";
 
 //Actualizar vistas de reportes
 function updateHideReports() {
@@ -94,7 +111,7 @@ function updateHideReports() {
                 var c_ip = results.rows.item(0).ip;
                 var c_port = results.rows.item(0).port;
                 var c_site = results.rows.item(0).site;
-                //var c_pin= results.rows.item(0).pin;
+
 
                 var query2 = "SELECT " + KEY_PIN + " FROM " + TABLE_CONFIGURATION;
                 localDB.transaction(function (transaction) {
@@ -126,7 +143,7 @@ function updateHideReports() {
                                         if (data.successful == 1) {
                                             var arrReport = data.report;
                                             $("#txtUser").text(data.employeeName);
-                                            
+                                            localStorage.RCSReportsEmployeeCode=data.employeeCode;
                                             
                                             var igual = 0;
                                             //copmprueba que son iguales los reportes
@@ -164,11 +181,16 @@ function updateHideReports() {
                                                             titleReport6 = arrReport[a].functionName;
 
                                                         }
+                                                        if (arrReport[a].functionCode === 2408) {
+                                                            titleReport7 = arrReport[a].functionName;
+                                                            localStorage.setItem("titleReport7",titleReport7);
+                                                        }
+                                                        if (arrReport[a].functionCode === 2409) {                                   
+                                                            titleReport8 = arrReport[a].functionName;
+                                                            localStorage.setItem("titleReport8",titleReport8);
+                                                        }
                                                     }
                                                 }
-                                                
-                                                
-                                                
                                             }
 
 
@@ -210,6 +232,14 @@ function updateHideReports() {
                                                     if (arrReport[a].functionCode === 2407) {
                                                         titleReport6 = arrReport[a].functionName;
 
+                                                    }
+                                                    if (arrReport[a].functionCode === 2408) {
+                                                        titleReport7 = arrReport[a].functionName;
+                                                        localStorage.setItem("titleReport7",titleReport7);
+                                                    }
+                                                    if (arrReport[a].functionCode === 2409) {
+                                                        titleReport8 = arrReport[a].functionName;
+                                                        localStorage.setItem("titleReport8",titleReport8);
                                                     }
                                                     
                                                 }
@@ -347,6 +377,28 @@ function selectReports() {
                                 "</button>"
                                 );
                         }
+                        if (report == 2408) {
+                            $('.menu').append(
+                                "<button class ='waves-effect waves-light  item report7 " + save + "' onclick ='openReport7();' data-value='report7'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport7 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>La Compañia y nuevas tiendas</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
+                        }
+                        if (report == 2409) {
+                            $('.menu').append(
+                                "<button class ='waves-effect waves-light  item report8 " + save + "' onclick ='openReport8();' data-value='report8'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport8 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Los distritos y nuevas tiendas</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
+                        }
                     } else {
 
                         if (report == 2402) {
@@ -411,6 +463,28 @@ function selectReports() {
                                 "<span class ='iconReport'> </span>" +
                                 "<span id ='lblgvst' class ='item_title'>" + titleReport6 + "</span>" +
                                 "<span id ='lblgvsd'  class ='item_subtitle'>Compare retail of Last Year vs This Year</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
+                        }
+                        if (report == 2408) {
+                            $('.menu').append(
+                                "<button class ='waves-effect waves-light  item report7 " + save + "' onclick ='openReport7();' data-value='report7'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport7 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>Company stores new store sales</span>" +
+                                "</span>" +
+                                "</button>"
+                                );
+                        }
+                        if (report == 2409) {
+                            $('.menu').append(
+                                "<button class ='waves-effect waves-light  item report8 " + save + "' onclick ='openReport8();' data-value='report8'>" +
+                                "<span class ='box' >" +
+                                "<span class ='iconReport'> </span>" +
+                                "<span id ='lblgvst' class ='item_title'>" + titleReport8 + "</span>" +
+                                "<span id ='lblgvsd'  class ='item_subtitle'>District comp and new stores</span>" +
                                 "</span>" +
                                 "</button>"
                                 );
@@ -506,6 +580,22 @@ function writeHideShowModal(){
                             "<div class='hideShowOpt'>"+
                             "<input type='checkbox' id='chkr6' class='filled-in check_report6' " + check + ">" +
                             "<label for='chkr6' class='text-report'>" + titleReport6 + "</label>"+
+                            "</div>"+
+                            "<hr>");
+                    }
+                    if (report == 2408) {
+                        $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
+                            "<input type='checkbox' id='chkr7' class='filled-in check_report7' " + check + ">" +
+                            "<label for='chkr7' class='text-report'>" + titleReport7 + "</label>"+
+                            "</div>"+
+                            "<hr>");
+                    }
+                    if (report == 2409) {
+                        $('#list_reports').append(
+                            "<div class='hideShowOpt'>"+
+                            "<input type='checkbox' id='chkr8' class='filled-in check_report8' " + check + ">" +
+                            "<label for='chkr8' class='text-report'>" + titleReport8 + "</label>"+
                             "</div>"
                             );
                     }
@@ -552,6 +642,16 @@ function buttonOkReports() {
     } else {
         updateCheckModalReports("2407", "0");
     }
+    if ($('.check_report7').is(':checked')) {
+        updateCheckModalReports("2408", "1");
+    } else {
+        updateCheckModalReports("2408", "0");
+    }
+    if ($('.check_report8').is(':checked')) {
+        updateCheckModalReports("2409", "1");
+    } else {
+        updateCheckModalReports("2409", "0");
+    }
     selectReports();
 }
 
@@ -595,6 +695,17 @@ function passReport6(){
     return false;
 }
 
+function openReport7(){
+  window.location.href = "report7.html";
+  return false;        
+}
+
+function openReport8(){
+  window.location.href = "report8.html";
+  return false;        
+}
+
+
 
 
 //dialog_report4
@@ -634,7 +745,6 @@ function downloadStore4() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -643,17 +753,19 @@ function downloadStore4() {
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
 
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
-
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
             var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
             var StoreNoT = "";
+            var array = {EmployeeCode: employeeCode};
             localDB.transaction(function (tx) {
                 tx.executeSql(query1, [], function (tx, results) {
                     StoreNoT = results.rows.item(0).StoreNo;
                     $.ajax({
                         url: xurl,
-                        type: 'get',
+                        type: 'POST',
+                        data: JSON.stringify(array),
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         timeout: 15000,
@@ -712,12 +824,13 @@ function downloadAllStore4() {
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-
-            //xurl="http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
             $.ajax({
                 url: xurl,
-                type: 'get',
+                type: 'POST',
+                data: JSON.stringify(array),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 timeout: 15000,
@@ -804,16 +917,15 @@ function downloadStore5() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
-
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
             var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
             var StoreNoT = "";
             localDB.transaction(function (tx) {
@@ -821,7 +933,8 @@ function downloadStore5() {
                     StoreNoT = results.rows.item(0).StoreNo;
                     $.ajax({
                         url: xurl,
-                        type: 'get',
+                        type: 'POST',
+                        data: JSON.stringify(array),
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         timeout: 15000,
@@ -880,18 +993,19 @@ function downloadAllStore5() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
             $.ajax({
                 url: xurl,
-                type: 'get',
+                type: 'POST',
+                data: JSON.stringify(array),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 timeout: 15000,
@@ -972,15 +1086,15 @@ function downloadStore6() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
 
             var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
             var StoreNoT = "";
@@ -989,7 +1103,8 @@ function downloadStore6() {
                     StoreNoT = results.rows.item(0).StoreNo;
                     $.ajax({
                         url: xurl,
-                        type: 'get',
+                        type: 'POST',
+                        data: JSON.stringify(array),
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         timeout: 15000,
@@ -1047,18 +1162,20 @@ function downloadAllStore6() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
             ip = results.rows.item(0).ip;
             port = results.rows.item(0).port;
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
+
             $.ajax({
                 url: xurl,
-                type: 'get',
+                type: 'POST',
+                data: JSON.stringify(array),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 timeout: 15000,

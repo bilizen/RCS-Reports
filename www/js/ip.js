@@ -3,7 +3,34 @@ $(document).ready(function () {
 
     function onDeviceReady() {
         //document.addEventListener("backbutton", onBackKeyDown, true);
-        if(checkNetConnection()==true){
+        
+        // if(checkNetConnection()==true){
+        //     var variablEE = obtenerVariables("variable");
+        //     //-1 si si ingresa por primera vez o mata aplicacion
+        //     onInit();
+        //     deteclenguage();
+        //     if(variablEE == -1){
+        //         existsData();
+        //     }else{   
+        //         //camibar el nombre del boton de ingresar --> agregar
+        //         MSG_GO_ADD();
+        //         $("#btn_left").removeAttr("hidden");
+        //     }
+        // }else{
+        //     $('#no_connection').modal('show');
+        //     if (current_lang == 'es'){
+        //         $('.titleMessage').text('Mensaje');
+        //         $('.textNoConnection').text('No hay conexion de red');
+        //         $('.btnok').text('Aceptar');
+        //     }else{
+        //        //modal para no conexcion
+        //     }
+        // }
+    }
+});
+
+$(window).load(function(){
+    if(checkNetConnection()==true){
             var variablEE = obtenerVariables("variable");
             //-1 si si ingresa por primera vez o mata aplicacion
             onInit();
@@ -22,13 +49,9 @@ $(document).ready(function () {
                 $('.textNoConnection').text('No hay conexion de red');
                 $('.btnok').text('Aceptar');
             }else{
-               //modal para no conexion
+               //modal para no conexcion
             }
-        }  
-    }
-});
-
-$(window).load(function(){
+        }
     /*esta funcion ocurre despues de que ya cargo toda la pagina*/
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
@@ -189,9 +212,11 @@ function validIP(ip, port, _url, alias, use, site, variable) {
             console.log('url ' + _url + " - xurl: " + xurl);
             console.log("COMPLETADO ... COMPLETADO");
             //entra al ejecutar el APP
-            if (variable == -1) {   
+            if (variable == -1) {
+                
                 firstServer(ip, port, xurl, alias, use, site, variable);
             } else {
+                
                 newServer(ip, port, xurl, alias, use, site, variable);
             }
 
@@ -213,6 +238,7 @@ function validIP(ip, port, _url, alias, use, site, variable) {
 
 
 function newServer(ip, port, urlbase, alias, activo, site, variable) {
+    
     try {
         window.location.href = "login.html?" +
                                     "ip=" + ip +
@@ -225,6 +251,7 @@ function newServer(ip, port, urlbase, alias, activo, site, variable) {
     } catch (e) {
         console.log("Error updateState " + e + ".");
     }
+
 }
 
 

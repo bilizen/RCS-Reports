@@ -31,7 +31,6 @@ function downloadAllStore2() {
     var port = "";
     var alias = "";
     var site = "";
-    var array = "";
 
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -40,8 +39,9 @@ function downloadAllStore2() {
             alias = results.rows.item(0).alias;
             site = results.rows.item(0).site;
 
-            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/";
-            //xurl = "http://190.12.74.148:8000/WCFSERVICE/ReportStore/";
+            xurl = "http://" + ip + ":" + port + "/" + site + "/ReportStore/POST";
+            var employeeCode=localStorage.RCSReportsEmployeeCode;
+            var array = {EmployeeCode: employeeCode};
 
             var query1 = "SELECT * FROM " + TABLE_STORE + " WHERE UsedStore= '1'";
             var StoreNoT = "";
@@ -50,7 +50,8 @@ function downloadAllStore2() {
                     StoreNoT = results.rows.item(0).StoreNo;
                     $.ajax({
                         url: xurl,
-                        type: 'get',
+                        type: 'POST',
+                        data: JSON.stringify(array),
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         timeout: 15000,
@@ -276,8 +277,7 @@ function downloadReportGraphic() {
                                         var arrayGoal = [];
                                         var arrayBreakEven = [];
                                         var arrayTotalGoal = [];
-                                        var dateStart;
-                                        var dateEnd;
+                                        var arrayDateStart=[];
                                         var FixedCost = 0.00;
 
 
@@ -299,16 +299,16 @@ function downloadReportGraphic() {
                                             AcumulateGoal = parseFloat(value.AcumulateGoal);
                                             MonthGoalStore = parseFloat(value.MonthGoalStore);
                                             FixedCost = (parseFloat(value.FixedCost) / MargenValue);
-                                            dateStart = value.dateStart;
-                                            dateEnd = value.dateEnd;
 
+                                            
+                                            arrayDateStart[index]= value.dtDay;//date of day
                                             arraySale[index] = AcumulateSale.toFixed(2);/**sale*/
                                             arrayGoal[index] = AcumulateGoal.toFixed(2);/**goal**/
                                             arrayBreakEven[index] = FixedCost;/**breakeven**/
                                             arrayTotalGoal[index] = MonthGoalStore.toFixed(2);/**totalgoal**/
                                         });
 
-                                        drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, dateStart);
+                                        drawGraphicByStore(arraySale, arrayGoal, arrayBreakEven, arrayTotalGoal, data.successful, arrayDateStart);
                                         $('#chartdiv').height($(window).height() - $('header').height());
                                     }else{
                                         if (current_lang == 'es') {
@@ -549,7 +549,6 @@ function showModalMargen() {
     $('#MargenValue').val(principal);
 }
 
-
 function defaultValuePercent(){
      if(null==localStorage.getItem("valuePercent_report4")){
         $('#lblMargenNumber').append(50);
@@ -558,6 +557,7 @@ function defaultValuePercent(){
         $('#lblMargenNumber').append(localStorage.getItem("valuePercent_report4"));
     }
 }
+
 
 function focusToactiveStore() {
     var list = $('.list_store');

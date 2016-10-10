@@ -151,7 +151,7 @@ function MSG_LBL_CHANGE_ALIAS_SETTINGS(){
 
 /**********STORES************/
 function BTN_PREFERENCES_TXT() {
-    $('#txtpreferences').html("Regresar");
+    $('#txtpreferences').html("Atrás");
     $('#txtpreferences_title').html("Preferencias");
 }
 function BTN_REFRESH() {
@@ -351,7 +351,7 @@ function MSG_TODAYP_1(){
 
 
 function MSG_RETURN_2() {
-    $("#txtReturn").text("Regresar");
+    $("#txtReturn").text("Atrás");
 }
 
 function MSG_TITLE_OPTIONS_22() {
@@ -458,7 +458,7 @@ function MSG_VERY_CRITICAL_2() {
 
 
 function MSG_RETURN_3() {
-    $("#txtpreferences").text("Regresar");
+    $("#txtpreferences").text("Atrás");
 }
 
 function MSG_BACK_3() {
@@ -585,7 +585,7 @@ function MSG_OK_R5() {
 /******************MENU REPORT 4**********************/
 
 function MSG_LBL_RETURN_R4() {
-    $("#txtpreferences_r4").html("Regresar");
+    $("#txtpreferences_r4").html("Atrás");
 }
 
 function MSG_DATE_START_R4() {
@@ -717,7 +717,7 @@ function MSG_TITLE_DIALOGSTORE_R6(){
 //Language5
 function changeLanguage5(){
      //head
-        $('#txtReturn').text('Regresar');
+        $('#txtReturn').text('Atrás');
         $('#lblDateEnd').text('Fecha fin');
         $('#lblDateStart').text('Fecha inicio');
         //tabla head
@@ -746,7 +746,7 @@ function changeLanguage5(){
 
 //Language6
 function changeLanguage6(){
-    $('#txtpreferences_r6').text('Regresar');
+    $('#txtpreferences_r6').text('Atrás');
     $('#lblBack').text('Atrás');
     $('.title_Date_r6').text('Elegir Fecha');
     $('.title_store_r6').text('Elegir Tienda');
@@ -759,7 +759,91 @@ function changeLanguage6(){
     $('.titleMessage').text('Mensaje');
     $('.titleTopBarOpt').text('Opciones');
     $(".textRotateScreen").text("Por favor, Gire a la Posición Horizontal");
-    $(".title_rotateScreen_R6").text("Mensaje");
-    
-    
+    $(".title_rotateScreen_R6").text("Mensaje"); 
+}
+
+//Language7
+function changeLanguage7(){
+    $('#txtpreferences').text('Atrás');
+    MSG_COMPANY_1();
+    MSG_LBL_COMPANY_1();
+    MSG_LBL_REGION_1();
+    MSG_LBL_STORE_1();
+    MSG_TXT_TITLE_1();
+    MSG_SPN_HEADER_1();
+   
+    MSG_RPT_TG_1();
+    MSG_RPT_TS_1();
+    MSG_RPT_YG_1();
+    MSG_RPT_YS_1();
+    MSG_RPT_WG_1();
+    MSG_RPT_WS_1();
+    MSG_RPT_MG_1();
+    MSG_RPT_MS_1();
+    MSG_RPT_AG_1();
+    MSG_RPT_AS_1();
+    MSG_RPT_CG_1();
+    MSG_RPT_CS_1();
+    MSG_MODAL_OK_1();
+    MSG_BACK_1();
+    MSG_CHOOSEDATE_1();
+    MSG_TODAY_1();
+    MSG_YESTERDAY_1();
+    MSG_WEEK_1();
+    MSG_MONTH_1();
+    MSG_YEAR_1();
+    MSG_VISUALIZATION_1();
+    MSG_SHOWCURRENT_1();
+    MSG_SHOWGLOBAL_1();
+    MSG_TODAYP_1();
+    MSG_LBL_DET_DIC_1();
+    MSG_DICTIONARY();
+    /***************************************/
+    MSGS_TEXT_OPTIONS();
+    // Last Connection
+    LBL_LAST_CONNECTION();
+   
+}
+
+//Language7
+function changeLanguage8(){
+    $('#txtpreferences').text('Atrás');
+    MSG_COMPANY_1();
+    MSG_LBL_COMPANY_1();
+    MSG_LBL_REGION_1();
+    MSG_LBL_STORE_1();
+    MSG_TXT_TITLE_1();
+    MSG_SPN_HEADER_1();
+   
+    MSG_RPT_TG_1();
+    MSG_RPT_TS_1();
+    MSG_RPT_YG_1();
+    MSG_RPT_YS_1();
+    MSG_RPT_WG_1();
+    MSG_RPT_WS_1();
+    MSG_RPT_MG_1();
+    MSG_RPT_MS_1();
+    MSG_RPT_AG_1();
+    MSG_RPT_AS_1();
+    MSG_RPT_CG_1();
+    MSG_RPT_CS_1();
+    MSG_MODAL_OK_1();
+    MSG_BACK_1();
+    MSG_CHOOSEDATE_1();
+    MSG_TODAY_1();
+    MSG_YESTERDAY_1();
+    MSG_WEEK_1();
+    MSG_MONTH_1();
+    MSG_YEAR_1();
+    MSG_VISUALIZATION_1();
+    MSG_SHOWCURRENT_1();
+    MSG_SHOWGLOBAL_1();
+    MSG_TODAYP_1();
+    MSG_LBL_DET_DIC_1();
+    MSG_DICTIONARY();
+    /***************************************/
+    MSGS_TEXT_OPTIONS();
+    // Last Connection
+    LBL_LAST_CONNECTION();
+   
 }
