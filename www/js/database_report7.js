@@ -231,6 +231,7 @@ function downloadByCompany() {
                         mostrar += "</div>";
                         $("#items").append(mostrar);
                     }
+                    hideComboRegion();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -343,6 +344,17 @@ function Report7UpdateGlobal() {
 }
 
 
+
+function hideComboRegion() {
+    
+    var windowh = $(window).height();
+    var headerh = $('header').height();
+    var regionh = $('#divRegion').height();
+    var selectdateP = $('.select-dateP').height();
+    var selectGeneral = $('.select-general').height();
+
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral );
+}
 
 
 function  deteclenguage7(){

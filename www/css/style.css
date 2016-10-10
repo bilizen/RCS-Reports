@@ -806,10 +806,10 @@ hr {
 }
 .lblLastConexion{
     padding-right: 3pt;
-    width: 53%;
+    width: 42%;
 }
 .dataLastConexion{
-    width: 47%;
+    width: 48%;
 }
 .lblLastConexion,.dataLastConexion{
     line-height: 24pt;
@@ -895,7 +895,7 @@ div[class^="graphic"]
 }
 div[class^="chartdiv"]{
     width: 70%;
-    height: 150px;
+    height: 130px;
     display: inline-block;
     float: left;
     

@@ -483,8 +483,9 @@ function downloadByRegion() {
                         });
                         mostrar += "</div>";
                         $("#items").append(mostrar);
-                        hideComboRegion();
+                        
                     }
+                    hideComboRegion();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -502,7 +503,6 @@ function downloadByRegion() {
         });
     });
 }
-
 
 
 
@@ -541,7 +541,7 @@ function loadComboRegions() {
                 success: function (data, textStatus, XMLHttpRequest) {
                     $("#selectRegion").empty();  
                     $('.region .section_content .select-region').empty();
-
+                    
                     if (data.quantity ==1) { //este objeto data es el object que devuelve el webservice(2 atributos (1jsonarray y el otro un entero))
                         if (current_lang == 'es'){
                             selectRegion = "TODAS LAS REGIONES";
@@ -561,11 +561,10 @@ function loadComboRegions() {
                                     .text(regionName));
 
                         });
-
                         showCombo();
                         downloadByStore("");
                     } else {
-                        $('#divRegion').remove();
+                        //$('#divRegion').remove();
                         downloadByStore("");
                     }
                 },
@@ -1113,10 +1112,12 @@ function storeWitdhGraphic2(indice,regionCode) {
 
                                 mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
                                 if (current_lang == 'es'){
-                                    mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Ult. Vta.: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+                                    //mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Ult. Vta.: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+                                    mostrar += "<div class='lastConexion'><div class='lblLastConexion'></div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
                                 
                                 }else{
-                                    mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last sale: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+                                    //mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last sale: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+                                    mostrar += "<div class='lastConexion'><div class='lblLastConexion'></div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
                                 
                                 }
                                
@@ -1262,6 +1263,7 @@ function selectRangeGroup(){
 
 //***************************************//
 function hideComboRegion() {
+    
     var windowh = $(window).height();
     var headerh = $('header').height();
     var regionh = $('#divRegion').height();
@@ -1269,8 +1271,10 @@ function hideComboRegion() {
     var selectGeneral = $('.select-general').height();
     if ($('#divRegion').css('display') == 'none') {
         $('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
+        
     } else {
-        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 68);
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral );
+        
     }
 }
 
@@ -1289,6 +1293,3 @@ function valuesGroupDate(){
         localStorage.setItem("RCSReports_valuesRangeDates",1);
     }
 }
-
-
-

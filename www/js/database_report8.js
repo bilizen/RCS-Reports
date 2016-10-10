@@ -249,9 +249,9 @@ function downloadByRegion() {
                         });
                         //mostrar += "</div><hr>";
                         mostrar += "</div>";
-                        $("#items").append(mostrar);
-                        
+                        $("#items").append(mostrar);   
                     }
+                    hideComboRegion();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -705,8 +705,9 @@ function detailsNewCompStore(indice,typecode,regionCode){
 
 
                                     mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
-                                    mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last sale: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
-
+                                    //mostrar += "<div class='lastConexion'><div class='lblLastConexion'>Last sale: </div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+                                    mostrar += "<div class='lastConexion'><div class='dataLastConexion'>" + lastConexion + "</div></div>";
+    
 
                                     if (actual == 1) {
                                         mostrar += "<div class='actual'>";
@@ -738,7 +739,7 @@ function detailsNewCompStore(indice,typecode,regionCode){
                                 });
                            
                             }
-                    
+                            
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
@@ -853,6 +854,16 @@ function Report8UpdateGlobal() {
     }
 }
 
+function hideComboRegion() {
+    
+    var windowh = $(window).height();
+    var headerh = $('header').height();
+    var regionh = $('#divRegion').height();
+    var selectdateP = $('.select-dateP').height();
+    var selectGeneral = $('.select-general').height();
+
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral );
+}
 
 
 

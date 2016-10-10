@@ -235,20 +235,6 @@ nullDataHandler = function (transaction, results) {//THIS VARIABLE IS FOR OUR TR
 
 
 
-$(window).resize(function () {
-	var windowh = $(window).height();
-	var headerh = $('header').height();
-	var regionh = $('#divRegion').height();
-	var selectdateP = $('.select-dateP').height();
-	var selectGeneral = $('.select-general').height();
-	if ($('#divRegion').css('display') == 'none') {
-		$('.list').height(windowh - headerh - selectdateP - selectGeneral - 20);
-	} else {
-		$('.list').height(windowh - headerh - selectdateP - selectGeneral - 68);
-	}
-});
-//**********************************************//
-
 
 
 

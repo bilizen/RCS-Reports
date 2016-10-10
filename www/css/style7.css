@@ -1621,6 +1621,9 @@ text{
     animation-timing-function: ease-in-out;
 }
 
+.noimg{
+    background-image: none;
+}
 
 @-webkit-keyframes rotationIcon {
     0% {
