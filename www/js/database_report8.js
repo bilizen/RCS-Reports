@@ -212,7 +212,8 @@ function downloadByRegion() {
                             percent = parseFloat(percent).toFixed(2);
                             percentGlobal = parseFloat(percentGlobal).toFixed(2);
 
-                            mostrar += "<div class='store waves-effect waves-light' onclick=districtRegion("+index+",'"+regionCode+"') >";
+                            mostrar += "<div class='store waves-effect waves-light'>";
+                            mostrar +="<div onclick=districtRegion("+index+",'"+regionCode+"')> ";
                             mostrar += "<h1>" + regionName + "</h1>";
                             if (actual == 1) {
                                 mostrar += "<div class='actual'>";
@@ -237,7 +238,9 @@ function downloadByRegion() {
                                 mostrar += "</div>";
                             }
                             mostrar += "</div>";
+
                             mostrar += "<div class='region_store regionList' id='graph_region"+index+"' >"
+                            mostrar +="</div>";
                             mostrar += "</div><hr>";
                             
                             //mostrar += "</div>";
