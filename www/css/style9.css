@@ -860,7 +860,7 @@ hr {
 div[class^="region_store"]
 {
     height: 0;
-    width: 90%;
+    width: 95%;
     overflow-y: hidden;
     overflow-x: hidden;
     opacity: 0;
@@ -879,7 +879,7 @@ div[class^="region_store"]
 div[class^="region_disctrict"]
 {
     height: 0;
-    width: 80%;
+    width: 90%;
     overflow-y: hidden;
     overflow-x: hidden;
     opacity: 0;
@@ -1387,8 +1387,8 @@ button.delete{
 }
 
 .list_store .loader-ios{
-	text-align: center;
-	margin-top: 112px;
+  text-align: center;
+  margin-top: 112px;
 }
 
 .loader-ios {
@@ -1621,9 +1621,6 @@ text{
     animation-timing-function: ease-in-out;
 }
 
-.noimg{
-    background-image: none;
-}
 
 @-webkit-keyframes rotationIcon {
     0% {
@@ -1661,7 +1658,9 @@ text{
     }
 }
 
-
+.noimg{
+    background-image: none;
+}
 
 /* iPad in portrait & landscape */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
@@ -1984,7 +1983,7 @@ text{
         width: 72%;
     }
     .lastConexion {
-        width: 45%;
+        width: 44%;
         font-size: 9pt;
         line-height: 11pt;
         height: 26px;
