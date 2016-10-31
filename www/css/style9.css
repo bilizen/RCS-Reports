@@ -1866,7 +1866,9 @@ text{
         width: 31%;
     }
     .store{
-        padding: 4pt 6%;
+        padding: 4pt 2%;
+        overflow-x: auto;
+        font-size: 80%;
     }
     .actual i, .global i {
         width: 11%;
