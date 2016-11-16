@@ -776,31 +776,57 @@ function changeLanguage8(){
 //Language9
 function changeLanguage9(){
     $('#txtpreferences').text('Atrás');
-    $(".close").html("Cerrar");
-    // MSG_COMPANY_1();
-    // MSG_LBL_COMPANY_1();
-    // MSG_LBL_REGION_1();
-    // MSG_LBL_STORE_1();
-    // MSG_TXT_TITLE_1();
-    // MSG_SPN_HEADER_1();
-   
-    
-    // MSG_MODAL_OK_1();
-    // MSG_BACK_1();
-    // MSG_CHOOSEDATE_1();
+    $('#txtBack').text("Atrás");
+    $('#lblChooseDate').text('Elegir Fecha');
+    $('.titleTopBar').text("Opciones");
+    $('.title_rotateScreen_R9').text('Mensaje');
+    $('.textRotateScreen').text("Por favor, Gire a la Posición Horizontal");
+    $('.btnok').text('Aceptar');
+    $('.titleMessage').html("Mensaje");
     $('#lblToday').text("Hoy");
     $('#lblYesterday').text("Ayer");
     $('#lblWeek').text("Inicio de Semana");
     $('#lblMonth').text("Inicio de Mes");
     $('#lblYear').text("Inicio de Año");
     $('#lblTodayP').text("Hoy");
-    // MSG_VISUALIZATION_1();
-    // MSG_SHOWCURRENT_1();
-    // MSG_SHOWGLOBAL_1();
-    // MSG_TODAYP_1();
-    // MSG_LBL_DET_DIC_1();
-    // MSG_DICTIONARY();
-    // /***************************************/
-    // MSGS_TEXT_OPTIONS();
+    
+}
+
+//Language10
+function changeLanguage10(){
+    $('#txtpreferences').text('Atrás');
+    $('#txtBack').text("Atrás");
+    $('#lblChooseDate').text('Elegir Fecha');
+    $('.titleTopBar').text("Opciones");
+    $('.title_rotateScreen_R10').text('Mensaje');
+    $('.textRotateScreen').text("Por favor, Gire a la Posición Horizontal");
+    $('.btnok').text('Aceptar');
+    $('.titleMessage').html("Mensaje");
+    $('#lblToday').text("Hoy");
+    $('#lblYesterday').text("Ayer");
+    $('#lblWeek').text("Inicio de Semana");
+    $('#lblMonth').text("Inicio de Mes");
+    $('#lblYear').text("Inicio de Año");
+    $('#lblTodayP').text("Hoy");
+   
+}
+
+
+//Language11
+function changeLanguage11(){
+    $('#txtpreferences').text('Atrás');
+    $('#txtBack').text("Atrás");
+    $('.titleTopBar').text("Opciones");
+    $('.title_rotateScreen_R11').text('Mensaje');
+    $('.textRotateScreen').text("Por favor, Gire a la Posición Horizontal");
+    $('#lblChooseDate').text('Elegir Fecha');
+    $('.btnok').text('Aceptar');
+    $('.titleMessage').html("Mensaje");
+    $('#lblToday').text("Hoy");
+    $('#lblYesterday').text("Ayer");
+    $('#lblWeek').text("Inicio de Semana");
+    $('#lblMonth').text("Inicio de Mes");
+    $('#lblYear').text("Inicio de Año");
+    $('#lblTodayP').text("Hoy");
    
 }

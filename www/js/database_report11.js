@@ -9,9 +9,9 @@ function onBackKeyDown() {
 
 $(window).load(function(){
    onInit();    
-   deteclenguage9();
+   deteclenguage11();
    valuesGroupDate();
-   CompanyProductivity();
+   StoreProductivity();
 });
 
 //rotation screem
@@ -28,17 +28,17 @@ function hideComboRegion() {
     $('.list').height(windowh - headerh - selectdateP - selectGeneral -20);
 }
 
-var RCSReports_report9_valuesRangeDates;
+var RCSReports_report11_valuesRangeDates;
 
 //************** Descargar data por Region, en el array en el indice byRegion:2*********//
-function CompanyProductivity() {
+function StoreProductivity() {
     var xurl = "";
     var c_ip = "";
     var c_port = "";
     var c_site = "";
 
-    //pinta el titulo del reporte9
-    $('#txt_title').text(localStorage.titleReport9);
+    //pinta el titulo del reporte11
+    $('#txt_title').text(localStorage.titleReport11);
     
     localDB.transaction(function (tx) {
         tx.executeSql('SELECT * FROM ' + TABLE_URL + ' WHERE  ' + KEY_USE + ' = 1', [], function (tx, results) {
@@ -46,12 +46,13 @@ function CompanyProductivity() {
             c_port = results.rows.item(0).port;
             c_site = results.rows.item(0).site;
 
-            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/Report9CompanyPerformance/POST';
+            xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/Report11StorePerformance/POST';
 
-            var option =RCSReports_report9_valuesRangeDates;
-            var day=todayreport1();
-            var employeeCode=localStorage.RCSReportsEmployeeCode;
-            var array= {Option: option,Day:day,EmployeeCode:employeeCode};
+            var option =RCSReports_report11_valuesRangeDates;
+            var regionCode="";
+            var day=todayreport1(); 
+            var employeeCode=localStorage.RCSReportsEmployeeCode; 
+            var array= {Option: option,RegionCode:regionCode,Day:day,EmployeeCode:employeeCode};
             $.ajax({
                 url: xurl,
                 type: 'POST',
@@ -69,7 +70,8 @@ function CompanyProductivity() {
                 success: function (data) {
                     $("#items").empty();
                     if (data.quantity > 0) {
-                        var Typecode;
+                        var StoreNo;
+                        var StoreName;
                         var Trans;
                         var Units;
                         var LYSales;
@@ -83,11 +85,32 @@ function CompanyProductivity() {
                         var UMD;
                         var MDS;
                         var PMD;
-
+                        
                         var mostrar="";
-                        //mostrar += "<div id='divByRegion'>";                        
+                        mostrar += "<div class='store waves-effect waves-light'>";
+                        mostrar += "<table class='table'>"+
+                        "<thead>"+
+                        "<tr>"+
+                        "<th>STORENAME</th>"+
+                        "<th>TRANS</th>"+
+                        "<th>UNITS</th>"+
+                        "<th>LYSALES</th>"+
+                        "<th>TYSALES</th>"+
+                        "<th>%VAR</th>"+
+                        "<th>DISC$</th>"+
+                        "<th>DISC%</th>"+
+                        "<th>UPT</th>"+
+                        "<th>ADS</th>"+
+                        "<th>GM%</th>"+
+                        "<th>UMD</th>"+
+                        "<th>MD$</th>"+
+                        "<th>MD%</th>"+
+                        "</tr>"+
+                        "</thead>"+
+                        "<tbody id='list-empleados'>";                       
                         $(data.report).each(function (index, value) {
-                            Typecode=value.Typecode;
+                            StoreNo=value.StoreNo;
+                            StoreName=value.StoreName;
                             Trans=value.Trans;
                             Units=value.Units;
                             LYSales=value.LYSales;
@@ -101,29 +124,9 @@ function CompanyProductivity() {
                             UMD=value.UMD;
                             MDS= value.MDS;
                             PMD=value.PMD;
-                              
-                            mostrar += "<div class='store waves-effect waves-light'>";
-                            mostrar += "<h1>" + Typecode + "</h1>";
-                            mostrar += "<table class='table'>"+
-                            "<thead>"+
-                            "<tr>"+
-                            "<th>TRANS</th>"+
-                            "<th>UNITS</th>"+
-                            "<th>LYSALES</th>"+
-                            "<th>TYSALES</th>"+
-                            "<th>%VAR</th>"+
-                            "<th>DISC$</th>"+
-                            "<th>DISC%</th>"+
-                            "<th>UPT</th>"+
-                            "<th>ADS</th>"+
-                            "<th>GM%</th>"+
-                            "<th>UMD</th>"+
-                            "<th>MD$</th>"+
-                            "<th>MD%</th>"+
-                            "</tr>"+
-                            "</thead>"+
-                            "<tbody id='list-empleados'>";
-                            mostrar +="<td>"+Trans.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>"; 
+
+                            mostrar +="<tr><td>"+StoreName.toString()+"</td>";
+                            mostrar +="<td>"+Trans.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>";  
                             mostrar +="<td>"+Units.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>"; 
                             mostrar +="<td>$"+LYSales.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>"; 
                             mostrar +="<td>$"+TYSales.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>"; 
@@ -135,13 +138,12 @@ function CompanyProductivity() {
                             mostrar +="<td>"+PGM.toString()+"%</td>";
                             mostrar +="<td>"+UMD.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>";
                             mostrar +="<td>$"+MDS.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")+"</td>";
-                            mostrar +="<td>"+PMD+"%</td></tr>"; 
-                            mostrar +="</tbody>";
-                            mostrar +="</table>";
-                            mostrar += "</div>";                
+                            mostrar +="<td>"+PMD.toString()+"%</td></tr>";     
+
                         });
-                       
-                        //mostrar += "</div>";
+                        mostrar +="</tbody>";
+                        mostrar +="</table>";
+                        mostrar += "</div>";
                         $("#items").append(mostrar);   
                     }else{
                         if (current_lang == 'es'){
@@ -172,38 +174,38 @@ function CompanyProductivity() {
 
 //verifica los los switch si estan activos
 function valuesGroupDate(){
-    RCSReports_report9_valuesRangeDates=1;
+    RCSReports_report11_valuesRangeDates=1;
 }
 
 
 function rangeOfToday(){
-    RCSReports_report9_valuesRangeDates=1;
-    CompanyProductivity();
+    RCSReports_report11_valuesRangeDates=1;
+    StoreProductivity();
 }
 function rangeOfYesterday(){
-    RCSReports_report9_valuesRangeDates=2;
-    CompanyProductivity(); 
+    RCSReports_report11_valuesRangeDates=2;
+    StoreProductivity(); 
 }
 
 function rangeOfWeek(){
-    RCSReports_report9_valuesRangeDates=3;
-    CompanyProductivity();
+    RCSReports_report11_valuesRangeDates=3;
+    StoreProductivity();
 }
 
 function rangeOfMonth(){
-    RCSReports_report9_valuesRangeDates=4;
-    CompanyProductivity();
+    RCSReports_report11_valuesRangeDates=4;
+    StoreProductivity();
 }
 
 function rangeOfYear(){
-    RCSReports_report9_valuesRangeDates=5;
-    CompanyProductivity();
+    RCSReports_report11_valuesRangeDates=5;
+    StoreProductivity();
 }
 
-function  deteclenguage9(){
+function  deteclenguage11(){
     var lang = navigator.language.split("-");
     var current_lang = (lang[0]);
     if (current_lang == 'es') {
-        changeLanguage9();
+        changeLanguage11();
     }
 }

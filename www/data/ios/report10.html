@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Report 9</title>
+  <title>Report 10</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   
   <link href="../../css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../css/style9.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <link href="../../css/style10.css" rel="stylesheet">
   <link rel="shortcut icon" href="">
 
   <!-- Fav and touch icons -->
@@ -15,7 +16,7 @@
   <script type="text/javascript" src="../../js/jquery-ui.js"></script>
   <script type="text/javascript" src="../../js/database.js"></script>
   
-  <script type="text/javascript" src="../../js/database_report9.js"></script>
+  <script type="text/javascript" src="../../js/database_report10.js"></script>
   
   <!-- AmCharts-->
   <script type="text/javascript" src="../../js/amcharts.js"></script>
@@ -28,17 +29,15 @@
 <body data-role="page" id="pageone">
     <div class="hybrid_container">
 
-        <header>
-            <div class="top_bar_space"></div>
-            <div class="options_bar_space">
-                <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences">Return</button></div>
-                <div id="txt_title" class="titleTopBar" onclick=""></div>
-            </div>      
-        </header>
+    <header>
+    <div class="top_bar_space"></div>
+      <div class="options_bar_space">
+        <div id="btn_left" class="arrow"><button onclick="menu();" id="txtpreferences">Return</button></div>
+        <div id="txt_title" class="titleTopBar" onclick=""></div>
+      </div>      
+    </header>
 
     <div id="content">
-
-
         <div class="section">
             <span></span>
             <div class="section_content">
@@ -71,12 +70,11 @@
     <header>
         <div class="top_bar_space"></div>
         <div class="options_bar_space">
-            <div id="btn_left" class="arrow"><button onclick="moveToRight();CompanyProductivity()" id="txtBack">Back</button></div>
+            <div id="btn_left" class="arrow"><button onclick="moveToRight();DistrictProductivity()" id="txtBack">Back</button></div>
             <div id="top_txt_title" class="titleTopBar">Options</div>
             <div id="btn_right"></div>
         </div>      
     </header>
-
 
     <div class="wrapper date">
         <div class="section">
@@ -111,6 +109,7 @@
             </div>                
         </div>
     </div>
+
 </div>  
 
 <!-- Modal -->
@@ -121,17 +120,19 @@
             <div></div>
             <div></div>
         </div>
+        <!-- <div class="text-center"><p name="txtloading" id="txtloading"></p></div> -->
         <input type="hidden" id="txtocultaloading" name="txtocultaloading" data-dismiss="modal" aria-hidden="true" />
     </div>
 </div>
 
 
 
+
 <!-- rotate screen -->
-    <div class="modal-rotate" id="miModal9">
+    <div class="modal-rotate" id="miModal10">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div  class="modal-header text-center title_rotateScreen_R9">Message</div>
+                <div  class="modal-header text-center title_rotateScreen_R10">Message</div>
                 <div class="textRotateScreen">Please Rotate to Landscape Position</div>
                 <div class="iconRotate"><img src="../../img/iconRotate.svg"></div>
             </div>
@@ -154,6 +155,7 @@
       </div>
   </div>
 </div>
+
 
 
 <script type="text/javascript" src="../../js/scripts.js"></script>
