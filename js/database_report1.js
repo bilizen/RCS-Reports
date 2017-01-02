@@ -1,25 +1,148 @@
 $(document).ready(function(){
- document.addEventListener("deviceready", onDeviceReady, false);
- function onDeviceReady() {
-    document.addEventListener("backbutton", onBackKeyDown, true);
-}
-function onBackKeyDown() {
-}
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, true);
+    }
+    function onBackKeyDown() {
+    }
 });
 
 $(window).load(function(){
-   onInit();    
-   deteclenguage();
-   checkDefaultActualGlobal();
-   valuesGroupDate();
-   loadComboRegions();
+    onInit();    
+    deteclenguage();
+    checkDefaultActualGlobal();
+    valuesGroupDate();
+    GetDatesDatabase();
+    downloadByStore("");
+    //loadComboRegions();
+
+    $('.opt').click(function(){
+        $('.opt').removeClass('active');
+        $(this).addClass('active');
+        var a=$(this).attr('data-value');
+        if(a=="1"){
+            GlobalFilterStores="1";
+            if (current_lang == 'es'){
+                $('.filterStoresSales').text("Todos");
+            }else{
+                $('.filterStoresSales').text("All");
+            }
+            $('.goalStore').removeClass('hide');
+            $('.saleStore').removeClass('hide');
+        }else if(a=="2"){
+            GlobalFilterStores="2";
+            if (current_lang == 'es'){
+                $('.filterStoresSales').text("↑Arriba");
+            }else{
+                $('.filterStoresSales').text("↑Above");
+            }
+            $('.saleStore').removeClass('hide');
+            $('.goalStore').addClass('hide');
+        }else if(a=="3"){
+            GlobalFilterStores="3";
+            if (current_lang == 'es'){
+                $('.filterStoresSales').text("↓Abajo");
+            }else{
+                $('.filterStoresSales').text("↓Below");
+            }
+            $('.saleStore').addClass('hide');
+            $('.goalStore').removeClass('hide');  
+        }
+    }); 
+
 });
 
+var GlobalFilterStores="1";
 
+
+//rotation screem
+$(window).resize(function () {
+    responsiveReport1();
+});
+
+function responsiveReport1() {
+    var windowh = $(window).height();
+    var headerh = $('header').height();
+    var regionh = $('#divRegion').height();
+    var selectdateP = $('.select-dateP').height();
+    var selectGeneral = $('.select-general').height();
+    if ($('#divRegion').css('display') == 'none') {//no hay region
+        if($('#divFilter').css('display') == 'none'){
+            $('.list').height(windowh - headerh - selectdateP - selectGeneral -20);
+        }else{
+            $('.list').height(windowh - headerh - selectdateP - selectGeneral -60);
+        } 
+    } else {
+        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 70);
+    }
+}
+
+
+function GetDatesDatabase(){
+    var c_ip = "";
+    var c_port = "";
+    var c_site = "";
+    var xurl="";
+    var RCSReports_SetDate=localStorage.RCSReports_SetDate;
+    if(RCSReports_SetDate=="1"){
+        var query ="SELECT * FROM " + TABLE_URL + " WHERE "  + KEY_USE + " = '1'";
+        localDB.transaction(function (tx) {
+            tx.executeSql(query, [], function (tx, results) {
+                c_ip = results.rows.item(0).ip;
+                c_port = results.rows.item(0).port;
+                c_site = results.rows.item(0).site;
+                xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportGetDates/GET';
+                $.ajax({
+                    url: xurl,
+                    type: 'GET',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: true,
+                    crossdomain: true,
+                    beforeSend: function () {
+                        //showLoading();
+                    },
+                    complete: function () {
+                        //hideLoading();
+                    },
+                    success: function (data) {
+                        if(data.quantity==1){
+                            $('#time').text(data.report.Today);
+                            $('#today').text(data.report.Today);
+                            $('#yesterday').text(data.report.Yesterday);
+                            $('#week').text(data.report.WeekToDate);
+                            $('#month').text(data.report.MonthToDate);
+                            $('#year').text(data.report.YearToDate);
+                        }else{
+                            if (current_lang == 'es'){
+                                mostrarModalGeneral("No hay fechas para mostrar, establecer fechas del móvil");
+                            }else{
+                                mostrarModalGeneral("No dates for show, set mobile dates");
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.status);
+                        console.log(xhr.statusText);
+                        console.log(xhr.responseText);
+                        if (current_lang == 'es'){
+                            mostrarModalGeneral("No hay fechas para mostrar, establecer fechas del móvil");
+                        }else{
+                            mostrarModalGeneral("No dates for show, set mobile dates");
+                        }
+                    }
+                });
+            });
+        });   
+    }else{
+        comboWriteDates();
+    }
+}
 
 
 //************** descargar data por compañia, en el array en el indice principal:1 ************//
 function downloadByCompany() {
+    filterStoreHideCombo();
     var xurl = "";
     var c_ip = "";
     var c_port = "";
@@ -43,7 +166,7 @@ function downloadByCompany() {
             xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportCompany/POST';
             
             var option = localStorage.RCSReports_valuesRangeDates;
-            var day=todayreport1();
+            var day=todayreport();
             var employeeCode=localStorage.RCSReportsEmployeeCode;
             var array = {Day:day, Option: option, Tax:impuesto,EmployeeCode:employeeCode};
 
@@ -226,7 +349,7 @@ function downloadByCompany() {
                             mostrar += "</div>";
                             mostrar += "<hr>";
                         $("#items").append(mostrar);
-                        responsiveListStore();
+                        responsiveReport1();
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -247,6 +370,8 @@ function downloadByCompany() {
 
 //************** Descargar data por Region, en el array en el indice byRegion:2*********//
 function downloadByRegion() {
+    filterStoreShowCombo();
+
     var xurl = "";
     var c_ip = "";
     var c_port = "";
@@ -271,7 +396,7 @@ function downloadByRegion() {
             xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportByRegion/POST';
 
             var option = localStorage.RCSReports_valuesRangeDates;
-            var day=todayreport1();
+            var day=todayreport();
             var employeeCode=localStorage.RCSReportsEmployeeCode;
             
             var array= {Day:day, Option: option,Tax: impuesto,EmployeeCode:employeeCode};
@@ -296,7 +421,7 @@ function downloadByRegion() {
 
                     if (data.quantity > 0) {
                         var mostrar = "";
-                        mostrar += "<div id='divByRegion'>";
+                        //mostrar += "<div id='divByRegion'>";
 
                         if (current_lang == 'es') {
                             if (option == 1) {
@@ -474,11 +599,11 @@ function downloadByRegion() {
                            
 
                         });
-                        mostrar += "</div>";
+                        //mostrar += "</div>";
                         $("#items").append(mostrar);
                         
                     }
-                    responsiveListStore();
+                    responsiveReport1();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -579,10 +704,13 @@ function loadComboRegions() {
 }
 
 
-
-
 //************ Descargar data por Store, en el arrary su indice vale***********//
 function downloadByStore(regionCode) {
+    hideCombo();
+    filterStoreShowCombo();
+    $('#txt_title').text(localStorage.getItem("titleReport1"));
+    localStorage.RCSReports_valuesGroupStore=3;
+
     var xurl = "";
     var c_ip = "";
     var c_port = "";
@@ -596,11 +724,11 @@ function downloadByStore(regionCode) {
     var option = localStorage.RCSReports_valuesRangeDates;
     
     var regioncode=regionCode;
-    localStorage.RCSReports_regioncode=regionCode;
+    // localStorage.RCSReports_regioncode=regionCode;
     //verifica si esta con impuestos
     var impuesto=localStorage.getItem("check_tax");
 
-    var day=todayreport1();
+    var day=todayreport();
     var employeeCode=localStorage.RCSReportsEmployeeCode;
     var array = {Option: option, RegionCode: regionCode,Tax: impuesto,Day:day,EmployeeCode:employeeCode};
     var actual = localStorage.check_actual_report1;
@@ -777,7 +905,25 @@ function downloadByStore(regionCode) {
                             percentGlobal = parseFloat(percentGlobal).toFixed(0);
 
 
-                            mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light'>";
+                            if(goalAmount-payTotal>0){
+                                if(GlobalFilterStores=="1"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light goalStore'>";
+                                }else if(GlobalFilterStores=="2"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light goalStore hide'>";
+                                }else if(GlobalFilterStores=="3"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light goalStore'>";
+                                }
+                            }else{
+                                if(GlobalFilterStores=="1"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light saleStore'>";
+                                }else if(GlobalFilterStores=="2"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light saleStore'>";
+                                }else if(GlobalFilterStores=="3"){
+                                    mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light saleStore hide'>";
+                                }                                
+                            }
+
+                            // mostrar += "<div onclick=\"storeWitdhGraphic(" + indice + ","+storeNo+")\" class='store waves-effect waves-light'>";
                             mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
                             // if (current_lang == 'es'){
                             //     mostrar += "<div class='lastConexion'><div class='dataLastConexion'>" + lastConexion + "</div></div>";
@@ -811,17 +957,16 @@ function downloadByStore(regionCode) {
 
                             mostrar +="<div id='graph" + indice + "' class='graphic showGraphic'>";
                             mostrar += "</div>";
-                            mostrar += "</div><hr>";
-
+                            // mostrar += "</div><hr>";
+                            mostrar += "</div>";
                             $("#items").append(mostrar);
                             
-
                             mostrar = "";
                             indice++;
 
                         });
-                        responsiveListStore();
-                        deteclenguage();
+                        responsiveReport1();
+                        //deteclenguage();
                     }
                  
                 },
@@ -842,10 +987,6 @@ function downloadByStore(regionCode) {
     });
 }
 
-
-
-
-
 function storeWitdhGraphic(indice,storeno) {
     var altura = $('#graph' + indice).height();
     if (altura > 0) { // esta mostrandose ; se debe ocultar
@@ -860,7 +1001,7 @@ function storeWitdhGraphic(indice,storeno) {
                 var xurl = 'http://' + c_ip + ':' + c_port + '/' + c_site + '/reportgoalDetails/post';
                 var option = $(".select-dateP .init").attr("data-value");
                 var impuesto=localStorage.getItem("check_tax");
-                var day=todayreport1();
+                var day=todayreport();
 
                 var array = {Option: option, StoreNo: storeno,Tax: impuesto,Day:day};
                 /*********************/
@@ -922,17 +1063,15 @@ function storeWitdhGraphic(indice,storeno) {
     }
 }
 
-
 function storeWitdhGraphic2(indice,regionCode) {
     var altura = $('#graph_region'+indice).height();
-    
     if (altura > 0) { // esta mostrandose ; se debe ocultar
         $('.region_store').empty();
     } else {    
         $('.region_store').empty();
         var option = $(".select-dateP .init").attr("data-value");
         var impuesto=localStorage.getItem("check_tax");
-        var day=todayreport1();
+        var day=todayreport();
         var employeeCode=localStorage.RCSReportsEmployeeCode;
 
         var array = {Option: option, RegionCode: regionCode,Tax: impuesto,Day:day,EmployeeCode:employeeCode};
@@ -1106,7 +1245,24 @@ function storeWitdhGraphic2(indice,regionCode) {
                                 percent = parseFloat(percent).toFixed(0);
                                 percentGlobal = parseFloat(percentGlobal).toFixed(0);
 
-
+                                
+                                if(goalAmount-payTotal>0){
+                                    if(GlobalFilterStores=="1"){
+                                        mostrar += "<div class='goalStore'>";
+                                    }else if(GlobalFilterStores=="2"){
+                                        mostrar += "<div class='goalStore hide'>";
+                                    }else if(GlobalFilterStores=="3"){
+                                        mostrar += "<div class='goalStore'>";
+                                    }
+                                }else{
+                                    if(GlobalFilterStores=="1"){
+                                        mostrar += "<div class='saleStore'>";
+                                    }else if(GlobalFilterStores=="2"){
+                                        mostrar += "<div class='saleStore'>";
+                                    }else if(GlobalFilterStores=="3"){
+                                        mostrar += "<div class='saleStore hide'>";
+                                    }   
+                                }
                                 mostrar += "<h1 class='storeNameR1'>" + storeName + "</h1>";
                                 
                                 mostrar += "<div class='lastConexion'><div class='lblLastConexion'></div><div class='dataLastConexion'>" + lastConexion + "</div></div>";
@@ -1136,7 +1292,8 @@ function storeWitdhGraphic2(indice,regionCode) {
                                 }
 
                                 mostrar += "</div>";
-                                mostrar += "</div><hr>";
+                                mostrar += "</div>";
+                                mostrar += "</div>"
                                 $("#graph_region"+indice).append(mostrar);
                                 
                             });
@@ -1245,37 +1402,21 @@ function selectRangeGroup(){
         downloadByRegion();
     }
     if(localStorage.RCSReports_valuesGroupStore==3){
-        var regionCode=localStorage.RCSReports_regioncode;
-        downloadByStore(regionCode);
+        // var regionCode=localStorage.RCSReports_regioncode;
+        downloadByStore('');
     }
 }
 
 
-
-//***************************************//
-//rotation screem
-$(window).resize(function () {
-    responsiveListStore();
-});
-function responsiveListStore() {
-    
-    var windowh = $(window).height();
-    var headerh = $('header').height();
-    var regionh = $('#divRegion').height();
-    var selectdateP = $('.select-dateP').height();
-    var selectGeneral = $('.select-general').height();
-    if ($('#divRegion').css('display') == 'none') {//no hay region
-        $('.list').height(windowh - headerh - selectdateP - selectGeneral -20);
-        
-    } else {
-        $('.list').height(windowh - headerh - selectdateP - selectGeneral - 70);
-        
-    }
+function filterStoreHideCombo() {
+    $("#divFilter").hide();
+}
+function filterStoreShowCombo() {
+    $("#divFilter").show();
 }
 
 
 
-///////////////////
 //verifica los los switch si estan activos
 function valuesGroupDate(){
     if(null==localStorage.getItem("RCSReports_valuesGroupStore")){

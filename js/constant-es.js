@@ -43,7 +43,7 @@ function MSG_GO() {
 // Errores Index
 function MSG_CONNECTION_FAILURE() {
     if (current_lang == 'es')
-        return $("#").html("Fallo de Conexion");
+        return $("#").html("Fallo de Conexión");
     else
         return $("#").html("Error Conection");
 }
@@ -102,6 +102,16 @@ function MSG_LBL_GVS_D() {
 function MSG_LBL_WORKING() {
     $("#lblworkd").html("Más Reportes Proximamente...");
 }
+
+function MSG_LBL_SETDATE(){
+    $("#Set_date").html("Establecer fecha");
+    $(".lblSetDate").html("Establecer fecha");
+    $(".lblMobile").html("Móvil");
+    $(".lblDatabase").html("Calendario");
+
+}
+
+
 //Modal Menu
 function MSG_LBL_CHANGE_CURRENT_SERVER(){
     $('.actual_server').text('Servidor Actual');
@@ -231,7 +241,13 @@ function MSG_TXT_TITLE_1() {
 function MSG_SPN_HEADER_1() {
     $('#section_header').text("Elegir Filtros");
 }
-
+function MSG_COMBO_FILTER_STORE(){
+    $('.lblFilter').text("Filtrar Tiendas");
+    $('.filterStoresSales').text("Todos");
+    $('.optionAll').text("Todos");
+    $('.optionSale').text("↑Arriba");
+    $('.optionGoal').text("↓Abajo");
+}
 
 function MSG_LBL_DET_DIC_1(){
     $('#TodayGoal').text("MH:");
@@ -737,6 +753,7 @@ function changeLanguage7(){
     MSG_TODAYP_1();
     MSG_LBL_DET_DIC_1();
     MSG_DICTIONARY();
+    MSG_COMBO_FILTER_STORE();
     /***************************************/
     MSGS_TEXT_OPTIONS();
    
@@ -768,6 +785,7 @@ function changeLanguage8(){
     MSG_TODAYP_1();
     MSG_LBL_DET_DIC_1();
     MSG_DICTIONARY();
+    MSG_COMBO_FILTER_STORE();
     /***************************************/
     MSGS_TEXT_OPTIONS();
    

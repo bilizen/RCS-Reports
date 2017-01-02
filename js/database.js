@@ -989,6 +989,7 @@ function deteclenguage() {
 		MSG_LBL_TITLE_MENU_DETAIL_R4();
 		MSG_LBL_TITLE_MENU_R5();
 		MSG_LBL_TITLE_MENU_DETAIL_R5();
+		MSG_LBL_SETDATE();
 
 		MSGS_SIGNOUT();
 
@@ -1056,6 +1057,7 @@ function deteclenguage() {
 		MSG_TODAYP_1();
 		MSG_LBL_DET_DIC_1();
 		MSG_DICTIONARY();
+		MSG_COMBO_FILTER_STORE();
 		/***************************************/
 		MSGS_TEXT_OPTIONS();
 	}
