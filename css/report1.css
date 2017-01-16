@@ -1,81 +1,5 @@
+@import url('style.css');
 /*report1*/
-.section span{
-    font-size: 14px;
-    display: block;
-    padding: 0px 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: rgb(88,88,88);
-}
-.section_content{
-    border-bottom: 1px solid rgb(200, 199, 204);
-    border-top: 1px solid rgb(200, 199, 204);
-    background-color: rgba(254, 254, 254, 0.9);
-}
-hr {
-    position: relative;
-    z-index: 10;
-    margin: 0;
-    border: 0;
-    border-top: 1px solid rgb(200, 199, 204);
-    -webkit-transform: translate3d(0,1px,0);
-    transform: translate3d(0,1px,0);
-}
-
-.item{
-    position: relative;
-    z-index: 20;
-    padding: 0 5%;
-    height: 44px;
-    width: 100%;
-    line-height: 32pt;
-}
-.item.selected{    
-    color: #fff;
-    background-color: #0000CD;
-    -webkit-transition: all 0.12s;
-    transition: all 0.12s;
-}
-.item.innerLi>div,
-.item>.date{
-    float: right;
-    height: 44px;
-    font-size: 14px;
-    padding-right: 4%;
-    line-height: 3.3em;
-    color: rgb(88,88,88);
-}
-.item>.date{
-    padding-right: 0;
-}
-.item.selected>div{
-    color: #f1f1f1;
-}
-.innerLi {
-    background-image: url(../img/listArrow.svg);
-    background-size: 22px 15px;
-    background-repeat: no-repeat;
-    background-position: right center;
-    padding-left: 6%;
-    font-weight: bold;
-    font-size: 14pt;
-}
-.store{
-    padding: 4pt 6%;
-    line-height: 0.8em;
-}
-.store:nth-of-type(2n){
-    background-color: rgba(234,234,235,0.85);
-}
-.store h1{
-    width: 100%;
-    height: 32px;
-    font-size: 20px;
-    font-weight: bold;    
-    line-height: 1.6em;
-    white-space: pre-line;
-    color: #111;
-}
 
 .store h1.storeNameR1{
     width: 77%;
@@ -138,15 +62,12 @@ hr {
 }
 .actual span.red, .global span.red{
     background-color: #CE291E;
-    border-radius: 8pt;
 } 
 .actual span.green, .global span.green {
     background-color: #55982E;
-    border-radius: 8pt;
 }
 .actual span.ambar, .global span.ambar {
     background-color: #FF8C00;
-    border-radius: 8pt;
 }
 
 div[class^="region_store"]
@@ -246,16 +167,6 @@ div[class^="detalle-"] span{
     line-height: 44px;
 }
 
-.innerLi>span{
-    display: inline-block;
-    padding: 0px ; 
-    margin-top: 0px; 
-    margin-bottom: 10px;
-    font-size: 14pt;
-    font-weight: bold;
-    color: #000;
-}
-
 .twoCols div{
     display: inline-block;
 }
@@ -285,6 +196,7 @@ div[class^="detalle-"] span{
     }
     .actual span, .global span {
         width: 19%;
+        border-radius: 8pt;
     }
     .actual span, .global span{
         padding-top: 5px;
@@ -293,9 +205,25 @@ div[class^="detalle-"] span{
     .store h1.storeNameR1 {
         width: 80%;
     }
+    .store{
+        padding: 6pt 6%;
+        line-height: 1.75em;
+    }
+    .store h1 {
+        height: 40px;
+        font-size: 21pt;
+    }    
+    div[class^="chartdiv"]{
+    height: 180px;
+    }
+    .dropdown-toggle .lblFilter {
+        padding: 0 48px;
+        font-size: 18pt;
+        padding: 0 0 0 38px;
+    }
 }
 /*iPhone 6 in portrait & landscape*/
-@media only screen and (min-width : 375px) and (max-width : 667px) { 
+@media only screen and (min-width : 375px) and (max-width : 767px) { 
     .lastConexion {
         width: 32%;
         font-size: 11pt;
@@ -324,7 +252,7 @@ div[class^="detalle-"] span{
         width: 23.5%;
     }
 }
-@media only screen and (min-width : 320px) and (max-width : 568px) { 
+@media only screen and (min-width : 320px) and (max-width : 374px) { 
     .lastConexion {
         width: 33%;
         font-size: 9pt;
