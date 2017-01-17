@@ -181,7 +181,7 @@
   .item .box .item_subtitle, .menu .box .item_subtitle{
     display: block;
     width: 240px;
-    height: 22px;
+    height: 32px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -219,8 +219,8 @@
     line-height: 22px;
 	}
 	.iconReport{
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
   }
 }
 @media only screen and (min-width : 320px) and (max-width : 374px) and (orientation: portrait){ 
@@ -231,7 +231,7 @@
   .item .box .item_subtitle, .menu .box .item_subtitle{
     display: block;
     width: 210px;
-    height: 22px;
+    height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -254,7 +254,7 @@
     height: 90px;
   }
   .item .box, .menu .box{
-    padding-left: 88px;
+    padding-left: 90px;
   }
   .iconReport{
     width: 60px;

@@ -152,10 +152,6 @@
         font-size: 14pt;
     }
 }
-/*iPhone 6 in portrait & landscape*/
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
-
-}
 @media only screen and (min-width : 375px) and (max-width : 767px) { 
     .clasification span{
         width: 27%;
