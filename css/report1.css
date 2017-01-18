@@ -119,15 +119,18 @@ div[class^="detalle-"]{
     display: inline-block;
     float: right;
 }
-.year, .quantity{
-    font-size: 12px;
+.year , div[class^="detalle-"] i {
+    float: left; 
+    width: 40%;
 }
-.year , div[class^="detalle-"] i {float: left; width: 40%;}
-.quantity, div[class^="detalle-"] span{float: right; width: 60%; text-align: right;}
-.quantity{ text-align: center;}
+.quantity, div[class^="detalle-"] span{
+    float: right; 
+    width: 60%; 
+    text-align: right;
+}
+.quantity{ text-align: right;}
 div[class^="detalle-"] i,
 div[class^="detalle-"] span{
-    font-size: 12px;
     margin: 0;
     padding: 0;
 }
@@ -143,16 +146,11 @@ div[class^="detalle-"] span{
 #lblToday,#lblYesterday,#lblWeek,#lblMonth,#lblYear{
     display: inline-block;
 }
-
 .innerLi #lblToday, .innerLi #lblYesterday, .innerLi #lblWeek, .innerLi #lblMonth, .innerLi #lblYear{
     float: left;
     font-size: 18px;
     color: black;
     line-height: 44px;
-}
-
-.twoCols div{
-    display: inline-block;
 }
 
 /* iPad in portrait & landscape */
@@ -197,6 +195,14 @@ div[class^="detalle-"] span{
         font-size: 18pt;
         padding: 0 0 0 38px;
     }
+    div[class^="detalle-"] i, div[class^="detalle-"] span{
+        height: 24px;
+    }
+    .year, .quantity,
+    div[class^="detalle-"]{
+        font-size: 16px;
+        height: 24px;
+    }
 }
 /*iPhone 6 in portrait & landscape*/
 @media only screen and (min-width : 375px) and (max-width : 767px) { 
@@ -227,6 +233,14 @@ div[class^="detalle-"] span{
     .actual p, .global p {
         width: 23.5%;
     }
+    div[class^="detalle-"] i, div[class^="detalle-"] span{
+        height: 22px;
+    }
+    .year, .quantity,
+    div[class^="detalle-"]{
+        font-size: 13px;
+        height: 22px;
+    }
 }
 @media only screen and (min-width : 320px) and (max-width : 374px) { 
     .lastConexion {
@@ -254,5 +268,13 @@ div[class^="detalle-"] span{
         font-size: 11pt;
         text-align: center;
         border-radius: 4pt !important;
+    }
+    div[class^="detalle-"] i, div[class^="detalle-"] span{
+        height: 20px;
+    }
+    .year, .quantity,
+    div[class^="detalle-"]{
+        font-size: 12px;
+        height: 20px;
     }
 }

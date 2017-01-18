@@ -557,6 +557,7 @@ input[type="checkbox"]:checked + label:before {
 .list{
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     background-image: url('../img/Bottom-Waves-1024.png');
     background-size: cover;
     background-position: center center;
@@ -907,6 +908,9 @@ button.delete{
 .modal-backdrop.in {
     opacity: .35;
     filter: alpha(opacity=5k);
+}
+.twoCols div{
+    display: inline-block;
 }
 .info {
     line-height: 32px;
@@ -1372,7 +1376,7 @@ text{
     }
     .store h1 {
         height: 40px;
-        font-size: 21pt;
+        font-size: 18pt;
     }   
     .year, .quantity,div[class^="detalle-"] i, div[class^="detalle-"] span{
         font-size: 16px;
@@ -1508,9 +1512,6 @@ text{
     .store {
         padding: 4pt 4%;
         line-height: 0.6em;
-    }
-    div[class^="detalle-"] i, div[class^="detalle-"] span{
-        height: 20px;
     }
     header button {
         font-size: 12pt;

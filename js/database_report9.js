@@ -28,7 +28,7 @@ function responsiveReport9() {
     var regionh = $('#divRegion').height();
     var selectdateP = $('.select-dateP').height();
     var selectGeneral = $('.select-general').height();
-    $('.list').height(windowh - headerh - selectdateP - selectGeneral -20);
+    $('.list').height(windowh - headerh - selectdateP - selectGeneral -10);
 }
 
 

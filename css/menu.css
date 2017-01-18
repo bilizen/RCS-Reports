@@ -17,14 +17,6 @@
     transform: translate3d(-15px,0,0);
 }
 
-    .translateX{
-        -webkit-transform: translate3d(0px,0,0) !important;
-        transform: translate3d(0px,0,0) !important;
-        opacity: 1 !important;
-        -webkit-transition: all 0.45s;
-        transition: all 0.45s;
-    }
-
 .item .box .item_title,.menu .box{
     display: table-cell;
     height: 42px;
@@ -116,20 +108,6 @@
     background: rgba(0,183,255,1);
     background: url('../img/iconReport3.svg') center center no-repeat;
     background-size: 100%, cover;
-}
-.btn_only1{
-    display: block;
-    width: 90%;
-    margin: auto auto;
-    background-color: #456CD8;
-    color: white;
-}
-.btn_only1:hover{
-    color:white;
-}
-.btn_only1:active{
-    background-color: #456CD8;
-    color:white;
 }
 @media only screen and (min-width : 1024px){
 	.item .box, .menu .box{

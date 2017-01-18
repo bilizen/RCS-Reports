@@ -109,6 +109,7 @@ div[class^="region_store"]
 .green{ color: rgb(104, 163, 87) !important;}
 .ambar{ color: rgb(201, 148, 18) !important;}
 
+
 #lblToday,#lblYesterday,#lblWeek,#lblMonth,#lblYear{
     display: inline-block;
 }
@@ -121,16 +122,16 @@ div[class^="region_store"]
 .selected+hr{
     opacity: 0;
 }
-.infoReport7{display: block; width: 100%; margin-bottom: 11px;}
-.infoReport7 i,
-.infoReport7 span{
+.infoReport8{display: block; width: 100%; margin-bottom: 11px;}
+.infoReport8 i,
+.infoReport8 span{
     width: 25%;
     font-style: normal;
     font-size: 14px;
     display: inline-block;
 }
-.infoReport7 i{width: 15%; color: #0000CD;}
-.infoReport7 span{
+.infoReport8 i{width: 15%; color: #0000CD;}
+.infoReport8 span{
     width: 28%;
     vertical-align: -webkit-baseline-middle;
 }
@@ -215,18 +216,18 @@ div[class^="region_store"]
     .modal-dialog{
         width: 525px;
     }
-    .infoReport7 i, .infoReport7 span,
+    .infoReport8 i, .infoReport8 span,
     .modal-title{
         font-size: 15pt;
     }
-    .infoReport7 span{
+    .infoReport8 span{
         width: 38%;
         vertical-align: inherit; 
     }
-    .infoReport7 i{
+    .infoReport8 i{
         width: 11%;
     }
-    .infoReport7 {
+    .infoReport8 {
         margin-bottom: 14pt;
     }
     .modal-header {
