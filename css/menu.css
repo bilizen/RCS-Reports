@@ -153,12 +153,12 @@
 }
 @media only screen and (min-width : 375px) and (max-width : 767px) and (orientation: portrait){
 	.item .box .item_title, .menu .box{
-    font-size: 15pt;
+    font-size: 13pt;
   }
   .item .box .item_title,
   .item .box .item_subtitle, .menu .box .item_subtitle{
     display: block;
-    width: 240px;
+    width: 280px;
     height: 32px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -173,8 +173,8 @@
     padding-left: 88px;
   }
   .iconReport{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 }
 @media only screen and (min-width : 375px) and (max-width : 767px) and (orientation: landscape){
@@ -208,7 +208,7 @@
   .item .box .item_title,
   .item .box .item_subtitle, .menu .box .item_subtitle{
     display: block;
-    width: 210px;
+    width: 250px;
     height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
