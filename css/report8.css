@@ -91,7 +91,7 @@
 div[class^="region_store"]
 {
     height: 0;
-    width: 90%;
+    width: 95%;
     overflow-y: hidden;
     overflow-x: hidden;
     opacity: 0;
@@ -103,6 +103,11 @@ div[class^="region_store"]
     opacity: 1 !important;
     height: auto !important;
     
+}
+
+.region_district {
+    width: 90%;
+    margin: auto;
 }
 
 .red{ color: rgb(255, 28, 23) !important;}
@@ -284,7 +289,7 @@ div[class^="region_store"]
         width: 68%;
     }
     .lastConexion {
-        width: 32%;
+        width: 34%;
         font-size: 11pt;
         line-height: 14pt;
         height: 32px;

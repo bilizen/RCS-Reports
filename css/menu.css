@@ -40,7 +40,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    left: 10%;
+    left: 12px;
     top: 0;
     right: 0;
     bottom: 0;
@@ -170,7 +170,7 @@
     height: 100px;
   }
   .item .box, .menu .box{
-    padding-left: 115px;
+    padding-left: 88px;
   }
   .iconReport{
     width: 70px;
@@ -188,7 +188,7 @@
     height: 100px;
   }
   .item .box, .menu .box{
-    padding-left: 130px;
+    padding-left: 100px;
   }  
   .item .box .item_title{
   	height: 33px;
@@ -217,7 +217,7 @@
     height: 90px;
   }
   .item .box, .menu .box{
-    padding-left: 100px;
+    padding-left: 88px;
   }
   .iconReport{
     width: 60px;
