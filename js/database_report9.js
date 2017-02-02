@@ -28,7 +28,7 @@ function responsiveReport9() {
     var regionh = $('#divRegion').height();
     var selectdateP = $('.select-dateP').height();
     var selectGeneral = $('.select-general').height();
-    $('.list').height(windowh - headerh - selectdateP - selectGeneral -10);
+    $('.list').height(windowh - headerh - selectdateP - selectGeneral -20);
 }
 
 
@@ -265,8 +265,8 @@ function rangeOfYear(){
 }
 
 function  deteclenguage9(){
-    var lang = navigator.language.split("-");
-    var current_lang = (lang[0]);
+    lang = navigator.language.split("-");
+    current_lang = (lang[0]);
     if (current_lang == 'es') {
         changeLanguage9();
     }
